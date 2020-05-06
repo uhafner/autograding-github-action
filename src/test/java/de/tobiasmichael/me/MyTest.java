@@ -30,6 +30,6 @@ public class MyTest {
     public void testConcatenate4() {
         String result = MyMain.concatenate("one", "five");
 
-        assertEquals("onetwo", result);
+        assertEquals("onefive", result);
     }
 }
