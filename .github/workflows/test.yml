@@ -16,6 +16,11 @@ jobs:
       - name: Set up jdk
         uses: actions/setup-java@v1
         with:
-          java-version: 1.8
+          java-version: 1.13
       - name: Build with maven
         run: mvn -B package --file pom.xml
+      - name: Comment PR
+        uses: thollander/actions-comment-pull-request@master
+        with:
+        message: 'Testing this comment thing!'
+        GITHUB_TOKEN: ${{ secrets.DEFAULT_TOKEN }}
