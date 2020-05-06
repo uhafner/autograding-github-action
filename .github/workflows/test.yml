@@ -20,7 +20,7 @@ jobs:
       - name: Build with maven
         run: mvn -B package --file pom.xml
       - name: Get report
-        run: echo "::set-env name=REPORT::$(cat target/surefire-reports/de.tobiasmichael.me.MyTest.txt)"
+        run: echo "::set-env name=REPORT::$(cat target/surefire-reports/de.tobiasmichael.me.MyTest.txt | sed "s/\n/%0A/")"
       - name: Comment PR
         uses: thollander/actions-comment-pull-request@master
         with:
