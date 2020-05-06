@@ -8,7 +8,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -26,5 +25,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          msg: ${{ env.REPORT }}
+          msg: $(echo $(cat target/surefire-reports/de.tobiasmichael.me.MyTest.txt) | sed "s/\n/%0D/"))
           check_for_duplicate_msg: false  # OPTIONAL
