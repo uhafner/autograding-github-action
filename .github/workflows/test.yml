@@ -22,5 +22,5 @@ jobs:
       - name: Comment PR
         uses: thollander/actions-comment-pull-request@master
         with:
-        message: 'Testing this comment thing!'
-        GITHUB_TOKEN: ${{ secrets.DEFAULT_TOKEN }}
+          message: 'Testing this comment thing!'
+          GITHUB_TOKEN: ${{ secrets.DEFAULT_TOKEN }}
