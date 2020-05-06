@@ -19,11 +19,11 @@ jobs:
       - name: Build with maven
         run: mvn -B package --file pom.xml
       - name: Get report
-        run: echo "::set-env name=REPORT::$(echo $(cat target/surefire-reports/de.tobiasmichael.me.MyTest.txt) | sed "s/\n/%0D/")" && echo ${{ env.REPORT }}
+        run: echo "::set-env name=REPORT::$(echo $(cat target/surefire-reports/de.tobiasmichael.me.MyTest.txt) | sed "s/\n/<br>/")" && echo ${{ env.REPORT }}
       - name: Comment PR
         uses: unsplash/comment-on-pr@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          msg: $(echo $(cat target/surefire-reports/de.tobiasmichael.me.MyTest.txt) | sed "s/\n/%0D/"))
+          msg: ${{ env.REPORT }}
           check_for_duplicate_msg: false  # OPTIONAL
