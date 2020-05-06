@@ -22,7 +22,9 @@ jobs:
       - name: Get report
         run: echo "::set-env name=REPORT::$(cat target/surefire-reports/de.tobiasmichael.me.MyTest.txt | sed "s/\n/%0A/")" && echo ${{ env.REPORT }}
       - name: Comment PR
-        uses: thollander/actions-comment-pull-request@master
+        uses: unsplash/comment-on-pr@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           message: ${{ env.REPORT }}
-          GITHUB_TOKEN: ${{ secrets.DEFAULT_TOKEN }}
+          check_for_duplicate_msg: false  # OPTIONAL
