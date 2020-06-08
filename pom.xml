@@ -20,23 +20,24 @@
             <version>4.11</version>
             <scope>test</scope>
         </dependency>
+
+        <!--    <dependency>-->
+        <!--        <groupId>edu.hm.hafner</groupId>-->
+        <!--        <artifactId>autograding-model</artifactId>-->
+        <!--        <version>0.1.0</version>-->
+        <!--    </dependency>-->
+
+        <dependency>
+            <groupId>se.bjurr.violations</groupId>
+            <artifactId>violations-lib</artifactId>
+            <version>1.116</version>
+        </dependency>
+
     </dependencies>
+
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-report-plugin</artifactId>
-                <version>2.6</version>
-                <executions>
-                    <execution>
-                        <phase>test</phase>
-                        <goals>
-                            <goal>report-only</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -46,6 +47,89 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+
+
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-surefire-report-plugin</artifactId>-->
+<!--                <version>3.0.0-M4</version>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <phase>test</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>report</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
+
+
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.5</version>
+                <executions>
+                    <execution>
+                        <id>default-prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>jacoco-report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                        <!-- default target/jscoco/site/* -->
+                        <configuration>
+                            <outputDirectory>target/jacoco-report</outputDirectory>
+                            <includes>
+                                <include>de.tobiasmichael.me.MyMain</include>
+                            </includes>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+
+            <plugin>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <version>1.5.2</version>
+                <configuration>
+                    <targetClasses>
+                        <param>de.tobiasmichael.me.MyMain</param>
+                    </targetClasses>
+                </configuration>
+                <!--                <executions>-->
+                <!--                    <execution>-->
+                <!--                        <phase>test</phase>-->
+                <!--                        <goals>-->
+                <!--                            <goal>mutationCoverage</goal>-->
+                <!--                        </goals>-->
+                <!--                    </execution>-->
+                <!--                </executions>-->
+            </plugin>
+
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>3.1.1</version>
+                <configuration>
+                    <excludes>de.tobiasmichael.me.ResultParser</excludes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>checkstyle</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
     </build>
 </project>
