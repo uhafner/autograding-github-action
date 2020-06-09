@@ -3,7 +3,6 @@ package de.tobiasmichael.me;
 
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
-import org.xml.sax.XMLReader;
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.parsers.CheckStyleParser;
 import se.bjurr.violations.lib.parsers.JCReportParser;
@@ -14,7 +13,6 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
@@ -44,11 +42,8 @@ public class ResultParser {
             //List<Violation> violationList3 = jcReportParser.parseReportOutput(getReport("target/jacoco-report/jacoco.xml"));
 
 
-            System.out.println(violationList1);
-            System.out.println("_____________________________");
-            System.out.println(violationList2);
-            System.out.println("_____________________________");
-            //System.out.println(violationList3);
+            printOutput(violationList1);
+            printOutput(violationList2);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -57,7 +52,6 @@ public class ResultParser {
 
 
     private static String getReport(String filename) throws ParserConfigurationException, IOException, SAXException, TransformerException {
-
         File fXmlFile = new File(filename);
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -69,6 +63,20 @@ public class ResultParser {
         t.transform(new DOMSource(doc), new StreamResult(sw));
 
         return sw.toString();
+    }
+
+
+    private static void printOutput(List<Violation> violations) {
+        System.out.println(violations.get(0).getParser());
+        String leftAlignFormat = "| %-8s | %-7d | %-80s |%n";
+        String leftAlignFormatHeader = "| %-8s | %-7s | %-80s |%n";
+        System.out.format("+----------+---------+----------------------------------------------------------------------------------+%n");
+        System.out.format(leftAlignFormatHeader, "Severity", "Endline", "Message");
+        System.out.format("+----------+---------+----------------------------------------------------------------------------------+%n");
+        for (Violation violation: violations) {
+            System.out.format(leftAlignFormat, violation.getSeverity(), violation.getEndLine(), violation.getMessage());
+        }
+        System.out.format("+----------+---------+----------------------------------------------------------------------------------+%n%n");
     }
 
 }
