@@ -18,6 +18,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.util.List;
@@ -42,8 +43,8 @@ public class ResultParser {
             //List<Violation> violationList3 = jcReportParser.parseReportOutput(getReport("target/jacoco-report/jacoco.xml"));
 
 
-            printOutput(violationList1);
-            printOutput(violationList2);
+            writeToFile(getOutput(violationList1));
+            writeToFile(getOutput(violationList2));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -66,17 +67,33 @@ public class ResultParser {
     }
 
 
-    private static void printOutput(List<Violation> violations) {
-        System.out.println(violations.get(0).getParser());
+    private static String getOutput(List<Violation> violations) {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.append(String.format("%s%n", violations.get(0).getParser()));
         String leftAlignFormat = "| %-8s | %-7d | %-80s |%n";
         String leftAlignFormatHeader = "| %-8s | %-7s | %-80s |%n";
-        System.out.format("+----------+---------+----------------------------------------------------------------------------------+%n");
-        System.out.format(leftAlignFormatHeader, "Severity", "Endline", "Message");
-        System.out.format("+----------+---------+----------------------------------------------------------------------------------+%n");
-        for (Violation violation: violations) {
-            System.out.format(leftAlignFormat, violation.getSeverity(), violation.getEndLine(), violation.getMessage());
+        stringBuilder.append(String.format("+----------+---------+----------------------------------------------------------------------------------+%n"));
+        stringBuilder.append(String.format(leftAlignFormatHeader, "Severity", "Endline", "Message"));
+        stringBuilder.append(String.format("+----------+---------+----------------------------------------------------------------------------------+%n"));
+        for (Violation violation : violations) {
+            stringBuilder.append(String.format(leftAlignFormat, violation.getSeverity(), violation.getEndLine(), violation.getMessage()));
         }
-        System.out.format("+----------+---------+----------------------------------------------------------------------------------+%n%n");
+        stringBuilder.append(String.format("+----------+---------+----------------------------------------------------------------------------------+%n%n"));
+
+        return stringBuilder.toString();
     }
 
+
+    private static void writeToFile(String input) {
+        try {
+            FileWriter myWriter = new FileWriter("output.txt");
+            myWriter.write(input);
+            myWriter.close();
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
 }

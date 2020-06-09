@@ -26,9 +26,8 @@ jobs:
       - name: Get report
         run: echo "::set-env name=REPORT::$(echo $(java -jar out/artifacts/github_actions_autograding_jar/github-actions-autograding.jar))"
       - name: Comment PR
-        uses: unsplash/comment-on-pr@master
+        uses: machine-learning-apps/pr-comment@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          msg: ${{ env.REPORT }}
-          check_for_duplicate_msg: false  # OPTIONAL
+          path: output.txt
