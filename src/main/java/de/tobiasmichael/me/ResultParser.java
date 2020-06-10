@@ -43,8 +43,8 @@ public class ResultParser {
             //List<Violation> violationList3 = jcReportParser.parseReportOutput(getReport("target/jacoco-report/jacoco.xml"));
 
 
-            writeToFile(getOutput(violationList1));
-            writeToFile(getOutput(violationList2));
+            writeToFile(getOutput(violationList1), "output1.txt");
+            writeToFile(getOutput(violationList2), "output2.txt");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -85,9 +85,9 @@ public class ResultParser {
     }
 
 
-    private static void writeToFile(String input) {
+    private static void writeToFile(String input, String filename) {
         try {
-            FileWriter myWriter = new FileWriter("output.txt");
+            FileWriter myWriter = new FileWriter(filename);
             myWriter.write(input);
             myWriter.close();
             System.out.println("Successfully wrote to the file.");

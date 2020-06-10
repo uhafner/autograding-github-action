@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/setup-java@v1
         with:
-          java-version: '9.0.4' # The JDK version to make available on the path.
+          java-version: '13.0.0' # The JDK version to make available on the path.
           java-package: jdk # (jre, jdk, or jdk+fx) - defaults to jdk
           architecture: x64 # (x64 or x86) - defaults to x64
       - uses: actions/checkout@v2
@@ -24,7 +24,7 @@ jobs:
       - name: Build with maven
         run: mvn test -B package --file pom.xml -Dmaven.test.failure.ignore=true
       - name: Get report
-        run: echo "::set-env name=REPORT::$(echo $(java -jar out/artifacts/github_actions_autograding_jar/github-actions-autograding.jar))"
+        run: java -jar out/artifacts/github_actions_autograding_jar/github-actions-autograding.jar && cat output1.txt >> output.txt && cat output2.txt >> output.txt
       - name: Comment PR
         uses: machine-learning-apps/pr-comment@master
         env:
