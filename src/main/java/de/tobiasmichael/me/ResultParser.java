@@ -71,15 +71,15 @@ public class ResultParser {
         StringBuilder stringBuilder = new StringBuilder();
 
         stringBuilder.append(String.format("%s%n", violations.get(0).getParser()));
-        String leftAlignFormat = "| %-8s | %-7d | %-80s |%n";
-        String leftAlignFormatHeader = "| %-8s | %-7s | %-80s |%n";
-        stringBuilder.append(String.format("+----------+---------+----------------------------------------------------------------------------------+%n"));
+        String leftAlignFormat = "| %-8s | %-7d | %-70s |%n";
+        String leftAlignFormatHeader = "| %-8s | %-7s | %-70s |%n";
+        stringBuilder.append(String.format("+----------+---------+------------------------------------------------------------------------+%n"));
         stringBuilder.append(String.format(leftAlignFormatHeader, "Severity", "Endline", "Message"));
-        stringBuilder.append(String.format("+----------+---------+----------------------------------------------------------------------------------+%n"));
+        stringBuilder.append(String.format("+----------+---------+------------------------------------------------------------------------+%n"));
         for (Violation violation : violations) {
             stringBuilder.append(String.format(leftAlignFormat, violation.getSeverity(), violation.getEndLine(), violation.getMessage()));
         }
-        stringBuilder.append(String.format("+----------+---------+----------------------------------------------------------------------------------+%n%n"));
+        stringBuilder.append(String.format("+----------+---------+------------------------------------------------------------------------+%n%n"));
 
         return stringBuilder.toString();
     }
