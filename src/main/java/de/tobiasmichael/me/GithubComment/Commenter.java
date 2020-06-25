@@ -5,6 +5,7 @@ import de.tobiasmichael.me.ResultParser.ResultParser;
 import org.eclipse.egit.github.core.CommitComment;
 import org.eclipse.egit.github.core.RepositoryId;
 import org.eclipse.egit.github.core.client.GitHubClient;
+import org.eclipse.egit.github.core.service.IssueService;
 import org.eclipse.egit.github.core.service.PullRequestService;
 
 import java.io.IOException;
@@ -42,12 +43,10 @@ public class Commenter {
 
         String oAuthToken = ResultParser.getoAuthToken();
         if (oAuthToken != null) {
-            PullRequestService service = new PullRequestService();
+            IssueService service = new IssueService();
             service.getClient().setOAuth2Token(oAuthToken);
             RepositoryId repo = new RepositoryId(repo_owner_and_name.split("/")[0], repo_owner_and_name.split("/")[1]);
-            CommitComment commitComment = new CommitComment();
-            commitComment.setBodyText(comment);
-            service.createComment(repo, Integer.parseInt(pull_request_number), commitComment);
+            service.createComment(repo.getOwner(), repo.getName(), Integer.parseInt(pull_request_number), comment);
         }
     }
 
