@@ -30,9 +30,6 @@ public class ResultParser {
         if (args.length > 0) {
             gradingConfig = args[0];
             oAuthToken = args[1];
-
-            System.out.println(gradingConfig);
-            System.out.println(oAuthToken);
         } else {
             System.out.println("No Token provided, so we'll skip the comment!");
         }
@@ -63,7 +60,7 @@ public class ResultParser {
 
             //List<Violation> violationList2 = jUnitParser.parseReportOutput(getReport("target/surefire-reports/TEST-de.tobiasmichael.me.MyTest.xml"));
 
-            List<Violation> violationList3 = pmdParser.parseReportOutput(getReport("target/pmd.xml"));
+            List<Violation> violationList3 = pmdParser.parseReportOutput(getReport("target/pmdd.xml"));
 
             //List<Violation> violationList4 = jcReportParser.parseReportOutput(getReport("target/spotbugs.xml"));
 

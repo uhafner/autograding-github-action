@@ -2,11 +2,8 @@ package de.tobiasmichael.me.GithubComment;
 
 
 import de.tobiasmichael.me.ResultParser.ResultParser;
-import org.eclipse.egit.github.core.CommitComment;
 import org.eclipse.egit.github.core.RepositoryId;
-import org.eclipse.egit.github.core.client.GitHubClient;
 import org.eclipse.egit.github.core.service.IssueService;
-import org.eclipse.egit.github.core.service.PullRequestService;
 
 import java.io.IOException;
 
@@ -15,7 +12,10 @@ import java.io.IOException;
  */
 public class Commenter {
 
-    private final String comment;
+    private String comment;
+
+    public Commenter() {
+    }
 
     public Commenter(String comment) {
         this.comment = formatComment(comment);
@@ -23,9 +23,12 @@ public class Commenter {
 
     public Commenter(String comment, Throwable err) {
         this.comment = formatComment(comment);
-        System.out.println(err.toString());
+        err.printStackTrace();
     }
 
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
 
     private String formatComment(String comment) {
         StringBuilder stringBuilder = new StringBuilder();
