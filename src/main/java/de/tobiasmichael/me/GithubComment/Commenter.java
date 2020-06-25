@@ -42,10 +42,8 @@ public class Commenter {
 
         String oAuthToken = ResultParser.getoAuthToken();
         if (oAuthToken != null) {
-            GitHubClient gitHubClient = new GitHubClient();
-            gitHubClient.setOAuth2Token(oAuthToken);
             PullRequestService service = new PullRequestService();
-            service.getClient().setCredentials("user", "passw0rd");
+            service.getClient().setOAuth2Token(oAuthToken);
             RepositoryId repo = new RepositoryId(repo_owner_and_name.split("/")[0], repo_owner_and_name.split("/")[1]);
             CommitComment commitComment = new CommitComment();
             commitComment.setBodyText(comment);
