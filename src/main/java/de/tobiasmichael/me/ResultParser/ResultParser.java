@@ -1,6 +1,7 @@
 package de.tobiasmichael.me.ResultParser;
 
 
+import de.tobiasmichael.me.GithubComment.Commenter;
 import edu.hm.hafner.grading.*;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
@@ -16,7 +17,6 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.*;
-import java.util.Collections;
 import java.util.List;
 
 public class ResultParser {
@@ -27,8 +27,6 @@ public class ResultParser {
 
 
     public static void main(String[] args) {
-        System.out.println(System.getenv());
-
         if (args.length > 0) {
             gradingConfig = args[0];
             oAuthToken = args[1];
@@ -38,6 +36,14 @@ public class ResultParser {
         } else {
             System.out.println("No Token provided, so we'll skip the comment!");
         }
+
+        try {
+            Commenter commenter = new Commenter("Test!");
+            commenter.commentTo();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
         JUnitParser jUnitParser = new JUnitParser();
 
