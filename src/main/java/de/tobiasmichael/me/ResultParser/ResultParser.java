@@ -2,21 +2,22 @@ package de.tobiasmichael.me.ResultParser;
 
 
 import de.tobiasmichael.me.GithubComment.Commenter;
+import edu.hm.hafner.analysis.FileReaderFactory;
+import edu.hm.hafner.analysis.ParsingException;
+import edu.hm.hafner.analysis.Report;
+import edu.hm.hafner.analysis.parser.CodeAnalysisParser;
+import edu.hm.hafner.analysis.parser.FindBugsParser;
+import edu.hm.hafner.analysis.parser.checkstyle.CheckStyleParser;
+import edu.hm.hafner.analysis.parser.pmd.PmdParser;
+import edu.hm.hafner.analysis.parser.violations.JUnitAdapter;
+import edu.hm.hafner.analysis.parser.violations.PitAdapter;
 import edu.hm.hafner.grading.*;
-import org.w3c.dom.Document;
-import org.xml.sax.SAXException;
-import se.bjurr.violations.lib.model.Violation;
-import se.bjurr.violations.lib.parsers.*;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
 import java.io.*;
+import java.nio.file.*;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ResultParser {
@@ -30,118 +31,90 @@ public class ResultParser {
         if (args.length > 0) {
             gradingConfig = args[0];
             oAuthToken = args[1];
+
+            try {
+                Commenter commenter = new Commenter("Test!");
+                commenter.commentTo();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } else {
             System.out.println("No Token provided, so we'll skip the comment!");
         }
 
         try {
-            Commenter commenter = new Commenter("Test!");
+            List<String> stringList = new ArrayList<>();
+
+
+            List<Path> junit_pathList = getPaths("target/surefire-reports/");
+            List<Report> junit_reportList = new ArrayList<>();
+            junit_pathList.forEach(path1 -> junit_reportList.add(new JUnitAdapter().parse(new FileReaderFactory(path1))));
+            int issue_counter = junit_reportList.stream().mapToInt(Report::getSize).sum();
+            junit_reportList.forEach(junit_report1 -> stringList.add("\nJUnit // " + junit_report1.toString()));
+
+
+            if (issue_counter == 0) {
+                List<Path> pit_pathList = getPaths("target/pit-reports/");
+                List<Report> pit_reportList = new ArrayList<>();
+                pit_pathList.forEach(path1 -> pit_reportList.add(new PitAdapter().parse(new FileReaderFactory(path1))));
+                pit_reportList.forEach(pit_report1 -> stringList.add("\nPIT // " + pit_report1.toString()));
+
+            }
+
+            Report pmd_report = new PmdParser().parse(new FileReaderFactory(Paths.get("target/pmd.xml")));
+            stringList.add("\nPMD // " + pmd_report.toString());
+
+            Report checkstyle_report = new CheckStyleParser().parse(new FileReaderFactory(Paths.get("target/checkstyle-result.xml")));
+            stringList.add("\nCheckStyle // " + checkstyle_report.toString());
+
+            Report findbugs_report = new FindBugsParser(FindBugsParser.PriorityProperty.RANK).parse(new FileReaderFactory(Paths.get("target/spotbugsXml.xml")));
+            stringList.add("\nFindBugs // " + findbugs_report.toString());
+
+            Report jacoco_report = new CodeAnalysisParser().parse(new FileReaderFactory(Paths.get("target/site/jacoco/jacoco.xml")));
+            stringList.add("\nJacoco // " + jacoco_report.toString());
+
+            commentTo(stringList);
+        } catch (ParsingException | IOException e) {
+            try {
+                throw new NoXMLFileException("File not found!", e);
+            } catch (NoXMLFileException noXMLFileException) {
+                noXMLFileException.printStackTrace();
+            }
+        }
+    }
+
+    private static List<Path> getPaths(String location) throws IOException {
+        String glob = "glob:**/*.xml";
+        List<Path> pathList = new ArrayList<>();
+        PathMatcher pathMatcher = FileSystems.getDefault().getPathMatcher(glob);
+        Files.walkFileTree(Paths.get(location), new SimpleFileVisitor<Path>() {
+            @Override
+            public FileVisitResult visitFile(Path path, BasicFileAttributes attrs) {
+                if (pathMatcher.matches(path)) {
+                    pathList.add(path);
+                }
+                return FileVisitResult.CONTINUE;
+            }
+
+            @Override
+            public FileVisitResult visitFileFailed(Path file, IOException exc) {
+                return FileVisitResult.CONTINUE;
+            }
+        });
+        return pathList;
+    }
+
+    private static void commentTo(List<String> strings) {
+        StringBuilder stringBuilder = new StringBuilder();
+        strings.forEach(stringBuilder::append);
+
+        Commenter commenter = new Commenter(stringBuilder.toString());
+        try {
             commenter.commentTo();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
-        JUnitParser jUnitParser = new JUnitParser();
-
-        PiTestParser piTestParser = new PiTestParser();
-
-        CheckStyleParser checkStyleParser = new CheckStyleParser();
-
-        JCReportParser jcReportParser = new JCReportParser();
-
-        PMDParser pmdParser = new PMDParser();
-
-        FindbugsParser findbugsParser = new FindbugsParser();
-
-        try {
-
-            //List<Violation> violationList1 = checkStyleParser.parseReportOutput(getReport("target/checkstyle-result.xml"));
-
-            //List<Violation> violationList2 = jUnitParser.parseReportOutput(getReport("target/surefire-reports/TEST-de.tobiasmichael.me.MyTest.xml"));
-
-            List<Violation> violationList3 = pmdParser.parseReportOutput(getReport("target/pmdd.xml"));
-
-            //List<Violation> violationList4 = jcReportParser.parseReportOutput(getReport("target/spotbugs.xml"));
-
-            //writeToFile(getOutput(violationList1), "output1.txt");
-            //writeToFile(getOutput(violationList2), "output2.txt");
-            writeToFile(getOutput(violationList3), "output3.txt");
-            //writeToFile(getOutput(violationList4), "output4.txt");
-
-
-//            String configuration = "{\"coverage\": {\"maxScore\": 100,\"coveredPercentageImpact\": 0, \"missedPercentageImpact\": -1}";
-//            AggregatedScore score = new AggregatedScore(configuration);
-//            CoverageSupplier coverageSupplier = new CoverageSupplier() {
-//                @Override
-//                protected List<CoverageScore> createScores(CoverageConfiguration coverageConfiguration) {
-//                    CoverageScore builder =
-//                            new CoverageScore.CoverageScoreBuilder().withConfiguration(coverageConfiguration)
-//                                    .withId("1")
-//                                    .withDisplayName("PDMParser")
-//                                    .withCoveredPercentage(100 / violationList3.size())
-//                                    .build();
-//
-//                    return Collections.singletonList(builder);
-//                }
-//            };
-//            score.addCoverageScores(coverageSupplier);
-//            System.out.print(score.getCoverageRatio());
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
     }
-
-
-    private static String getReport(String filename) throws ParserConfigurationException, IOException, SAXException, TransformerException {
-        try {
-            File fXmlFile = new File(filename);
-            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-            Document doc = dBuilder.parse(fXmlFile);
-
-            TransformerFactory tf = TransformerFactory.newInstance();
-            Transformer t = tf.newTransformer();
-            StringWriter sw = new StringWriter();
-            t.transform(new DOMSource(doc), new StreamResult(sw));
-
-            return sw.toString();
-        } catch (IOException e) {
-            throw new NoXMLFileException(filename + " not found!", e);
-        }
-    }
-
-
-    private static String getOutput(List<Violation> violations) {
-        StringBuilder stringBuilder = new StringBuilder();
-
-        stringBuilder.append(String.format("%s%n", violations.get(0).getParser()));
-        String leftAlignFormat = "| %-8s | %-7d | %-70s |%n";
-        String leftAlignFormatHeader = "| %-8s | %-7s | %-70s |%n";
-        stringBuilder.append(String.format("+----------+---------+------------------------------------------------------------------------+%n"));
-        stringBuilder.append(String.format(leftAlignFormatHeader, "Severity", "Endline", "Message"));
-        stringBuilder.append(String.format("+----------+---------+------------------------------------------------------------------------+%n"));
-        for (Violation violation : violations) {
-            stringBuilder.append(String.format(leftAlignFormat, violation.getSeverity(), violation.getEndLine(), violation.getMessage()));
-        }
-        stringBuilder.append(String.format("+----------+---------+------------------------------------------------------------------------+%n%n"));
-
-        return stringBuilder.toString();
-    }
-
-
-    private static void writeToFile(String input, String filename) {
-        try {
-            FileWriter myWriter = new FileWriter(filename);
-            myWriter.write(input);
-            myWriter.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
 
     public static String getoAuthToken() {
         return oAuthToken;

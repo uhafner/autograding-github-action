@@ -30,7 +30,7 @@ public class MyTest {
 
     @Test
     public void testConcatenate4() {
-        String result = MyMain.concatenate("one", "two");
+        String result = MyMain.concatenate("one", "five");
 
         assertEquals("onefive", result);
     }

@@ -7,9 +7,13 @@ import java.io.IOException;
 
 public class NoXMLFileException extends FileNotFoundException {
 
-    public NoXMLFileException(String errorMessage, Throwable err) throws IOException {
+    public NoXMLFileException(String errorMessage, Throwable err) {
         Commenter commenter = new Commenter(errorMessage, err);
-        commenter.commentTo();
+        try {
+            commenter.commentTo();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

@@ -21,7 +21,11 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
-      - name: Build with maven
+      - name: Build with maven (junit, checkstyle, findbugs, pmd)
         run: mvn -ntp -V -e clean verify -Dmaven.test.failure.ignore -Dgpg.skip
-      - name: Get report
+      - name: Build with maven (pit)
+        run: mvn -ntp org.pitest:pitest-maven:mutationCoverage
+      - name: Build with maven (jacoco)
+        run: mvn -ntp -V -U -e jacoco:prepare-agent test jacoco:report -Dmaven.test.failure.ignore
+      - name: Get reports
         run: java -jar out/artifacts/github_actions_autograding_jar/github-actions-autograding.jar test ${{ secrets.GITHUB_TOKEN }}
