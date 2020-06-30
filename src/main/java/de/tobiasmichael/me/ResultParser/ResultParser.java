@@ -31,13 +31,6 @@ public class ResultParser {
         if (args.length > 0) {
             gradingConfig = args[0];
             oAuthToken = args[1];
-
-            try {
-                Commenter commenter = new Commenter("Test!");
-                commenter.commentTo();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         } else {
             System.out.println("No Token provided, so we'll skip the comment!");
         }
@@ -74,6 +67,32 @@ public class ResultParser {
             stringList.add("\nJacoco // " + jacoco_report.toString());
 
             commentTo(stringList);
+
+
+            String configuration = "{\"analysis\": { \"maxScore\": 100, \"errorImpact\": -5}}";
+            AggregatedScore score = new AggregatedScore(configuration);
+            score.addAnalysisScores(new AnalysisSupplier() {
+                @Override
+                protected List<AnalysisScore> createScores(AnalysisConfiguration configuration) {
+                    
+                    return null;
+                }
+            });
+            score.addTestScores(new TestSupplier() {
+                @Override
+                protected List<TestScore> createScores(TestConfiguration configuration) {
+                    return null;
+                }
+            });
+            score.addCoverageScores(new CoverageSupplier() {
+                @Override
+                protected List<CoverageScore> createScores(CoverageConfiguration configuration) {
+                    return null;
+                }
+            });
+
+            score.getAnalysisScores().forEach(System.out::println);
+
         } catch (ParsingException | IOException e) {
             try {
                 throw new NoXMLFileException("File not found!", e);
@@ -109,11 +128,7 @@ public class ResultParser {
         strings.forEach(stringBuilder::append);
 
         Commenter commenter = new Commenter(stringBuilder.toString());
-        try {
-            commenter.commentTo();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        commenter.commentTo();
     }
 
     public static String getoAuthToken() {
