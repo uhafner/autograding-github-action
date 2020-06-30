@@ -9,7 +9,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    continue-on-error: true
     steps:
       - uses: actions/setup-java@v1
         with:
@@ -25,6 +24,7 @@ jobs:
         run: mvn -ntp -V -e clean verify -Dmaven.test.failure.ignore -Dgpg.skip
       - name: Build with maven (pit)
         run: mvn -ntp org.pitest:pitest-maven:mutationCoverage
+        continue-on-error: true
       - name: Build with maven (jacoco)
         run: mvn -ntp -V -U -e jacoco:prepare-agent test jacoco:report -Dmaven.test.failure.ignore
       - name: Get reports
