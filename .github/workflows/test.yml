@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    continue-on-error: true
     steps:
       - uses: actions/setup-java@v1
         with:
