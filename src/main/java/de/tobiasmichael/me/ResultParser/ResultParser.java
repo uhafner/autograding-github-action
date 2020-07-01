@@ -17,6 +17,7 @@ import java.io.*;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ResultParser {
@@ -35,66 +36,79 @@ public class ResultParser {
         }
 
         try {
-            List<String> stringList = new ArrayList<>();
-
-
             List<Path> junit_pathList = getPaths("target/surefire-reports/");
             List<Report> junit_reportList = new ArrayList<>();
             junit_pathList.forEach(path1 -> junit_reportList.add(new JUnitAdapter().parse(new FileReaderFactory(path1))));
-            junit_reportList.forEach(junit_report1 -> stringList.add("\nJUnit // " + junit_report1.toString()));
+            int issueCounter = junit_reportList.stream().mapToInt(Report::getSize).sum();
 
-            try {
+
+            List<Report> pit_reportList = new ArrayList<>();
+            // check if junit generated an issue
+            if (issueCounter == 0) {
                 List<Path> pit_pathList = getPaths("target/pit-reports/");
-                List<Report> pit_reportList = new ArrayList<>();
                 pit_pathList.forEach(path1 -> pit_reportList.add(new PitAdapter().parse(new FileReaderFactory(path1))));
-                pit_reportList.forEach(pit_report1 -> stringList.add("\nPIT // " + pit_report1.toString()));
-            } catch (ParsingException e) {
-                try {
-                    throw new NoPITFileException("Not all JUnit tests passed!", e);
-                } catch (NoPITFileException noPITFileException) {
-                    noPITFileException.printStackTrace();
-                }
+            } else {
+                throw new NoPITFileException("Not all JUnit tests passed!", junit_reportList);
             }
 
             Report pmd_report = new PmdParser().parse(new FileReaderFactory(Paths.get("target/pmd.xml")));
-            stringList.add("\nPMD // " + pmd_report.toString());
-
             Report checkstyle_report = new CheckStyleParser().parse(new FileReaderFactory(Paths.get("target/checkstyle-result.xml")));
-            stringList.add("\nCheckStyle // " + checkstyle_report.toString());
-
             Report findbugs_report = new FindBugsParser(FindBugsParser.PriorityProperty.RANK).parse(new FileReaderFactory(Paths.get("target/spotbugsXml.xml")));
-            stringList.add("\nFindBugs // " + findbugs_report.toString());
-
             Report jacoco_report = new CodeAnalysisParser().parse(new FileReaderFactory(Paths.get("target/site/jacoco/jacoco.xml")));
-            stringList.add("\nJacoco // " + jacoco_report.toString());
-
-            commentTo(stringList);
-
 
             String configuration = "{\"analysis\": { \"maxScore\": 100, \"errorImpact\": -5}}";
             AggregatedScore score = new AggregatedScore(configuration);
             score.addAnalysisScores(new AnalysisSupplier() {
                 @Override
                 protected List<AnalysisScore> createScores(AnalysisConfiguration configuration) {
-
-                    return null;
+                    AnalysisScore analysisScore = new AnalysisScore.AnalysisScoreBuilder()
+                            .withConfiguration(configuration)
+                            .withDisplayName("Analysis")
+                            .withId("1")
+                            .withTotalErrorsSize(checkstyle_report.getSize())
+                            .withTotalHighSeveritySize(checkstyle_report.getSizeOf("high"))
+                            .withTotalNormalSeveritySize(checkstyle_report.getSizeOf("normal"))
+                            .withTotalLowSeveritySize(checkstyle_report.getSizeOf("low"))
+                            .build();
+                    return Collections.singletonList(analysisScore);
                 }
             });
             score.addTestScores(new TestSupplier() {
                 @Override
                 protected List<TestScore> createScores(TestConfiguration configuration) {
-                    return null;
+                    TestScore testScore = new TestScore.TestScoreBuilder()
+                            .withConfiguration(configuration)
+                            .withDisplayName("JUnit")
+                            .withTotalSize(junit_reportList.get(0).getSize())
+                            .withFailedSize(junit_reportList.get(0).getSizeOf("failed"))
+                            .withSkippedSize(junit_reportList.get(0).getSizeOf("skipped"))
+                            .build();
+                    return Collections.singletonList(testScore);
                 }
             });
-            score.addCoverageScores(new CoverageSupplier() {
-                @Override
-                protected List<CoverageScore> createScores(CoverageConfiguration configuration) {
-                    return null;
-                }
-            });
+//            score.addCoverageScores(new CoverageSupplier() {
+//                @Override
+//                protected List<CoverageScore> createScores(CoverageConfiguration configuration) {
+//                    return null;
+//                }
+//            });
+            if (pit_reportList.size() > 0) {
+                score.addPitScores(new PitSupplier() {
+                    @Override
+                    protected List<PitScore> createScores(PitConfiguration configuration) {
+                        PitScore pitScore = new PitScore.PitScoreBuilder()
+                                .withConfiguration(configuration)
+                                .withDisplayName("PIT")
+                                .withTotalMutations(pit_reportList.get(0).getSizeOf("NORMAL"))
+                                .withUndetectedMutations(pit_reportList.get(0).getSizeOf("HIGH"))
+                                .build();
+                        return Collections.singletonList(pitScore);
+                    }
+                });
+            }
 
-            score.getAnalysisScores().forEach(System.out::println);
-
+            Commenter commenter = new Commenter(score.toString());
+            commenter.commentTo();
         } catch (ParsingException | IOException e) {
             e.printStackTrace();
         }
