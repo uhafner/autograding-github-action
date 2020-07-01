@@ -44,7 +44,7 @@ public class Commenter {
     private String formatComment(String comment, List<Report> reportList) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(comment);
-        stringBuilder.append("___________________\n");
+        stringBuilder.append("\n___________________\n");
         for (Report report : reportList) {
             stringBuilder.append("- ");
             report.forEach(stringBuilder::append);

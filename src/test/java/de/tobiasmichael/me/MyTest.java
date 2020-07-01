@@ -23,7 +23,7 @@ public class MyTest {
 
     @Test
     public void testConcatenate3() {
-        String result = MyMain.concatenate("one", "four");
+        String result = MyMain.concatenate("one", "two");
 
         assertEquals("onefour", result);
     }
