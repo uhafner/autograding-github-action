@@ -46,10 +46,13 @@ public class Commenter {
         stringBuilder.append(comment);
         stringBuilder.append("\n___________________\n");
         for (Report report : reportList) {
-            stringBuilder.append("- ");
-            report.forEach(stringBuilder::append);
-            stringBuilder.append("\n");
+            report.forEach(issue -> {
+                stringBuilder.append("- ");
+                stringBuilder.append(issue);
+                stringBuilder.append("\n");
+            });
         }
+        stringBuilder.append("___________________\n");
         return stringBuilder.toString();
     }
 
