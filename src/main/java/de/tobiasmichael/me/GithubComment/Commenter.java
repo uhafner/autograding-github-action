@@ -39,7 +39,7 @@ public class Commenter {
             String pull_request_number = System.getenv("GITHUB_REF").split("/")[2];
             String repo_owner_and_name = System.getenv("GITHUB_REPOSITORY");
 
-            String oAuthToken = ResultParser.getoAuthToken();
+            String oAuthToken = ResultParser.getOAuthToken();
             if (oAuthToken != null) {
                 IssueService service = new IssueService();
                 service.getClient().setOAuth2Token(oAuthToken);

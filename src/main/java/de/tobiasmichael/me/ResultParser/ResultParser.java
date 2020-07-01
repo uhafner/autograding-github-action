@@ -17,7 +17,6 @@ import java.io.*;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class ResultParser {
@@ -42,16 +41,19 @@ public class ResultParser {
             List<Path> junit_pathList = getPaths("target/surefire-reports/");
             List<Report> junit_reportList = new ArrayList<>();
             junit_pathList.forEach(path1 -> junit_reportList.add(new JUnitAdapter().parse(new FileReaderFactory(path1))));
-            int issue_counter = junit_reportList.stream().mapToInt(Report::getSize).sum();
             junit_reportList.forEach(junit_report1 -> stringList.add("\nJUnit // " + junit_report1.toString()));
 
-
-            if (issue_counter == 0) {
+            try {
                 List<Path> pit_pathList = getPaths("target/pit-reports/");
                 List<Report> pit_reportList = new ArrayList<>();
                 pit_pathList.forEach(path1 -> pit_reportList.add(new PitAdapter().parse(new FileReaderFactory(path1))));
                 pit_reportList.forEach(pit_report1 -> stringList.add("\nPIT // " + pit_report1.toString()));
-
+            } catch (ParsingException e) {
+                try {
+                    throw new NoPITFileException("Not all JUnit tests passed!", e);
+                } catch (NoPITFileException noPITFileException) {
+                    noPITFileException.printStackTrace();
+                }
             }
 
             Report pmd_report = new PmdParser().parse(new FileReaderFactory(Paths.get("target/pmd.xml")));
@@ -74,7 +76,7 @@ public class ResultParser {
             score.addAnalysisScores(new AnalysisSupplier() {
                 @Override
                 protected List<AnalysisScore> createScores(AnalysisConfiguration configuration) {
-                    
+
                     return null;
                 }
             });
@@ -94,11 +96,7 @@ public class ResultParser {
             score.getAnalysisScores().forEach(System.out::println);
 
         } catch (ParsingException | IOException e) {
-            try {
-                throw new NoXMLFileException("File not found!", e);
-            } catch (NoXMLFileException noXMLFileException) {
-                noXMLFileException.printStackTrace();
-            }
+            e.printStackTrace();
         }
     }
 
@@ -131,7 +129,7 @@ public class ResultParser {
         commenter.commentTo();
     }
 
-    public static String getoAuthToken() {
+    public static String getOAuthToken() {
         return oAuthToken;
     }
 }
