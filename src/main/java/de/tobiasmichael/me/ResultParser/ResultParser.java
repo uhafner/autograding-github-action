@@ -38,7 +38,7 @@ public class ResultParser {
         try {
             List<Path> junit_pathList = getPaths("target/surefire-reports/");
             List<Report> junit_reportList = new ArrayList<>();
-            junit_pathList.forEach(path1 -> junit_reportList.add(new JUnitAdapter().parse(new FileReaderFactory(path1))));
+            junit_pathList.forEach(path -> junit_reportList.add(new JUnitAdapter().parse(new FileReaderFactory(path))));
             int issueCounter = junit_reportList.stream().mapToInt(Report::getSize).sum();
 
 
