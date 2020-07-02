@@ -2,10 +2,11 @@ package de.tobiasmichael.me.ResultParser;
 
 
 import de.tobiasmichael.me.GithubComment.Commenter;
+import de.tobiasmichael.me.Util.JacocoReport;
+import de.tobiasmichael.me.Util.JacocoParser;
 import edu.hm.hafner.analysis.FileReaderFactory;
 import edu.hm.hafner.analysis.ParsingException;
 import edu.hm.hafner.analysis.Report;
-import edu.hm.hafner.analysis.parser.CodeAnalysisParser;
 import edu.hm.hafner.analysis.parser.FindBugsParser;
 import edu.hm.hafner.analysis.parser.checkstyle.CheckStyleParser;
 import edu.hm.hafner.analysis.parser.pmd.PmdParser;
@@ -61,9 +62,9 @@ public class ResultParser {
             Report pmd_report = new PmdParser().parse(new FileReaderFactory(Paths.get("target/pmd.xml")));
             Report checkstyle_report = new CheckStyleParser().parse(new FileReaderFactory(Paths.get("target/checkstyle-result.xml")));
             Report findbugs_report = new FindBugsParser(FindBugsParser.PriorityProperty.RANK).parse(new FileReaderFactory(Paths.get("target/spotbugsXml.xml")));
-            Report jacoco_report = new CodeAnalysisParser().parse(new FileReaderFactory(Paths.get("target/site/jacoco/jacoco.xml")));
+            JacocoReport jacoco_report = new JacocoParser().parse(new FileReaderFactory(Paths.get("target/site/jacoco/jacoco.xml")));
 
-            String configuration = "{\"analysis\": { \"maxScore\": 100, \"errorImpact\": -5}}";
+            String configuration = "{\"analysis\": { \"maxScore\": 600, \"errorImpact\": -5}}";
             AggregatedScore score = new AggregatedScore(configuration);
             score.addAnalysisScores(new AnalysisSupplier() {
                 @Override
@@ -93,12 +94,18 @@ public class ResultParser {
                     return Collections.singletonList(testScore);
                 }
             });
-//            score.addCoverageScores(new CoverageSupplier() {
-//                @Override
-//                protected List<CoverageScore> createScores(CoverageConfiguration configuration) {
-//                    return null;
-//                }
-//            });
+            score.addCoverageScores(new CoverageSupplier() {
+                @Override
+                protected List<CoverageScore> createScores(CoverageConfiguration configuration) {
+                    CoverageScore coverageScore = new CoverageScore.CoverageScoreBuilder()
+                            .withConfiguration(configuration)
+                            .withDisplayName("Jacoco")
+                            .withId("1")
+                            .withCoveredPercentage((int) jacoco_report.getInstruction())
+                            .build();
+                    return Collections.singletonList(coverageScore);
+                }
+            });
             if (pit_reportList.size() > 0) {
                 score.addPitScores(new PitSupplier() {
                     @Override

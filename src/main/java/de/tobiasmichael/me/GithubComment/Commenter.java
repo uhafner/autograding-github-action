@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  */
 public class Commenter {
 
-    private Logger logger;
+    private final Logger logger;
     private String comment;
 
     public Commenter() {
@@ -25,21 +25,18 @@ public class Commenter {
     }
 
     public Commenter(String comment) {
-        logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-        logger.setLevel(Level.ALL);
+        this();
         this.comment = formatComment(comment);
     }
 
     public Commenter(String comment, Throwable err) {
-        logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-        logger.setLevel(Level.ALL);
+        this();
         this.comment = formatComment(comment);
         err.printStackTrace();
     }
 
     public Commenter(String comment, List<Report> reportList) {
-        logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-        logger.setLevel(Level.ALL);
+        this();
         this.comment = formatComment(comment, reportList);
     }
 
