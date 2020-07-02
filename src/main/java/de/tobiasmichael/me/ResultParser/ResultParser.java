@@ -19,20 +19,26 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ResultParser {
 
+    private static Logger logger;
 
     private static String oAuthToken = null;
     private static String gradingConfig = null;
 
 
     public static void main(String[] args) {
+        logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+        logger.setLevel(Level.ALL);
+
         if (args.length > 0) {
             gradingConfig = args[0];
             oAuthToken = args[1];
         } else {
-            System.out.println("No Token provided, so we'll skip the comment!");
+            logger.warning("No Token provided, so we'll skip the comment!");
         }
 
         try {
@@ -45,8 +51,9 @@ public class ResultParser {
             List<Report> pit_reportList = new ArrayList<>();
             // check if junit generated an issue
             if (issueCounter == 0) {
+                logger.info("Going to search for PIT-reports.");
                 List<Path> pit_pathList = getPaths("target/pit-reports/");
-                pit_pathList.forEach(path1 -> pit_reportList.add(new PitAdapter().parse(new FileReaderFactory(path1))));
+                pit_pathList.forEach(path -> pit_reportList.add(new PitAdapter().parse(new FileReaderFactory(path))));
             } else {
                 throw new NoPITFileException("Not all JUnit tests passed!", junit_reportList);
             }
@@ -110,7 +117,7 @@ public class ResultParser {
             Commenter commenter = new Commenter(score.toString());
             commenter.commentTo();
         } catch (ParsingException | IOException e) {
-            e.printStackTrace();
+            logger.severe(e.toString());
         }
     }
 
@@ -133,14 +140,6 @@ public class ResultParser {
             }
         });
         return pathList;
-    }
-
-    private static void commentTo(List<String> strings) {
-        StringBuilder stringBuilder = new StringBuilder();
-        strings.forEach(stringBuilder::append);
-
-        Commenter commenter = new Commenter(stringBuilder.toString());
-        commenter.commentTo();
     }
 
     public static String getOAuthToken() {

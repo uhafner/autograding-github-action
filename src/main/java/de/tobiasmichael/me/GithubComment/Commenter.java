@@ -2,34 +2,44 @@ package de.tobiasmichael.me.GithubComment;
 
 
 import de.tobiasmichael.me.ResultParser.ResultParser;
-import edu.hm.hafner.analysis.Issue;
 import edu.hm.hafner.analysis.Report;
 import org.eclipse.egit.github.core.RepositoryId;
 import org.eclipse.egit.github.core.service.IssueService;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * This class will work against the GitHub API and comment the pull request
  */
 public class Commenter {
 
+    private Logger logger;
     private String comment;
 
     public Commenter() {
+        logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+        logger.setLevel(Level.ALL);
     }
 
     public Commenter(String comment) {
+        logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+        logger.setLevel(Level.ALL);
         this.comment = formatComment(comment);
     }
 
     public Commenter(String comment, Throwable err) {
+        logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+        logger.setLevel(Level.ALL);
         this.comment = formatComment(comment);
         err.printStackTrace();
     }
 
     public Commenter(String comment, List<Report> reportList) {
+        logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+        logger.setLevel(Level.ALL);
         this.comment = formatComment(comment, reportList);
     }
 
@@ -68,11 +78,11 @@ public class Commenter {
                 RepositoryId repo = new RepositoryId(repo_owner_and_name.split("/")[0], repo_owner_and_name.split("/")[1]);
                 service.createComment(repo.getOwner(), repo.getName(), Integer.parseInt(pull_request_number), comment);
             }
-        } catch (NullPointerException e) {
-            System.out.println("Not in Github actions, so not going to execute comment.");
-            System.out.println(comment);
+        } catch (NullPointerException ignore) {
+            logger.warning("Not in Github actions, so not going to execute comment.");
+            logger.info(comment);
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.severe(e.toString());
         }
     }
 
