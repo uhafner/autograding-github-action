@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="8.31">
+<file name="/home/tobias/IdeaProjects/github-actions-autograding/src/main/java/de/tobiasmichael/me/ResultParser/ResultParser.java">
+<error line="23" severity="warning" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
+<error line="23" column="1" severity="warning" message="Class Data Abstraction Coupling is 17 (max allowed is 10) classes [AggregatedScore, AnalysisScore.AnalysisScoreBuilder, AnalysisSupplier, CheckStyleParser, CodeAnalysisParser, Commenter, FileReaderFactory, FindBugsParser, JUnitAdapter, NoPITFileException, PitAdapter, PitScore.PitScoreBuilder, PitSupplier, PmdParser, SimpleFileVisitor, TestScore.TestScoreBuilder, TestSupplier]." source="com.puppycrawl.tools.checkstyle.checks.metrics.ClassDataAbstractionCouplingCheck"/>
+<error line="134" column="49" severity="warning" message="Anonymous inner class length is 14 lines (max allowed is 10)." source="com.puppycrawl.tools.checkstyle.checks.sizes.AnonInnerLengthCheck"/>
+</file>
+</checkstyle>

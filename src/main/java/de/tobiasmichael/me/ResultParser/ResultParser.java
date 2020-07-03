@@ -60,10 +60,13 @@ public class ResultParser {
             }
         } else {
             logger.warning("No Token provided, so we'll skip the comment!");
+            logger.warning("No Config provided, so going to use default config!");
+            gradingConfig = handleGradingConfig("src/main/resources/default.conf");
         }
 
         try {
             List<Path> junit_pathList = getPaths("target/surefire-reports/");
+            if (junit_pathList.size() == 0) logger.warning("No JUnit files found!");
             List<Report> junit_reportList = new ArrayList<>();
             junit_pathList.forEach(path -> junit_reportList.add(new JUnitAdapter().parse(new FileReaderFactory(path))));
             int issueCounter = junit_reportList.stream().mapToInt(Report::getSize).sum();
@@ -72,60 +75,78 @@ public class ResultParser {
             List<Report> pit_reportList = new ArrayList<>();
             // check if junit generated an issue
             if (issueCounter == 0) {
-                logger.info("Going to search for PIT-reports.");
                 List<Path> pit_pathList = getPaths("target/pit-reports/");
+                if (pit_pathList.size() == 0) logger.warning("No PIT files found!");
                 pit_pathList.forEach(path -> pit_reportList.add(new PitAdapter().parse(new FileReaderFactory(path))));
             } else {
-                throw new NoPITFileException("Not all JUnit tests passed!", junit_reportList);
+                if (junit_reportList.size() > 0) {
+                    throw new NoPITFileException("Not all JUnit tests passed!", junit_reportList);
+                }
             }
 
-            Report pmd_report = new PmdParser().parse(new FileReaderFactory(Paths.get("target/pmd.xml")));
-            Report checkstyle_report = new CheckStyleParser().parse(new FileReaderFactory(Paths.get("target/checkstyle-result.xml")));
-            Report findbugs_report = new FindBugsParser(FindBugsParser.PriorityProperty.RANK).parse(new FileReaderFactory(Paths.get("target/spotbugsXml.xml")));
-            JacocoReport jacoco_report = new JacocoParser().parse(new FileReaderFactory(Paths.get("target/site/jacoco/jacoco.xml")));
+            Report pmd_report = null;
+            Report checkstyle_report = null;
+            Report findbugs_report = null;
+            JacocoReport jacoco_report = null;
+            try {
+                pmd_report = new PmdParser().parse(new FileReaderFactory(Paths.get("target/pmd.xml")));
+                checkstyle_report = new CheckStyleParser().parse(new FileReaderFactory(Paths.get("target/checkstyle-result.xml")));
+                findbugs_report = new FindBugsParser(FindBugsParser.PriorityProperty.RANK).parse(new FileReaderFactory(Paths.get("target/spotbugsXml.xml")));
+                jacoco_report = new JacocoParser().parse(new FileReaderFactory(Paths.get("target/site/jacoco/jacoco.xml")));
+            } catch (ParsingException e) {
+                logger.severe("One or more XML file(s) not found!");
+            }
 
             String configuration = getGradingConfig();
             AggregatedScore score = new AggregatedScore(configuration);
-            score.addAnalysisScores(new AnalysisSupplier() {
-                @Override
-                protected List<AnalysisScore> createScores(AnalysisConfiguration configuration) {
-                    AnalysisScore analysisScore = new AnalysisScore.AnalysisScoreBuilder()
-                            .withConfiguration(configuration)
-                            .withDisplayName("Analysis")
-                            .withId("1")
-                            .withTotalErrorsSize(checkstyle_report.getSize())
-                            .withTotalHighSeveritySize(checkstyle_report.getSizeOf("high"))
-                            .withTotalNormalSeveritySize(checkstyle_report.getSizeOf("normal"))
-                            .withTotalLowSeveritySize(checkstyle_report.getSizeOf("low"))
-                            .build();
-                    return Collections.singletonList(analysisScore);
-                }
-            });
-            score.addTestScores(new TestSupplier() {
-                @Override
-                protected List<TestScore> createScores(TestConfiguration configuration) {
-                    TestScore testScore = new TestScore.TestScoreBuilder()
-                            .withConfiguration(configuration)
-                            .withDisplayName("JUnit")
-                            .withTotalSize(junit_reportList.get(0).getSize())
-                            .withFailedSize(junit_reportList.get(0).getSizeOf("failed"))
-                            .withSkippedSize(junit_reportList.get(0).getSizeOf("skipped"))
-                            .build();
-                    return Collections.singletonList(testScore);
-                }
-            });
-            score.addCoverageScores(new CoverageSupplier() {
-                @Override
-                protected List<CoverageScore> createScores(CoverageConfiguration configuration) {
-                    CoverageScore coverageScore = new CoverageScore.CoverageScoreBuilder()
-                            .withConfiguration(configuration)
-                            .withDisplayName("Jacoco")
-                            .withId("1")
-                            .withCoveredPercentage((int) jacoco_report.getInstruction())
-                            .build();
-                    return Collections.singletonList(coverageScore);
-                }
-            });
+            if (checkstyle_report != null) {
+                Report finalCheckstyle_report = checkstyle_report;
+                score.addAnalysisScores(new AnalysisSupplier() {
+                    @Override
+                    protected List<AnalysisScore> createScores(AnalysisConfiguration configuration) {
+                        AnalysisScore analysisScore = new AnalysisScore.AnalysisScoreBuilder()
+                                .withConfiguration(configuration)
+                                .withDisplayName("Analysis")
+                                .withId("1")
+                                .withTotalErrorsSize(finalCheckstyle_report.getSize())
+                                .withTotalHighSeveritySize(finalCheckstyle_report.getSizeOf("high"))
+                                .withTotalNormalSeveritySize(finalCheckstyle_report.getSizeOf("normal"))
+                                .withTotalLowSeveritySize(finalCheckstyle_report.getSizeOf("low"))
+                                .build();
+                        return Collections.singletonList(analysisScore);
+                    }
+                });
+            }
+            if (junit_reportList.size() > 0) {
+                score.addTestScores(new TestSupplier() {
+                    @Override
+                    protected List<TestScore> createScores(TestConfiguration configuration) {
+                        TestScore testScore = new TestScore.TestScoreBuilder()
+                                .withConfiguration(configuration)
+                                .withDisplayName("JUnit")
+                                .withTotalSize(junit_reportList.get(0).getSize())
+                                .withFailedSize(junit_reportList.get(0).getSizeOf("failed"))
+                                .withSkippedSize(junit_reportList.get(0).getSizeOf("skipped"))
+                                .build();
+                        return Collections.singletonList(testScore);
+                    }
+                });
+            }
+            if (jacoco_report != null) {
+                JacocoReport finalJacoco_report = jacoco_report;
+                score.addCoverageScores(new CoverageSupplier() {
+                    @Override
+                    protected List<CoverageScore> createScores(CoverageConfiguration configuration) {
+                        CoverageScore coverageScore = new CoverageScore.CoverageScoreBuilder()
+                                .withConfiguration(configuration)
+                                .withDisplayName("Jacoco")
+                                .withId("1")
+                                .withCoveredPercentage((int) finalJacoco_report.getInstruction())
+                                .build();
+                        return Collections.singletonList(coverageScore);
+                    }
+                });
+            }
             if (pit_reportList.size() > 0) {
                 score.addPitScores(new PitSupplier() {
                     @Override
@@ -190,9 +211,7 @@ public class ResultParser {
         while (matcher.find()) {
             try {
                 Path path = Paths.get(input);
-                String read = Files.readAllLines(path).get(0);
-                logger.info(read);
-                input = read;
+                input = Files.readAllLines(path).get(0);
                 break;
             } catch (IOException e) {
                 logger.severe("Config file could not be found!");
