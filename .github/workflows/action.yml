@@ -26,4 +26,4 @@ jobs:
       - name: Build with maven (jacoco)
         run: mvn -ntp -V -U -e jacoco:prepare-agent test jacoco:report -Dmaven.test.failure.ignore
       - name: Get reports
-        run: java -jar out/artifacts/github_actions_autograding_jar/github-actions-autograding.jar test ${{ secrets.GITHUB_TOKEN }}
+        run: java -jar out/artifacts/github_actions_autograding_jar/github-actions-autograding.jar ${{ secrets.GITHUB_TOKEN }}

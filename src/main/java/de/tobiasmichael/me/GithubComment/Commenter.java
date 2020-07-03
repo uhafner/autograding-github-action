@@ -12,7 +12,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * This class will work against the GitHub API and comment the pull request
+ * This class will work against the GitHub API and comment the pull request.
+ *
+ * @author Tobias Effner
  */
 public class Commenter {
 
@@ -44,10 +46,23 @@ public class Commenter {
         this.comment = comment;
     }
 
+    /**
+     * Formats the given comment to a readable string.
+     *
+     * @param comment comment string
+     * @return returns readable string
+     */
     private String formatComment(String comment) {
         return "___________________\n" + comment + "\n___________________\n";
     }
 
+    /**
+     * Formats the given comment and Reportlist to a readable string.
+     *
+     * @param comment comment string
+     * @param reportList list of reports
+     * @return returns readable string
+     */
     private String formatComment(String comment, List<Report> reportList) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(comment);
@@ -63,6 +78,14 @@ public class Commenter {
         return stringBuilder.toString();
     }
 
+    /**
+     * Gets the system variables from github actions and creates a comment
+     * on the pull request with the formatted comment.
+     *
+     * If there is no system variable set, the comment will be logged.
+     *
+     * If there is no oAuthToken, the creation of the comment will be skipped.
+     */
     public void commentTo() {
         try {
             String pull_request_number = System.getenv("GITHUB_REF").split("/")[2];
