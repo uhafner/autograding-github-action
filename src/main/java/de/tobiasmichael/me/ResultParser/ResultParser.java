@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
@@ -39,6 +40,7 @@ public class ResultParser {
 
     private static String oAuthToken = null;
     private static String gradingConfig = null;
+    private static Level logLevel = Level.INFO;
 
 
     /**
@@ -48,18 +50,15 @@ public class ResultParser {
      */
     public static void main(String[] args) {
         logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-        logger.setLevel(Level.ALL);
 
         if (args.length > 0) {
-            oAuthToken = args[0];
-            if (args.length > 1) {
-                gradingConfig = handleGradingConfig(args[1]);
-            } else {
-                logger.warning("No Config provided, so going to use default config!");
-                gradingConfig = handleGradingConfig("src/main/resources/default.conf");
-            }
-        } else {
+            parseArguments(args);
+            logger.setLevel(logLevel);
+        }
+        if (oAuthToken == null) {
             logger.warning("No Token provided, so we'll skip the comment!");
+        }
+        if (gradingConfig == null) {
             logger.warning("No Config provided, so going to use default config!");
             gradingConfig = handleGradingConfig("src/main/resources/default.conf");
         }
@@ -195,6 +194,32 @@ public class ResultParser {
             }
         });
         return pathList;
+    }
+
+    /**
+     * Handles arguments passed to the programmm.
+     *
+     * @param args input variables
+     */
+    private static void parseArguments(String[] args) {
+        List<String> arguments = new ArrayList<>(Arrays.asList(args));
+        for (String arg : arguments) {
+            switch (arg) {
+                case ("-d"):
+                    logLevel = Level.ALL;
+                    logger.setLevel(logLevel);
+                    logger.info("Debug level set to all!");
+                    break;
+                case ("-c"):
+                    gradingConfig = arguments.get(arguments.indexOf(arg) + 1);
+                    break;
+                case ("-t"):
+                    oAuthToken = arguments.get(arguments.indexOf(arg) + 1);
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 
     /**
