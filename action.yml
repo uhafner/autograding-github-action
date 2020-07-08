@@ -1,4 +1,5 @@
 name: Java CI with Maven
+description:  Autograding action.
 
 on:
   pull_request:
