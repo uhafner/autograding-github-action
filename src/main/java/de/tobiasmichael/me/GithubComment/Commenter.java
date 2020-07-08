@@ -92,39 +92,38 @@ public class Commenter {
      */
     private String formatComment(AggregatedScore score) {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(score.toString());
-        stringBuilder.append("\n___\n");
+        stringBuilder.append("# ").append(score.toString());
 
-        stringBuilder.append("Unit Tests: ").append(score.getTestRatio()).append("\n");
+        stringBuilder.append("### Unit Tests: ").append(score.getTestRatio()).append("\n");
         stringBuilder.append(tableFormat(new String[]{"ID", "Name", "Impact"}));
-        stringBuilder.append("-------------------------------\n");
+        stringBuilder.append(tableFormat(new String[]{":-:", ":-:", ":-:"}));
         score.getTestScores().forEach(testScore -> {
             stringBuilder.append(tableFormat(new String[]{testScore.getId(), testScore.getName(),
                     String.valueOf(testScore.getTotalImpact())}));
         });
         stringBuilder.append("\n___\n");
 
-        stringBuilder.append("Coverage Score: ").append(score.getCoverageRatio()).append("\n");
+        stringBuilder.append("### Coverage Score: ").append(score.getCoverageRatio()).append("\n");
         stringBuilder.append(tableFormat(new String[]{"ID", "Name", "Impact"}));
-        stringBuilder.append("-------------------------------\n");
+        stringBuilder.append(tableFormat(new String[]{":-:", ":-:", ":-:"}));
         score.getCoverageScores().forEach(coverageScore -> {
             stringBuilder.append(tableFormat(new String[]{coverageScore.getId(), coverageScore.getName(),
                     String.valueOf(coverageScore.getTotalImpact())}));
         });
         stringBuilder.append("\n___\n");
 
-        stringBuilder.append("PIT Mutation: ").append(score.getPitRatio()).append("\n");
+        stringBuilder.append("### PIT Mutation: ").append(score.getPitRatio()).append("\n");
         stringBuilder.append(tableFormat(new String[]{"ID", "Name", "Impact"}));
-        stringBuilder.append("-------------------------------\n");
+        stringBuilder.append(tableFormat(new String[]{":-:", ":-:", ":-:"}));
         score.getPitScores().forEach(pitScore -> {
             stringBuilder.append(tableFormat(new String[]{pitScore.getId(), pitScore.getName(),
                     String.valueOf(pitScore.getTotalImpact())}));
         });
         stringBuilder.append("\n___\n");
 
-        stringBuilder.append("Static Analysis Warnings: ").append(score.getPitRatio()).append("\n");
+        stringBuilder.append("### Static Analysis Warnings: ").append(score.getPitRatio()).append("\n");
         stringBuilder.append(tableFormat(new String[]{"ID", "Name", "Impact"}));
-        stringBuilder.append("-------------------------------\n");
+        stringBuilder.append(tableFormat(new String[]{":-:", ":-:", ":-:"}));
         score.getAnalysisScores().forEach(analysisScore -> {
             stringBuilder.append(tableFormat(new String[]{analysisScore.getId(), analysisScore.getName(),
                     String.valueOf(analysisScore.getTotalImpact())}));
