@@ -4,26 +4,11 @@ on:
   pull_request:
     branches: [ master ]
 
-
-inputs:
-  DEBUG:
-    description: "Debug on/off"
-    required: false
-    default: "false"
-  CONFIG:
-    description: "Autograding config"
-    required: false
-    default: ""
-  TOKEN:
-    description: "GitHub token"
-    required: false
-    default: ""
-
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@master
       - uses: actions/setup-java@v1
         with:
           java-version: '8.0.252' # The JDK version to make available on the path.
