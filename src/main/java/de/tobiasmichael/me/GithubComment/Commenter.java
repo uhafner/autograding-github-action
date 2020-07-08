@@ -92,40 +92,44 @@ public class Commenter {
      */
     private String formatComment(AggregatedScore score) {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("# ").append(score.toString());
+        stringBuilder.append("# ").append(score.toString()).append("\n");
 
         stringBuilder.append("### Unit Tests: ").append(score.getTestRatio()).append("\n");
-        stringBuilder.append(tableFormat(new String[]{"ID", "Name", "Impact"}));
+        stringBuilder.append(tableFormat(new String[]{"Failed", "Passed", "Impact"}));
         stringBuilder.append(tableFormat(new String[]{":-:", ":-:", ":-:"}));
         score.getTestScores().forEach(testScore -> {
-            stringBuilder.append(tableFormat(new String[]{testScore.getId(), testScore.getName(),
+            stringBuilder.append(tableFormat(new String[]{String.valueOf(testScore.getFailedSize()),
+                    String.valueOf(testScore.getPassedSize()),
                     String.valueOf(testScore.getTotalImpact())}));
         });
         stringBuilder.append("\n___\n");
 
         stringBuilder.append("### Coverage Score: ").append(score.getCoverageRatio()).append("\n");
-        stringBuilder.append(tableFormat(new String[]{"ID", "Name", "Impact"}));
+        stringBuilder.append(tableFormat(new String[]{"Name", "Covered", "Impact"}));
         stringBuilder.append(tableFormat(new String[]{":-:", ":-:", ":-:"}));
         score.getCoverageScores().forEach(coverageScore -> {
-            stringBuilder.append(tableFormat(new String[]{coverageScore.getId(), coverageScore.getName(),
+            stringBuilder.append(tableFormat(new String[]{coverageScore.getName(),
+                    String.valueOf(coverageScore.getCoveredPercentage()),
                     String.valueOf(coverageScore.getTotalImpact())}));
         });
         stringBuilder.append("\n___\n");
 
         stringBuilder.append("### PIT Mutation: ").append(score.getPitRatio()).append("\n");
-        stringBuilder.append(tableFormat(new String[]{"ID", "Name", "Impact"}));
+        stringBuilder.append(tableFormat(new String[]{"Detected", "Undetected", "Impact"}));
         stringBuilder.append(tableFormat(new String[]{":-:", ":-:", ":-:"}));
         score.getPitScores().forEach(pitScore -> {
-            stringBuilder.append(tableFormat(new String[]{pitScore.getId(), pitScore.getName(),
+            stringBuilder.append(tableFormat(new String[]{String.valueOf(pitScore.getDetectedPercentage()),
+                    String.valueOf(pitScore.getUndetectedPercentage()),
                     String.valueOf(pitScore.getTotalImpact())}));
         });
         stringBuilder.append("\n___\n");
 
         stringBuilder.append("### Static Analysis Warnings: ").append(score.getPitRatio()).append("\n");
-        stringBuilder.append(tableFormat(new String[]{"ID", "Name", "Impact"}));
+        stringBuilder.append(tableFormat(new String[]{"Name", "Errors", "Impact"}));
         stringBuilder.append(tableFormat(new String[]{":-:", ":-:", ":-:"}));
         score.getAnalysisScores().forEach(analysisScore -> {
-            stringBuilder.append(tableFormat(new String[]{analysisScore.getId(), analysisScore.getName(),
+            stringBuilder.append(tableFormat(new String[]{analysisScore.getName(),
+                    String.valueOf(analysisScore.getErrorsSize()),
                     String.valueOf(analysisScore.getTotalImpact())}));
         });
         return stringBuilder.toString();
@@ -139,8 +143,8 @@ public class Commenter {
      * @return returns formatted string
      */
     private String tableFormat(String[] strings) {
-        String format = "|%1$-5s|%2$-12s|%3$-10s|\n";
-        return String.format(format, strings);
+        String format = "|%1$-10s|%2$-10s|%3$-10s|\n";
+        return String.format(format, (Object[]) strings);
     }
 
 

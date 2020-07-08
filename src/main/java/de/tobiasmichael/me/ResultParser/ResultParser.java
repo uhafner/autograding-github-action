@@ -119,14 +119,11 @@ public class ResultParser {
                 score.addTestScores(new TestSupplier() {
                     @Override
                     protected List<TestScore> createScores(TestConfiguration configuration) {
-                        TestScore testScore = new TestScore.TestScoreBuilder()
-                                .withConfiguration(configuration)
-                                .withDisplayName("JUnit")
-                                .withTotalSize(junit_reportList.get(0).getSize())
-                                .withFailedSize(junit_reportList.get(0).getSizeOf("failed"))
-                                .withSkippedSize(junit_reportList.get(0).getSizeOf("skipped"))
-                                .build();
-                        return Collections.singletonList(testScore);
+                        List<TestScore> testScoreList = new ArrayList<>();
+                        junit_reportList.forEach(junit_report -> {
+                            testScoreList.add(createTestScore(configuration, "JUnit", junit_report));
+                        });
+                        return testScoreList;
                     }
                 });
             }
@@ -201,6 +198,24 @@ public class ResultParser {
                 .withTotalHighSeveritySize(report.getSizeOf("high"))
                 .withTotalNormalSeveritySize(report.getSizeOf("normal"))
                 .withTotalLowSeveritySize(report.getSizeOf("low"))
+                .build();
+    }
+
+    /**
+     * Creates TestScores for the AggregatedScore.
+     *
+     * @param configuration TestConfiguration from AggregatedScore
+     * @param displayName   Name to display for the score
+     * @param report        Report to add to the score
+     * @return returns TestScore
+     */
+    private static TestScore createTestScore(TestConfiguration configuration, String displayName, Report report) {
+        return new TestScore.TestScoreBuilder()
+                .withConfiguration(configuration)
+                .withDisplayName(displayName)
+                .withTotalSize(report.getSize())
+                .withFailedSize(report.getSizeOf("failed"))
+                .withSkippedSize(report.getSizeOf("skipped"))
                 .build();
     }
 
