@@ -4,6 +4,22 @@ on:
   pull_request:
     branches: [ master ]
 
+
+inputs:
+  DEBUG:
+    description: "Debug on/off"
+    required: false
+    default: "false"
+  CONFIG:
+    description: "Autograding config"
+    required: false
+    default: ""
+  TOKEN:
+    description: "GitHub token"
+    required: false
+    default: ""
+
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -26,4 +42,4 @@ jobs:
       - name: Build with maven (jacoco)
         run: mvn -ntp -V -U -e jacoco:prepare-agent test jacoco:report -Dmaven.test.failure.ignore
       - name: Get reports
-        run: java -jar out/artifacts/github_actions_autograding_jar/github-actions-autograding.jar -t ${{ secrets.GITHUB_TOKEN }}
+        run: java -jar out/artifacts/github_actions_autograding_jar/github-actions-autograding.jar -d ${{ INPUT_DEBUG }} -t ${{ INPUT_TOKEN }}
