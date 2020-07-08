@@ -1,11 +1,6 @@
 name: Java CI with Maven
 description:  Autograding action.
 
-on:
-  pull_request:
-    branches: [ master ]
-
-
 inputs:
   DEBUG:
     description: "Debug on/off"
@@ -19,3 +14,7 @@ inputs:
     description: "GitHub token"
     required: false
     default: ""
+
+runs:
+  using: node12
+  main: entrypoint.sh
