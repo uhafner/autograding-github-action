@@ -18,6 +18,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Stream;
 
 /**
  * Result parser
@@ -100,19 +102,16 @@ public class ResultParser {
             AggregatedScore score = new AggregatedScore(configuration);
             if (checkstyle_report != null) {
                 Report finalCheckstyle_report = checkstyle_report;
+                Report finalPmd_report = pmd_report;
+                Report finalFindbugs_report = findbugs_report;
                 score.addAnalysisScores(new AnalysisSupplier() {
                     @Override
                     protected List<AnalysisScore> createScores(AnalysisConfiguration configuration) {
-                        AnalysisScore analysisScore = new AnalysisScore.AnalysisScoreBuilder()
-                                .withConfiguration(configuration)
-                                .withDisplayName("Analysis")
-                                .withId("1")
-                                .withTotalErrorsSize(finalCheckstyle_report.getSize())
-                                .withTotalHighSeveritySize(finalCheckstyle_report.getSizeOf("high"))
-                                .withTotalNormalSeveritySize(finalCheckstyle_report.getSizeOf("normal"))
-                                .withTotalLowSeveritySize(finalCheckstyle_report.getSizeOf("low"))
-                                .build();
-                        return Collections.singletonList(analysisScore);
+                        List<AnalysisScore> analysisScoreList = new ArrayList<>();
+                        analysisScoreList.add(createAnalysisScore(configuration, "Checkstyle", "1", finalCheckstyle_report));
+                        analysisScoreList.add(createAnalysisScore(configuration, "PMD", "2", finalPmd_report));
+                        analysisScoreList.add(createAnalysisScore(configuration, "FindBugs", "3", finalFindbugs_report));
+                        return analysisScoreList;
                     }
                 });
             }
@@ -136,13 +135,10 @@ public class ResultParser {
                 score.addCoverageScores(new CoverageSupplier() {
                     @Override
                     protected List<CoverageScore> createScores(CoverageConfiguration configuration) {
-                        CoverageScore coverageScore = new CoverageScore.CoverageScoreBuilder()
-                                .withConfiguration(configuration)
-                                .withDisplayName("Jacoco")
-                                .withId("1")
-                                .withCoveredPercentage((int) finalJacoco_report.getInstruction())
-                                .build();
-                        return Collections.singletonList(coverageScore);
+                        List<CoverageScore> coverageScoreList = new ArrayList<>();
+                        coverageScoreList.add(createCoverageScore(configuration, "Branch", "1", (int) finalJacoco_report.getBranch()));
+                        coverageScoreList.add(createCoverageScore(configuration, "Line", "2", (int) finalJacoco_report.getLine()));
+                        return coverageScoreList;
                     }
                 });
             }
@@ -161,11 +157,51 @@ public class ResultParser {
                 });
             }
 
-            Commenter commenter = new Commenter(score.toString());
+            Commenter commenter = new Commenter(score);
             commenter.commentTo();
         } catch (ParsingException | IOException e) {
             logger.severe(e.toString());
         }
+    }
+
+
+    /**
+     * Creates CoverageScores for the AggregatedScore.
+     *
+     * @param configuration CoverageConfiguration from AggregatedScore
+     * @param displayName   Name to display for the score
+     * @param id            Number of the score
+     * @param percentage    Percentage of coverage
+     * @return returns CoverageScore
+     */
+    private static CoverageScore createCoverageScore(CoverageConfiguration configuration, String displayName, String id, int percentage) {
+        return new CoverageScore.CoverageScoreBuilder()
+                .withConfiguration(configuration)
+                .withDisplayName(displayName)
+                .withId(id)
+                .withCoveredPercentage(percentage)
+                .build();
+    }
+
+    /**
+     * Creates AnalysisScore for the AggregatedScore.
+     *
+     * @param configuration AnalysisConfiguration from AggregatedScore
+     * @param displayName   Name to display for the score
+     * @param id            Number of the score
+     * @param report        Report to add to the score
+     * @return returns AnalysisScore
+     */
+    private static AnalysisScore createAnalysisScore(AnalysisConfiguration configuration, String displayName, String id, Report report) {
+        return new AnalysisScore.AnalysisScoreBuilder()
+                .withConfiguration(configuration)
+                .withDisplayName(displayName)
+                .withId(id)
+                .withTotalErrorsSize(report.getSize())
+                .withTotalHighSeveritySize(report.getSizeOf("high"))
+                .withTotalNormalSeveritySize(report.getSizeOf("normal"))
+                .withTotalLowSeveritySize(report.getSizeOf("low"))
+                .build();
     }
 
     /**
@@ -208,7 +244,7 @@ public class ResultParser {
                 case ("-d"):
                     logLevel = Level.ALL;
                     logger.setLevel(logLevel);
-                    logger.info("Debug level set to all!");
+                    logger.info("Loglevel set to all!");
                     break;
                 case ("-c"):
                     gradingConfig = arguments.get(arguments.indexOf(arg) + 1);
@@ -236,7 +272,11 @@ public class ResultParser {
         while (matcher.find()) {
             try {
                 Path path = Paths.get(input);
-                input = Files.readAllLines(path).get(0);
+                StringBuilder contentBuilder = new StringBuilder();
+
+                Stream<String> stream = Files.lines((path), StandardCharsets.UTF_8);
+                stream.forEach(contentBuilder::append);
+                input = contentBuilder.toString();
                 break;
             } catch (IOException e) {
                 logger.severe("Config file could not be found!");

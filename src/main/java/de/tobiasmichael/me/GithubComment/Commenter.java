@@ -3,6 +3,7 @@ package de.tobiasmichael.me.GithubComment;
 
 import de.tobiasmichael.me.ResultParser.ResultParser;
 import edu.hm.hafner.analysis.Report;
+import edu.hm.hafner.grading.AggregatedScore;
 import org.eclipse.egit.github.core.RepositoryId;
 import org.eclipse.egit.github.core.service.IssueService;
 
@@ -42,6 +43,11 @@ public class Commenter {
         this.comment = formatComment(comment, reportList);
     }
 
+    public Commenter(AggregatedScore score) {
+        this();
+        this.comment = formatComment(score);
+    }
+
     public void setComment(String comment) {
         this.comment = comment;
     }
@@ -57,7 +63,7 @@ public class Commenter {
     }
 
     /**
-     * Formats the given comment and Reportlist to a readable string.
+     * Formats the given comment and ReportList to a markdown string.
      *
      * @param comment comment string
      * @param reportList list of reports
@@ -79,11 +85,70 @@ public class Commenter {
     }
 
     /**
+     * Formats the given score to a markdown string.
+     *
+     * @param score AggregatedScore
+     * @return returns readable string
+     */
+    private String formatComment(AggregatedScore score) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(score.toString());
+        stringBuilder.append("\n___\n");
+
+        stringBuilder.append("Unit Tests: ").append(score.getTestRatio()).append("\n");
+        stringBuilder.append(tableFormat(new String[]{"ID", "Name", "Impact"}));
+        stringBuilder.append("-------------------------------\n");
+        score.getTestScores().forEach(testScore -> {
+            stringBuilder.append(tableFormat(new String[]{testScore.getId(), testScore.getName(),
+                    String.valueOf(testScore.getTotalImpact())}));
+        });
+        stringBuilder.append("\n___\n");
+
+        stringBuilder.append("Coverage Score: ").append(score.getCoverageRatio()).append("\n");
+        stringBuilder.append(tableFormat(new String[]{"ID", "Name", "Impact"}));
+        stringBuilder.append("-------------------------------\n");
+        score.getCoverageScores().forEach(coverageScore -> {
+            stringBuilder.append(tableFormat(new String[]{coverageScore.getId(), coverageScore.getName(),
+                    String.valueOf(coverageScore.getTotalImpact())}));
+        });
+        stringBuilder.append("\n___\n");
+
+        stringBuilder.append("PIT Mutation: ").append(score.getPitRatio()).append("\n");
+        stringBuilder.append(tableFormat(new String[]{"ID", "Name", "Impact"}));
+        stringBuilder.append("-------------------------------\n");
+        score.getPitScores().forEach(pitScore -> {
+            stringBuilder.append(tableFormat(new String[]{pitScore.getId(), pitScore.getName(),
+                    String.valueOf(pitScore.getTotalImpact())}));
+        });
+        stringBuilder.append("\n___\n");
+
+        stringBuilder.append("Static Analysis Warnings: ").append(score.getPitRatio()).append("\n");
+        stringBuilder.append(tableFormat(new String[]{"ID", "Name", "Impact"}));
+        stringBuilder.append("-------------------------------\n");
+        score.getAnalysisScores().forEach(analysisScore -> {
+            stringBuilder.append(tableFormat(new String[]{analysisScore.getId(), analysisScore.getName(),
+                    String.valueOf(analysisScore.getTotalImpact())}));
+        });
+        return stringBuilder.toString();
+    }
+
+
+    /**
+     * Converts 3 Strings to a formatted table string.
+     *
+     * @param strings 3 strings to format
+     * @return returns formatted string
+     */
+    private String tableFormat(String[] strings) {
+        String format = "|%1$-5s|%2$-12s|%3$-10s|\n";
+        return String.format(format, strings);
+    }
+
+
+    /**
      * Gets the system variables from github actions and creates a comment
      * on the pull request with the formatted comment.
-     *
      * If there is no system variable set, the comment will be logged.
-     *
      * If there is no oAuthToken, the creation of the comment will be skipped.
      */
     public void commentTo() {
