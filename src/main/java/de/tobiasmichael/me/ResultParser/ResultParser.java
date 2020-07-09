@@ -58,7 +58,7 @@ public class ResultParser {
             logger.setLevel(logLevel);
         }
         if (oAuthToken == null) {
-            logger.warning("No Token provided, so we'll skip the comment!");
+            logger.warning("No Token provided, so the repo has to be public!");
         }
         if (gradingConfig == null) {
             logger.warning("No Config provided, so going to use default config!");

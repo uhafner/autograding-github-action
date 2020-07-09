@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mutations>
+    <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+        <sourceFile>ResultParser.java</sourceFile>
+        <mutatedClass>de.tobiasmichael.me.ResultParser.ResultParser</mutatedClass>
+        <mutatedMethod>commentTo</mutatedMethod>
+        <methodDescription>(Ljava/util/List;)V</methodDescription>
+        <lineNumber>153</lineNumber>
+        <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+        <index>15</index>
+        <block>2</block>
+        <killingTest/>
+        <description>removed call to java/util/List::forEach</description>
+    </mutation>
+    <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+        <sourceFile>ResultParser.java</sourceFile>
+        <mutatedClass>de.tobiasmichael.me.ResultParser.ResultParser$1</mutatedClass>
+        <mutatedMethod>createScores</mutatedMethod>
+        <methodDescription>(Ledu/hm/hafner/grading/AnalysisConfiguration;)Ljava/util/List;</methodDescription>
+        <lineNumber>87</lineNumber>
+        <mutator>org.pitest.mutationtest.engine.gregor.mutators.EmptyObjectReturnValsMutator</mutator>
+        <index>53</index>
+        <block>14</block>
+        <killingTest/>
+        <description>replaced return value with Collections.emptyList for
+            de/tobiasmichael/me/ResultParser/ResultParser$1::createScores
+        </description>
+    </mutation>
+</mutations>
