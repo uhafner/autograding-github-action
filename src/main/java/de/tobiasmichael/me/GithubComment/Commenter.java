@@ -27,61 +27,18 @@ public class Commenter {
         logger.setLevel(Level.ALL);
     }
 
-    public Commenter(String comment) {
-        this();
-        this.comment = formatComment(comment);
-    }
-
-    public Commenter(String comment, Throwable err) {
-        this();
-        this.comment = formatComment(comment);
-        err.printStackTrace();
-    }
-
-    public Commenter(String comment, List<Report> reportList) {
-        this();
-        this.comment = formatComment(comment, reportList);
-    }
-
     public Commenter(AggregatedScore score) {
         this();
         this.comment = formatComment(score);
     }
 
+    public Commenter(AggregatedScore score, List<Report> reportList) {
+        this();
+        this.comment = formatComment(score, reportList);
+    }
+
     public void setComment(String comment) {
         this.comment = comment;
-    }
-
-    /**
-     * Formats the given comment to a readable string.
-     *
-     * @param comment comment string
-     * @return returns readable string
-     */
-    private String formatComment(String comment) {
-        return "___________________\n" + comment + "\n___________________\n";
-    }
-
-    /**
-     * Formats the given comment and ReportList to a markdown string.
-     *
-     * @param comment comment string
-     * @param reportList list of reports
-     * @return returns readable string
-     */
-    private String formatComment(String comment, List<Report> reportList) {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(comment);
-        stringBuilder.append("\n___________________\n");
-        for (Report report : reportList) {
-            report.forEach(issue -> {
-                stringBuilder.append("- ");
-                stringBuilder.append(issue);
-                stringBuilder.append("\n");
-            });
-        }
-        stringBuilder.append("___________________\n");
-        return stringBuilder.toString();
     }
 
     /**
@@ -93,17 +50,66 @@ public class Commenter {
     private String formatComment(AggregatedScore score) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("# ").append(score.toString()).append("\n");
+        stringBuilder.append(getTestComment(score));
+        stringBuilder.append(getCoverageComment(score));
+        stringBuilder.append(getMutationComment(score));
+        stringBuilder.append(getAnalysisComment(score));
+        return stringBuilder.toString();
+    }
 
+    /**
+     * Formats the given score to a markdown string.
+     *
+     * @param score AggregatedScore
+     * @param reportList reportList of failed JUnit test
+     * @return returns readable string
+     */
+    private String formatComment(AggregatedScore score, List<Report> reportList) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("# ").append(score.toString()).append("\n");
+        stringBuilder.append(getTestComment(score));
+        stringBuilder.append(getCoverageComment(score));
+        stringBuilder.append("Not all JUnit tests passed!\n");
+        for (Report report : reportList) {
+            report.forEach(issue -> {
+                stringBuilder.append("- ");
+                stringBuilder.append(issue);
+                stringBuilder.append("\n");
+            });
+        }
+        stringBuilder.append("\n___\n");
+        stringBuilder.append(getAnalysisComment(score));
+        return stringBuilder.toString();
+    }
+
+    /**
+     * Generates formatted string for Tests.
+     *
+     * @param score Aggregated score
+     * @return returns formatted string
+     */
+    private String getTestComment(AggregatedScore score) {
+        StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("### Unit Tests: ").append(score.getTestRatio()).append("\n");
         stringBuilder.append(tableFormat(new String[]{"Failed", "Passed", "Impact"}));
         stringBuilder.append(tableFormat(new String[]{":-:", ":-:", ":-:"}));
         score.getTestScores().forEach(testScore -> {
             stringBuilder.append(tableFormat(new String[]{String.valueOf(testScore.getFailedSize()),
-                    String.valueOf(testScore.getPassedSize()),
+                    String.valueOf(testScore.getTotalSize()),
                     String.valueOf(testScore.getTotalImpact())}));
         });
         stringBuilder.append("\n___\n");
+        return stringBuilder.toString();
+    }
 
+    /**
+     * Generates formatted string for Coverage.
+     *
+     * @param score Aggregated score
+     * @return returns formatted string
+     */
+    private String getCoverageComment(AggregatedScore score) {
+        StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("### Coverage Score: ").append(score.getCoverageRatio()).append("\n");
         stringBuilder.append(tableFormat(new String[]{"Name", "Covered", "Impact"}));
         stringBuilder.append(tableFormat(new String[]{":-:", ":-:", ":-:"}));
@@ -113,17 +119,17 @@ public class Commenter {
                     String.valueOf(coverageScore.getTotalImpact())}));
         });
         stringBuilder.append("\n___\n");
+        return stringBuilder.toString();
+    }
 
-        stringBuilder.append("### PIT Mutation: ").append(score.getPitRatio()).append("\n");
-        stringBuilder.append(tableFormat(new String[]{"Detected", "Undetected", "Impact"}));
-        stringBuilder.append(tableFormat(new String[]{":-:", ":-:", ":-:"}));
-        score.getPitScores().forEach(pitScore -> {
-            stringBuilder.append(tableFormat(new String[]{String.valueOf(pitScore.getDetectedPercentage()),
-                    String.valueOf(pitScore.getUndetectedPercentage()),
-                    String.valueOf(pitScore.getTotalImpact())}));
-        });
-        stringBuilder.append("\n___\n");
-
+    /**
+     * Generates formatted string for Analysis.
+     *
+     * @param score Aggregated score
+     * @return returns formatted string
+     */
+    private String getAnalysisComment(AggregatedScore score) {
+        StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("### Static Analysis Warnings: ").append(score.getPitRatio()).append("\n");
         stringBuilder.append(tableFormat(new String[]{"Name", "Errors", "Impact"}));
         stringBuilder.append(tableFormat(new String[]{":-:", ":-:", ":-:"}));
@@ -135,6 +141,25 @@ public class Commenter {
         return stringBuilder.toString();
     }
 
+    /**
+     * Generates formatted string for Mutations.
+     *
+     * @param score Aggregated score
+     * @return returns formatted string
+     */
+    private String getMutationComment(AggregatedScore score) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("### PIT Mutation: ").append(score.getPitRatio()).append("\n");
+        stringBuilder.append(tableFormat(new String[]{"Detected", "Undetected", "Impact"}));
+        stringBuilder.append(tableFormat(new String[]{":-:", ":-:", ":-:"}));
+        score.getPitScores().forEach(pitScore -> {
+            stringBuilder.append(tableFormat(new String[]{String.valueOf(pitScore.getDetectedPercentage()),
+                    String.valueOf(pitScore.getUndetectedPercentage()),
+                    String.valueOf(pitScore.getTotalImpact())}));
+        });
+        stringBuilder.append("\n___\n");
+        return stringBuilder.toString();
+    }
 
     /**
      * Converts 3 Strings to a formatted table string.
@@ -146,7 +171,6 @@ public class Commenter {
         String format = "|%1$-10s|%2$-10s|%3$-10s|\n";
         return String.format(format, (Object[]) strings);
     }
-
 
     /**
      * Gets the system variables from github actions and creates a comment

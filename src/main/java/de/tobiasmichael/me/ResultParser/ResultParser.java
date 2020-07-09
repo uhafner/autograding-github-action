@@ -79,10 +79,6 @@ public class ResultParser {
                 List<Path> pit_pathList = getPaths("target/pit-reports/");
                 if (pit_pathList.size() == 0) logger.warning("No PIT files found!");
                 pit_pathList.forEach(path -> pit_reportList.add(new PitAdapter().parse(new FileReaderFactory(path))));
-            } else {
-                if (junit_reportList.size() > 0) {
-                    throw new NoPITFileException("Not all JUnit tests passed!", junit_reportList);
-                }
             }
 
             Report pmd_report = null;
@@ -154,7 +150,12 @@ public class ResultParser {
                 });
             }
 
-            Commenter commenter = new Commenter(score);
+            Commenter commenter;
+            if (junit_reportList.size() > 0 && pit_reportList.size() == 0) {
+                commenter = new Commenter(score, junit_reportList);
+            } else {
+                commenter = new Commenter(score);
+            }
             commenter.commentTo();
         } catch (ParsingException | IOException e) {
             logger.severe(e.toString());
