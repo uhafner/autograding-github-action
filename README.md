@@ -21,9 +21,12 @@ jobs:
       - uses: actions/checkout@v2
       - name: Java CI with Maven
         uses: TobiMichael96/github-actions-autograding@0.1.0
+        with:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
 #### Configuration
 
+- ``TOKEN: ThisIsSomeToken`` (mandatory) to change the token.
 - ``CONFIG: /path/to/config`` or ``CONFIG: {"analysis": { "maxScore": 100, "errorImpact": -5}}`` to provide a config, defaults to /default.conf.
 - ``DEBUG: true`` to enable debug.
