@@ -51,8 +51,8 @@ public class Commenter {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("# ").append(score.toString()).append("\n");
         stringBuilder.append(getTestComment(score));
-        stringBuilder.append(getCoverageComment(score));
         stringBuilder.append(getMutationComment(score));
+        stringBuilder.append(getCoverageComment(score));
         stringBuilder.append(getAnalysisComment(score));
         return stringBuilder.toString();
     }
@@ -68,8 +68,7 @@ public class Commenter {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("# ").append(score.toString()).append("\n");
         stringBuilder.append(getTestComment(score));
-        stringBuilder.append(getCoverageComment(score));
-        stringBuilder.append("Not all JUnit tests passed!\n");
+        stringBuilder.append("### Not all JUnit tests passed!\n");
         for (Report report : reportList) {
             report.forEach(issue -> {
                 stringBuilder.append("- ");
@@ -79,6 +78,7 @@ public class Commenter {
         }
         stringBuilder.append("\n___\n");
         stringBuilder.append(getAnalysisComment(score));
+        stringBuilder.append(getCoverageComment(score));
         return stringBuilder.toString();
     }
 
@@ -95,7 +95,7 @@ public class Commenter {
         stringBuilder.append(tableFormat(new String[]{":-:", ":-:", ":-:"}));
         score.getTestScores().forEach(testScore -> {
             stringBuilder.append(tableFormat(new String[]{String.valueOf(testScore.getFailedSize()),
-                    String.valueOf(testScore.getTotalSize()),
+                    String.valueOf(testScore.getPassedSize()),
                     String.valueOf(testScore.getTotalImpact())}));
         });
         stringBuilder.append("\n___\n");

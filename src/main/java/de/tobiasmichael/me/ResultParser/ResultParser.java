@@ -62,7 +62,7 @@ public class ResultParser {
         }
         if (gradingConfig == null) {
             logger.warning("No Config provided, so going to use default config!");
-            gradingConfig = handleGradingConfig("/default.conf");
+            gradingConfig = handleGradingConfig("default.conf");
         }
 
         try {
@@ -161,7 +161,6 @@ public class ResultParser {
             logger.severe(e.toString());
         }
     }
-
 
     /**
      * Creates CoverageScores for the AggregatedScore.
@@ -282,7 +281,7 @@ public class ResultParser {
      * @return valid json string
      */
     private static String handleGradingConfig(String input) {
-        Pattern pattern = Pattern.compile(".*/.*");
+        Pattern pattern = Pattern.compile(".*\\.conf");
         Matcher matcher = pattern.matcher(input);
         while (matcher.find()) {
             try {

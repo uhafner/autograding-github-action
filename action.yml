@@ -9,7 +9,7 @@ inputs:
   CONFIG:
     description: "Autograding config"
     required: false
-    default: ""
+    default: "/default.conf"
   TOKEN:
     description: "GitHub token"
     required: false
