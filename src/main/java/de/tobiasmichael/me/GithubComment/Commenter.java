@@ -160,12 +160,12 @@ public class Commenter {
             String repo_owner_and_name = System.getenv("GITHUB_REPOSITORY");
 
             String oAuthToken = ResultParser.getOAuthToken();
-            IssueService service = new IssueService();
             if (oAuthToken != null) {
+                IssueService service = new IssueService();
                 service.getClient().setOAuth2Token(oAuthToken);
+                RepositoryId repo = new RepositoryId(repo_owner_and_name.split("/")[0], repo_owner_and_name.split("/")[1]);
+                service.createComment(repo.getOwner(), repo.getName(), Integer.parseInt(pull_request_number), comment);
             }
-            RepositoryId repo = new RepositoryId(repo_owner_and_name.split("/")[0], repo_owner_and_name.split("/")[1]);
-            service.createComment(repo.getOwner(), repo.getName(), Integer.parseInt(pull_request_number), comment);
         } catch (NullPointerException ignore) {
             logger.warning("Not in Github actions, so not going to execute comment.");
             logger.info(comment);
