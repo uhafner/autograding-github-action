@@ -35,6 +35,8 @@ mvn -ntp -V -U -e jacoco:prepare-agent test jacoco:report -Dmaven.test.failure.i
 #  mv /target/mutations-few.xml /target/pit-reports/
 #fi
 
+cat target/site/jacoco/jacoco.xml
+
 # Get report
 java -jar /jars/github-actions-autograding.jar $INPUTS
 
