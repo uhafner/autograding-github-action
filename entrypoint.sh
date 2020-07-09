@@ -1,7 +1,7 @@
 #!/bin/sh
 
-DEBUG=$1
-CONFIG=$2
+CONFIG=$1
+DEBUG=$2
 TOKEN=$3
 
 if [ ! -z $DEBUG ]; then

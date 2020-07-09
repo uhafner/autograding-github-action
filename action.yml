@@ -2,14 +2,14 @@ name: Java CI with Maven
 description:  Autograding action.
 
 inputs:
+  CONFIG:
+    description: "Autograding config"
+    required: false
+    default: "-c /default.conf"
   DEBUG:
     description: "Debug on/off"
     required: false
     default: ""
-  CONFIG:
-    description: "Autograding config"
-    required: false
-    default: "/default.conf"
   TOKEN:
     description: "GitHub token"
     required: false
@@ -19,6 +19,6 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.DEBUG }}
     - ${{ inputs.CONFIG }}
+    - ${{ inputs.DEBUG }}
     - ${{ inputs.TOKEN }}
