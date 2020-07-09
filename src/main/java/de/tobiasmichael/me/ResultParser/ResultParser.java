@@ -66,7 +66,7 @@ public class ResultParser {
         }
 
         try {
-            List<Path> junit_pathList = getPaths("target/surefire-reports/");
+            List<Path> junit_pathList = getPaths("/target/surefire-reports/");
             if (junit_pathList.size() == 0) logger.warning("No JUnit files found!");
             List<Report> junit_reportList = new ArrayList<>();
             junit_pathList.forEach(path -> junit_reportList.add(new JUnitAdapter().parse(new FileReaderFactory(path))));
@@ -76,7 +76,7 @@ public class ResultParser {
             List<Report> pit_reportList = new ArrayList<>();
             // check if junit generated an issue
             if (issueCounter == 0) {
-                List<Path> pit_pathList = getPaths("target/pit-reports/");
+                List<Path> pit_pathList = getPaths("/target/pit-reports/");
                 if (pit_pathList.size() == 0) logger.warning("No PIT files found!");
                 pit_pathList.forEach(path -> pit_reportList.add(new PitAdapter().parse(new FileReaderFactory(path))));
             } else {
@@ -90,10 +90,10 @@ public class ResultParser {
             Report findbugs_report = null;
             JacocoReport jacoco_report = null;
             try {
-                pmd_report = new PmdParser().parse(new FileReaderFactory(Paths.get("target/pmd.xml")));
-                checkstyle_report = new CheckStyleParser().parse(new FileReaderFactory(Paths.get("target/checkstyle-result.xml")));
-                findbugs_report = new FindBugsParser(FindBugsParser.PriorityProperty.RANK).parse(new FileReaderFactory(Paths.get("target/spotbugsXml.xml")));
-                jacoco_report = new JacocoParser().parse(new FileReaderFactory(Paths.get("target/site/jacoco/jacoco.xml")));
+                pmd_report = new PmdParser().parse(new FileReaderFactory(Paths.get("/target/pmd.xml")));
+                checkstyle_report = new CheckStyleParser().parse(new FileReaderFactory(Paths.get("/target/checkstyle-result.xml")));
+                findbugs_report = new FindBugsParser(FindBugsParser.PriorityProperty.RANK).parse(new FileReaderFactory(Paths.get("/target/spotbugsXml.xml")));
+                jacoco_report = new JacocoParser().parse(new FileReaderFactory(Paths.get("/target/site/jacoco/jacoco.xml")));
             } catch (ParsingException e) {
                 logger.severe("One or more XML file(s) not found!");
             }
