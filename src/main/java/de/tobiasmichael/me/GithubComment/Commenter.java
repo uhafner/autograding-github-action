@@ -68,7 +68,8 @@ public class Commenter {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("# ").append(score.toString()).append("\n");
         stringBuilder.append(getTestComment(score));
-        stringBuilder.append("### Not all JUnit tests passed!\n");
+        stringBuilder.append("### PIT Mutation: Not available!\n");
+        stringBuilder.append(":warning: This means you did not pass all Unit tests!\n");
         for (Report report : reportList) {
             report.forEach(issue -> {
                 stringBuilder.append("- ");
@@ -77,8 +78,8 @@ public class Commenter {
             });
         }
         stringBuilder.append("\n___\n");
-        stringBuilder.append(getAnalysisComment(score));
         stringBuilder.append(getCoverageComment(score));
+        stringBuilder.append(getAnalysisComment(score));
         return stringBuilder.toString();
     }
 
