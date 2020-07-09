@@ -150,6 +150,10 @@ public class ResultParser {
                 });
             }
 
+            if (score.getErrorMessages().size() > 0) {
+                logger.warning(score.getErrorMessages().toString());
+            }
+
             Commenter commenter;
             if (junit_reportList.size() > 0 && pit_reportList.size() == 0) {
                 commenter = new Commenter(score, junit_reportList);
@@ -261,7 +265,7 @@ public class ResultParser {
                 case (2):
                     oAuthToken = arguments.get(1);
                 case (1):
-                    gradingConfig = arguments.get(0);
+                    gradingConfig = handleGradingConfig(arguments.get(0));
                     break;
                 default:
                     break;
@@ -279,7 +283,7 @@ public class ResultParser {
     private static String handleGradingConfig(String input) {
         Pattern pattern = Pattern.compile(".*\\.conf");
         Matcher matcher = pattern.matcher(input);
-        while (matcher.find()) {
+        if (matcher.matches()) {
             try {
                 Path path = Paths.get(input);
                 StringBuilder contentBuilder = new StringBuilder();
@@ -287,7 +291,6 @@ public class ResultParser {
                 Stream<String> stream = Files.lines((path), StandardCharsets.UTF_8);
                 stream.forEach(contentBuilder::append);
                 input = contentBuilder.toString();
-                break;
             } catch (IOException e) {
                 logger.severe("Config file could not be found!");
                 System.exit(1);
