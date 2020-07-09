@@ -5,17 +5,15 @@ DEBUG=$2
 TOKEN=$3
 
 if [ ! -z $DEBUG ]; then
-  INPUTS="-d"
+  $DEBUG="-d"
 fi
 
 if [ ! -z $CONFIG ]; then
-  INPUTS=$INPUTS" -c "
-  INPUTS=$INPUTS$CONFIG
+  $CONFIG="-c "$CONFIG
 fi
 
 if [ ! -z $TOKEN ]; then
-  INPUTS=$INPUTS" -t "
-  INPUTS=$INPUTS$TOKEN
+  $TOKEN="-t "$TOKEN
 fi
 
 # JUnit, CMD, Checkstyle, FindBugs
@@ -36,5 +34,5 @@ mvn -ntp -V -U -e jacoco:prepare-agent test jacoco:report -Dmaven.test.failure.i
 #fi
 
 # Get report
-java -jar /jars/github-actions-autograding.jar $INPUTS
+java -jar /jars/github-actions-autograding.jar $DEBUG $CONFIG $TOKEN
 
