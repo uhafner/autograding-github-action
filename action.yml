@@ -1,6 +1,7 @@
 name: Java CI with Maven
 description:  Autograding action.
 
+
 inputs:
   CONFIG:
     description: "Autograding config"
@@ -22,3 +23,7 @@ runs:
     - ${{ inputs.CONFIG }}
     - ${{ inputs.TOKEN }}
     - ${{ inputs.DEBUG }}
+
+branding:
+  icon: check
+  color: red
