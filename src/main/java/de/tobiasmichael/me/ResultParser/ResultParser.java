@@ -253,23 +253,19 @@ public class ResultParser {
      */
     private static void parseArguments(String[] args) {
         List<String> arguments = new ArrayList<>(Arrays.asList(args));
-        for (String arg : arguments) {
-            switch (arg) {
-                case ("-d"):
+            switch (arguments.size()) {
+                case (3):
                     logLevel = Level.ALL;
                     logger.setLevel(logLevel);
                     logger.info("Loglevel set to all!");
-                    break;
-                case ("-c"):
-                    gradingConfig = arguments.get(arguments.indexOf(arg) + 1);
-                    break;
-                case ("-t"):
-                    oAuthToken = arguments.get(arguments.indexOf(arg) + 1);
+                case (2):
+                    oAuthToken = arguments.get(1);
+                case (1):
+                    gradingConfig = arguments.get(0);
                     break;
                 default:
                     break;
             }
-        }
     }
 
     /**

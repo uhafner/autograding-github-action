@@ -4,18 +4,6 @@ CONFIG=$1
 TOKEN=$2
 DEBUG=$3
 
-if [ ! -z $DEBUG ]; then
-  DEBUG="-d"
-fi
-
-if [ ! -z $CONFIG ]; then
-  CONFIG="-c "$CONFIG
-fi
-
-if [ ! -z $TOKEN ]; then
-  TOKEN="-t "$TOKEN
-fi
-
 # JUnit, CMD, Checkstyle, FindBugs
 mvn -ntp -V -e clean verify -Dmaven.test.failure.ignore -Dgpg.skip
 # Build with maven (pit)
@@ -34,5 +22,5 @@ mvn -ntp -V -U -e jacoco:prepare-agent test jacoco:report -Dmaven.test.failure.i
 #fi
 
 # Get report
-java -jar /jars/github-actions-autograding.jar $DEBUG $CONFIG $TOKEN
+java -jar /jars/github-actions-autograding.jar $CONFIG $TOKEN $DEBUG
 
