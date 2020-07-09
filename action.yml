@@ -7,10 +7,6 @@ inputs:
     description: "Autograding config"
     required: false
     default: "/default.conf"
-  TOKEN:
-    description: "GitHub token"
-    required: true
-    default: ""
   DEBUG:
     description: "Debug on/off"
     required: false
@@ -21,7 +17,7 @@ runs:
   image: 'Dockerfile'
   args:
     - ${{ inputs.CONFIG }}
-    - ${{ inputs.TOKEN }}
+    - ${{ secrets.GITHUB_TOKEN }}
     - ${{ inputs.DEBUG }}
 
 branding:
