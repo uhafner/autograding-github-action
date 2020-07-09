@@ -16,12 +16,6 @@ if [ ! -z $TOKEN ]; then
   TOKEN="-t "$TOKEN
 fi
 
-echo $DEBUG
-echo $CONFIG
-echo $TOKEN
-
-exit
-
 # JUnit, CMD, Checkstyle, FindBugs
 mvn -ntp -V -e clean verify -Dmaven.test.failure.ignore -Dgpg.skip
 # Build with maven (pit)
