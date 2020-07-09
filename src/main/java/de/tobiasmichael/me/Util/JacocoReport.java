@@ -16,10 +16,14 @@ public class JacocoReport {
     JacocoReport() {
     }
 
-    JacocoReport(float instruction, float branch, float line, float complexity, float method) {
-        this.instruction = instruction;
+    JacocoReport(float branch, float line) {
         this.branch = branch;
         this.line = line;
+    }
+
+    JacocoReport(float instruction, float branch, float line, float complexity, float method) {
+        this(branch, line);
+        this.instruction = instruction;
         this.complexity = complexity;
         this.method = method;
     }

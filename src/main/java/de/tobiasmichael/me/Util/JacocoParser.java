@@ -33,13 +33,18 @@ public class JacocoParser {
             }
         }
 
-        float totalInstructionCoveragePercent = getCounterByType(jacocoCounterList, "CLASS").getCovered() / (getCounterByType(jacocoCounterList, "CLASS").getCovered() + getCounterByType(jacocoCounterList, "CLASS").getMissed()) * 100;
-        float totalBranchCoveragePercent = getCounterByType(jacocoCounterList, "BRANCH").getCovered() / (getCounterByType(jacocoCounterList, "BRANCH").getCovered() + getCounterByType(jacocoCounterList, "BRANCH").getMissed()) * 100;
-        float totalLineCoveragePercent = getCounterByType(jacocoCounterList, "LINE").getCovered() / (getCounterByType(jacocoCounterList, "LINE").getCovered() + getCounterByType(jacocoCounterList, "LINE").getMissed()) * 100;
-        float totalComplexityCoveragePercent = getCounterByType(jacocoCounterList, "COMPLEXITY").getCovered() / (getCounterByType(jacocoCounterList, "COMPLEXITY").getCovered() + getCounterByType(jacocoCounterList, "COMPLEXITY").getMissed()) * 100;
-        float totalMethodCoveragePercent = getCounterByType(jacocoCounterList, "METHOD").getCovered() / (getCounterByType(jacocoCounterList, "METHOD").getCovered() + getCounterByType(jacocoCounterList, "METHOD").getMissed()) * 100;
+        JacocoCounter jacocoCounterBranch = getCounterByType(jacocoCounterList, "BRANCH");
+        float totalBranchCoveragePercent = 100;
+        if (jacocoCounterBranch != null) {
+            totalBranchCoveragePercent = jacocoCounterBranch.getCovered() / (jacocoCounterBranch.getCovered() + jacocoCounterBranch.getMissed()) * 100;
+        }
 
-        return new JacocoReport(totalInstructionCoveragePercent, totalBranchCoveragePercent, totalLineCoveragePercent, totalComplexityCoveragePercent, totalMethodCoveragePercent);
+        JacocoCounter jacocoCounterLine = getCounterByType(jacocoCounterList, "LINE");
+        float totalLineCoveragePercent = 100;
+        if (jacocoCounterLine != null) {
+            totalLineCoveragePercent = jacocoCounterLine.getCovered() / (jacocoCounterLine.getCovered() + jacocoCounterLine.getMissed()) * 100;
+        }
+        return new JacocoReport(totalBranchCoveragePercent, totalLineCoveragePercent);
     }
 
     public JacocoCounter getCounterByType(List<JacocoCounter> jacocoCounterList, String type) {

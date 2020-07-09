@@ -37,10 +37,6 @@ public class Commenter {
         this.comment = formatComment(score, reportList);
     }
 
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
-
     /**
      * Formats the given score to a markdown string.
      *
@@ -50,10 +46,10 @@ public class Commenter {
     private String formatComment(AggregatedScore score) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("# ").append(score.toString()).append("\n");
-        stringBuilder.append(getTestComment(score));
-        stringBuilder.append(getMutationComment(score));
-        stringBuilder.append(getCoverageComment(score));
-        stringBuilder.append(getAnalysisComment(score));
+        stringBuilder.append(createTestComment(score));
+        stringBuilder.append(createMutationsComment(score));
+        stringBuilder.append(createCoverageComment(score));
+        stringBuilder.append(createAnalysisComment(score));
         return stringBuilder.toString();
     }
 
@@ -67,9 +63,9 @@ public class Commenter {
     private String formatComment(AggregatedScore score, List<Report> reportList) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("# ").append(score.toString()).append("\n");
-        stringBuilder.append(getTestComment(score));
+        stringBuilder.append(createTestComment(score));
         stringBuilder.append("### PIT Mutation: Not available!\n");
-        stringBuilder.append(":warning: This means you did not pass all Unit tests!\n");
+        stringBuilder.append(":warning: This means you did not pass all Unit tests! :warning:\n");
         for (Report report : reportList) {
             report.forEach(issue -> {
                 stringBuilder.append("- ");
@@ -78,8 +74,8 @@ public class Commenter {
             });
         }
         stringBuilder.append("\n___\n");
-        stringBuilder.append(getCoverageComment(score));
-        stringBuilder.append(getAnalysisComment(score));
+        stringBuilder.append(createCoverageComment(score));
+        stringBuilder.append(createAnalysisComment(score));
         return stringBuilder.toString();
     }
 
@@ -89,7 +85,7 @@ public class Commenter {
      * @param score Aggregated score
      * @return returns formatted string
      */
-    private String getTestComment(AggregatedScore score) {
+    private String createTestComment(AggregatedScore score) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("### Unit Tests: ").append(score.getTestRatio()).append("\n");
         stringBuilder.append(tableFormat(new String[]{"Failed", "Passed", "Impact"}));
@@ -109,7 +105,7 @@ public class Commenter {
      * @param score Aggregated score
      * @return returns formatted string
      */
-    private String getCoverageComment(AggregatedScore score) {
+    private String createCoverageComment(AggregatedScore score) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("### Coverage Score: ").append(score.getCoverageRatio()).append("\n");
         stringBuilder.append(tableFormat(new String[]{"Name", "Covered", "Impact"}));
@@ -129,7 +125,7 @@ public class Commenter {
      * @param score Aggregated score
      * @return returns formatted string
      */
-    private String getAnalysisComment(AggregatedScore score) {
+    private String createAnalysisComment(AggregatedScore score) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("### Static Analysis Warnings: ").append(score.getPitRatio()).append("\n");
         stringBuilder.append(tableFormat(new String[]{"Name", "Errors", "Impact"}));
@@ -148,7 +144,7 @@ public class Commenter {
      * @param score Aggregated score
      * @return returns formatted string
      */
-    private String getMutationComment(AggregatedScore score) {
+    private String createMutationsComment(AggregatedScore score) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("### PIT Mutation: ").append(score.getPitRatio()).append("\n");
         stringBuilder.append(tableFormat(new String[]{"Detected", "Undetected", "Impact"}));

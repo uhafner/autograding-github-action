@@ -1,0 +1,25 @@
+name: Java CI with Maven
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-java@v1
+        with:
+          java-version: '8.0.252' # The JDK version to make available on the path.
+          java-package: jdk # (jre, jdk, or jdk+fx) - defaults to jdk
+          architecture: x64 # (x64 or x86) - defaults to x64
+      - uses: actions/checkout@v2
+      - name: Set up jdk
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - name: Move XML files
+        run: sh move_files.sh
+      - name: Get reports
+        run: java -jar out/artifacts/github_actions_autograding_jar/github-actions-autograding.jar
