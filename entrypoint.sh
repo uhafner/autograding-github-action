@@ -1,20 +1,26 @@
 #!/bin/sh
 
 CONFIG=$1
-DEBUG=$2
-TOKEN=$3
+TOKEN=$2
+DEBUG=$3
 
 if [ ! -z $DEBUG ]; then
-  $DEBUG="-d"
+  DEBUG="-d"
 fi
 
 if [ ! -z $CONFIG ]; then
-  $CONFIG="-c "$CONFIG
+  CONFIG="-c "$CONFIG
 fi
 
 if [ ! -z $TOKEN ]; then
-  $TOKEN="-t "$TOKEN
+  TOKEN="-t "$TOKEN
 fi
+
+echo $DEBUG
+echo $CONFIG
+echo $TOKEN
+
+exit
 
 # JUnit, CMD, Checkstyle, FindBugs
 mvn -ntp -V -e clean verify -Dmaven.test.failure.ignore -Dgpg.skip
