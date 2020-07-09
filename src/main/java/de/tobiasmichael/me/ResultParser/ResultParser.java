@@ -62,7 +62,7 @@ public class ResultParser {
         }
         if (gradingConfig == null) {
             logger.warning("No Config provided, so going to use default config!");
-            gradingConfig = handleGradingConfig("src/main/resources/default.conf");
+            gradingConfig = handleGradingConfig("/default.conf");
         }
 
         try {
@@ -121,7 +121,7 @@ public class ResultParser {
                     protected List<TestScore> createScores(TestConfiguration configuration) {
                         List<TestScore> testScoreList = new ArrayList<>();
                         junit_reportList.forEach(junit_report -> {
-                            testScoreList.add(createTestScore(configuration, "JUnit", junit_report));
+                            testScoreList.add(createTestScore(configuration, junit_report));
                         });
                         return testScoreList;
                     }
@@ -205,14 +205,13 @@ public class ResultParser {
      * Creates TestScores for the AggregatedScore.
      *
      * @param configuration TestConfiguration from AggregatedScore
-     * @param displayName   Name to display for the score
      * @param report        Report to add to the score
      * @return returns TestScore
      */
-    private static TestScore createTestScore(TestConfiguration configuration, String displayName, Report report) {
+    private static TestScore createTestScore(TestConfiguration configuration, Report report) {
         return new TestScore.TestScoreBuilder()
                 .withConfiguration(configuration)
-                .withDisplayName(displayName)
+                .withDisplayName("JUnit")
                 .withTotalSize(report.getSize())
                 .withFailedSize(report.getSizeOf("failed"))
                 .withSkippedSize(report.getSizeOf("skipped"))

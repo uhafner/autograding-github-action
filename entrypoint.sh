@@ -25,9 +25,6 @@ mvn -ntp org.pitest:pitest-maven:mutationCoverage
 # Build with maven (jacoco)
 mvn -ntp -V -U -e jacoco:prepare-agent test jacoco:report -Dmaven.test.failure.ignore
 
-clear
-ls
-
 # Get report
 java -jar /jars/github-actions-autograding.jar $INPUTS
 
