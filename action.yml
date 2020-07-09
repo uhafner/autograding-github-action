@@ -5,7 +5,7 @@ inputs:
   DEBUG:
     description: "Debug on/off"
     required: false
-    default: "false"
+    default: ""
   CONFIG:
     description: "Autograding config"
     required: false
@@ -16,5 +16,9 @@ inputs:
     default: ""
 
 runs:
-  using: node12
-  main: entrypoint.sh
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.DEBUG }}
+    - ${{ inputs.CONFIG }}
+    - ${{ inputs.TOKEN }}
