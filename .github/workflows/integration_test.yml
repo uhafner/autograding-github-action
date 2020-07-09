@@ -20,6 +20,6 @@ jobs:
         with:
           java-version: 1.8
       - name: Move XML files
-        run: sh move_files.sh
+        run: sh copy_files.sh
       - name: Get reports
         run: java -jar out/artifacts/github_actions_autograding_jar/github-actions-autograding.jar
