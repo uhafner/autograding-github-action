@@ -9,8 +9,8 @@ inputs:
     default: "/default.conf"
   TOKEN:
     description: "GitHub token"
-    required: false
-    default: ${{ secrets.GITHUB_TOKEN }}
+    required: true
+    default: ""
   DEBUG:
     description: "Debug on/off"
     required: false
