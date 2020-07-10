@@ -4,17 +4,15 @@ description:  Autograding action.
 
 inputs:
   CONFIG:
-    description: "Autograding config"
+    description: "Autograding config."
     required: false
     default: "/default.conf"
   TOKEN:
-    description: "GitHub token"
+    description: "GitHub token."
     required: true
-    default: ""
   DEBUG:
-    description: "Debug on/off"
+    description: "Enable debug if set."
     required: false
-    default: ""
 
 runs:
   using: 'docker'

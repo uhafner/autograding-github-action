@@ -41,7 +41,6 @@ public class ResultParser {
 
     private static String oAuthToken = null;
     private static String gradingConfig = null;
-    private static Level logLevel = Level.INFO;
 
 
     /**
@@ -243,11 +242,12 @@ public class ResultParser {
      *
      */
     private static void parseSystemVariables() {
+        Level logLevel = Level.INFO;
         if (System.getenv("DEBUG") != null) {
             logLevel = Level.ALL;
         }
         logger.setLevel(logLevel);
-        logger.info("Loglevel set to " + logLevel + " !");
+        logger.info("Loglevel set to " + logLevel + "!");
         if (System.getenv("TOKEN") != null) {
             oAuthToken = System.getenv("TOKEN");
         } else {
