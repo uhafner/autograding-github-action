@@ -22,7 +22,6 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
@@ -52,18 +51,7 @@ public class ResultParser {
      */
     public static void main(String[] args) {
         logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-
-        if (args.length > 0) {
-            parseArguments(args);
-            logger.setLevel(logLevel);
-        }
-        if (oAuthToken == null) {
-            logger.warning("No Token provided, so the repo has to be public!");
-        }
-        if (gradingConfig == null) {
-            logger.warning("No Config provided, so going to use default config!");
-            gradingConfig = handleGradingConfig("default.conf");
-        }
+        parseSystemVariables();
 
         try {
             List<Path> junit_pathList = getPaths("target/surefire-reports/");
@@ -251,25 +239,27 @@ public class ResultParser {
     }
 
     /**
-     * Handles arguments passed to the programmm.
+     * Get System Variables.
      *
-     * @param args input variables
      */
-    private static void parseArguments(String[] args) {
-        List<String> arguments = new ArrayList<>(Arrays.asList(args));
-            switch (arguments.size()) {
-                case (3):
-                    logLevel = Level.ALL;
-                    logger.setLevel(logLevel);
-                    logger.info("Loglevel set to all!");
-                case (2):
-                    oAuthToken = arguments.get(1);
-                case (1):
-                    gradingConfig = handleGradingConfig(arguments.get(0));
-                    break;
-                default:
-                    break;
-            }
+    private static void parseSystemVariables() {
+        if (!System.getenv("DEBUG").isEmpty()) {
+            logLevel = Level.ALL;
+        }
+        logger.setLevel(logLevel);
+        logger.info("Loglevel set to " + logLevel + " !");
+
+        if (!System.getenv("TOKEN").isEmpty()) {
+            oAuthToken = System.getenv("TOKEN");
+        } else {
+            logger.warning("No Token provided, so the commenting part will be skipped!");
+        }
+        if (!System.getenv("CONFIG").isEmpty()) {
+            gradingConfig = handleGradingConfig(System.getenv("CONFIG"));
+        } else {
+            logger.warning("No Config provided, so going to use default config!");
+            gradingConfig = handleGradingConfig("default.conf");
+        }
     }
 
     /**
