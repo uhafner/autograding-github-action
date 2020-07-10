@@ -243,18 +243,17 @@ public class ResultParser {
      *
      */
     private static void parseSystemVariables() {
-        if (!System.getenv("DEBUG").isEmpty()) {
+        if (System.getenv("DEBUG") != null) {
             logLevel = Level.ALL;
         }
         logger.setLevel(logLevel);
         logger.info("Loglevel set to " + logLevel + " !");
-
-        if (!System.getenv("TOKEN").isEmpty()) {
+        if (System.getenv("TOKEN") != null) {
             oAuthToken = System.getenv("TOKEN");
         } else {
             logger.warning("No Token provided, so the commenting part will be skipped!");
         }
-        if (!System.getenv("CONFIG").isEmpty()) {
+        if (System.getenv("CONFIG") != null) {
             gradingConfig = handleGradingConfig(System.getenv("CONFIG"));
         } else {
             logger.warning("No Config provided, so going to use default config!");
