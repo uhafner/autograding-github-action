@@ -1,8 +1,8 @@
 #!/bin/sh
 
-CONFIG=$1
-TOKEN=$2
-DEBUG=$3
+echo $CONFIG
+echo $TOKEN
+echo $DEBUG
 
 # JUnit, CMD, Checkstyle, FindBugs
 mvn -ntp -V -e clean verify -Dmaven.test.failure.ignore -Dgpg.skip

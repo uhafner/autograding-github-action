@@ -19,10 +19,10 @@ inputs:
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  args:
-    - ${{ inputs.CONFIG }}
-    - ${{ inputs.TOKEN }}
-    - ${{ inputs.DEBUG }}
+  env:
+    CONFIG: ${{ inputs.CONFIG }}
+    TOKEN: ${{ inputs.TOKEN }}
+    DEBUG: ${{ inputs.DEBUG }}
 
 branding:
   icon: check
