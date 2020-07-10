@@ -42,7 +42,6 @@ public class ResultParser {
     private static String oAuthToken = null;
     private static String gradingConfig = null;
 
-
     /**
      * Main method; handles logger, arguments, parsers and grading.
      *
@@ -58,7 +57,6 @@ public class ResultParser {
             List<Report> junit_reportList = new ArrayList<>();
             junit_pathList.forEach(path -> junit_reportList.add(new JUnitAdapter().parse(new FileReaderFactory(path))));
             int issueCounter = junit_reportList.stream().mapToInt(Report::getSize).sum();
-
 
             List<Report> pit_reportList = new ArrayList<>();
             // check if junit generated an issue

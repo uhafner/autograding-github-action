@@ -1,7 +1,5 @@
 #!/bin/sh
 
-echo $CONFIG
-
 # JUnit, CMD, Checkstyle, FindBugs
 mvn -ntp -V -e clean verify -Dmaven.test.failure.ignore -Dgpg.skip
 # Build with maven (pit)
