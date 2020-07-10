@@ -28,5 +28,5 @@ jobs:
 #### Configuration
 
 - ``TOKEN: ThisIsSomeToken`` (mandatory) to change the token.
-- ``CONFIG: /path/to/config`` or ``CONFIG: {"analysis": { "maxScore": 100, "errorImpact": -5}}`` to provide a config, defaults to /default.conf.
+- ``CONFIG: /path/to/config`` or ``CONFIG: "{\"analysis\": { \"maxScore\": 100, \"errorImpact\": -5}}"`` to provide a config, defaults to /default.conf.
 - ``DEBUG: true`` to enable debug.
