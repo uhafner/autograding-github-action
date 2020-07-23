@@ -1,0 +1,12 @@
+@startuml
+
+
+package (External-Dependencies) {
+[autograding-model]
+
+[analysis-model]
+
+[org.eclipse.egit.github.core]
+}
+
+@enduml

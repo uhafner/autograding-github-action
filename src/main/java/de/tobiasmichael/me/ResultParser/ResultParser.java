@@ -16,6 +16,8 @@ import edu.hm.hafner.grading.*;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import se.bjurr.violations.lib.model.Violation;
+import se.bjurr.violations.lib.parsers.JUnitParser;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -148,6 +150,8 @@ public class ResultParser {
             commenter.commentTo();
         } catch (ParsingException | IOException e) {
             logger.severe(e.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -196,14 +200,16 @@ public class ResultParser {
      * @param configuration TestConfiguration from AggregatedScore
      * @param report        Report to add to the score
      * @return returns TestScore
+     *
+     * TODO: Add totalSize and skippedSize for a better visualisation.
      */
     private static TestScore createTestScore(TestConfiguration configuration, Report report) {
         return new TestScore.TestScoreBuilder()
                 .withConfiguration(configuration)
                 .withDisplayName("JUnit")
-                .withTotalSize(report.getSize())
-                .withFailedSize(report.getSizeOf("failed"))
-                .withSkippedSize(report.getSizeOf("skipped"))
+                //.withTotalSize(report.getSize())
+                .withFailedSize(report.getSize())
+                //.withSkippedSize(report.getSizeOf("skipped"))
                 .build();
     }
 
@@ -237,7 +243,6 @@ public class ResultParser {
 
     /**
      * Get System Variables.
-     *
      */
     private static void parseSystemVariables() {
         Level logLevel = Level.INFO;

@@ -29,20 +29,11 @@
             <version>0.2.0</version>
         </dependency>
 
-
         <dependency>
             <groupId>edu.hm.hafner</groupId>
             <artifactId>analysis-model</artifactId>
             <version>8.2.0</version>
         </dependency>
-
-
-        <dependency>
-            <groupId>se.bjurr.violations</groupId>
-            <artifactId>violations-lib</artifactId>
-            <version>1.118</version>
-        </dependency>
-
 
         <dependency>
             <groupId>org.eclipse.mylyn.github</groupId>
