@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# Generate jar
+mvn package
 # JUnit, CMD, Checkstyle, FindBugs
 mvn -ntp -V -e clean verify -Dmaven.test.failure.ignore -Dgpg.skip
 # Build with maven (pit)
@@ -8,5 +10,5 @@ mvn -ntp org.pitest:pitest-maven:mutationCoverage
 mvn -ntp -V -U -e jacoco:prepare-agent test jacoco:report -Dmaven.test.failure.ignore
 
 # Get report
-java -jar /jars/github-actions-autograding.jar
+java -jar target/github-actions-autograding-jar-with-dependencies.jar
 

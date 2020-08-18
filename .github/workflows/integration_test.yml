@@ -19,7 +19,9 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
+      - name: Build with Maven
+        run: mvn package
       - name: Move XML files
         run: sh copy_files.sh
       - name: Get reports
-        run: java -jar out/artifacts/github_actions_autograding_jar/github-actions-autograding.jar
+        run: java -jar target/github-actions-autograding-jar-with-dependencies.jar

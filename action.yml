@@ -1,5 +1,5 @@
-name: Java CI with Maven
-description:  Autograding action.
+name: Autograding Actions Plugin
+description:  Autograding Actions Plugin that evaluates code based on configurable quality critera.
 
 
 inputs:
