@@ -188,9 +188,12 @@ public class Commenter {
                 service.getClient().setOAuth2Token(oAuthToken);
                 RepositoryId repo = new RepositoryId(repo_owner_and_name.split("/")[0], repo_owner_and_name.split("/")[1]);
                 service.createComment(repo.getOwner(), repo.getName(), Integer.parseInt(pull_request_number), comment);
+            } else {
+                logger.warning("No Token found, results will only be logged.");
+                logger.info(comment);
             }
         } catch (NullPointerException ignore) {
-            logger.warning("Not in Github actions, so not going to execute comment.");
+            logger.warning("GitHub Actions system variables missing, result will only be logged.");
             logger.info(comment);
         } catch (IOException e) {
             logger.severe(e.toString());
