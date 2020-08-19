@@ -85,7 +85,7 @@ public class Commenter {
      * @param score Aggregated score
      * @return returns formatted string
      *
-     * TODO: Change hardcoded value of "Passed" in line 97 to get real passed size.
+     * TODO: Fix getter in testScore to get real passed size.
      */
     private String createTestComment(AggregatedScore score) {
         StringBuilder stringBuilder = new StringBuilder();
@@ -94,7 +94,7 @@ public class Commenter {
         stringBuilder.append(tableFormat(new String[]{":-:", ":-:", ":-:"}));
         score.getTestScores().forEach(testScore -> {
             stringBuilder.append(tableFormat(new String[]{String.valueOf(testScore.getFailedSize()),
-                    String.valueOf(0),
+                    String.valueOf(testScore.getPassedSize()),
                     String.valueOf(testScore.getTotalImpact())}));
         });
         stringBuilder.append("\n___\n");
