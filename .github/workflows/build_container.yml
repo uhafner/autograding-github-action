@@ -2,7 +2,6 @@ name: Container build
 
 on:
   push:
-    branches: [ master ]
 
 jobs:
   build:
