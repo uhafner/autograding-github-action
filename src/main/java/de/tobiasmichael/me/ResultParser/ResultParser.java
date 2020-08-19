@@ -16,8 +16,6 @@ import edu.hm.hafner.grading.*;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import se.bjurr.violations.lib.model.Violation;
-import se.bjurr.violations.lib.parsers.JUnitParser;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -75,7 +73,7 @@ public class ResultParser {
             try {
                 pmd_report = new PmdParser().parse(new FileReaderFactory(Paths.get("target/pmd.xml")));
                 checkstyle_report = new CheckStyleParser().parse(new FileReaderFactory(Paths.get("target/checkstyle-result.xml")));
-                findbugs_report = new FindBugsParser(FindBugsParser.PriorityProperty.RANK).parse(new FileReaderFactory(Paths.get("target/spotbugsXml.xml")));
+                findbugs_report = new FindBugsParser(FindBugsParser.PriorityProperty.CONFIDENCE).parse(new FileReaderFactory(Paths.get("target/spotbugsXml.xml")));
                 jacoco_report = new JacocoParser().parse(new FileReaderFactory(Paths.get("target/site/jacoco/jacoco.xml")));
             } catch (ParsingException e) {
                 logger.severe("One or more XML file(s) not found!");
@@ -83,10 +81,11 @@ public class ResultParser {
 
             String configuration = getGradingConfig();
             AggregatedScore score = new AggregatedScore(configuration);
-            if (checkstyle_report != null) {
+            if (checkstyle_report != null && pmd_report != null && findbugs_report != null) {
                 Report finalCheckstyle_report = checkstyle_report;
                 Report finalPmd_report = pmd_report;
                 Report finalFindbugs_report = findbugs_report;
+                System.out.println(finalFindbugs_report);
                 score.addAnalysisScores(new AnalysisSupplier() {
                     @Override
                     protected List<AnalysisScore> createScores(AnalysisConfiguration configuration) {
@@ -103,9 +102,7 @@ public class ResultParser {
                     @Override
                     protected List<TestScore> createScores(TestConfiguration configuration) {
                         List<TestScore> testScoreList = new ArrayList<>();
-                        junit_reportList.forEach(junit_report -> {
-                            testScoreList.add(createTestScore(configuration, junit_report));
-                        });
+                        junit_reportList.forEach(junit_report -> testScoreList.add(createTestScore(configuration, junit_report)));
                         return testScoreList;
                     }
                 });
@@ -116,8 +113,8 @@ public class ResultParser {
                     @Override
                     protected List<CoverageScore> createScores(CoverageConfiguration configuration) {
                         List<CoverageScore> coverageScoreList = new ArrayList<>();
-                        coverageScoreList.add(createCoverageScore(configuration, "Branch", "1", (int) finalJacoco_report.getBranch()));
-                        coverageScoreList.add(createCoverageScore(configuration, "Line", "2", (int) finalJacoco_report.getLine()));
+                        coverageScoreList.add(createCoverageScore(configuration, "Branch", "1", finalJacoco_report.getBranchPercentage()));
+                        coverageScoreList.add(createCoverageScore(configuration, "Line", "2", finalJacoco_report.getLinePercentage()));
                         return coverageScoreList;
                     }
                 });
@@ -129,7 +126,7 @@ public class ResultParser {
                         PitScore pitScore = new PitScore.PitScoreBuilder()
                                 .withConfiguration(configuration)
                                 .withDisplayName("PIT")
-                                .withTotalMutations(pit_reportList.get(0).getSizeOf("NORMAL"))
+                                .withTotalMutations(pit_reportList.get(0).size())
                                 .withUndetectedMutations(pit_reportList.get(0).getSizeOf("HIGH"))
                                 .build();
                         return Collections.singletonList(pitScore);

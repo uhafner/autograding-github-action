@@ -28,24 +28,24 @@ public class JacocoReport {
         this.method = method;
     }
 
-    public float getInstruction() {
-        return instruction;
+    public int getInstructionPercentage() {
+        return Math.round(instruction);
     }
 
-    public float getBranch() {
-        return branch;
+    public int getBranchPercentage() {
+        return Math.round(branch);
     }
 
-    public float getLine() {
-        return line;
+    public int getLinePercentage() {
+        return Math.round(line);
     }
 
-    public float getComplexity() {
-        return complexity;
+    public int getComplexityPercentage() {
+        return Math.round(complexity);
     }
 
-    public float getMethod() {
-        return method;
+    public int getMethodPercentage() {
+        return Math.round(method);
     }
 
     @Override
