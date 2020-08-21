@@ -1,12 +1,19 @@
 @startuml
 
+package "Actions Plugin" {
+[actions-plugin]
+}
 
-package (External-Dependencies) {
-[autograding-model]
-
+node "External-Dependencies" {
 [analysis-model]
+
+[autograding-model]
 
 [org.eclipse.egit.github.core]
 }
+
+[actions-plugin] --> [analysis-model]
+[actions-plugin] --> [autograding-model]
+[actions-plugin] --> [org.eclipse.egit.github.core]
 
 @enduml

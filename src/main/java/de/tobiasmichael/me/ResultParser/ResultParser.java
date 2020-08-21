@@ -2,6 +2,7 @@ package de.tobiasmichael.me.ResultParser;
 
 
 import de.tobiasmichael.me.GithubComment.Commenter;
+import de.tobiasmichael.me.Util.JUnitCounter;
 import de.tobiasmichael.me.Util.JacocoParser;
 import de.tobiasmichael.me.Util.JacocoReport;
 import edu.hm.hafner.analysis.FileReaderFactory;
@@ -21,9 +22,8 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -54,9 +54,14 @@ public class ResultParser {
         try {
             List<Path> junit_pathList = getPaths("target/surefire-reports/");
             if (junit_pathList.size() == 0) logger.warning("No JUnit files found!");
-            List<Report> junit_reportList = new ArrayList<>();
-            junit_pathList.forEach(path -> junit_reportList.add(new JUnitAdapter().parse(new FileReaderFactory(path))));
-            int issueCounter = junit_reportList.stream().mapToInt(Report::getSize).sum();
+            Map<Report, Integer> junit_reportMap = new HashMap<>();
+            junit_pathList.forEach(path -> {
+                junit_reportMap.put(new JUnitAdapter().parse(new FileReaderFactory(path)), new JUnitCounter().parse(new FileReaderFactory(path)));
+            });
+            int issueCounter = 0;
+            for (Map.Entry<Report, Integer> entry : junit_reportMap.entrySet()) {
+                issueCounter =+ entry.getKey().getSize();
+            }
 
             List<Report> pit_reportList = new ArrayList<>();
             // check if junit generated an issue
@@ -85,7 +90,11 @@ public class ResultParser {
                 Report finalCheckstyle_report = checkstyle_report;
                 Report finalPmd_report = pmd_report;
                 Report finalFindbugs_report = findbugs_report;
+
+                // findbugs print
                 System.out.println(finalFindbugs_report);
+                //
+
                 score.addAnalysisScores(new AnalysisSupplier() {
                     @Override
                     protected List<AnalysisScore> createScores(AnalysisConfiguration configuration) {
@@ -97,12 +106,14 @@ public class ResultParser {
                     }
                 });
             }
-            if (junit_reportList.size() > 0) {
+            if (junit_reportMap.size() > 0) {
                 score.addTestScores(new TestSupplier() {
                     @Override
                     protected List<TestScore> createScores(TestConfiguration configuration) {
                         List<TestScore> testScoreList = new ArrayList<>();
-                        junit_reportList.forEach(junit_report -> testScoreList.add(createTestScore(configuration, junit_report)));
+                        for (Map.Entry<Report, Integer> entry : junit_reportMap.entrySet()) {
+                            testScoreList.add(createTestScore(configuration, entry.getKey(), entry.getValue()));
+                        }
                         return testScoreList;
                     }
                 });
@@ -139,8 +150,8 @@ public class ResultParser {
             }
 
             Commenter commenter;
-            if (junit_reportList.size() > 0 && pit_reportList.size() == 0) {
-                commenter = new Commenter(score, junit_reportList);
+            if (junit_reportMap.size() > 0 && pit_reportList.size() == 0) {
+                commenter = new Commenter(score, new ArrayList<>(junit_reportMap.keySet()));
             } else {
                 commenter = new Commenter(score);
             }
@@ -197,16 +208,13 @@ public class ResultParser {
      * @param configuration TestConfiguration from AggregatedScore
      * @param report        Report to add to the score
      * @return returns TestScore
-     *
-     * TODO: Add totalSize and skippedSize for a better visualisation.
      */
-    private static TestScore createTestScore(TestConfiguration configuration, Report report) {
+    private static TestScore createTestScore(TestConfiguration configuration, Report report, int testCases) {
         return new TestScore.TestScoreBuilder()
                 .withConfiguration(configuration)
                 .withDisplayName("JUnit")
-                //.withTotalSize(report.getSize())
+                .withTotalSize(testCases)
                 .withFailedSize(report.getSize())
-                //.withSkippedSize(report.getSizeOf("skipped"))
                 .build();
     }
 
