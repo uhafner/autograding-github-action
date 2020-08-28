@@ -121,7 +121,7 @@ public class ResultParser {
                     }
                 });
             }
-            // TODO: Check if withUndetectedMutations() get correct value
+            // TODO: Check if withUndetectedMutations() gets correct value
             if (pit_reportList.size() > 0) {
                 score.addPitScores(new PitSupplier() {
                     @Override
