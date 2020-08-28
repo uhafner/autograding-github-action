@@ -1,2 +1,774 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<BugCollection version='4.0.0' threshold='low' effort='max'><file classname='de.tobiasmichael.me.SoftAssertions'><BugInstance type='NM_SAME_SIMPLE_NAME_AS_SUPERCLASS' priority='High' category='BAD_PRACTICE' message='The class name de.tobiasmichael.me.SoftAssertions shadows the simple name of the superclass org.assertj.core.api.SoftAssertions' lineNumber='7'/></file><file classname='de.tobiasmichael.me.GithubComment.Commenter'><BugInstance type='INFORMATION_EXPOSURE_THROUGH_AN_ERROR_MESSAGE' priority='Low' category='SECURITY' message='Possible information exposure through an error message' lineNumber='29'/></file><file classname='de.tobiasmichael.me.ResultParser.ResultParser'><BugInstance type='INFORMATION_EXPOSURE_THROUGH_AN_ERROR_MESSAGE' priority='Low' category='SECURITY' message='Possible information exposure through an error message' lineNumber='126'/></file><Error></Error><Project><SrcDir>/home/tobias/IdeaProjects/github-actions-autograding/src/main/java</SrcDir><SrcDir>/home/tobias/IdeaProjects/github-actions-autograding/target/generated-sources/annotations</SrcDir><SrcDir>/home/tobias/IdeaProjects/github-actions-autograding/src/test/java</SrcDir><SrcDir>/home/tobias/IdeaProjects/github-actions-autograding/target/generated-test-sources/assertj-assertions</SrcDir><SrcDir>/home/tobias/IdeaProjects/github-actions-autograding/target/generated-test-sources/test-annotations</SrcDir></Project></BugCollection>
+<?xml version="1.0" encoding="utf-8"?>
+<BugCollection sequence='0' release='' analysisTimestamp='1598448114398' version='4.0.0' timestamp='1598448091000'>
+    <Project projectName='github-actions-autograding'>
+        <Jar>/home/tobias/IdeaProjects/github-actions-autograding/target/classes</Jar>
+        <Jar>/home/tobias/IdeaProjects/github-actions-autograding/target/test-classes</Jar>
+        <AuxClasspathEntry>/home/tobias/IdeaProjects/github-actions-autograding/target/test-classes</AuxClasspathEntry>
+        <AuxClasspathEntry>
+            /home/tobias/.m2/repository/edu/hm/hafner/autograding-model/0.2.0/autograding-model-0.2.0.jar
+        </AuxClasspathEntry>
+        <AuxClasspathEntry>/home/tobias/.m2/repository/edu/hm/hafner/codingstyle/1.1.0/codingstyle-1.1.0.jar
+        </AuxClasspathEntry>
+        <AuxClasspathEntry>/home/tobias/.m2/repository/org/apache/commons/commons-lang3/3.10/commons-lang3-3.10.jar
+        </AuxClasspathEntry>
+        <AuxClasspathEntry>
+            /home/tobias/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.10.3/jackson-databind-2.10.3.jar
+        </AuxClasspathEntry>
+        <AuxClasspathEntry>
+            /home/tobias/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.10.3/jackson-annotations-2.10.3.jar
+        </AuxClasspathEntry>
+        <AuxClasspathEntry>
+            /home/tobias/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.10.3/jackson-core-2.10.3.jar
+        </AuxClasspathEntry>
+        <AuxClasspathEntry>/home/tobias/.m2/repository/edu/hm/hafner/analysis-model/8.3.0/analysis-model-8.3.0.jar
+        </AuxClasspathEntry>
+        <AuxClasspathEntry>/home/tobias/.m2/repository/commons-io/commons-io/2.7/commons-io-2.7.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>
+            /home/tobias/.m2/repository/org/apache/commons/commons-digester3/3.2/commons-digester3-3.2.jar
+        </AuxClasspathEntry>
+        <AuxClasspathEntry>/home/tobias/.m2/repository/cglib/cglib/2.2.2/cglib-2.2.2.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>/home/tobias/.m2/repository/asm/asm/3.3.1/asm-3.3.1.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>
+            /home/tobias/.m2/repository/commons-beanutils/commons-beanutils/1.8.3/commons-beanutils-1.8.3.jar
+        </AuxClasspathEntry>
+        <AuxClasspathEntry>/home/tobias/.m2/repository/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar
+        </AuxClasspathEntry>
+        <AuxClasspathEntry>/home/tobias/.m2/repository/org/apache/commons/commons-text/1.9/commons-text-1.9.jar
+        </AuxClasspathEntry>
+        <AuxClasspathEntry>
+            /home/tobias/.m2/repository/org/eclipse/collections/eclipse-collections-api/9.2.0/eclipse-collections-api-9.2.0.jar
+        </AuxClasspathEntry>
+        <AuxClasspathEntry>
+            /home/tobias/.m2/repository/org/eclipse/collections/eclipse-collections/9.2.0/eclipse-collections-9.2.0.jar
+        </AuxClasspathEntry>
+        <AuxClasspathEntry>
+            /home/tobias/.m2/repository/se/bjurr/violations/violations-lib/1.121/violations-lib-1.121.jar
+        </AuxClasspathEntry>
+        <AuxClasspathEntry>/home/tobias/.m2/repository/com/j2html/j2html/1.4.0/j2html-1.4.0.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>
+            /home/tobias/.m2/repository/org/jvnet/hudson/plugins/findbugs/library/6.0.4/library-6.0.4.jar
+        </AuxClasspathEntry>
+        <AuxClasspathEntry>/home/tobias/.m2/repository/org/json/json/20200518/json-20200518.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>/home/tobias/.m2/repository/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar
+        </AuxClasspathEntry>
+        <AuxClasspathEntry>
+            /home/tobias/.m2/repository/org/eclipse/mylyn/github/org.eclipse.egit.github.core/2.1.5/org.eclipse.egit.github.core-2.1.5.jar
+        </AuxClasspathEntry>
+        <AuxClasspathEntry>/home/tobias/.m2/repository/com/google/code/gson/gson/2.2.2/gson-2.2.2.jar
+        </AuxClasspathEntry>
+        <AuxClasspathEntry>
+            /home/tobias/.m2/repository/com/github/spotbugs/spotbugs-annotations/4.0.2/spotbugs-annotations-4.0.2.jar
+        </AuxClasspathEntry>
+        <AuxClasspathEntry>/home/tobias/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar
+        </AuxClasspathEntry>
+        <AuxClasspathEntry>
+            /home/tobias/.m2/repository/com/google/errorprone/error_prone_annotations/2.3.4/error_prone_annotations-2.3.4.jar
+        </AuxClasspathEntry>
+        <AuxClasspathEntry>
+            /home/tobias/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.6.2/junit-jupiter-api-5.6.2.jar
+        </AuxClasspathEntry>
+        <AuxClasspathEntry>/home/tobias/.m2/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar
+        </AuxClasspathEntry>
+        <AuxClasspathEntry>/home/tobias/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar
+        </AuxClasspathEntry>
+        <AuxClasspathEntry>
+            /home/tobias/.m2/repository/org/junit/platform/junit-platform-commons/1.6.2/junit-platform-commons-1.6.2.jar
+        </AuxClasspathEntry>
+        <AuxClasspathEntry>
+            /home/tobias/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.6.2/junit-jupiter-engine-5.6.2.jar
+        </AuxClasspathEntry>
+        <AuxClasspathEntry>
+            /home/tobias/.m2/repository/org/junit/platform/junit-platform-engine/1.6.2/junit-platform-engine-1.6.2.jar
+        </AuxClasspathEntry>
+        <AuxClasspathEntry>
+            /home/tobias/.m2/repository/org/junit/platform/junit-platform-launcher/1.6.2/junit-platform-launcher-1.6.2.jar
+        </AuxClasspathEntry>
+        <AuxClasspathEntry>
+            /home/tobias/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.6.2/junit-jupiter-params-5.6.2.jar
+        </AuxClasspathEntry>
+        <AuxClasspathEntry>/home/tobias/.m2/repository/org/mockito/mockito-core/3.3.3/mockito-core-3.3.3.jar
+        </AuxClasspathEntry>
+        <AuxClasspathEntry>/home/tobias/.m2/repository/net/bytebuddy/byte-buddy/1.10.5/byte-buddy-1.10.5.jar
+        </AuxClasspathEntry>
+        <AuxClasspathEntry>
+            /home/tobias/.m2/repository/net/bytebuddy/byte-buddy-agent/1.10.5/byte-buddy-agent-1.10.5.jar
+        </AuxClasspathEntry>
+        <AuxClasspathEntry>/home/tobias/.m2/repository/org/objenesis/objenesis/2.6/objenesis-2.6.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>/home/tobias/.m2/repository/org/assertj/assertj-core/3.15.0/assertj-core-3.15.0.jar
+        </AuxClasspathEntry>
+        <AuxClasspathEntry>
+            /home/tobias/.m2/repository/com/tngtech/archunit/archunit-junit5-api/0.13.1/archunit-junit5-api-0.13.1.jar
+        </AuxClasspathEntry>
+        <AuxClasspathEntry>/home/tobias/.m2/repository/com/tngtech/archunit/archunit/0.13.1/archunit-0.13.1.jar
+        </AuxClasspathEntry>
+        <AuxClasspathEntry>
+            /home/tobias/.m2/repository/com/tngtech/archunit/archunit-junit5-engine/0.13.1/archunit-junit5-engine-0.13.1.jar
+        </AuxClasspathEntry>
+        <AuxClasspathEntry>
+            /home/tobias/.m2/repository/com/tngtech/archunit/archunit-junit5-engine-api/0.13.1/archunit-junit5-engine-api-0.13.1.jar
+        </AuxClasspathEntry>
+        <Plugin id='com.h3xstream.findsecbugs' enabled='true'></Plugin>
+        <SrcDir>/home/tobias/IdeaProjects/github-actions-autograding/src/main/java</SrcDir>
+        <SrcDir>/home/tobias/IdeaProjects/github-actions-autograding/target/generated-sources/annotations</SrcDir>
+        <SrcDir>/home/tobias/IdeaProjects/github-actions-autograding/src/test/java</SrcDir>
+        <WrkDir>/home/tobias/IdeaProjects/github-actions-autograding/target</WrkDir>
+    </Project>
+    <BugInstance instanceOccurrenceNum='0' instanceHash='ae989961d5f443c3b46d1651f6f03177' cweid='117' rank='15'
+                 abbrev='SECCRLFLOG' category='SECURITY' priority='3' type='CRLF_INJECTION_LOGS'
+                 instanceOccurrenceMax='1'>
+        <ShortMessage>Potential CRLF Injection for logs</ShortMessage>
+        <LongMessage>This use of java/util/logging/Logger.info(Ljava/lang/String;)V might be used to include CRLF
+            characters into log messages
+        </LongMessage>
+        <Class classname='de.tobiasmichael.me.GithubComment.Commenter' primary='true'>
+            <SourceLine classname='de.tobiasmichael.me.GithubComment.Commenter' start='25' end='201'
+                        sourcepath='de/tobiasmichael/me/GithubComment/Commenter.java' sourcefile='Commenter.java'>
+                <Message>At Commenter.java:[lines 25-201]</Message>
+            </SourceLine>
+            <Message>In class de.tobiasmichael.me.GithubComment.Commenter</Message>
+        </Class>
+        <Method isStatic='false' classname='de.tobiasmichael.me.GithubComment.Commenter' signature='()V'
+                name='commentTo' primary='true'>
+            <SourceLine endBytecode='389' classname='de.tobiasmichael.me.GithubComment.Commenter' start='182' end='201'
+                        sourcepath='de/tobiasmichael/me/GithubComment/Commenter.java' sourcefile='Commenter.java'
+                        startBytecode='0'></SourceLine>
+            <Message>In method de.tobiasmichael.me.GithubComment.Commenter.commentTo()</Message>
+        </Method>
+        <SourceLine endBytecode='115' classname='de.tobiasmichael.me.GithubComment.Commenter' start='193' end='193'
+                    sourcepath='de/tobiasmichael/me/GithubComment/Commenter.java' sourcefile='Commenter.java'
+                    startBytecode='115' primary='true'>
+            <Message>At Commenter.java:[line 193]</Message>
+        </SourceLine>
+        <String role='Sink method' value='java/util/logging/Logger.info(Ljava/lang/String;)V'>
+            <Message>Sink method java/util/logging/Logger.info(Ljava/lang/String;)V</Message>
+        </String>
+        <String role='Sink parameter' value='0'>
+            <Message>Sink parameter 0</Message>
+        </String>
+        <String role='Unknown source' value='de/tobiasmichael/me/GithubComment/Commenter.comment'>
+            <Message>Unknown source de/tobiasmichael/me/GithubComment/Commenter.comment</Message>
+        </String>
+        <SourceLine endBytecode='112' classname='de.tobiasmichael.me.GithubComment.Commenter' start='193' end='193'
+                    sourcepath='de/tobiasmichael/me/GithubComment/Commenter.java' sourcefile='Commenter.java'
+                    startBytecode='112'>
+            <Message>At Commenter.java:[line 193]</Message>
+        </SourceLine>
+    </BugInstance>
+    <BugInstance instanceOccurrenceNum='1' instanceHash='ae989961d5f443c3b46d1651f6f03177' cweid='117' rank='15'
+                 abbrev='SECCRLFLOG' category='SECURITY' priority='3' type='CRLF_INJECTION_LOGS'
+                 instanceOccurrenceMax='1'>
+        <ShortMessage>Potential CRLF Injection for logs</ShortMessage>
+        <LongMessage>This use of java/util/logging/Logger.info(Ljava/lang/String;)V might be used to include CRLF
+            characters into log messages
+        </LongMessage>
+        <Class classname='de.tobiasmichael.me.GithubComment.Commenter' primary='true'>
+            <SourceLine classname='de.tobiasmichael.me.GithubComment.Commenter' start='25' end='201'
+                        sourcepath='de/tobiasmichael/me/GithubComment/Commenter.java' sourcefile='Commenter.java'>
+                <Message>At Commenter.java:[lines 25-201]</Message>
+            </SourceLine>
+            <Message>In class de.tobiasmichael.me.GithubComment.Commenter</Message>
+        </Class>
+        <Method isStatic='false' classname='de.tobiasmichael.me.GithubComment.Commenter' signature='()V'
+                name='commentTo' primary='true'>
+            <SourceLine endBytecode='389' classname='de.tobiasmichael.me.GithubComment.Commenter' start='182' end='201'
+                        sourcepath='de/tobiasmichael/me/GithubComment/Commenter.java' sourcefile='Commenter.java'
+                        startBytecode='0'></SourceLine>
+            <Message>In method de.tobiasmichael.me.GithubComment.Commenter.commentTo()</Message>
+        </Method>
+        <SourceLine endBytecode='139' classname='de.tobiasmichael.me.GithubComment.Commenter' start='197' end='197'
+                    sourcepath='de/tobiasmichael/me/GithubComment/Commenter.java' sourcefile='Commenter.java'
+                    startBytecode='139' primary='true'>
+            <Message>At Commenter.java:[line 197]</Message>
+        </SourceLine>
+        <String role='Sink method' value='java/util/logging/Logger.info(Ljava/lang/String;)V'>
+            <Message>Sink method java/util/logging/Logger.info(Ljava/lang/String;)V</Message>
+        </String>
+        <String role='Sink parameter' value='0'>
+            <Message>Sink parameter 0</Message>
+        </String>
+        <String role='Unknown source' value='de/tobiasmichael/me/GithubComment/Commenter.comment'>
+            <Message>Unknown source de/tobiasmichael/me/GithubComment/Commenter.comment</Message>
+        </String>
+        <SourceLine endBytecode='136' classname='de.tobiasmichael.me.GithubComment.Commenter' start='197' end='197'
+                    sourcepath='de/tobiasmichael/me/GithubComment/Commenter.java' sourcefile='Commenter.java'
+                    startBytecode='136'>
+            <Message>At Commenter.java:[line 197]</Message>
+        </SourceLine>
+    </BugInstance>
+    <BugInstance instanceOccurrenceNum='0' instanceHash='46002b4625570b474889ebfaa3cc2a77' cweid='117' rank='15'
+                 abbrev='SECCRLFLOG' category='SECURITY' priority='3' type='CRLF_INJECTION_LOGS'
+                 instanceOccurrenceMax='0'>
+        <ShortMessage>Potential CRLF Injection for logs</ShortMessage>
+        <LongMessage>This use of java/util/logging/Logger.severe(Ljava/lang/String;)V might be used to include CRLF
+            characters into log messages
+        </LongMessage>
+        <Class classname='de.tobiasmichael.me.GithubComment.Commenter' primary='true'>
+            <SourceLine classname='de.tobiasmichael.me.GithubComment.Commenter' start='25' end='201'
+                        sourcepath='de/tobiasmichael/me/GithubComment/Commenter.java' sourcefile='Commenter.java'>
+                <Message>At Commenter.java:[lines 25-201]</Message>
+            </SourceLine>
+            <Message>In class de.tobiasmichael.me.GithubComment.Commenter</Message>
+        </Class>
+        <Method isStatic='false' classname='de.tobiasmichael.me.GithubComment.Commenter' signature='()V'
+                name='commentTo' primary='true'>
+            <SourceLine endBytecode='389' classname='de.tobiasmichael.me.GithubComment.Commenter' start='182' end='201'
+                        sourcepath='de/tobiasmichael/me/GithubComment/Commenter.java' sourcefile='Commenter.java'
+                        startBytecode='0'></SourceLine>
+            <Message>In method de.tobiasmichael.me.GithubComment.Commenter.commentTo()</Message>
+        </Method>
+        <SourceLine endBytecode='154' classname='de.tobiasmichael.me.GithubComment.Commenter' start='199' end='199'
+                    sourcepath='de/tobiasmichael/me/GithubComment/Commenter.java' sourcefile='Commenter.java'
+                    startBytecode='154' primary='true'>
+            <Message>At Commenter.java:[line 199]</Message>
+        </SourceLine>
+        <String role='Sink method' value='java/util/logging/Logger.severe(Ljava/lang/String;)V'>
+            <Message>Sink method java/util/logging/Logger.severe(Ljava/lang/String;)V</Message>
+        </String>
+        <String role='Sink parameter' value='0'>
+            <Message>Sink parameter 0</Message>
+        </String>
+        <String role='Unknown source' value='java/io/IOException.toString()Ljava/lang/String;'>
+            <Message>Unknown source java/io/IOException.toString()Ljava/lang/String;</Message>
+        </String>
+        <SourceLine endBytecode='151' classname='de.tobiasmichael.me.GithubComment.Commenter' start='199' end='199'
+                    sourcepath='de/tobiasmichael/me/GithubComment/Commenter.java' sourcefile='Commenter.java'
+                    startBytecode='151'>
+            <Message>At Commenter.java:[line 199]</Message>
+        </SourceLine>
+    </BugInstance>
+    <BugInstance instanceOccurrenceNum='0' instanceHash='5fab4208ced77675f3fec783b53ed589' cweid='117' rank='15'
+                 abbrev='SECCRLFLOG' category='SECURITY' priority='3' type='CRLF_INJECTION_LOGS'
+                 instanceOccurrenceMax='0'>
+        <ShortMessage>Potential CRLF Injection for logs</ShortMessage>
+        <LongMessage>This use of java/util/logging/Logger.warning(Ljava/lang/String;)V might be used to include CRLF
+            characters into log messages
+        </LongMessage>
+        <Class classname='de.tobiasmichael.me.ResultParser.ResultParser' primary='true'>
+            <SourceLine classname='de.tobiasmichael.me.ResultParser.ResultParser' start='38' end='340'
+                        sourcepath='de/tobiasmichael/me/ResultParser/ResultParser.java' sourcefile='ResultParser.java'>
+                <Message>At ResultParser.java:[lines 38-340]</Message>
+            </SourceLine>
+            <Message>In class de.tobiasmichael.me.ResultParser.ResultParser</Message>
+        </Class>
+        <Method isStatic='true' classname='de.tobiasmichael.me.ResultParser.ResultParser'
+                signature='([Ljava/lang/String;)V' name='main' primary='true'>
+            <SourceLine endBytecode='1220' classname='de.tobiasmichael.me.ResultParser.ResultParser' start='51'
+                        end='164' sourcepath='de/tobiasmichael/me/ResultParser/ResultParser.java'
+                        sourcefile='ResultParser.java' startBytecode='0'></SourceLine>
+            <Message>In method de.tobiasmichael.me.ResultParser.ResultParser.main(String[])</Message>
+        </Method>
+        <SourceLine endBytecode='466' classname='de.tobiasmichael.me.ResultParser.ResultParser' start='149' end='149'
+                    sourcepath='de/tobiasmichael/me/ResultParser/ResultParser.java' sourcefile='ResultParser.java'
+                    startBytecode='466' primary='true'>
+            <Message>At ResultParser.java:[line 149]</Message>
+        </SourceLine>
+        <String role='Sink method' value='java/util/logging/Logger.warning(Ljava/lang/String;)V'>
+            <Message>Sink method java/util/logging/Logger.warning(Ljava/lang/String;)V</Message>
+        </String>
+        <String role='Sink parameter' value='0'>
+            <Message>Sink parameter 0</Message>
+        </String>
+        <String role='Unknown source' value='edu/hm/hafner/grading/AggregatedScore.getErrorMessages()Ljava/util/List;'>
+            <Message>Unknown source edu/hm/hafner/grading/AggregatedScore.getErrorMessages()Ljava/util/List;</Message>
+        </String>
+        <String role='Unknown source' value='java/lang/Object.toString()Ljava/lang/String;'>
+            <Message>Unknown source java/lang/Object.toString()Ljava/lang/String;</Message>
+        </String>
+        <SourceLine endBytecode='463' classname='de.tobiasmichael.me.ResultParser.ResultParser' start='149' end='149'
+                    sourcepath='de/tobiasmichael/me/ResultParser/ResultParser.java' sourcefile='ResultParser.java'
+                    startBytecode='463'>
+            <Message>At ResultParser.java:[line 149]</Message>
+        </SourceLine>
+    </BugInstance>
+    <BugInstance instanceOccurrenceNum='0' instanceHash='c8d2121b3c5dc63663afb38d53f7555' cweid='117' rank='15'
+                 abbrev='SECCRLFLOG' category='SECURITY' priority='3' type='CRLF_INJECTION_LOGS'
+                 instanceOccurrenceMax='0'>
+        <ShortMessage>Potential CRLF Injection for logs</ShortMessage>
+        <LongMessage>This use of java/util/logging/Logger.severe(Ljava/lang/String;)V might be used to include CRLF
+            characters into log messages
+        </LongMessage>
+        <Class classname='de.tobiasmichael.me.ResultParser.ResultParser' primary='true'>
+            <SourceLine classname='de.tobiasmichael.me.ResultParser.ResultParser' start='38' end='340'
+                        sourcepath='de/tobiasmichael/me/ResultParser/ResultParser.java' sourcefile='ResultParser.java'>
+                <Message>At ResultParser.java:[lines 38-340]</Message>
+            </SourceLine>
+            <Message>In class de.tobiasmichael.me.ResultParser.ResultParser</Message>
+        </Class>
+        <Method isStatic='true' classname='de.tobiasmichael.me.ResultParser.ResultParser'
+                signature='([Ljava/lang/String;)V' name='main' primary='true'>
+            <SourceLine endBytecode='1220' classname='de.tobiasmichael.me.ResultParser.ResultParser' start='51'
+                        end='164' sourcepath='de/tobiasmichael/me/ResultParser/ResultParser.java'
+                        sourcefile='ResultParser.java' startBytecode='0'></SourceLine>
+            <Message>In method de.tobiasmichael.me.ResultParser.ResultParser.main(String[])</Message>
+        </Method>
+        <SourceLine endBytecode='542' classname='de.tobiasmichael.me.ResultParser.ResultParser' start='160' end='160'
+                    sourcepath='de/tobiasmichael/me/ResultParser/ResultParser.java' sourcefile='ResultParser.java'
+                    startBytecode='542' primary='true'>
+            <Message>At ResultParser.java:[line 160]</Message>
+        </SourceLine>
+        <String role='Sink method' value='java/util/logging/Logger.severe(Ljava/lang/String;)V'>
+            <Message>Sink method java/util/logging/Logger.severe(Ljava/lang/String;)V</Message>
+        </String>
+        <String role='Sink parameter' value='0'>
+            <Message>Sink parameter 0</Message>
+        </String>
+        <String role='Unknown source' value='java/lang/Exception.toString()Ljava/lang/String;'>
+            <Message>Unknown source java/lang/Exception.toString()Ljava/lang/String;</Message>
+        </String>
+        <SourceLine endBytecode='539' classname='de.tobiasmichael.me.ResultParser.ResultParser' start='160' end='160'
+                    sourcepath='de/tobiasmichael/me/ResultParser/ResultParser.java' sourcefile='ResultParser.java'
+                    startBytecode='539'>
+            <Message>At ResultParser.java:[line 160]</Message>
+        </SourceLine>
+    </BugInstance>
+    <BugInstance instanceOccurrenceNum='0' instanceHash='c9a84817d1ecd928f7e894ce800ddd82' cweid='117' rank='15'
+                 abbrev='SECCRLFLOG' category='SECURITY' priority='3' type='CRLF_INJECTION_LOGS'
+                 instanceOccurrenceMax='0'>
+        <ShortMessage>Potential CRLF Injection for logs</ShortMessage>
+        <LongMessage>This use of java/util/logging/Logger.info(Ljava/lang/String;)V might be used to include CRLF
+            characters into log messages
+        </LongMessage>
+        <Class classname='de.tobiasmichael.me.ResultParser.ResultParser' primary='true'>
+            <SourceLine classname='de.tobiasmichael.me.ResultParser.ResultParser' start='38' end='340'
+                        sourcepath='de/tobiasmichael/me/ResultParser/ResultParser.java' sourcefile='ResultParser.java'>
+                <Message>At ResultParser.java:[lines 38-340]</Message>
+            </SourceLine>
+            <Message>In class de.tobiasmichael.me.ResultParser.ResultParser</Message>
+        </Class>
+        <Method isStatic='true' classname='de.tobiasmichael.me.ResultParser.ResultParser' signature='()V'
+                name='parseSystemVariables' primary='true'>
+            <SourceLine endBytecode='226' classname='de.tobiasmichael.me.ResultParser.ResultParser' start='253'
+                        end='270' sourcepath='de/tobiasmichael/me/ResultParser/ResultParser.java'
+                        sourcefile='ResultParser.java' startBytecode='0'></SourceLine>
+            <Message>In method de.tobiasmichael.me.ResultParser.ResultParser.parseSystemVariables()</Message>
+        </Method>
+        <SourceLine endBytecode='50' classname='de.tobiasmichael.me.ResultParser.ResultParser' start='258' end='258'
+                    sourcepath='de/tobiasmichael/me/ResultParser/ResultParser.java' sourcefile='ResultParser.java'
+                    startBytecode='50' primary='true'>
+            <Message>At ResultParser.java:[line 258]</Message>
+        </SourceLine>
+        <String role='Sink method' value='java/util/logging/Logger.info(Ljava/lang/String;)V'>
+            <Message>Sink method java/util/logging/Logger.info(Ljava/lang/String;)V</Message>
+        </String>
+        <String role='Sink parameter' value='0'>
+            <Message>Sink parameter 0</Message>
+        </String>
+        <String role='Unknown source' value='java/util/logging/Level.ALL'>
+            <Message>Unknown source java/util/logging/Level.ALL</Message>
+        </String>
+        <String role='Unknown source' value='java/util/logging/Level.INFO'>
+            <Message>Unknown source java/util/logging/Level.INFO</Message>
+        </String>
+        <SourceLine endBytecode='0' classname='de.tobiasmichael.me.ResultParser.ResultParser' start='253' end='253'
+                    sourcepath='de/tobiasmichael/me/ResultParser/ResultParser.java' sourcefile='ResultParser.java'
+                    startBytecode='0'>
+            <Message>At ResultParser.java:[line 253]</Message>
+        </SourceLine>
+        <SourceLine endBytecode='12' classname='de.tobiasmichael.me.ResultParser.ResultParser' start='255' end='255'
+                    sourcepath='de/tobiasmichael/me/ResultParser/ResultParser.java' sourcefile='ResultParser.java'
+                    startBytecode='12'>
+            <Message>At ResultParser.java:[line 255]</Message>
+        </SourceLine>
+        <SourceLine endBytecode='20' classname='de.tobiasmichael.me.ResultParser.ResultParser' start='257' end='257'
+                    sourcepath='de/tobiasmichael/me/ResultParser/ResultParser.java' sourcefile='ResultParser.java'
+                    startBytecode='20'>
+            <Message>At ResultParser.java:[line 257]</Message>
+        </SourceLine>
+        <SourceLine endBytecode='39' classname='de.tobiasmichael.me.ResultParser.ResultParser' start='258' end='258'
+                    sourcepath='de/tobiasmichael/me/ResultParser/ResultParser.java' sourcefile='ResultParser.java'
+                    startBytecode='39'>
+            <Message>At ResultParser.java:[line 258]</Message>
+        </SourceLine>
+    </BugInstance>
+    <BugInstance instanceOccurrenceNum='0' instanceHash='bbca6e22329377a785d7c09735824fa5' cweid='382' rank='19'
+                 abbrev='Dm' category='BAD_PRACTICE' priority='3' type='DM_EXIT' instanceOccurrenceMax='0'>
+        <ShortMessage>Method invokes System.exit(...)</ShortMessage>
+        <LongMessage>de.tobiasmichael.me.ResultParser.ResultParser.handleGradingConfig(String) invokes System.exit(...),
+            which shuts down the entire virtual machine
+        </LongMessage>
+        <Class classname='de.tobiasmichael.me.ResultParser.ResultParser' primary='true'>
+            <SourceLine classname='de.tobiasmichael.me.ResultParser.ResultParser' start='38' end='340'
+                        sourcepath='de/tobiasmichael/me/ResultParser/ResultParser.java' sourcefile='ResultParser.java'>
+                <Message>At ResultParser.java:[lines 38-340]</Message>
+            </SourceLine>
+            <Message>In class de.tobiasmichael.me.ResultParser.ResultParser</Message>
+        </Class>
+        <Method isStatic='true' classname='de.tobiasmichael.me.ResultParser.ResultParser'
+                signature='(Ljava/lang/String;)Ljava/lang/String;' name='handleGradingConfig' primary='true'>
+            <SourceLine endBytecode='330' classname='de.tobiasmichael.me.ResultParser.ResultParser' start='281'
+                        end='303' sourcepath='de/tobiasmichael/me/ResultParser/ResultParser.java'
+                        sourcefile='ResultParser.java' startBytecode='0'></SourceLine>
+            <Message>In method de.tobiasmichael.me.ResultParser.ResultParser.handleGradingConfig(String)</Message>
+        </Method>
+        <SourceLine endBytecode='84' classname='de.tobiasmichael.me.ResultParser.ResultParser' start='293' end='293'
+                    sourcepath='de/tobiasmichael/me/ResultParser/ResultParser.java' sourcefile='ResultParser.java'
+                    startBytecode='84' primary='true'>
+            <Message>At ResultParser.java:[line 293]</Message>
+        </SourceLine>
+        <SourceLine role='SOURCE_LINE_ANOTHER_INSTANCE' endBytecode='105'
+                    classname='de.tobiasmichael.me.ResultParser.ResultParser' start='301' end='301'
+                    sourcepath='de/tobiasmichael/me/ResultParser/ResultParser.java' sourcefile='ResultParser.java'
+                    startBytecode='105'>
+            <Message>Another occurrence at ResultParser.java:[line 301]</Message>
+        </SourceLine>
+    </BugInstance>
+    <BugInstance instanceOccurrenceNum='0' instanceHash='d060086685da79b674fe04b650c262be' cweid='209' rank='15'
+                 abbrev='ERRMSG' category='SECURITY' priority='3' type='INFORMATION_EXPOSURE_THROUGH_AN_ERROR_MESSAGE'
+                 instanceOccurrenceMax='0'>
+        <ShortMessage>Information Exposure Through An Error Message</ShortMessage>
+        <LongMessage>Possible information exposure through an error message</LongMessage>
+        <Class classname='de.tobiasmichael.me.ResultParser.ResultParser' primary='true'>
+            <SourceLine classname='de.tobiasmichael.me.ResultParser.ResultParser' start='38' end='340'
+                        sourcepath='de/tobiasmichael/me/ResultParser/ResultParser.java' sourcefile='ResultParser.java'>
+                <Message>At ResultParser.java:[lines 38-340]</Message>
+            </SourceLine>
+            <Message>In class de.tobiasmichael.me.ResultParser.ResultParser</Message>
+        </Class>
+        <Method isStatic='true' classname='de.tobiasmichael.me.ResultParser.ResultParser'
+                signature='([Ljava/lang/String;)V' name='main' primary='true'>
+            <SourceLine endBytecode='1220' classname='de.tobiasmichael.me.ResultParser.ResultParser' start='51'
+                        end='164' sourcepath='de/tobiasmichael/me/ResultParser/ResultParser.java'
+                        sourcefile='ResultParser.java' startBytecode='0'></SourceLine>
+            <Message>In method de.tobiasmichael.me.ResultParser.ResultParser.main(String[])</Message>
+        </Method>
+        <SourceLine endBytecode='550' classname='de.tobiasmichael.me.ResultParser.ResultParser' start='162' end='162'
+                    sourcepath='de/tobiasmichael/me/ResultParser/ResultParser.java' sourcefile='ResultParser.java'
+                    startBytecode='550' primary='true'>
+            <Message>At ResultParser.java:[line 162]</Message>
+        </SourceLine>
+    </BugInstance>
+    <BugInstance instanceOccurrenceNum='0' instanceHash='4b9c17cf0eb4f3e06dee9c73d6ac4eb7' cweid='396' rank='20'
+                 abbrev='REC' category='STYLE' priority='3' type='REC_CATCH_EXCEPTION' instanceOccurrenceMax='0'>
+        <ShortMessage>Exception is caught when Exception is not thrown</ShortMessage>
+        <LongMessage>Exception is caught when Exception is not thrown in
+            de.tobiasmichael.me.ResultParser.ResultParser.main(String[])
+        </LongMessage>
+        <Class classname='de.tobiasmichael.me.ResultParser.ResultParser' primary='true'>
+            <SourceLine classname='de.tobiasmichael.me.ResultParser.ResultParser' start='38' end='340'
+                        sourcepath='de/tobiasmichael/me/ResultParser/ResultParser.java' sourcefile='ResultParser.java'>
+                <Message>At ResultParser.java:[lines 38-340]</Message>
+            </SourceLine>
+            <Message>In class de.tobiasmichael.me.ResultParser.ResultParser</Message>
+        </Class>
+        <Method isStatic='true' classname='de.tobiasmichael.me.ResultParser.ResultParser'
+                signature='([Ljava/lang/String;)V' name='main' primary='true'>
+            <SourceLine endBytecode='1220' classname='de.tobiasmichael.me.ResultParser.ResultParser' start='51'
+                        end='164' sourcepath='de/tobiasmichael/me/ResultParser/ResultParser.java'
+                        sourcefile='ResultParser.java' startBytecode='0'></SourceLine>
+            <Message>In method de.tobiasmichael.me.ResultParser.ResultParser.main(String[])</Message>
+        </Method>
+        <SourceLine endBytecode='548' classname='de.tobiasmichael.me.ResultParser.ResultParser' start='161' end='161'
+                    sourcepath='de/tobiasmichael/me/ResultParser/ResultParser.java' sourcefile='ResultParser.java'
+                    startBytecode='548' primary='true'>
+            <Message>At ResultParser.java:[line 161]</Message>
+        </SourceLine>
+    </BugInstance>
+    <BugCategory category='BAD_PRACTICE'>
+        <Description>Bad practice</Description>
+    </BugCategory>
+    <BugCategory category='SECURITY'>
+        <Description>Security</Description>
+    </BugCategory>
+    <BugCategory category='STYLE'>
+        <Description>Dodgy code</Description>
+    </BugCategory>
+    <BugPattern cweid='117' abbrev='SECCRLFLOG' category='SECURITY' type='CRLF_INJECTION_LOGS'>
+        <ShortDescription>Potential CRLF Injection for logs</ShortDescription>
+        <Details>
+
+            &lt;p&gt;
+            When data from an untrusted source is put into a logger and not neutralized correctly,
+            an attacker could forge log entries or include malicious content.
+            Inserted false entries could be used to skew statistics, distract the administrator
+            or even to implicate another party in the commission of a malicious act.
+            If the log file is processed automatically, the attacker can render the file unusable
+            by corrupting the format of the file or injecting unexpected characters.
+            An attacker may also inject code or other commands into the log file and take advantage
+            of a vulnerability in the log processing utility (e.g. command injection or XSS).
+            &lt;/p&gt;
+            &lt;br/&gt;
+            &lt;p&gt;
+            &lt;b&gt;Code at risk:&lt;/b&gt;&lt;br/&gt;
+            &lt;pre&gt;String val = request.getParameter("user");
+            String metadata = request.getParameter("metadata");
+            [...]
+            if(authenticated) {
+            log.info("User " + val + " (" + metadata + ") was authenticated successfully");
+            }
+            else {
+            log.info("User " + val + " (" + metadata + ") was not authenticated");
+            }
+            &lt;/pre&gt;
+
+            A malicious user could send the metadata parameter with the value: &lt;code&gt;"Firefox) was authenticated
+            successfully\r\n[INFO] User bbb (Internet Explorer"&lt;/code&gt;.
+            &lt;/p&gt;
+
+            &lt;b&gt;Solution:&lt;/b&gt;&lt;br/&gt;
+            &lt;p&gt;
+            You can manually sanitize each parameter.
+            &lt;pre&gt;
+            log.info("User " + val.replaceAll("[\r\n]","") + " (" + userAgent.replaceAll("[\r\n]","") + ") was not
+            authenticated");
+            &lt;/pre&gt;
+            &lt;/p&gt;
+
+            &lt;p&gt;
+            You can also configure your logger service to replace new line for all message events. Here is sample
+            configuration for LogBack &lt;a href="https://logback.qos.ch/manual/layouts.html#replace"&gt;using the &lt;code&gt;replace&lt;/code&gt;
+            function&lt;/a&gt;.
+            &lt;pre&gt;
+            &amp;lt;pattern&amp;gt;%-5level - %replace(%msg){'[\r\n]', ''}%n&amp;lt;/pattern&amp;gt;
+            &lt;/pre&gt;
+            &lt;/p&gt;
+
+            &lt;p&gt;
+            Finally, you can use a logger implementation that replace new line by spaces.
+            The project &lt;a href="https://github.com/javabeanz/owasp-security-logging"&gt;OWASP Security Logging&lt;/a&gt;
+            has an implementation for Logback and Log4j.
+            &lt;/p&gt;
+
+            &lt;br/&gt;
+            &lt;p&gt;
+            &lt;b&gt;References&lt;/b&gt;&lt;br/&gt;
+            &lt;a href="https://cwe.mitre.org/data/definitions/117.html"&gt;CWE-117: Improper Output Neutralization for
+            Logs&lt;/a&gt;&lt;br/&gt;
+            &lt;a href="https://cwe.mitre.org/data/definitions/93.html"&gt;CWE-93: Improper Neutralization of CRLF
+            Sequences ('CRLF Injection')&lt;/a&gt;&lt;br/&gt;
+            &lt;a href="https://logback.qos.ch/manual/layouts.html#replace"&gt;CWE-93: Improper Neutralization of CRLF
+            Sequences ('CRLF Injection')&lt;/a&gt;&lt;br/&gt;
+            &lt;a href="https://github.com/javabeanz/owasp-security-logging"&gt;OWASP Security Logging&lt;/a&gt;&lt;br/&gt;
+            &lt;/p&gt;
+
+
+        </Details>
+    </BugPattern>
+    <BugPattern cweid='209' abbrev='ERRMSG' category='SECURITY' type='INFORMATION_EXPOSURE_THROUGH_AN_ERROR_MESSAGE'>
+        <ShortDescription>Information Exposure Through An Error Message</ShortDescription>
+        <Details>
+
+            &lt;p&gt;
+            The sensitive information may be valuable information on its own (such as a password), or it may be useful
+            for launching other, more deadly attacks. If an attack fails, an attacker may use error information provided
+            by the server to launch another more focused attack. For example, an attempt to exploit a path traversal
+            weakness (CWE-22) might yield the full pathname of the installed application. In turn, this could be used to
+            select the proper number of ".." sequences to navigate to the targeted file. An attack using SQL injection
+            (CWE-89) might not initially succeed, but an error message could reveal the malformed query, which would
+            expose query logic and possibly even passwords or other sensitive information used within the query.
+            &lt;/p&gt;
+            &lt;p&gt;
+            &lt;b&gt;Vulnerable Code:&lt;/b&gt;&lt;br/&gt;
+            &lt;pre&gt;try {
+            out = httpResponse.getOutputStream()
+            } catch (Exception e) {
+            e.printStackTrace(out);
+            }&lt;/pre&gt;
+            &lt;/p&gt;
+            &lt;p&gt;
+            &lt;b&gt;References&lt;/b&gt;&lt;br/&gt;
+            &lt;a href="https://cwe.mitre.org/data/definitions/209.html"&gt;CWE-209: Information Exposure Through an
+            Error Message&lt;/a&gt;&lt;br/&gt;
+            &lt;a href="https://cwe.mitre.org/data/definitions/211.html"&gt;CWE-211: Information Exposure Through
+            Externally-Generated Error Message&lt;/a&gt;&lt;br/&gt;
+            &lt;/p&gt;
+
+        </Details>
+    </BugPattern>
+    <BugPattern cweid='382' abbrev='Dm' category='BAD_PRACTICE' type='DM_EXIT'>
+        <ShortDescription>Method invokes System.exit(...)</ShortDescription>
+        <Details>
+
+            &lt;p&gt; Invoking System.exit shuts down the entire Java virtual machine. This
+            should only been done when it is appropriate. Such calls make it
+            hard or impossible for your code to be invoked by other code.
+            Consider throwing a RuntimeException instead.&lt;/p&gt;
+
+        </Details>
+    </BugPattern>
+    <BugPattern cweid='396' abbrev='REC' category='STYLE' type='REC_CATCH_EXCEPTION'>
+        <ShortDescription>Exception is caught when Exception is not thrown</ShortDescription>
+        <Details>
+
+            &lt;p&gt;
+            This method uses a try-catch block that catches Exception objects, but Exception is not
+            thrown within the try block, and RuntimeException is not explicitly caught. It is a common bug pattern to
+            say try { ... } catch (Exception e) { something } as a shorthand for catching a number of types of exception
+            each of whose catch blocks is identical, but this construct also accidentally catches RuntimeException as
+            well,
+            masking potential bugs.
+            &lt;/p&gt;
+            &lt;p&gt;A better approach is to either explicitly catch the specific exceptions that are thrown,
+            or to explicitly catch RuntimeException exception, rethrow it, and then catch all non-Runtime Exceptions, as
+            shown below:&lt;/p&gt;
+            &lt;pre&gt;&lt;code&gt;try {
+            ...
+            } catch (RuntimeException e) {
+            throw e;
+            } catch (Exception e) {
+            ... deal with all non-runtime exceptions ...
+            }
+            &lt;/code&gt;&lt;/pre&gt;
+
+        </Details>
+    </BugPattern>
+    <BugCode abbrev='REC'>
+        <Description>RuntimeException capture</Description>
+    </BugCode>
+    <BugCode abbrev='ERRMSG'>
+        <Description>Information Exposure Through An Error Message</Description>
+    </BugCode>
+    <BugCode abbrev='SECCRLFLOG'>
+        <Description>CRLF Injection for logs</Description>
+    </BugCode>
+    <BugCode abbrev='Dm'>
+        <Description>Dubious method used</Description>
+    </BugCode>
+    <Errors missingClasses='1' errors='0'>
+        <MissingClass>accept</MissingClass>
+    </Errors>
+    <FindBugsSummary num_packages='3' total_classes='11' priority_3='9' total_size='423' clock_seconds='4.62'
+                     referenced_classes='104' vm_version='25.262-b10' total_bugs='9' java_version='1.8.0_262'
+                     gc_seconds='0.10' alloc_mbytes='455.50' cpu_seconds='19.89' peak_mbytes='202.30'
+                     timestamp='Wed, 26 Aug 2020 15:21:31 +0200'>
+        <FileStats path='de/tobiasmichael/me/GithubComment/Commenter.java' size='115'
+                   bugHash='cc7ea927821fc4592341f16085f49d60' bugCount='3'></FileStats>
+        <FileStats path='de/tobiasmichael/me/ResultParser/ResultParser.java' size='205'
+                   bugHash='f60948ba133e43cbd9ffcd83f9d0188a' bugCount='6'></FileStats>
+        <FileStats path='de/tobiasmichael/me/Util/JUnitCounter.java' size='10' bugCount='0'></FileStats>
+        <FileStats path='de/tobiasmichael/me/Util/JacocoCounter.java' size='27' bugCount='0'></FileStats>
+        <FileStats path='de/tobiasmichael/me/Util/JacocoParser.java' size='34' bugCount='0'></FileStats>
+        <FileStats path='de/tobiasmichael/me/Util/JacocoReport.java' size='32' bugCount='0'></FileStats>
+        <PackageStats package='de.tobiasmichael.me.GithubComment' total_bugs='3' priority_3='3' total_size='115'
+                      total_types='1'>
+            <ClassStats bugs='3' size='115' priority_3='3' interface='false' sourceFile='Commenter.java'
+                        class='de.tobiasmichael.me.GithubComment.Commenter'></ClassStats>
+        </PackageStats>
+        <PackageStats package='de.tobiasmichael.me.ResultParser' total_bugs='6' priority_3='6' total_size='205'
+                      total_types='6'>
+            <ClassStats bugs='6' size='145' priority_3='6' interface='false' sourceFile='ResultParser.java'
+                        class='de.tobiasmichael.me.ResultParser.ResultParser'></ClassStats>
+            <ClassStats bugs='0' size='13' interface='false' sourceFile='ResultParser.java'
+                        class='de.tobiasmichael.me.ResultParser.ResultParser$1'></ClassStats>
+            <ClassStats bugs='0' size='11' interface='false' sourceFile='ResultParser.java'
+                        class='de.tobiasmichael.me.ResultParser.ResultParser$2'></ClassStats>
+            <ClassStats bugs='0' size='10' interface='false' sourceFile='ResultParser.java'
+                        class='de.tobiasmichael.me.ResultParser.ResultParser$3'></ClassStats>
+            <ClassStats bugs='0' size='13' interface='false' sourceFile='ResultParser.java'
+                        class='de.tobiasmichael.me.ResultParser.ResultParser$4'></ClassStats>
+            <ClassStats bugs='0' size='13' interface='false' sourceFile='ResultParser.java'
+                        class='de.tobiasmichael.me.ResultParser.ResultParser$5'></ClassStats>
+        </PackageStats>
+        <PackageStats package='de.tobiasmichael.me.Util' total_bugs='0' total_size='103' total_types='4'>
+            <ClassStats bugs='0' size='10' interface='false' sourceFile='JUnitCounter.java'
+                        class='de.tobiasmichael.me.Util.JUnitCounter'></ClassStats>
+            <ClassStats bugs='0' size='27' interface='false' sourceFile='JacocoCounter.java'
+                        class='de.tobiasmichael.me.Util.JacocoCounter'></ClassStats>
+            <ClassStats bugs='0' size='34' interface='false' sourceFile='JacocoParser.java'
+                        class='de.tobiasmichael.me.Util.JacocoParser'></ClassStats>
+            <ClassStats bugs='0' size='32' interface='false' sourceFile='JacocoReport.java'
+                        class='de.tobiasmichael.me.Util.JacocoReport'></ClassStats>
+        </PackageStats>
+        <FindBugsProfile>
+            <ClassProfile avgMicrosecondsPerInvocation='553' totalMilliseconds='478'
+                          name='edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine'
+                          maxMicrosecondsPerInvocation='21457' standardDeviationMicrosecondsPerInvocation='1458'
+                          invocations='864'></ClassProfile>
+            <ClassProfile avgMicrosecondsPerInvocation='286' totalMilliseconds='249'
+                          name='edu.umd.cs.findbugs.classfile.engine.ClassDataAnalysisEngine'
+                          maxMicrosecondsPerInvocation='1692' standardDeviationMicrosecondsPerInvocation='133'
+                          invocations='869'></ClassProfile>
+            <ClassProfile avgMicrosecondsPerInvocation='2146' totalMilliseconds='223'
+                          name='edu.umd.cs.findbugs.detect.FieldItemSummary' maxMicrosecondsPerInvocation='23836'
+                          standardDeviationMicrosecondsPerInvocation='3916' invocations='104'></ClassProfile>
+            <ClassProfile avgMicrosecondsPerInvocation='1540' totalMilliseconds='160'
+                          name='edu.umd.cs.findbugs.detect.FindNoSideEffectMethods' maxMicrosecondsPerInvocation='11697'
+                          standardDeviationMicrosecondsPerInvocation='2287' invocations='104'></ClassProfile>
+            <ClassProfile avgMicrosecondsPerInvocation='447' totalMilliseconds='141'
+                          name='edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory' maxMicrosecondsPerInvocation='4947'
+                          standardDeviationMicrosecondsPerInvocation='589' invocations='315'></ClassProfile>
+            <ClassProfile avgMicrosecondsPerInvocation='1673' totalMilliseconds='127'
+                          name='edu.umd.cs.findbugs.classfile.engine.bcel.TypeDataflowFactory'
+                          maxMicrosecondsPerInvocation='33211' standardDeviationMicrosecondsPerInvocation='4747'
+                          invocations='76'></ClassProfile>
+            <ClassProfile avgMicrosecondsPerInvocation='1683' totalMilliseconds='122'
+                          name='edu.umd.cs.findbugs.classfile.engine.bcel.MethodGenFactory'
+                          maxMicrosecondsPerInvocation='107089' standardDeviationMicrosecondsPerInvocation='12423'
+                          invocations='73'></ClassProfile>
+            <ClassProfile avgMicrosecondsPerInvocation='1449' totalMilliseconds='105'
+                          name='com.h3xstream.findsecbugs.taintanalysis.TaintDataflowEngine'
+                          maxMicrosecondsPerInvocation='28204' standardDeviationMicrosecondsPerInvocation='3935'
+                          invocations='73'></ClassProfile>
+            <ClassProfile avgMicrosecondsPerInvocation='1349' totalMilliseconds='102'
+                          name='edu.umd.cs.findbugs.classfile.engine.bcel.ValueNumberDataflowFactory'
+                          maxMicrosecondsPerInvocation='18238' standardDeviationMicrosecondsPerInvocation='3369'
+                          invocations='76'></ClassProfile>
+            <ClassProfile avgMicrosecondsPerInvocation='1283' totalMilliseconds='93'
+                          name='edu.umd.cs.findbugs.classfile.engine.bcel.IsNullValueDataflowFactory'
+                          maxMicrosecondsPerInvocation='17174' standardDeviationMicrosecondsPerInvocation='2600'
+                          invocations='73'></ClassProfile>
+            <ClassProfile avgMicrosecondsPerInvocation='105' totalMilliseconds='87'
+                          name='edu.umd.cs.findbugs.util.TopologicalSort' maxMicrosecondsPerInvocation='2437'
+                          standardDeviationMicrosecondsPerInvocation='188' invocations='828'></ClassProfile>
+            <ClassProfile avgMicrosecondsPerInvocation='784' totalMilliseconds='81'
+                          name='edu.umd.cs.findbugs.detect.NoteDirectlyRelevantTypeQualifiers'
+                          maxMicrosecondsPerInvocation='14151' standardDeviationMicrosecondsPerInvocation='1660'
+                          invocations='104'></ClassProfile>
+            <ClassProfile avgMicrosecondsPerInvocation='1090' totalMilliseconds='79'
+                          name='edu.umd.cs.findbugs.classfile.engine.bcel.CFGFactory'
+                          maxMicrosecondsPerInvocation='24885' standardDeviationMicrosecondsPerInvocation='3119'
+                          invocations='73'></ClassProfile>
+            <ClassProfile avgMicrosecondsPerInvocation='396' totalMilliseconds='71'
+                          name='edu.umd.cs.findbugs.classfile.engine.bcel.JavaClassAnalysisEngine'
+                          maxMicrosecondsPerInvocation='26452' standardDeviationMicrosecondsPerInvocation='2032'
+                          invocations='180'></ClassProfile>
+            <ClassProfile avgMicrosecondsPerInvocation='909' totalMilliseconds='66'
+                          name='edu.umd.cs.findbugs.classfile.engine.bcel.UnconditionalValueDerefDataflowFactory'
+                          maxMicrosecondsPerInvocation='12398' standardDeviationMicrosecondsPerInvocation='1757'
+                          invocations='73'></ClassProfile>
+            <ClassProfile avgMicrosecondsPerInvocation='964' totalMilliseconds='64'
+                          name='edu.umd.cs.findbugs.ba.npe.NullDerefAndRedundantComparisonFinder'
+                          maxMicrosecondsPerInvocation='8386' standardDeviationMicrosecondsPerInvocation='1224'
+                          invocations='67'></ClassProfile>
+            <ClassProfile avgMicrosecondsPerInvocation='618' totalMilliseconds='64'
+                          name='edu.umd.cs.findbugs.detect.FunctionsThatMightBeMistakenForProcedures'
+                          maxMicrosecondsPerInvocation='14223' standardDeviationMicrosecondsPerInvocation='1644'
+                          invocations='104'></ClassProfile>
+            <ClassProfile avgMicrosecondsPerInvocation='510' totalMilliseconds='53'
+                          name='edu.umd.cs.findbugs.detect.BuildObligationPolicyDatabase'
+                          maxMicrosecondsPerInvocation='5399' standardDeviationMicrosecondsPerInvocation='763'
+                          invocations='104'></ClassProfile>
+            <ClassProfile avgMicrosecondsPerInvocation='507' totalMilliseconds='52'
+                          name='edu.umd.cs.findbugs.detect.OverridingEqualsNotSymmetrical'
+                          maxMicrosecondsPerInvocation='13542' standardDeviationMicrosecondsPerInvocation='1435'
+                          invocations='104'></ClassProfile>
+            <ClassProfile avgMicrosecondsPerInvocation='488' totalMilliseconds='50'
+                          name='edu.umd.cs.findbugs.detect.BuildStringPassthruGraph' maxMicrosecondsPerInvocation='7785'
+                          standardDeviationMicrosecondsPerInvocation='1057' invocations='104'></ClassProfile>
+            <ClassProfile avgMicrosecondsPerInvocation='476' totalMilliseconds='49'
+                          name='edu.umd.cs.findbugs.detect.CalledMethods' maxMicrosecondsPerInvocation='5084'
+                          standardDeviationMicrosecondsPerInvocation='812' invocations='104'></ClassProfile>
+            <ClassProfile avgMicrosecondsPerInvocation='432' totalMilliseconds='44'
+                          name='edu.umd.cs.findbugs.detect.ReflectiveClasses' maxMicrosecondsPerInvocation='7564'
+                          standardDeviationMicrosecondsPerInvocation='1103' invocations='104'></ClassProfile>
+            <ClassProfile avgMicrosecondsPerInvocation='706' totalMilliseconds='44'
+                          name='edu.umd.cs.findbugs.detect.FindRefComparison$SpecialTypeAnalysis'
+                          maxMicrosecondsPerInvocation='13752' standardDeviationMicrosecondsPerInvocation='1768'
+                          invocations='63'></ClassProfile>
+            <ClassProfile avgMicrosecondsPerInvocation='2624' totalMilliseconds='28'
+                          name='edu.umd.cs.findbugs.detect.FindBadForLoop' maxMicrosecondsPerInvocation='26680'
+                          standardDeviationMicrosecondsPerInvocation='7609' invocations='11'></ClassProfile>
+            <ClassProfile avgMicrosecondsPerInvocation='2456' totalMilliseconds='27'
+                          name='edu.umd.cs.findbugs.detect.FindDeadLocalStores' maxMicrosecondsPerInvocation='15823'
+                          standardDeviationMicrosecondsPerInvocation='4429' invocations='11'></ClassProfile>
+            <ClassProfile avgMicrosecondsPerInvocation='252' totalMilliseconds='26'
+                          name='edu.umd.cs.findbugs.detect.EqualsOperandShouldHaveClassCompatibleWithThis'
+                          maxMicrosecondsPerInvocation='3241' standardDeviationMicrosecondsPerInvocation='467'
+                          invocations='104'></ClassProfile>
+            <ClassProfile avgMicrosecondsPerInvocation='8' totalMilliseconds='24'
+                          name='edu.umd.cs.findbugs.DetectorToDetector2Adapter' maxMicrosecondsPerInvocation='1272'
+                          standardDeviationMicrosecondsPerInvocation='25' invocations='2809'></ClassProfile>
+        </FindBugsProfile>
+    </FindBugsSummary>
+    <ClassFeatures></ClassFeatures>
+    <History></History>
+</BugCollection>

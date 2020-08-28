@@ -2,7 +2,6 @@ package de.tobiasmichael.me.ResultParser;
 
 
 import de.tobiasmichael.me.GithubComment.Commenter;
-import de.tobiasmichael.me.Util.JUnitCounter;
 import de.tobiasmichael.me.Util.JacocoParser;
 import de.tobiasmichael.me.Util.JacocoReport;
 import edu.hm.hafner.analysis.FileReaderFactory;
@@ -22,8 +21,9 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
-import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -54,14 +54,11 @@ public class ResultParser {
         try {
             List<Path> junit_pathList = getPaths("target/surefire-reports/");
             if (junit_pathList.size() == 0) logger.warning("No JUnit files found!");
-            Map<Report, Integer> junit_reportMap = new HashMap<>();
+            List<Report> junit_reportList = new ArrayList<>();
             junit_pathList.forEach(path -> {
-                junit_reportMap.put(new JUnitAdapter().parse(new FileReaderFactory(path)), new JUnitCounter().parse(new FileReaderFactory(path)));
+                junit_reportList.add(new JUnitAdapter().parse(new FileReaderFactory(path)));
             });
-            int issueCounter = 0;
-            for (Map.Entry<Report, Integer> entry : junit_reportMap.entrySet()) {
-                issueCounter =+ entry.getKey().getSize();
-            }
+            int issueCounter = junit_reportList.stream().mapToInt(Report::getSize).sum();
 
             List<Report> pit_reportList = new ArrayList<>();
             // check if junit generated an issue
@@ -91,10 +88,6 @@ public class ResultParser {
                 Report finalPmd_report = pmd_report;
                 Report finalFindbugs_report = findbugs_report;
 
-                // findbugs print
-                System.out.println(finalFindbugs_report);
-                //
-
                 score.addAnalysisScores(new AnalysisSupplier() {
                     @Override
                     protected List<AnalysisScore> createScores(AnalysisConfiguration configuration) {
@@ -106,14 +99,12 @@ public class ResultParser {
                     }
                 });
             }
-            if (junit_reportMap.size() > 0) {
+            if (junit_reportList.size() > 0) {
                 score.addTestScores(new TestSupplier() {
                     @Override
                     protected List<TestScore> createScores(TestConfiguration configuration) {
                         List<TestScore> testScoreList = new ArrayList<>();
-                        for (Map.Entry<Report, Integer> entry : junit_reportMap.entrySet()) {
-                            testScoreList.add(createTestScore(configuration, entry.getKey(), entry.getValue()));
-                        }
+                        junit_reportList.forEach(report -> testScoreList.add(createTestScore(configuration, report)));
                         return testScoreList;
                     }
                 });
@@ -130,6 +121,7 @@ public class ResultParser {
                     }
                 });
             }
+            // TODO: Check if withUndetectedMutations() get correct value
             if (pit_reportList.size() > 0) {
                 score.addPitScores(new PitSupplier() {
                     @Override
@@ -137,7 +129,7 @@ public class ResultParser {
                         PitScore pitScore = new PitScore.PitScoreBuilder()
                                 .withConfiguration(configuration)
                                 .withDisplayName("PIT")
-                                .withTotalMutations(pit_reportList.get(0).size())
+                                .withTotalMutations(Integer.parseInt(pit_reportList.get(0).getProperty("totalMutations")))
                                 .withUndetectedMutations(pit_reportList.get(0).getSizeOf("HIGH"))
                                 .build();
                         return Collections.singletonList(pitScore);
@@ -150,8 +142,8 @@ public class ResultParser {
             }
 
             Commenter commenter;
-            if (junit_reportMap.size() > 0 && pit_reportList.size() == 0) {
-                commenter = new Commenter(score, new ArrayList<>(junit_reportMap.keySet()));
+            if (junit_reportList.size() > 0 && pit_reportList.size() == 0) {
+                commenter = new Commenter(score, junit_reportList);
             } else {
                 commenter = new Commenter(score);
             }
@@ -209,11 +201,11 @@ public class ResultParser {
      * @param report        Report to add to the score
      * @return returns TestScore
      */
-    private static TestScore createTestScore(TestConfiguration configuration, Report report, int testCases) {
+    private static TestScore createTestScore(TestConfiguration configuration, Report report) {
         return new TestScore.TestScoreBuilder()
                 .withConfiguration(configuration)
                 .withDisplayName("JUnit")
-                .withTotalSize(testCases)
+                .withTotalSize(Integer.parseInt(report.getProperty("totalTests")))
                 .withFailedSize(report.getSize())
                 .build();
     }

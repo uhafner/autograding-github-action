@@ -18,8 +18,12 @@
 
     <repositories>
         <repository>
-            <id>jenkins-ci</id>
-            <url>https://repo.jenkins-ci.org/releases/</url>
+            <id>repo.jenkins-ci.org</id>
+            <url>https://repo.jenkins-ci.org/public/</url>
+        </repository>
+        <repository>
+            <id>incrementals.jenkins-ci.org</id>
+            <url>https://repo.jenkins-ci.org/incrementals/</url>
         </repository>
     </repositories>
 
@@ -33,7 +37,7 @@
         <dependency>
             <groupId>edu.hm.hafner</groupId>
             <artifactId>analysis-model</artifactId>
-            <version>8.3.0</version>
+            <version>9.0.0-rc3664.9498c6712d00</version>
         </dependency>
 
         <dependency>
