@@ -37,7 +37,7 @@
         <dependency>
             <groupId>edu.hm.hafner</groupId>
             <artifactId>analysis-model</artifactId>
-            <version>9.0.0-rc3664.9498c6712d00</version>
+            <version>9.0.0</version>
         </dependency>
 
         <dependency>
@@ -101,5 +101,6 @@
             </plugin>
         </plugins>
     </build>
+
 
 </project>

@@ -129,7 +129,7 @@ public class ResultParser {
                         PitScore pitScore = new PitScore.PitScoreBuilder()
                                 .withConfiguration(configuration)
                                 .withDisplayName("PIT")
-                                .withTotalMutations(Integer.parseInt(pit_reportList.get(0).getProperty("totalMutations")))
+                                .withTotalMutations(pit_reportList.get(0).getCounter(PitAdapter.TOTAL_MUTATIONS))
                                 .withUndetectedMutations(pit_reportList.get(0).getSizeOf("HIGH"))
                                 .build();
                         return Collections.singletonList(pitScore);
@@ -205,7 +205,7 @@ public class ResultParser {
         return new TestScore.TestScoreBuilder()
                 .withConfiguration(configuration)
                 .withDisplayName("JUnit")
-                .withTotalSize(Integer.parseInt(report.getProperty("totalTests")))
+                .withTotalSize(report.getCounter(JUnitAdapter.TOTAL_TESTS))
                 .withFailedSize(report.getSize())
                 .build();
     }
