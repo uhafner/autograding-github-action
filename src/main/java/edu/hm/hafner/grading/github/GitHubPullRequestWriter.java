@@ -7,14 +7,20 @@ import org.eclipse.egit.github.core.service.IssueService;
 
 import edu.hm.hafner.util.IntegerParser;
 
-import de.tobiasmichael.me.ResultParser.ResultParser;
-
 /**
  * Writes a comment in a pull request.
  *
+ * @author Tobias Effner
  * @author Ullrich Hafner
  */
 public class GitHubPullRequestWriter {
+    /**
+     * Writes the specified comment to the GitHub pull request. Requires that the environment variables
+     * {@code GITHUB_REF}, {@code GITHUB_REPOSITORY}, and {@code TOKEN} are correctly set.
+     *
+     * @param comment
+     *         the comment to write, supports GitHub Markdown
+     */
     public void addComment(final String comment) {
         String ref = System.getenv("GITHUB_REF");
         if (ref == null) {
@@ -59,13 +65,12 @@ public class GitHubPullRequestWriter {
         String sha = System.getenv("GITHUB_SHA");
         System.out.println(">>>> GITHUB_SHA: " + sha);
 
-        String oAuthToken = ResultParser.getOAuthToken();
-        if (oAuthToken != null) {
-            writeComment(comment, pullRequest, repositoryElements, oAuthToken);
-        }
-        else {
+        String oAuthToken = System.getenv("TOKEN");
+        if (oAuthToken == null) {
             System.out.println("No valid TOKEN found - skipping");
         }
+        
+        writeComment(comment, pullRequest, repositoryElements, oAuthToken);
     }
 
     private void writeComment(final String comment, final int pullRequest, final String[] repositoryElements,

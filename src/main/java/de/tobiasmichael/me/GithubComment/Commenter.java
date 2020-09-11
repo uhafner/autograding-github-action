@@ -3,8 +3,10 @@ package de.tobiasmichael.me.GithubComment;
 
 import de.tobiasmichael.me.ResultParser.ResultParser;
 import edu.hm.hafner.analysis.Report;
+import edu.hm.hafner.analysis.parser.violations.JUnitAdapter;
 import edu.hm.hafner.grading.AggregatedScore;
 import edu.hm.hafner.grading.github.GitHubPullRequestWriter;
+import edu.hm.hafner.grading.github.TestsMarkdownCommentWriter;
 
 import org.eclipse.egit.github.core.RepositoryId;
 import org.eclipse.egit.github.core.service.IssueService;
@@ -29,77 +31,31 @@ public class Commenter {
         logger.setLevel(Level.ALL);
     }
 
-    public Commenter(AggregatedScore score) {
-        this();
-        this.comment = formatComment(score);
-    }
-
     public Commenter(AggregatedScore score, List<Report> reportList) {
         this();
         this.comment = formatComment(score, reportList);
     }
 
-    /**
-     * Formats the given score to a markdown string.
-     *
-     * @param score AggregatedScore
-     * @return returns readable string
-     */
-    private String formatComment(AggregatedScore score) {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("# ").append(score.toString()).append("\n");
-        stringBuilder.append(createTestComment(score));
-        stringBuilder.append(createMutationsComment(score));
-        stringBuilder.append(createCoverageComment(score));
-        stringBuilder.append(createAnalysisComment(score));
-        return stringBuilder.toString();
-    }
 
     /**
      * Formats the given score to a markdown string.
      *
      * @param score AggregatedScore
-     * @param reportList reportList of failed JUnit test
+     * @param testReports reportList of failed JUnit test
      * @return returns readable string
      */
-    private String formatComment(AggregatedScore score, List<Report> reportList) {
+    private String formatComment(AggregatedScore score, List<Report> testReports) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("# ").append(score.toString()).append("\n");
-        stringBuilder.append(createTestComment(score));
-        stringBuilder.append("### PIT Mutation: Not available!\n");
-        stringBuilder.append(":warning: This means you did not pass all Unit tests! :warning:\n");
-        for (Report report : reportList) {
-            report.forEach(issue -> {
-                stringBuilder.append("- ");
-                stringBuilder.append(issue);
-                stringBuilder.append("\n");
-            });
+        TestsMarkdownCommentWriter testWriter = new TestsMarkdownCommentWriter();
+        stringBuilder.append(testWriter.create(score, testReports));
+        if (score.getPitConfiguration().isEnabled() 
+                && testReports.stream().anyMatch(report -> report.getCounter(JUnitAdapter.FAILED_TESTS) > 0)) {
+            stringBuilder.append("### PIT Mutation: Not available!\n");
+            stringBuilder.append(":warning: This means you did not pass all Unit tests! :warning:\n");
         }
-        stringBuilder.append("\n___\n");
         stringBuilder.append(createCoverageComment(score));
         stringBuilder.append(createAnalysisComment(score));
-        return stringBuilder.toString();
-    }
-
-    /**
-     * Generates formatted string for Tests.
-     *
-     * @param score Aggregated score
-     * @return returns formatted string
-     *
-     * TODO: Fix getter in testScore to get real passed size.
-     */
-    private String createTestComment(AggregatedScore score) {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("### Unit Tests: ").append(score.getTestRatio()).append("\n");
-        stringBuilder.append(tableFormat(new String[]{"Failed", "Passed", "Impact"}));
-        stringBuilder.append(tableFormat(new String[]{":-:", ":-:", ":-:"}));
-        score.getTestScores().forEach(testScore -> {
-            stringBuilder.append(tableFormat(new String[]{String.valueOf(testScore.getFailedSize()),
-                    String.valueOf(testScore.getPassedSize()),
-                    String.valueOf(testScore.getTotalImpact())}));
-        });
-        stringBuilder.append("\n___\n");
         return stringBuilder.toString();
     }
 
