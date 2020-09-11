@@ -4,6 +4,8 @@ package de.tobiasmichael.me.GithubComment;
 import de.tobiasmichael.me.ResultParser.ResultParser;
 import edu.hm.hafner.analysis.Report;
 import edu.hm.hafner.grading.AggregatedScore;
+import edu.hm.hafner.grading.github.GitHubPullRequestWriter;
+
 import org.eclipse.egit.github.core.RepositoryId;
 import org.eclipse.egit.github.core.service.IssueService;
 
@@ -178,26 +180,7 @@ public class Commenter {
      * If there is no oAuthToken, the creation of the comment will be skipped.
      */
     public void commentTo() {
-        try {
-            String pull_request_number = System.getenv("GITHUB_REF").split("/")[2];
-            String repo_owner_and_name = System.getenv("GITHUB_REPOSITORY");
-            System.out.println(">>>>> ???? " + pull_request_number);
-            String oAuthToken = ResultParser.getOAuthToken();
-            if (oAuthToken != null) {
-                IssueService service = new IssueService();
-                service.getClient().setOAuth2Token(oAuthToken);
-                RepositoryId repo = new RepositoryId(repo_owner_and_name.split("/")[0], repo_owner_and_name.split("/")[1]);
-                service.createComment(repo.getOwner(), repo.getName(), Integer.parseInt(pull_request_number), comment);
-            } else {
-                logger.warning("No Token found, results will only be logged.");
-                logger.info(comment);
-            }
-        } catch (NullPointerException ignore) {
-            logger.warning("GitHub Actions system variables missing, result will only be logged.");
-            logger.info(comment);
-        } catch (IOException e) {
-            logger.severe(e.toString());
-        }
+        GitHubPullRequestWriter writer = new GitHubPullRequestWriter();
+        writer.addComment(comment);
     }
-
 }
