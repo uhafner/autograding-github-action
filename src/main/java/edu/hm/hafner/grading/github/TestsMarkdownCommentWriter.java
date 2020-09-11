@@ -8,17 +8,19 @@ import edu.hm.hafner.analysis.Report;
 import edu.hm.hafner.grading.AggregatedScore;
 
 /**
- * Renders the text results in Markdown.
+ * Renders the test results in Markdown.
  *
  * @author Tobias Effner
  * @author Ullrich Hafner
  */
 public class TestsMarkdownCommentWriter {
     /**
-     * Generates formatted string for Tests.
+     * Renders the test results in Markdown.
      *
      * @param score
      *         Aggregated score
+     * @param testReports
+     *         JUnit test reports
      *
      * @return returns formatted string
      */
@@ -39,13 +41,15 @@ public class TestsMarkdownCommentWriter {
                     String.valueOf(testScore.getFailedSize()),
                     String.valueOf(testScore.getTotalImpact())})));
             stringBuilder.append("\n___\n");
-            for (Report report : testReports) {
-                report.forEach(issue -> {
-                    stringBuilder.append("- ");
-                    stringBuilder.append(issue);
-                    stringBuilder.append("\n");
-                });
-            }
+            testReports.stream().flatMap(Report::stream).forEach(
+                    issue -> stringBuilder.append("- ")
+                            .append(issue.getFileName())
+                            .append("(")
+                            .append(issue.getLineStart())
+                            .append("):")
+                            .append("```")
+                            .append(issue.getMessage())
+                            .append("```").append("\n"));
             stringBuilder.append("\n___\n");
             return stringBuilder.toString();
         }

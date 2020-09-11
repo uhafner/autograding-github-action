@@ -1,17 +1,13 @@
 package de.tobiasmichael.me.GithubComment;
 
 
-import de.tobiasmichael.me.ResultParser.ResultParser;
 import edu.hm.hafner.analysis.Report;
 import edu.hm.hafner.analysis.parser.violations.JUnitAdapter;
 import edu.hm.hafner.grading.AggregatedScore;
+import edu.hm.hafner.grading.github.AnalysisMarkdownCommentWriter;
 import edu.hm.hafner.grading.github.GitHubPullRequestWriter;
 import edu.hm.hafner.grading.github.TestsMarkdownCommentWriter;
 
-import org.eclipse.egit.github.core.RepositoryId;
-import org.eclipse.egit.github.core.service.IssueService;
-
-import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -55,7 +51,8 @@ public class Commenter {
             stringBuilder.append(":warning: This means you did not pass all Unit tests! :warning:\n");
         }
         stringBuilder.append(createCoverageComment(score));
-        stringBuilder.append(createAnalysisComment(score));
+        AnalysisMarkdownCommentWriter analysisMarkdown = new AnalysisMarkdownCommentWriter();
+        stringBuilder.append(analysisMarkdown.create(score));
         return stringBuilder.toString();
     }
 
@@ -76,25 +73,6 @@ public class Commenter {
                     String.valueOf(coverageScore.getTotalImpact())}));
         });
         stringBuilder.append("\n___\n");
-        return stringBuilder.toString();
-    }
-
-    /**
-     * Generates formatted string for Analysis.
-     *
-     * @param score Aggregated score
-     * @return returns formatted string
-     */
-    private String createAnalysisComment(AggregatedScore score) {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("### Static Analysis Warnings: ").append(score.getPitRatio()).append("\n");
-        stringBuilder.append(tableFormat(new String[]{"Name", "Errors", "Impact"}));
-        stringBuilder.append(tableFormat(new String[]{":-:", ":-:", ":-:"}));
-        score.getAnalysisScores().forEach(analysisScore -> {
-            stringBuilder.append(tableFormat(new String[]{analysisScore.getName(),
-                    String.valueOf(analysisScore.getErrorsSize()),
-                    String.valueOf(analysisScore.getTotalImpact())}));
-        });
         return stringBuilder.toString();
     }
 
