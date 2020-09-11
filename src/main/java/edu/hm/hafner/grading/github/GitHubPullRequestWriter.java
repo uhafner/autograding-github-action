@@ -22,7 +22,7 @@ public class GitHubPullRequestWriter {
 
             return;
         }
-        System.out.println(">>>> GITHUB_REF" + ref);
+        System.out.println(">>>> GITHUB_REF: " + ref);
         String[] refElements = StringUtils.split(ref, "/");
         if (refElements.length < 3) {
             System.out.println("Cannot parse GITHUB_REF");
@@ -30,7 +30,7 @@ public class GitHubPullRequestWriter {
             return;
         }
 
-        if (!"pulls".equals(refElements[1])) {
+        if (!"pull".equals(refElements[1])) {
             System.out.println("Action not executed within context of a pull request");
 
             return;
@@ -51,13 +51,13 @@ public class GitHubPullRequestWriter {
         }
         String[] repositoryElements = StringUtils.split(repository, "/");
         if (repositoryElements.length < 2) {
-            System.out.println("Cannot parse GITHUB_REPOSITORY");
+            System.out.println("Cannot parse GITHUB_REPOSITORY: " + repository);
 
             return;
         }
 
         String sha = System.getenv("GITHUB_SHA");
-        System.out.println(">>>> GITHUB_SHA" + sha);
+        System.out.println(">>>> GITHUB_SHA: " + sha);
 
         String oAuthToken = ResultParser.getOAuthToken();
         if (oAuthToken != null) {
