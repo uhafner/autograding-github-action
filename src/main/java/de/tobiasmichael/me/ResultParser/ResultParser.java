@@ -124,7 +124,7 @@ public class ResultParser {
                                 createAnalysisScore(configuration, "Checkstyle", "1", finalCheckstyle_report));
                         analysisScoreList.add(createAnalysisScore(configuration, "PMD", "2", finalPmd_report));
                         analysisScoreList.add(
-                                createAnalysisScore(configuration, "FindBugs", "3", finalFindbugs_report));
+                                createAnalysisScore(configuration, "SpotBugs", "3", finalFindbugs_report));
                         return analysisScoreList;
                     }
                 });

@@ -20,7 +20,7 @@ public class AnalysisMarkdownCommentWriter {
     public String create(final AggregatedScore score) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("## :warning: Static Analysis Warnings: ")
-                .append(score.getAnalysisRatio())
+                .append(score.getAnalysisAchieved())
                 .append(" / ")
                 .append(score.getAnalysisConfiguration().getMaxScore())
                 .append("\n");

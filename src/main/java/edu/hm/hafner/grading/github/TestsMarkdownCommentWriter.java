@@ -29,7 +29,7 @@ public class TestsMarkdownCommentWriter {
             StringBuilder stringBuilder = new StringBuilder();
 
             stringBuilder.append("## :bug: Unit Test Score: ")
-                    .append(score.getTestRatio())
+                    .append(score.getTestAchieved())
                     .append(" / ")
                     .append(score.getTestConfiguration().getMaxScore())
                     .append("\n");
@@ -47,9 +47,9 @@ public class TestsMarkdownCommentWriter {
                             .append("(")
                             .append(issue.getLineStart())
                             .append("):")
-                            .append("```")
+                            .append("\n```\n")
                             .append(issue.getMessage())
-                            .append("```").append("\n"));
+                            .append("\n```\n"));
             stringBuilder.append("\n___\n");
             return stringBuilder.toString();
         }
