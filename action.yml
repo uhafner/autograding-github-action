@@ -6,7 +6,6 @@ inputs:
   CONFIG:
     description: "Autograding configuration"
     required: false
-    default: "/default.conf"
   TOKEN:
     description: "GitHub token"
     required: true
