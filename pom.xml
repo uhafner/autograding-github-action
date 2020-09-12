@@ -11,7 +11,7 @@
         <relativePath/>
     </parent>
 
-    <groupId>de.tobiasmichael.me</groupId>
+    <groupId>edu.hm.hafner</groupId>
     <artifactId>github-actions-autograding</artifactId>
     <version>0.1</version>
     <packaging>jar</packaging>
@@ -82,7 +82,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>de.tobiasmichael.me.ResultParser.ResultParser</mainClass>
+                            <mainClass>edu.hm.hafner.grading.AutoGradingAction</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
