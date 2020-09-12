@@ -58,7 +58,7 @@ import de.tobiasmichael.me.Util.JacocoReport;
  * @author Tobias Effner
  */
 public class ResultParser {
-    private static Logger logger;
+    private static Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
     private static String oAuthToken = null;
 
@@ -69,8 +69,6 @@ public class ResultParser {
      *         input arguments
      */
     public static void main(String[] args) {
-        parseSystemVariables();
-
         AggregatedScore score = new AggregatedScore(getConfiguration());
 
         JacksonFacade jackson = new JacksonFacade();
@@ -81,8 +79,6 @@ public class ResultParser {
 
         List<Report> testReports = new TestReportFinder().find();
         score.addTestScores(new TestReportSupplier(testReports));
-
-        logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
         try {
             List<Report> pit_reportList = new ArrayList<>();
@@ -286,24 +282,6 @@ public class ResultParser {
             }
         });
         return pathList;
-    }
-
-    /**
-     * Get System Variables.
-     */
-    private static void parseSystemVariables() {
-        Level logLevel = Level.INFO;
-        if (System.getenv("DEBUG") != null) {
-            logLevel = Level.ALL;
-        }
-        logger.setLevel(logLevel);
-        logger.info("Loglevel set to " + logLevel + "!");
-        if (System.getenv("TOKEN") != null) {
-            oAuthToken = System.getenv("TOKEN");
-        }
-        else {
-            logger.warning("No Token provided, so the commenting part will be skipped!");
-        }
     }
 
     /**
