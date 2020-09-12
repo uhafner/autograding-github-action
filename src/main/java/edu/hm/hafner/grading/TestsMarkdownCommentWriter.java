@@ -1,11 +1,10 @@
-package edu.hm.hafner.grading.github;
+package edu.hm.hafner.grading;
 
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 
 import edu.hm.hafner.analysis.Report;
-import edu.hm.hafner.grading.AggregatedScore;
 
 /**
  * Renders the test results in Markdown.
@@ -24,11 +23,11 @@ public class TestsMarkdownCommentWriter {
      *
      * @return returns formatted string
      */
-    public String create(final AggregatedScore score, List<Report> testReports) {
+    public String create(final AggregatedScore score, final List<Report> testReports) {
         if (score.getTestConfiguration().isEnabled()) {
             StringBuilder stringBuilder = new StringBuilder();
 
-            stringBuilder.append("## :bug: Unit Test Score: ")
+            stringBuilder.append("## :traffic_light: Unit Test Score: ")
                     .append(score.getTestAchieved())
                     .append(" / ")
                     .append(score.getTestConfiguration().getMaxScore())

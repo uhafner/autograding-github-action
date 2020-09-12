@@ -38,14 +38,17 @@ import edu.hm.hafner.grading.AnalysisSupplier;
 import edu.hm.hafner.grading.CoverageConfiguration;
 import edu.hm.hafner.grading.CoverageScore;
 import edu.hm.hafner.grading.CoverageSupplier;
+import edu.hm.hafner.grading.TestReportSupplier;
+import edu.hm.hafner.grading.JacksonFacade;
 import edu.hm.hafner.grading.PitConfiguration;
 import edu.hm.hafner.grading.PitScore;
 import edu.hm.hafner.grading.PitSupplier;
+import edu.hm.hafner.grading.Summary;
 import edu.hm.hafner.grading.TestConfiguration;
+import edu.hm.hafner.grading.TestReportFinder;
 import edu.hm.hafner.grading.TestScore;
-import edu.hm.hafner.grading.TestSupplier;
+import edu.hm.hafner.grading.github.GitHubPullRequestWriter;
 
-import de.tobiasmichael.me.GithubComment.Commenter;
 import de.tobiasmichael.me.Util.JacocoParser;
 import de.tobiasmichael.me.Util.JacocoReport;
 
@@ -55,7 +58,6 @@ import de.tobiasmichael.me.Util.JacocoReport;
  * @author Tobias Effner
  */
 public class ResultParser {
-
     private static Logger logger;
 
     private static String oAuthToken = null;
@@ -68,28 +70,42 @@ public class ResultParser {
      *         input arguments
      */
     public static void main(String[] args) {
+        String configuration = getGradingConfig();
+
+        AggregatedScore score = new AggregatedScore(configuration);
+
+        JacksonFacade jackson = new JacksonFacade();
+        System.out.println("Test Configuration: " + jackson.toJson(score.getTestConfiguration()));
+        System.out.println("Static Analysis Configuration: " + jackson.toJson(score.getAnalysisConfiguration()));
+        System.out.println("PIT Mutation Coverage Configuration: " + jackson.toJson(score.getPitConfiguration()));
+        System.out.println("Code Coverage Configuration: " + jackson.toJson(score.getCoverageConfiguration()));
+
+        List<Report> testReports = new TestReportFinder().find();
+        score.addTestScores(new TestReportSupplier(testReports));
+
         logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
         parseSystemVariables();
 
         try {
-            List<Path> junit_pathList = getPaths("target/surefire-reports/");
-            if (junit_pathList.size() == 0) {
-                logger.warning("No JUnit files found!");
-            }
-            List<Report> junit_reportList = new ArrayList<>();
-            junit_pathList.forEach(path -> {
-                junit_reportList.add(new JUnitAdapter().parse(new FileReaderFactory(path)));
-            });
-            int issueCounter = junit_reportList.stream().mapToInt(Report::getSize).sum();
-
             List<Report> pit_reportList = new ArrayList<>();
-            // check if junit generated an issue
-            if (issueCounter == 0) {
-                List<Path> pit_pathList = getPaths("target/pit-reports/");
-                if (pit_pathList.size() == 0) {
-                    logger.warning("No PIT files found!");
-                }
-                pit_pathList.forEach(path -> pit_reportList.add(new PitAdapter().parse(new FileReaderFactory(path))));
+            List<Path> pit_pathList = getPaths("target/pit-reports/");
+            if (pit_pathList.size() == 0) {
+                logger.warning("No PIT files found!");
+            }
+            pit_pathList.forEach(path -> pit_reportList.add(new PitAdapter().parse(new FileReaderFactory(path))));
+            if (pit_reportList.size() > 0) {
+                score.addPitScores(new PitSupplier() {
+                    @Override
+                    protected List<PitScore> createScores(PitConfiguration configuration) {
+                        PitScore pitScore = new PitScore.PitScoreBuilder()
+                                .withConfiguration(configuration)
+                                .withDisplayName("PIT")
+                                .withTotalMutations(pit_reportList.get(0).getCounter(PitAdapter.TOTAL_MUTATIONS))
+                                .withUndetectedMutations(pit_reportList.get(0).getSizeOf("HIGH"))
+                                .build();
+                        return Collections.singletonList(pitScore);
+                    }
+                });
             }
 
             Report pmd_report = null;
@@ -109,8 +125,6 @@ public class ResultParser {
                 logger.severe("One or more XML file(s) not found!");
             }
 
-            String configuration = getGradingConfig();
-            AggregatedScore score = new AggregatedScore(configuration);
             if (checkstyle_report != null && pmd_report != null && findbugs_report != null) {
                 Report finalCheckstyle_report = checkstyle_report;
                 Report finalPmd_report = pmd_report;
@@ -129,16 +143,6 @@ public class ResultParser {
                     }
                 });
             }
-            if (junit_reportList.size() > 0) {
-                score.addTestScores(new TestSupplier() {
-                    @Override
-                    protected List<TestScore> createScores(TestConfiguration configuration) {
-                        List<TestScore> testScoreList = new ArrayList<>();
-                        junit_reportList.forEach(report -> testScoreList.add(createTestScore(configuration, report)));
-                        return testScoreList;
-                    }
-                });
-            }
             if (jacoco_report != null) {
                 JacocoReport finalJacoco_report = jacoco_report;
                 score.addCoverageScores(new CoverageSupplier() {
@@ -154,27 +158,15 @@ public class ResultParser {
                 });
             }
             // TODO: Check if withUndetectedMutations() gets correct value
-            if (pit_reportList.size() > 0) {
-                score.addPitScores(new PitSupplier() {
-                    @Override
-                    protected List<PitScore> createScores(PitConfiguration configuration) {
-                        PitScore pitScore = new PitScore.PitScoreBuilder()
-                                .withConfiguration(configuration)
-                                .withDisplayName("PIT")
-                                .withTotalMutations(pit_reportList.get(0).getCounter(PitAdapter.TOTAL_MUTATIONS))
-                                .withUndetectedMutations(pit_reportList.get(0).getSizeOf("HIGH"))
-                                .build();
-                        return Collections.singletonList(pitScore);
-                    }
-                });
-            }
 
             if (score.getErrorMessages().size() > 0) {
                 logger.warning(score.getErrorMessages().toString());
             }
 
-            Commenter commenter = new Commenter(score, junit_reportList);
-            commenter.commentTo();
+            Summary summary = new Summary();
+
+            GitHubPullRequestWriter pullRequestWriter = new GitHubPullRequestWriter();
+            pullRequestWriter.addComment(summary.create(score, testReports));
         }
         catch (ParsingException | IOException e) {
             logger.severe(e.toString());

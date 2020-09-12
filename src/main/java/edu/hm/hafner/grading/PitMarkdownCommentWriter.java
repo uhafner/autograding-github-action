@@ -1,0 +1,52 @@
+package edu.hm.hafner.grading;
+
+/**
+ * Renders the PIT results in Markdown.
+ *
+ * @author Tobias Effner
+ * @author Ullrich Hafner
+ */
+public class PitMarkdownCommentWriter {
+    private static final String PIT_HEADER = "## :microbe: PIT Mutation Coverage: ";
+    private static final String SUFFIX = "\n___\n";
+
+    /**
+     * Renders the PIT mutation coverage results in Markdown.
+     *
+     * @param score
+     *         the aggregated score
+     *
+     * @return returns formatted string
+     */
+    public String create(final AggregatedScore score) {
+        if (!score.getPitConfiguration().isEnabled()) {
+            return PIT_HEADER + "not configured" + SUFFIX;
+        }
+
+        if (score.getTestScores().stream().map(TestScore::getFailedSize).count() > 0) {
+            return PIT_HEADER + "disabled due to unit test failures" + SUFFIX;
+        }
+
+        StringBuilder comment = new StringBuilder();
+        comment.append(PIT_HEADER)
+                .append(score.getPitAchieved())
+                .append(" / ")
+                .append(score.getPitConfiguration().getMaxScore())
+                .append("\n");
+        comment.append(formatColumns(new String[] {"Detected", "Undetected", "Detected %", "Undetected %", "Impact"}));
+        comment.append(formatColumns(new String[] {":-:", ":-:", ":-:", ":-:", ":-:"}));
+        score.getPitScores().forEach(pitScore -> comment.append(formatColumns(new String[] {
+                String.valueOf(pitScore.getDetectedSize()),
+                String.valueOf(pitScore.getUndetectedSize()),
+                String.valueOf(pitScore.getDetectedPercentage()),
+                String.valueOf(pitScore.getUndetectedPercentage()),
+                String.valueOf(pitScore.getTotalImpact())})));
+        comment.append(SUFFIX);
+        return comment.toString();
+    }
+
+    private String formatColumns(final Object[] columns) {
+        String format = "|%1$-10s|%2$-10s|%3$-10s|%4$-10s|%5$-10s|\n";
+        return String.format(format, columns);
+    }
+}

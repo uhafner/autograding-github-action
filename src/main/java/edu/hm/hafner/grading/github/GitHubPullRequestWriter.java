@@ -15,8 +15,8 @@ import edu.hm.hafner.util.IntegerParser;
  */
 public class GitHubPullRequestWriter {
     /**
-     * Writes the specified comment to the GitHub pull request. Requires that the environment variables
-     * {@code GITHUB_REF}, {@code GITHUB_REPOSITORY}, and {@code TOKEN} are correctly set.
+     * Writes the specified comment to the GitHub pull request. Requires that the environment variables {@code
+     * GITHUB_REF}, {@code GITHUB_REPOSITORY}, and {@code TOKEN} are correctly set.
      *
      * @param comment
      *         the comment to write, supports GitHub Markdown
@@ -69,7 +69,7 @@ public class GitHubPullRequestWriter {
         if (oAuthToken == null) {
             System.out.println("No valid TOKEN found - skipping");
         }
-        
+
         writeComment(comment, pullRequest, repositoryElements, oAuthToken);
     }
 

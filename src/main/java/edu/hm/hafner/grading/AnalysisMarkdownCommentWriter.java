@@ -1,6 +1,4 @@
-package edu.hm.hafner.grading.github;
-
-import edu.hm.hafner.grading.AggregatedScore;
+package edu.hm.hafner.grading;
 
 /**
  * Renders the static analysis results in Markdown.
