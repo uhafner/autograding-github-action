@@ -28,11 +28,11 @@ public class Summary {
         TestsMarkdownCommentWriter testWriter = new TestsMarkdownCommentWriter();
         comment.append(testWriter.create(score, testReports));
 
-        PitMarkdownCommentWriter pitWriter = new PitMarkdownCommentWriter();
-        comment.append(pitWriter.create(score));
-
         CoverageMarkdownCommentWriter coverageWriter = new CoverageMarkdownCommentWriter();
         comment.append(coverageWriter.create(score));
+
+        PitMarkdownCommentWriter pitWriter = new PitMarkdownCommentWriter();
+        comment.append(pitWriter.create(score));
 
         AnalysisMarkdownCommentWriter analysisMarkdown = new AnalysisMarkdownCommentWriter();
         comment.append(analysisMarkdown.create(score));

@@ -41,7 +41,7 @@ public class TestsMarkdownCommentWriter {
                     String.valueOf(testScore.getTotalImpact())})));
 
             if (score.getTestScores().stream().map(TestScore::getFailedSize).count() > 0) {
-                stringBuilder.append("### Failures");
+                stringBuilder.append("### Failures\n");
                 testReports.stream().flatMap(Report::stream).forEach(
                         issue -> stringBuilder.append("- ")
                                 .append(issue.getFileName())

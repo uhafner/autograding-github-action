@@ -29,7 +29,7 @@ public class PitMarkdownCommentWriter {
                     .append(" / ")
                     .append(score.getPitConfiguration().getMaxScore())
                     .append(" :microbe:\n")
-                    .append(":exclamation: PIT mutation coverage cannot be computed if there are test failures");
+                    .append(":exclamation: PIT mutation coverage cannot be computed if there are test failures\n");
             return comment.toString();
         }
 

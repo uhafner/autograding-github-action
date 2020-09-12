@@ -7,7 +7,7 @@ import edu.hm.hafner.analysis.Report;
 import edu.hm.hafner.analysis.parser.violations.JUnitAdapter;
 
 /**
- * Provides test results by parsing files in the workspace.
+ * Provides test scores by converting corresponding {@link Report} instances.
  *
  * @author Ullrich Hafner
  */

@@ -10,9 +10,6 @@ inputs:
   TOKEN:
     description: "GitHub token"
     required: true
-  DEBUG:
-    description: "Enable logging"
-    required: false
 
 runs:
   using: 'docker'
@@ -20,7 +17,6 @@ runs:
   env:
     CONFIG: ${{ inputs.CONFIG }}
     TOKEN: ${{ inputs.TOKEN }}
-    DEBUG: ${{ inputs.DEBUG }}
 
 branding:
   icon: check
