@@ -7,6 +7,8 @@ package edu.hm.hafner.grading;
  * @author Ullrich Hafner
  */
 public class CoverageMarkdownCommentWriter {
+    private static final String COVERAGE_HEADER = "## :paw_prints: Code Coverage: ";
+
     /**
      * Renders the code coverage results in Markdown.
      *
@@ -16,8 +18,12 @@ public class CoverageMarkdownCommentWriter {
      * @return returns formatted string
      */
     public String create(final AggregatedScore score) {
+        if (!score.getCoverageConfiguration().isEnabled()) {
+            return COVERAGE_HEADER + "not configured :paw_prints:\n";
+        }
+
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("## :paw_prints: Code Coverage: ")
+        stringBuilder.append(COVERAGE_HEADER)
                 .append(score.getCoverageAchieved())
                 .append(" / ")
                 .append(score.getCoverageConfiguration().getMaxScore())

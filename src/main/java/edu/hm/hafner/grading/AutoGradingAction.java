@@ -44,6 +44,9 @@ public class AutoGradingAction {
             System.out.println("No configuration provided (environment CONFIG not set), using default configuration");
             configuration = readDefaultConfiguration();
         }
+        else {
+            System.out.println("Using configuration: " + configuration);
+        }
 
         AggregatedScore score = new AggregatedScore(configuration);
 
@@ -78,13 +81,14 @@ public class AutoGradingAction {
         pullRequestWriter.addComment(summary.create(score, testReports));
     }
 
-    private static String readDefaultConfiguration() {
+    private String readDefaultConfiguration() {
         try {
-            byte[] encoded = Files.readAllBytes(Paths.get("default.conf"));
+            byte[] encoded = Files.readAllBytes(Paths.get("/default.conf"));
 
             return new String(encoded, StandardCharsets.UTF_8);
         }
         catch (IOException exception) {
+            System.out.println("Can't read configuration: default.conf");
             return StringUtils.EMPTY;
         }
     }

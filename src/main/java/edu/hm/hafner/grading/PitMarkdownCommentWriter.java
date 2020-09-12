@@ -19,7 +19,7 @@ public class PitMarkdownCommentWriter {
      */
     public String create(final AggregatedScore score) {
         if (!score.getPitConfiguration().isEnabled()) {
-            return PIT_HEADER + "not configured :microbe:";
+            return PIT_HEADER + "not configured :microbe:\n";
         }
 
         StringBuilder comment = new StringBuilder();

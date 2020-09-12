@@ -7,6 +7,8 @@ package edu.hm.hafner.grading;
  * @author Ullrich Hafner
  */
 public class AnalysisMarkdownCommentWriter {
+    private static final String ANALYSIS_HEADER = "## :warning: Static Analysis Warnings: ";
+
     /**
      * Renders the static analysis results in Markdown.
      *
@@ -16,8 +18,12 @@ public class AnalysisMarkdownCommentWriter {
      * @return returns formatted string
      */
     public String create(final AggregatedScore score) {
+        if (!score.getAnalysisConfiguration().isEnabled()) {
+            return ANALYSIS_HEADER + "not configured :warning:\n";
+        }
+
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("## :warning: Static Analysis Warnings: ")
+        stringBuilder.append(ANALYSIS_HEADER)
                 .append(score.getAnalysisAchieved())
                 .append(" / ")
                 .append(score.getAnalysisConfiguration().getMaxScore())
