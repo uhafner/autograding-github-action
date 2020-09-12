@@ -21,7 +21,7 @@ public class AnalysisMarkdownCommentWriter {
                 .append(score.getAnalysisAchieved())
                 .append(" / ")
                 .append(score.getAnalysisConfiguration().getMaxScore())
-                .append("\n");
+                .append(" :warning:\n");
         stringBuilder.append(formatColumns(
                 new String[] {"Name", "Errors", "Warning High", "Warning Normal", "Warning Low", "Impact"}));
         stringBuilder.append(formatColumns(new String[] {":-:", ":-:", ":-:", ":-:", ":-:", ":-:"}));

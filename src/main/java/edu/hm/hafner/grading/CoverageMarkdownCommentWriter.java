@@ -21,17 +21,14 @@ public class CoverageMarkdownCommentWriter {
                 .append(score.getCoverageAchieved())
                 .append(" / ")
                 .append(score.getCoverageConfiguration().getMaxScore())
-                .append("\n");
+                .append(" :paw_prints:\n");
         stringBuilder.append(formatColumns(new String[] {"Name", "Covered %", "Missed %", "Impact"}));
         stringBuilder.append(formatColumns(new String[] {":-:", ":-:", ":-:", ":-:"}));
-        score.getCoverageScores().forEach(coverageScore -> {
-            stringBuilder.append(formatColumns(new String[] {
-                    coverageScore.getName(),
-                    String.valueOf(coverageScore.getCoveredPercentage()),
-                    String.valueOf(coverageScore.getMissedPercentage()),
-                    String.valueOf(coverageScore.getTotalImpact())}));
-        });
-        stringBuilder.append("\n___\n");
+        score.getCoverageScores().forEach(coverageScore -> stringBuilder.append(formatColumns(new String[] {
+                coverageScore.getName(),
+                String.valueOf(coverageScore.getCoveredPercentage()),
+                String.valueOf(coverageScore.getMissedPercentage()),
+                String.valueOf(coverageScore.getTotalImpact())})));
         return stringBuilder.toString();
     }
 

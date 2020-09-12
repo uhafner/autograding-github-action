@@ -3,7 +3,6 @@ package edu.hm.hafner.grading;
 import java.util.List;
 
 import edu.hm.hafner.analysis.Report;
-import edu.hm.hafner.analysis.parser.violations.JUnitAdapter;
 
 /**
  * Creates a summary comment in Markdown.
@@ -29,15 +28,8 @@ public class Summary {
         TestsMarkdownCommentWriter testWriter = new TestsMarkdownCommentWriter();
         comment.append(testWriter.create(score, testReports));
 
-        if (score.getPitConfiguration().isEnabled()
-                && testReports.stream().anyMatch(report -> report.getCounter(JUnitAdapter.FAILED_TESTS) > 0)) {
-            comment.append("## PIT Mutation: Not available!\n");
-            comment.append(":warning: This means you did not pass all Unit tests! :warning:\n");
-        }
-        else {
-            PitMarkdownCommentWriter pitWriter = new PitMarkdownCommentWriter();
-            comment.append(pitWriter.create(score));
-        }
+        PitMarkdownCommentWriter pitWriter = new PitMarkdownCommentWriter();
+        comment.append(pitWriter.create(score));
 
         CoverageMarkdownCommentWriter coverageWriter = new CoverageMarkdownCommentWriter();
         comment.append(coverageWriter.create(score));

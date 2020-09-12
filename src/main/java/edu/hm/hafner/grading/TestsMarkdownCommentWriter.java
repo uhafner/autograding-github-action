@@ -27,11 +27,11 @@ public class TestsMarkdownCommentWriter {
         if (score.getTestConfiguration().isEnabled()) {
             StringBuilder stringBuilder = new StringBuilder();
 
-            stringBuilder.append("## :traffic_light: Unit Test Score: ")
+            stringBuilder.append("## :vertical_traffic_light: Unit Test Score: ")
                     .append(score.getTestAchieved())
                     .append(" / ")
                     .append(score.getTestConfiguration().getMaxScore())
-                    .append("\n");
+                    .append(" :vertical_traffic_light:\n");
             stringBuilder.append(formatColumns(new String[] {"Passed", "Skipped", "Failed", "Impact"}));
             stringBuilder.append(formatColumns(new String[] {":-:", ":-:", ":-:", ":-:"}));
             score.getTestScores().forEach(testScore -> stringBuilder.append(formatColumns(new String[] {
@@ -39,17 +39,19 @@ public class TestsMarkdownCommentWriter {
                     String.valueOf(testScore.getSkippedSize()),
                     String.valueOf(testScore.getFailedSize()),
                     String.valueOf(testScore.getTotalImpact())})));
-            stringBuilder.append("\n___\n");
-            testReports.stream().flatMap(Report::stream).forEach(
-                    issue -> stringBuilder.append("- ")
-                            .append(issue.getFileName())
-                            .append("(")
-                            .append(issue.getLineStart())
-                            .append("):")
-                            .append("\n```\n")
-                            .append(issue.getMessage())
-                            .append("\n```\n"));
-            stringBuilder.append("\n___\n");
+
+            if (score.getTestScores().stream().map(TestScore::getFailedSize).count() > 0) {
+                stringBuilder.append("### Failures");
+                testReports.stream().flatMap(Report::stream).forEach(
+                        issue -> stringBuilder.append("- ")
+                                .append(issue.getFileName())
+                                .append("(")
+                                .append(issue.getLineStart())
+                                .append("):")
+                                .append("\n```\n")
+                                .append(issue.getMessage())
+                                .append("\n```\n"));
+            }
             return stringBuilder.toString();
         }
         return StringUtils.EMPTY;

@@ -8,7 +8,6 @@ package edu.hm.hafner.grading;
  */
 public class PitMarkdownCommentWriter {
     private static final String PIT_HEADER = "## :microbe: PIT Mutation Coverage: ";
-    private static final String SUFFIX = "\n___\n";
 
     /**
      * Renders the PIT mutation coverage results in Markdown.
@@ -20,7 +19,7 @@ public class PitMarkdownCommentWriter {
      */
     public String create(final AggregatedScore score) {
         if (!score.getPitConfiguration().isEnabled()) {
-            return PIT_HEADER + "not configured" + SUFFIX;
+            return PIT_HEADER + "not configured :microbe:";
         }
 
         StringBuilder comment = new StringBuilder();
@@ -29,9 +28,8 @@ public class PitMarkdownCommentWriter {
                     .append(0)
                     .append(" / ")
                     .append(score.getPitConfiguration().getMaxScore())
-                    .append("\n")
-                    .append(":exclamation: PIT mutation coverage cannot be computed if there are test failures")
-                    .append(SUFFIX);
+                    .append(" :microbe:\n")
+                    .append(":exclamation: PIT mutation coverage cannot be computed if there are test failures");
             return comment.toString();
         }
 
@@ -39,7 +37,7 @@ public class PitMarkdownCommentWriter {
                 .append(score.getPitAchieved())
                 .append(" / ")
                 .append(score.getPitConfiguration().getMaxScore())
-                .append("\n");
+                .append(" :microbe:\n");
         comment.append(formatColumns(new String[] {"Detected", "Undetected", "Detected %", "Undetected %", "Impact"}));
         comment.append(formatColumns(new String[] {":-:", ":-:", ":-:", ":-:", ":-:"}));
         score.getPitScores().forEach(pitScore -> comment.append(formatColumns(new String[] {
@@ -48,7 +46,6 @@ public class PitMarkdownCommentWriter {
                 String.valueOf(pitScore.getDetectedPercentage()),
                 String.valueOf(pitScore.getUndetectedPercentage()),
                 String.valueOf(pitScore.getTotalImpact())})));
-        comment.append(SUFFIX);
         return comment.toString();
     }
 
