@@ -39,16 +39,7 @@ public class AutoGradingAction {
     }
 
     void run() {
-        String configuration = System.getenv("CONFIG");
-        if (configuration == null) {
-            System.out.println("No configuration provided (environment CONFIG not set), using default configuration");
-            configuration = readDefaultConfiguration();
-        }
-        else {
-            System.out.println("Using configuration: " + configuration);
-        }
-
-        AggregatedScore score = new AggregatedScore(configuration);
+        AggregatedScore score = new AggregatedScore(getConfiguration());
 
         JacksonFacade jackson = new JacksonFacade();
         System.out.println("Test Configuration: " + jackson.toJson(score.getTestConfiguration()));
@@ -79,6 +70,18 @@ public class AutoGradingAction {
 
         GitHubPullRequestWriter pullRequestWriter = new GitHubPullRequestWriter();
         pullRequestWriter.addComment(summary.create(score, testReports));
+    }
+
+    private String getConfiguration() {
+        String configuration = System.getenv("CONFIG");
+        if (StringUtils.isBlank(configuration)) {
+            System.out.println("No configuration provided (environment CONFIG not set), using default configuration");
+
+            return readDefaultConfiguration();
+        }
+
+        System.out.println("Using configuration: " + configuration);
+        return configuration;
     }
 
     private String readDefaultConfiguration() {
