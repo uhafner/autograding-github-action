@@ -61,7 +61,6 @@ public class ResultParser {
     private static Logger logger;
 
     private static String oAuthToken = null;
-    private static String gradingConfig = null;
 
     /**
      * Main method; handles logger, arguments, parsers and grading.
@@ -70,9 +69,9 @@ public class ResultParser {
      *         input arguments
      */
     public static void main(String[] args) {
-        String configuration = getGradingConfig();
+        parseSystemVariables();
 
-        AggregatedScore score = new AggregatedScore(configuration);
+        AggregatedScore score = new AggregatedScore(getConfiguration());
 
         JacksonFacade jackson = new JacksonFacade();
         System.out.println("Test Configuration: " + jackson.toJson(score.getTestConfiguration()));
@@ -84,7 +83,6 @@ public class ResultParser {
         score.addTestScores(new TestReportSupplier(testReports));
 
         logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-        parseSystemVariables();
 
         try {
             List<Report> pit_reportList = new ArrayList<>();
@@ -174,6 +172,19 @@ public class ResultParser {
         catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private static String getConfiguration() {
+        String json;
+        String configuration = System.getenv("CONFIG");
+        if (configuration != null) {
+            json = handleGradingConfig(configuration);
+        }
+        else {
+            logger.warning("No Config provided, so going to use default config!");
+            json = handleGradingConfig("default.conf");
+        }
+        return json;
     }
 
     /**
@@ -293,13 +304,6 @@ public class ResultParser {
         else {
             logger.warning("No Token provided, so the commenting part will be skipped!");
         }
-        if (System.getenv("CONFIG") != null) {
-            gradingConfig = handleGradingConfig(System.getenv("CONFIG"));
-        }
-        else {
-            logger.warning("No Config provided, so going to use default config!");
-            gradingConfig = handleGradingConfig("default.conf");
-        }
     }
 
     /**
@@ -319,7 +323,7 @@ public class ResultParser {
                 Path path = Paths.get(input);
                 StringBuilder contentBuilder = new StringBuilder();
 
-                Stream<String> stream = Files.lines((path), StandardCharsets.UTF_8);
+                Stream<String> stream = Files.lines(path, StandardCharsets.UTF_8);
                 stream.forEach(contentBuilder::append);
                 input = contentBuilder.toString();
             }
@@ -369,14 +373,5 @@ public class ResultParser {
      */
     public static String getOAuthToken() {
         return oAuthToken;
-    }
-
-    /**
-     * Getter for gradingConfig.
-     *
-     * @return gradingConfig
-     */
-    public static String getGradingConfig() {
-        return gradingConfig;
     }
 }

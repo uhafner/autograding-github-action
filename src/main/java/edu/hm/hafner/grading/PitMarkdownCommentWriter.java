@@ -23,11 +23,18 @@ public class PitMarkdownCommentWriter {
             return PIT_HEADER + "not configured" + SUFFIX;
         }
 
+        StringBuilder comment = new StringBuilder();
         if (score.getTestScores().stream().map(TestScore::getFailedSize).count() > 0) {
-            return PIT_HEADER + "disabled due to unit test failures" + SUFFIX;
+            comment.append(PIT_HEADER)
+                    .append(0)
+                    .append(" / ")
+                    .append(score.getPitConfiguration().getMaxScore())
+                    .append("\n")
+                    .append(":exclamation: PIT mutation coverage cannot be computed if there are test failures")
+                    .append(SUFFIX);
+            return comment.toString();
         }
 
-        StringBuilder comment = new StringBuilder();
         comment.append(PIT_HEADER)
                 .append(score.getPitAchieved())
                 .append(" / ")
