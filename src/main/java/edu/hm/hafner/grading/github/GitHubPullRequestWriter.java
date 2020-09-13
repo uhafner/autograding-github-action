@@ -1,9 +1,16 @@
 package edu.hm.hafner.grading.github;
 
 import java.io.IOException;
+import java.time.Instant;
+import java.util.Date;
 
 import org.apache.commons.lang3.StringUtils;
 import org.eclipse.egit.github.core.service.IssueService;
+import org.kohsuke.github.GHCheckRun.Conclusion;
+import org.kohsuke.github.GHCheckRun.Status;
+import org.kohsuke.github.GHCheckRunBuilder;
+import org.kohsuke.github.GHCheckRunBuilder.Output;
+import org.kohsuke.github.GitHub;
 
 import edu.hm.hafner.util.IntegerParser;
 
@@ -71,6 +78,27 @@ public class GitHubPullRequestWriter {
         }
 
         writeComment(comment, pullRequest, repositoryElements, oAuthToken);
+
+        writeChecks(comment, oAuthToken, repository, sha);
+    }
+
+    private void writeChecks(final String comment, final String oAuthToken, final String repositoryUrl,
+            final String sha) {
+        try {
+            GitHub github = GitHub.connectUsingOAuth(oAuthToken);
+            GHCheckRunBuilder check = github.getRepository(repositoryUrl)
+                    .createCheckRun("Autograding", sha)
+                    .withStatus(Status.COMPLETED)
+                    .withStartedAt(Date.from(Instant.now()))
+                    .withConclusion(Conclusion.NEUTRAL);
+            check.add(new Output("Autograding results",
+                    "Summary")
+                    .withText(comment));
+            check.create();
+        }
+        catch (IOException exception) {
+            System.out.println(exception);
+        }
     }
 
     private void writeComment(final String comment, final int pullRequest, final String[] repositoryElements,
