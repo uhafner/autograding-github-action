@@ -2,105 +2,105 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+  <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>edu.hm.hafner</groupId>
-        <artifactId>codingstyle-pom</artifactId>
-        <version>1.1.1</version>
-        <relativePath/>
-    </parent>
-
+  <parent>
     <groupId>edu.hm.hafner</groupId>
-    <artifactId>github-actions-autograding</artifactId>
-    <version>0.1</version>
-    <packaging>jar</packaging>
+    <artifactId>codingstyle-pom</artifactId>
+    <version>1.1.1</version>
+    <relativePath/>
+  </parent>
 
-    <repositories>
-        <repository>
-            <id>repo.jenkins-ci.org</id>
-            <url>https://repo.jenkins-ci.org/public/</url>
-        </repository>
-        <repository>
-            <id>incrementals.jenkins-ci.org</id>
-            <url>https://repo.jenkins-ci.org/incrementals/</url>
-        </repository>
-    </repositories>
+  <groupId>edu.hm.hafner</groupId>
+  <artifactId>github-actions-autograding</artifactId>
+  <version>0.1</version>
+  <packaging>jar</packaging>
 
-    <dependencies>
-        <dependency>
-            <groupId>edu.hm.hafner</groupId>
-            <artifactId>autograding-model</artifactId>
-            <version>0.2.0</version>
-        </dependency>
+  <repositories>
+    <repository>
+      <id>repo.jenkins-ci.org</id>
+      <url>https://repo.jenkins-ci.org/public/</url>
+    </repository>
+    <repository>
+      <id>incrementals.jenkins-ci.org</id>
+      <url>https://repo.jenkins-ci.org/incrementals/</url>
+    </repository>
+  </repositories>
 
-        <dependency>
-            <groupId>edu.hm.hafner</groupId>
-            <artifactId>analysis-model</artifactId>
-            <version>9.0.0</version>
-        </dependency>
+  <dependencies>
+    <dependency>
+      <groupId>edu.hm.hafner</groupId>
+      <artifactId>autograding-model</artifactId>
+      <version>0.2.0</version>
+    </dependency>
 
-        <dependency>
-            <groupId>org.eclipse.mylyn.github</groupId>
-            <artifactId>org.eclipse.egit.github.core</artifactId>
-            <version>2.1.5</version>
-        </dependency>
-    </dependencies>
+    <dependency>
+      <groupId>edu.hm.hafner</groupId>
+      <artifactId>analysis-model</artifactId>
+      <version>9.0.0</version>
+    </dependency>
 
-    <properties>
-        <scmTag>HEAD</scmTag>
-        <revision>8.1.4</revision>
-        <changelist>-SNAPSHOT</changelist>
-        <source.encoding>UTF-8</source.encoding>
-        <project.build.sourceEncoding>${source.encoding}</project.build.sourceEncoding>
-        <java.version>1.8</java.version>
-        <incrementals-plugin.version>1.1</incrementals-plugin.version>
+    <dependency>
+      <groupId>org.eclipse.mylyn.github</groupId>
+      <artifactId>org.eclipse.egit.github.core</artifactId>
+      <version>2.1.5</version>
+    </dependency>
+  </dependencies>
 
-        <module.name>${project.groupId}.analysis.model</module.name>
+  <properties>
+    <scmTag>HEAD</scmTag>
+    <revision>8.1.4</revision>
+    <changelist>-SNAPSHOT</changelist>
+    <source.encoding>UTF-8</source.encoding>
+    <project.build.sourceEncoding>${source.encoding}</project.build.sourceEncoding>
+    <java.version>1.8</java.version>
+    <incrementals-plugin.version>1.1</incrementals-plugin.version>
 
-        <!-- Project Dependencies Configuration -->
-        <codingstyle.library.version>1.1.0</codingstyle.library.version>
-        <commons.lang.version>3.10</commons.lang.version>
-        <commons.io.version>2.7</commons.io.version>
-        <commons.digester.version>3.2</commons.digester.version>
-        <commons.text.version>1.8</commons.text.version>
-        <eclipse-collections.version>9.2.0</eclipse-collections.version>
-        <spotbugs.parser.library.version>6.0.4</spotbugs.parser.library.version>
-        <j2html.version>1.4.0</j2html.version>
-        <slf4j.version>1.7.30</slf4j.version>
-        <violations-lib.version>1.118</violations-lib.version>
-        <json.version>20200518</json.version>
+    <module.name>${project.groupId}.analysis.model</module.name>
 
-        <argLine>-Djava.util.logging.config.file=logging.properties</argLine>
-    </properties>
+    <!-- Project Dependencies Configuration -->
+    <codingstyle.library.version>1.1.0</codingstyle.library.version>
+    <commons.lang.version>3.10</commons.lang.version>
+    <commons.io.version>2.7</commons.io.version>
+    <commons.digester.version>3.2</commons.digester.version>
+    <commons.text.version>1.8</commons.text.version>
+    <eclipse-collections.version>9.2.0</eclipse-collections.version>
+    <spotbugs.parser.library.version>6.0.4</spotbugs.parser.library.version>
+    <j2html.version>1.4.0</j2html.version>
+    <slf4j.version>1.7.30</slf4j.version>
+    <violations-lib.version>1.118</violations-lib.version>
+    <json.version>20200518</json.version>
 
-    <build>
-        <finalName>${project.artifactId}</finalName>
-        <plugins>
-            <plugin>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <mainClass>edu.hm.hafner.grading.AutoGradingAction</mainClass>
-                        </manifest>
-                    </archive>
-                    <descriptorRefs>
-                        <descriptorRef>jar-with-dependencies</descriptorRef>
-                    </descriptorRefs>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>make-assembly</id>
-                        <phase>package</phase> <!-- bind to the packaging phase -->
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
+    <argLine>-Djava.util.logging.config.file=logging.properties</argLine>
+  </properties>
+
+  <build>
+    <finalName>${project.artifactId}</finalName>
+    <plugins>
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass>edu.hm.hafner.grading.AutoGradingAction</mainClass>
+            </manifest>
+          </archive>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+        </configuration>
+        <executions>
+          <execution>
+            <id>make-assembly</id>
+            <phase>package</phase> <!-- bind to the packaging phase -->
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 
 
 </project>
