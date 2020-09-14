@@ -23,4 +23,4 @@ jobs:
       - name: Move XML files
         run: sh copy_files.sh
       - name: Get reports
-        run: java -jar target/github-actions-autograding-jar-with-dependencies.jar
+        run: java -jar target/autograding-github-action-jar-with-dependencies.jar

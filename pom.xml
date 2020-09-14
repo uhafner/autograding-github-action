@@ -12,7 +12,7 @@
   </parent>
 
   <groupId>edu.hm.hafner</groupId>
-  <artifactId>autograding-github-actions</artifactId>
+  <artifactId>autograding-github-action</artifactId>
   <version>0.1.0</version>
   <packaging>jar</packaging>
 

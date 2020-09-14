@@ -1,4 +1,4 @@
 #!/bin/sh
 
-java -jar /target/github-actions-autograding-jar-with-dependencies.jar
+java -jar /target/autograding-github-action-jar-with-dependencies.jar
 
