@@ -71,17 +71,21 @@ public class GitHubPullRequestWriter {
             return;
         }
 
-        String sha = System.getenv("GITHUB_SHA");
-        System.out.println(">>>> GITHUB_SHA: " + sha);
 
         String oAuthToken = System.getenv("TOKEN");
         if (oAuthToken == null) {
             System.out.println("No valid TOKEN found - skipping");
         }
 
+        String sha = System.getenv("GITHUB_SHA");
+        System.out.println(">>>> GITHUB_SHA: " + sha);
+
+        String prSha = System.getenv("PR_SHA");
+        System.out.println(">>>> PR_SHA: " + prSha);
+
         writeComment(comment, pullRequest, repositoryElements, oAuthToken);
 
-        writeChecks(comment, oAuthToken, repository, sha);
+        writeChecks(comment, oAuthToken, repository, StringUtils.defaultString(prSha, sha));
     }
 
     private void writeChecks(final String comment, final String token, final String repositoryUrl,
@@ -92,7 +96,7 @@ public class GitHubPullRequestWriter {
                     .createCheckRun("Autograding", sha)
                     .withStatus(Status.COMPLETED)
                     .withStartedAt(Date.from(Instant.now()))
-                    .withConclusion(Conclusion.NEUTRAL);
+                    .withConclusion(Conclusion.SUCCESS);
             check.add(new Output("Autograding results",
                     "Summary")
                     .withText(comment));
