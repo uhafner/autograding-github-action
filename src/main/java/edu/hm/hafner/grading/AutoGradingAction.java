@@ -5,6 +5,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
@@ -56,12 +57,15 @@ public class AutoGradingAction {
         score.addPitScores(new PitReportSupplier(pitReports));
 
         List<AnalysisScore> analysisReports = new ArrayList<>();
+        Report pmdReport = new PmdParser().parse(read("target/pmd.xml"));
         analysisReports.add(createAnalysisScore(analysisConfiguration, "PMD", "pmd",
-                new PmdParser().parse(read("target/pmd.xml"))));
+                pmdReport));
+        Report checkStyleReport = new CheckStyleParser().parse(read("target/checkstyle-result.xml"));
         analysisReports.add(createAnalysisScore(analysisConfiguration, "CheckStyle", "checkstyle",
-                new CheckStyleParser().parse(read("target/checkstyle-result.xml"))));
+                checkStyleReport));
+        Report spotBugsReport = new FindBugsParser(PriorityProperty.RANK).parse(read("target/spotbugsXml.xml"));
         analysisReports.add(createAnalysisScore(analysisConfiguration, "SpotBugs", "spotbugs",
-                new FindBugsParser(PriorityProperty.RANK).parse(read("target/spotbugsXml.xml"))));
+                spotBugsReport));
         score.addAnalysisScores(new AnalysisReportSupplier(analysisReports));
 
         JacocoReport coverageReport = new JacocoParser().parse(read("target/site/jacoco/jacoco.xml"));
@@ -72,6 +76,20 @@ public class AutoGradingAction {
         GitHubPullRequestWriter pullRequestWriter = new GitHubPullRequestWriter();
         pullRequestWriter.addComment(results.getHeader(), results.createSummary(score),
                 results.createDetails(score, testReports));
+    }
+
+    private static AnalysisScore createAnalysisScore(final AnalysisConfiguration configuration,
+            final String displayName,
+            final String id, final Report report) {
+        return new AnalysisScore.AnalysisScoreBuilder()
+                .withConfiguration(configuration)
+                .withDisplayName(displayName)
+                .withId(id)
+                .withTotalErrorsSize(report.getSizeOf(Severity.ERROR))
+                .withTotalHighSeveritySize(report.getSizeOf(Severity.WARNING_HIGH))
+                .withTotalNormalSeveritySize(report.getSizeOf(Severity.WARNING_NORMAL))
+                .withTotalLowSeveritySize(report.getSizeOf(Severity.WARNING_LOW))
+                .build();
     }
 
     private String getConfiguration() {
@@ -88,7 +106,7 @@ public class AutoGradingAction {
 
     private String readDefaultConfiguration() {
         try {
-            byte[] encoded = Files.readAllBytes(Paths.get("/default.conf"));
+            byte[] encoded = Files.readAllBytes(Paths.get("default.conf"));
 
             return new String(encoded, StandardCharsets.UTF_8);
         }
@@ -96,20 +114,6 @@ public class AutoGradingAction {
             System.out.println("Can't read configuration: default.conf");
             return StringUtils.EMPTY;
         }
-    }
-
-    private static AnalysisScore createAnalysisScore(final AnalysisConfiguration configuration,
-            final String displayName,
-            final String id, final Report report) {
-        return new AnalysisScore.AnalysisScoreBuilder()
-                .withConfiguration(configuration)
-                .withDisplayName(displayName)
-                .withId(id)
-                .withTotalErrorsSize(report.getSizeOf(Severity.ERROR))
-                .withTotalHighSeveritySize(report.getSizeOf(Severity.WARNING_HIGH))
-                .withTotalNormalSeveritySize(report.getSizeOf(Severity.WARNING_NORMAL))
-                .withTotalLowSeveritySize(report.getSizeOf(Severity.WARNING_LOW))
-                .build();
     }
 
     private static FileReaderFactory read(final String s) {

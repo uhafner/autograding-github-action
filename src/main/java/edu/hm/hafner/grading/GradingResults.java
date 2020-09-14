@@ -17,12 +17,13 @@ public class GradingResults {
      *         the aggregated score
      * @param testReports
      *         JUnit reports that many contain details about failed tests
+     * @param analysisReports
+     *         static analysis reports with warnings
      *
      * @return comment formatted with Markdown
      */
-    public String createDetails(final AggregatedScore score, final List<Report> testReports) {
+    public String createDetails(final AggregatedScore score, final List<Report> testReports, final List<Report> analysisReports) {
         StringBuilder comment = new StringBuilder();
-
         comment.append("# ").append(score.toString()).append("\n");
 
         TestsMarkdownCommentWriter testWriter = new TestsMarkdownCommentWriter();
@@ -35,7 +36,7 @@ public class GradingResults {
         comment.append(pitWriter.create(score));
 
         AnalysisMarkdownCommentWriter analysisMarkdown = new AnalysisMarkdownCommentWriter();
-        comment.append(analysisMarkdown.create(score));
+        comment.append(analysisMarkdown.create(score, analysisReports));
 
         return comment.toString();
     }
