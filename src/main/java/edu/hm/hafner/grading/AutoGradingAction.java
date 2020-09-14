@@ -27,6 +27,7 @@ import de.tobiasmichael.me.Util.JacocoReport;
  * @author Tobias Effner
  * @author Ullrich Hafner
  */
+@SuppressWarnings("checkstyle:ClassDataAbstractionCoupling")
 public class AutoGradingAction {
     /**
      * Public entry point, calls the action.
@@ -66,10 +67,11 @@ public class AutoGradingAction {
         JacocoReport coverageReport = new JacocoParser().parse(read("target/site/jacoco/jacoco.xml"));
         score.addCoverageScores(new CoverageReportSupplier(coverageReport));
 
-        Summary summary = new Summary();
+        GradingResults results = new GradingResults();
 
         GitHubPullRequestWriter pullRequestWriter = new GitHubPullRequestWriter();
-        pullRequestWriter.addComment(summary.create(score, testReports));
+        pullRequestWriter.addComment(results.getHeader(), results.createSummary(score),
+                results.createDetails(score, testReports));
     }
 
     private String getConfiguration() {

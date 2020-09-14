@@ -9,7 +9,7 @@ import edu.hm.hafner.analysis.Report;
  *
  * @author Tobias Effner
  */
-public class Summary {
+public class GradingResults {
     /**
      * Creates a summary comment in Markdown.
      *
@@ -20,7 +20,7 @@ public class Summary {
      *
      * @return comment formatted with Markdown
      */
-    public String create(final AggregatedScore score, final List<Report> testReports) {
+    public String createDetails(final AggregatedScore score, final List<Report> testReports) {
         StringBuilder comment = new StringBuilder();
 
         comment.append("# ").append(score.toString()).append("\n");
@@ -38,5 +38,33 @@ public class Summary {
         comment.append(analysisMarkdown.create(score));
 
         return comment.toString();
+    }
+
+    /**
+     * Returns the header for the GitHub check.
+     *
+     * @return the header
+     */
+    public String getHeader() {
+        return "Autograding results";
+    }
+
+    /**
+     * Returns the summary for the GitHub check.
+     *
+     * @param score
+     *         the aggreagated score
+     *
+     * @return the summary
+     */
+    public String createSummary(final AggregatedScore score) {
+        return String.format(
+                "Total score: %d/%d (unit tests: %d/%d, coverage: %d/%d, mutation coverage: %d/%d, analysis: %d/%d)",
+                score.getAchieved(), score.getTotal(),
+                score.getTestAchieved(), score.getTestConfiguration().getMaxScore(),
+                score.getCoverageAchieved(), score.getTestConfiguration().getMaxScore(),
+                score.getPitAchieved(), score.getPitConfiguration().getMaxScore(),
+                score.getAnalysisAchieved(), score.getAnalysisConfiguration().getMaxScore());
+
     }
 }
