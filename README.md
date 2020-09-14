@@ -1,14 +1,18 @@
 # Autograding GitHub Action 
 
-This GitHub action autogrades your Java project with a customizable configuration and gives feedback on the 
-pull request.
-
+This GitHub action autogrades projects based on a configurable set of metrics and gives feedback on the pull request. 
+Currently, you can select from the following metrics:
+- Test statistics (e.g., number of failed tests)
+- Code coverage (e.g., line coverage percentage)
+- PIT mutation coverage (e.g., missed mutations' percentage)
+- Static analysis (e.g., number of warnings)
+                   
 ### How to use?
 
 This is an example config you could use in your workflow.
 
 ```
-name: Java CI with Maven
+name: 'Autograding Pull Pequest'
 
 on:
   pull_request:
@@ -19,13 +23,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Java CI with Maven
-        uses: TobiMichael96/github-actions-autograding@0.1.0
+      - name: Build
+        run: mvn -V -ntp clean verify -Dmaven.test.failure.ignore=true --file pom.xml
+      - name: Autograding
+        uses: uhafner/autograding-github-action@v0.1.0
         with:
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
 #### Configuration
 
-- ``TOKEN: ThisIsSomeToken`` (mandatory) to change the token.
-- ``CONFIG: "{\"analysis\": { \"maxScore\": 100, \"errorImpact\": -5}}"`` to change the built in configuration.
+- ``TOKEN: ${{ secrets.GITHUB_TOKEN }}``: mandatory GitHub access token.
+- ``CONFIG: "{\"analysis\": { \"maxScore\": 100, \"errorImpact\": -5}}"``: optional configuration, see 
+[manual](https://github.com/uhafner/autograding-model) for details. If not provided a [default configuration](default.conf)
+will be used.
+

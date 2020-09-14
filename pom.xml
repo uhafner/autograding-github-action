@@ -7,23 +7,19 @@
   <parent>
     <groupId>edu.hm.hafner</groupId>
     <artifactId>codingstyle-pom</artifactId>
-    <version>1.1.1</version>
+    <version>1.5.1</version>
     <relativePath/>
   </parent>
 
   <groupId>edu.hm.hafner</groupId>
-  <artifactId>github-actions-autograding</artifactId>
-  <version>0.1</version>
+  <artifactId>autograding-github-actions</artifactId>
+  <version>0.1.0</version>
   <packaging>jar</packaging>
 
   <repositories>
     <repository>
       <id>repo.jenkins-ci.org</id>
       <url>https://repo.jenkins-ci.org/public/</url>
-    </repository>
-    <repository>
-      <id>incrementals.jenkins-ci.org</id>
-      <url>https://repo.jenkins-ci.org/incrementals/</url>
     </repository>
   </repositories>
 
@@ -48,30 +44,8 @@
   </dependencies>
 
   <properties>
-    <scmTag>HEAD</scmTag>
-    <revision>8.1.4</revision>
-    <changelist>-SNAPSHOT</changelist>
-    <source.encoding>UTF-8</source.encoding>
-    <project.build.sourceEncoding>${source.encoding}</project.build.sourceEncoding>
-    <java.version>1.8</java.version>
-    <incrementals-plugin.version>1.1</incrementals-plugin.version>
+    <module.name>${project.groupId}.autograding.ghaction</module.name>
 
-    <module.name>${project.groupId}.analysis.model</module.name>
-
-    <!-- Project Dependencies Configuration -->
-    <codingstyle.library.version>1.1.0</codingstyle.library.version>
-    <commons.lang.version>3.10</commons.lang.version>
-    <commons.io.version>2.7</commons.io.version>
-    <commons.digester.version>3.2</commons.digester.version>
-    <commons.text.version>1.8</commons.text.version>
-    <eclipse-collections.version>9.2.0</eclipse-collections.version>
-    <spotbugs.parser.library.version>6.0.4</spotbugs.parser.library.version>
-    <j2html.version>1.4.0</j2html.version>
-    <slf4j.version>1.7.30</slf4j.version>
-    <violations-lib.version>1.118</violations-lib.version>
-    <json.version>20200518</json.version>
-
-    <argLine>-Djava.util.logging.config.file=logging.properties</argLine>
   </properties>
 
   <build>
@@ -92,7 +66,7 @@
         <executions>
           <execution>
             <id>make-assembly</id>
-            <phase>package</phase> <!-- bind to the packaging phase -->
+            <phase>package</phase>
             <goals>
               <goal>single</goal>
             </goals>
@@ -101,6 +75,5 @@
       </plugin>
     </plugins>
   </build>
-
 
 </project>
