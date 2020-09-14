@@ -1,5 +1,9 @@
 package edu.hm.hafner.grading;
 
+import java.util.List;
+
+import edu.hm.hafner.analysis.Report;
+
 /**
  * Renders the static analysis results in Markdown.
  *
@@ -15,9 +19,11 @@ public class AnalysisMarkdownCommentWriter {
      * @param score
      *         the aggregated score
      *
+     * @param analysisReports
      * @return returns formatted string
      */
-    public String create(final AggregatedScore score) {
+    public String create(final AggregatedScore score,
+            final List<Report> analysisReports) {
         if (!score.getAnalysisConfiguration().isEnabled()) {
             return ANALYSIS_HEADER + "not configured :warning:\n";
         }
@@ -38,6 +44,12 @@ public class AnalysisMarkdownCommentWriter {
                 String.valueOf(analysisScore.getNormalSeveritySize()),
                 String.valueOf(analysisScore.getLowSeveritySize()),
                 String.valueOf(analysisScore.getTotalImpact())})));
+
+        if (score.getAnalysisScores().stream().map(AnalysisScore::getTotalSize).count() > 0) {
+            stringBuilder.append("### Warnings\n");
+            analysisReports.stream().flatMap(Report::stream).forEach(stringBuilder::append);
+        }
+
         return stringBuilder.toString();
     }
 
