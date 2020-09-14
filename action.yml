@@ -16,6 +16,7 @@ runs:
   env:
     CONFIG: ${{ inputs.CONFIG }}
     TOKEN: ${{ inputs.TOKEN }}
+    PR_SHA: ${{ github.event.pull_request.head.sha }}
 
 branding:
   icon: check
