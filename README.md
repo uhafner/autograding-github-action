@@ -1,7 +1,7 @@
-# github-actions-autograding
+# Autograding GitHub Action 
 
-This actions plugin will build your project with Maven, parse the generated reports, grade the results and give feedback on the pull request.
-
+This GitHub action autogrades your Java project with a customizable configuration and gives feedback on the 
+pull request.
 
 ### How to use?
 
@@ -28,5 +28,4 @@ jobs:
 #### Configuration
 
 - ``TOKEN: ThisIsSomeToken`` (mandatory) to change the token.
-- ``CONFIG: /path/to/config`` or ``CONFIG: "{\"analysis\": { \"maxScore\": 100, \"errorImpact\": -5}}"`` to provide a config, defaults to /default.conf.
-- ``DEBUG: true`` to enable debug.
+- ``CONFIG: "{\"analysis\": { \"maxScore\": 100, \"errorImpact\": -5}}"`` to change the built in configuration.

@@ -1,18 +1,14 @@
-name: Autograding Actions Plugin
-description:  Autograding Actions Plugin that evaluates code based on configurable quality critera.
+name: Autograding Action
+description:  Action that autogrades assignments based on configurable quality critera.
 
 
 inputs:
   CONFIG:
-    description: "Autograding config."
+    description: "Autograding configuration"
     required: false
-    default: "/default.conf"
   TOKEN:
-    description: "GitHub token."
+    description: "GitHub token"
     required: true
-  DEBUG:
-    description: "Enable debug if set."
-    required: false
 
 runs:
   using: 'docker'
@@ -20,7 +16,6 @@ runs:
   env:
     CONFIG: ${{ inputs.CONFIG }}
     TOKEN: ${{ inputs.TOKEN }}
-    DEBUG: ${{ inputs.DEBUG }}
 
 branding:
   icon: check
