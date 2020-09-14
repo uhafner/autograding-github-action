@@ -27,6 +27,7 @@ import de.tobiasmichael.me.Util.JacocoReport;
  * @author Tobias Effner
  * @author Ullrich Hafner
  */
+@SuppressWarnings("checkstyle:ClassDataAbstractionCoupling")
 public class AutoGradingAction {
     /**
      * Public entry point, calls the action.
@@ -72,6 +73,20 @@ public class AutoGradingAction {
         pullRequestWriter.addComment(summary.create(score, testReports));
     }
 
+    private static AnalysisScore createAnalysisScore(final AnalysisConfiguration configuration,
+            final String displayName,
+            final String id, final Report report) {
+        return new AnalysisScore.AnalysisScoreBuilder()
+                .withConfiguration(configuration)
+                .withDisplayName(displayName)
+                .withId(id)
+                .withTotalErrorsSize(report.getSizeOf(Severity.ERROR))
+                .withTotalHighSeveritySize(report.getSizeOf(Severity.WARNING_HIGH))
+                .withTotalNormalSeveritySize(report.getSizeOf(Severity.WARNING_NORMAL))
+                .withTotalLowSeveritySize(report.getSizeOf(Severity.WARNING_LOW))
+                .build();
+    }
+
     private String getConfiguration() {
         String configuration = System.getenv("CONFIG");
         if (StringUtils.isBlank(configuration)) {
@@ -86,7 +101,7 @@ public class AutoGradingAction {
 
     private String readDefaultConfiguration() {
         try {
-            byte[] encoded = Files.readAllBytes(Paths.get("/default.conf"));
+            byte[] encoded = Files.readAllBytes(Paths.get("default.conf"));
 
             return new String(encoded, StandardCharsets.UTF_8);
         }
@@ -94,20 +109,6 @@ public class AutoGradingAction {
             System.out.println("Can't read configuration: default.conf");
             return StringUtils.EMPTY;
         }
-    }
-
-    private static AnalysisScore createAnalysisScore(final AnalysisConfiguration configuration,
-            final String displayName,
-            final String id, final Report report) {
-        return new AnalysisScore.AnalysisScoreBuilder()
-                .withConfiguration(configuration)
-                .withDisplayName(displayName)
-                .withId(id)
-                .withTotalErrorsSize(report.getSizeOf(Severity.ERROR))
-                .withTotalHighSeveritySize(report.getSizeOf(Severity.WARNING_HIGH))
-                .withTotalNormalSeveritySize(report.getSizeOf(Severity.WARNING_NORMAL))
-                .withTotalLowSeveritySize(report.getSizeOf(Severity.WARNING_LOW))
-                .build();
     }
 
     private static FileReaderFactory read(final String s) {
