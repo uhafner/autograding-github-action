@@ -80,8 +80,8 @@ public class GitHubPullRequestWriter {
         String sha = System.getenv("GITHUB_SHA");
         System.out.println(">>>> GITHUB_SHA: " + sha);
 
-        String prSha = System.getenv("PR_SHA");
-        System.out.println(">>>> PR_SHA: " + prSha);
+        String prSha = System.getenv("HEAD_SHA");
+        System.out.println(">>>> HEAD_SHA: " + prSha);
 
         writeComment(comment, pullRequest, repositoryElements, oAuthToken);
 

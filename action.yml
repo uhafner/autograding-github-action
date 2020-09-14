@@ -15,7 +15,7 @@ runs:
   env:
     CONFIG: ${{ inputs.CONFIG }}
     TOKEN: ${{ inputs.TOKEN }}
-    REF: ${{ inputs.REF }}
+    HEAD_SHA: ${{ inputs.HEAD_SHA }}
 
 branding:
   icon: check
