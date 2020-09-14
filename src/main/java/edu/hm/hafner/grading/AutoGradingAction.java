@@ -75,7 +75,7 @@ public class AutoGradingAction {
 
         GitHubPullRequestWriter pullRequestWriter = new GitHubPullRequestWriter();
         pullRequestWriter.addComment(results.getHeader(), results.createSummary(score),
-                results.createDetails(score, testReports));
+                results.createDetails(score, testReports, Arrays.asList(pmdReport, checkStyleReport, spotBugsReport)));
     }
 
     private static AnalysisScore createAnalysisScore(final AnalysisConfiguration configuration,
