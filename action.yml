@@ -6,8 +6,11 @@ inputs:
     description: "Autograding configuration"
     required: false
   TOKEN:
-    description: "GitHub token"
+    description: "GitHub authentication token (GITHUB_TOKEN)"
     required: true
+  HEAD_SHA:
+    description: "SHA of the pull request head"
+    required: false
 
 runs:
   using: 'docker'
