@@ -106,7 +106,7 @@ public class AutoGradingAction {
 
     private String readDefaultConfiguration() {
         try {
-            byte[] encoded = Files.readAllBytes(Paths.get("default.conf"));
+            byte[] encoded = Files.readAllBytes(Paths.get("/default.conf"));
 
             return new String(encoded, StandardCharsets.UTF_8);
         }
