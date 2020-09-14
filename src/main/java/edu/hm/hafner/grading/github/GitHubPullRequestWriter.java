@@ -11,6 +11,7 @@ import org.kohsuke.github.GHCheckRun.Status;
 import org.kohsuke.github.GHCheckRunBuilder;
 import org.kohsuke.github.GHCheckRunBuilder.Output;
 import org.kohsuke.github.GitHub;
+import org.kohsuke.github.GitHubBuilder;
 
 import edu.hm.hafner.util.IntegerParser;
 
@@ -82,10 +83,10 @@ public class GitHubPullRequestWriter {
         writeChecks(comment, oAuthToken, repository, sha);
     }
 
-    private void writeChecks(final String comment, final String oAuthToken, final String repositoryUrl,
+    private void writeChecks(final String comment, final String token, final String repositoryUrl,
             final String sha) {
         try {
-            GitHub github = GitHub.connectUsingOAuth(oAuthToken);
+            GitHub github = new GitHubBuilder().withAppInstallationToken(token).build();
             GHCheckRunBuilder check = github.getRepository(repositoryUrl)
                     .createCheckRun("Autograding", sha)
                     .withStatus(Status.COMPLETED)
