@@ -41,6 +41,13 @@
       <artifactId>org.eclipse.egit.github.core</artifactId>
       <version>5.6.0.201912101111-r</version>
     </dependency>
+
+    <dependency>
+      <groupId>org.kohsuke</groupId>
+      <artifactId>github-api</artifactId>
+      <version>1.116</version>
+    </dependency>
+
   </dependencies>
 
   <properties>

@@ -29,11 +29,14 @@ jobs:
         uses: uhafner/autograding-github-action@v0.1.0
         with:
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HEAD_SHA: ${{github.event.pull_request.head.sha}}
 ```
 
 #### Configuration
 
 - ``TOKEN: ${{ secrets.GITHUB_TOKEN }}``: mandatory GitHub access token.
+- ``HEAD_SHA: ${{github.event.pull_request.head.sha}}``: optional SHA of the pull request head. If not set then 
+``GITHUB_SHA`` will be used.
 - ``CONFIG: "{\"analysis\": { \"maxScore\": 100, \"errorImpact\": -5}}"``: optional configuration, see 
 [manual](https://github.com/uhafner/autograding-model) for details. If not provided a [default configuration](default.conf)
 will be used.

@@ -71,11 +71,11 @@ public class AutoGradingAction {
         JacocoReport coverageReport = new JacocoParser().parse(read("target/site/jacoco/jacoco.xml"));
         score.addCoverageScores(new CoverageReportSupplier(coverageReport));
 
-        Summary summary = new Summary();
+        GradingResults results = new GradingResults();
 
         GitHubPullRequestWriter pullRequestWriter = new GitHubPullRequestWriter();
-        pullRequestWriter.addComment(summary.create(score, testReports,
-                Arrays.asList(pmdReport, checkStyleReport, spotBugsReport)));
+        pullRequestWriter.addComment(results.getHeader(), results.createSummary(score),
+                results.createDetails(score, testReports, Arrays.asList(pmdReport, checkStyleReport, spotBugsReport)));
     }
 
     private static AnalysisScore createAnalysisScore(final AnalysisConfiguration configuration,

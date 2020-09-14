@@ -1,7 +1,6 @@
 name: Autograding Action
 description:  Action that autogrades assignments based on configurable quality critera.
 
-
 inputs:
   CONFIG:
     description: "Autograding configuration"
@@ -16,6 +15,7 @@ runs:
   env:
     CONFIG: ${{ inputs.CONFIG }}
     TOKEN: ${{ inputs.TOKEN }}
+    HEAD_SHA: ${{ inputs.HEAD_SHA }}
 
 branding:
   icon: check
