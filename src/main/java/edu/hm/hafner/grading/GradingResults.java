@@ -54,7 +54,7 @@ public class GradingResults {
      * Returns the summary for the GitHub check.
      *
      * @param score
-     *         the aggreagated score
+     *         the aggregated score
      *
      * @return the summary
      */
