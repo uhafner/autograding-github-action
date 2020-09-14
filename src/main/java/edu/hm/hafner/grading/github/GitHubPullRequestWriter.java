@@ -6,6 +6,7 @@ import java.util.Date;
 
 import org.apache.commons.lang3.StringUtils;
 import org.eclipse.egit.github.core.service.IssueService;
+import org.kohsuke.github.GHCheckRun;
 import org.kohsuke.github.GHCheckRun.Conclusion;
 import org.kohsuke.github.GHCheckRun.Status;
 import org.kohsuke.github.GHCheckRunBuilder;
@@ -95,7 +96,9 @@ public class GitHubPullRequestWriter {
             check.add(new Output("Autograding results",
                     "Summary")
                     .withText(comment));
-            check.create();
+            GHCheckRun run = check.create();
+
+            System.out.println(run);
         }
         catch (IOException exception) {
             System.out.println(exception);
