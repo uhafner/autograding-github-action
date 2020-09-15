@@ -23,7 +23,7 @@ public class PitMarkdownCommentWriter {
         }
 
         StringBuilder comment = new StringBuilder();
-        if (score.getTestScores().stream().map(TestScore::getFailedSize).count() > 0) {
+        if (score.getTestScores().stream().map(TestScore::getFailedSize).mapToInt(Integer::intValue).sum() > 0) {
             comment.append(PIT_HEADER)
                     .append(0)
                     .append(" / ")
