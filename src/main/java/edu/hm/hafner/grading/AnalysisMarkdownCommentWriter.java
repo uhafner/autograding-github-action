@@ -18,8 +18,9 @@ public class AnalysisMarkdownCommentWriter {
      *
      * @param score
      *         the aggregated score
-     *
      * @param analysisReports
+     *         the static analysis reports
+     *
      * @return returns formatted string
      */
     public String create(final AggregatedScore score,
@@ -47,7 +48,9 @@ public class AnalysisMarkdownCommentWriter {
 
         if (score.getAnalysisScores().stream().map(AnalysisScore::getTotalSize).count() > 0) {
             stringBuilder.append("### Warnings\n");
-            analysisReports.stream().flatMap(Report::stream).forEach(issue -> stringBuilder.append("- ").append(issue).append("\n"));
+            analysisReports.stream()
+                    .flatMap(Report::stream)
+                    .forEach(issue -> stringBuilder.append("- ").append(issue).append("\n"));
         }
 
         return stringBuilder.toString();
