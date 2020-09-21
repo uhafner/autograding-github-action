@@ -26,16 +26,16 @@ public class GradingResults {
         StringBuilder comment = new StringBuilder();
         comment.append("# ").append(score.toString()).append("\n");
 
-        TestsMarkdownCommentWriter testWriter = new TestsMarkdownCommentWriter();
+        TestMarkdown testWriter = new TestMarkdown();
         comment.append(testWriter.create(score, testReports));
 
-        CoverageMarkdownCommentWriter coverageWriter = new CoverageMarkdownCommentWriter();
+        CoverageMarkdown coverageWriter = new CoverageMarkdown();
         comment.append(coverageWriter.create(score));
 
-        PitMarkdownCommentWriter pitWriter = new PitMarkdownCommentWriter();
+        PitMarkdown pitWriter = new PitMarkdown();
         comment.append(pitWriter.create(score));
 
-        AnalysisMarkdownCommentWriter analysisMarkdown = new AnalysisMarkdownCommentWriter();
+        AnalysisMarkdown analysisMarkdown = new AnalysisMarkdown();
         comment.append(analysisMarkdown.create(score, analysisReports));
 
         return comment.toString();
