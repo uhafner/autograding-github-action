@@ -42,6 +42,7 @@ public class GitHubPullRequestWriter {
      * @param analysisReports
      *         the static analysis reports
      */
+    @SuppressWarnings("deprecation")
     public void addComment(final String header, final String summary, final String comment,
             final List<Report> testReports, final List<Report> analysisReports) {
         String repository = System.getenv("GITHUB_REPOSITORY");
@@ -61,10 +62,13 @@ public class GitHubPullRequestWriter {
         String prSha = System.getenv("HEAD_SHA");
         System.out.println(">>>> HEAD_SHA: " + prSha);
 
+        String workspace = System.getenv("GITHUB_WORKSPACE");
+        System.out.println(">>>> GITHUB_WORKSPACE: " + workspace);
+
         try {
             GitHub github = new GitHubBuilder().withAppInstallationToken(oAuthToken).build();
             GHCheckRunBuilder check = github.getRepository(repository)
-                    .createCheckRun("Autograding", StringUtils.defaultString(prSha, sha))
+                    .createCheckRun("Autograding", StringUtils.defaultString(workspace, sha))
                     .withStatus(Status.COMPLETED)
                     .withStartedAt(Date.from(Instant.now()))
                     .withConclusion(Conclusion.SUCCESS);
