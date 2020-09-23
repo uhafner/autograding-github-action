@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.time.Instant;
 import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.regex.Pattern;
 
 import org.apache.commons.lang3.StringUtils;
 import org.kohsuke.github.GHCheckRun;
@@ -19,6 +19,7 @@ import org.kohsuke.github.GitHubBuilder;
 
 import edu.hm.hafner.analysis.FileNameResolver;
 import edu.hm.hafner.analysis.Issue;
+import edu.hm.hafner.analysis.IssueBuilder;
 import edu.hm.hafner.analysis.Report;
 
 /**
@@ -74,17 +75,14 @@ public class GitHubPullRequestWriter {
                     .withStartedAt(Date.from(Instant.now()))
                     .withConclusion(Conclusion.SUCCESS);
 
-            FileNameResolver fileNameResolver = new FileNameResolver();
-
-            Report issues = new Report();
-            issues.addAll(testReports.stream().flatMap(Report::stream).collect(Collectors.toList()));
-            issues.addAll(analysisReports.stream().flatMap(Report::stream).collect(Collectors.toList()));
-
-            fileNameResolver.run(issues, workspace, f -> false);
-            issues.getInfoMessages().stream().forEach(System.out::println);
-
+            Pattern prefix = Pattern.compile("^.*" + StringUtils.substringAfterLast(repository, '/') + "/");
+            System.out.println(">>>> Pattern: " + prefix.pattern());
+            
             Output output = new Output(header, summary).withText(comment);
-            issues.stream().map(this::createAnnotation).forEach(output::add);
+            analysisReports.stream()
+                    .flatMap(Report::stream)
+                    .map(issue -> createAnnotation(prefix, issue))
+                    .forEach(output::add);
 
             check.add(output);
             GHCheckRun run = check.create();
@@ -96,8 +94,9 @@ public class GitHubPullRequestWriter {
         }
     }
 
-    private Annotation createAnnotation(final Issue issue) {
-        Annotation annotation = new Annotation(issue.getFileName(), issue.getLineStart(), issue.getLineEnd(),
+    private Annotation createAnnotation(final Pattern prefix, final Issue issue) {
+        Annotation annotation = new Annotation(prefix.matcher(issue.getFileName()).replaceAll(""),
+                issue.getLineStart(), issue.getLineEnd(),
                 AnnotationLevel.WARNING, issue.getMessage()).withTitle(issue.getType());
         if (issue.getLineStart() == issue.getLineEnd()) {
             return annotation.withStartColumn(issue.getColumnStart()).withEndColumn(issue.getColumnEnd());
