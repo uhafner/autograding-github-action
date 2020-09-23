@@ -11,6 +11,9 @@ inputs:
   HEAD_SHA:
     description: "SHA of the pull request head"
     required: false
+  FILES_PREFIX:
+    description: "Prefix to remove from all paths so that files can be found in repository"
+    required: false
 
 runs:
   using: 'docker'
@@ -19,6 +22,7 @@ runs:
     CONFIG: ${{ inputs.CONFIG }}
     TOKEN: ${{ inputs.TOKEN }}
     HEAD_SHA: ${{ inputs.HEAD_SHA }}
+    FILES_PREFIX: ${{ inputs.FILES_PREFIX }}
 
 branding:
   icon: check
