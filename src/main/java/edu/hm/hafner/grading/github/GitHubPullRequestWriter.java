@@ -81,6 +81,7 @@ public class GitHubPullRequestWriter {
             issues.addAll(analysisReports.stream().flatMap(Report::stream).collect(Collectors.toList()));
 
             fileNameResolver.run(issues, workspace, f -> false);
+            issues.getInfoMessages().stream().forEach(System.out::println);
 
             Output output = new Output(header, summary).withText(comment);
             issues.stream().map(this::createAnnotation).forEach(output::add);
