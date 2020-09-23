@@ -69,7 +69,7 @@ public class GitHubPullRequestWriter {
         try {
             GitHub github = new GitHubBuilder().withAppInstallationToken(oAuthToken).build();
             GHCheckRunBuilder check = github.getRepository(repository)
-                    .createCheckRun("Autograding", StringUtils.defaultString(workspace, sha))
+                    .createCheckRun("Autograding", StringUtils.defaultString(prSha, sha))
                     .withStatus(Status.COMPLETED)
                     .withStartedAt(Date.from(Instant.now()))
                     .withConclusion(Conclusion.SUCCESS);
