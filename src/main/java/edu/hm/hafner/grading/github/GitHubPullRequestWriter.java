@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.time.Instant;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.StringUtils;
 import org.kohsuke.github.GHCheckRun;
@@ -16,9 +17,9 @@ import org.kohsuke.github.GHCheckRunBuilder.Output;
 import org.kohsuke.github.GitHub;
 import org.kohsuke.github.GitHubBuilder;
 
+import edu.hm.hafner.analysis.FileNameResolver;
 import edu.hm.hafner.analysis.Issue;
 import edu.hm.hafner.analysis.Report;
-import edu.hm.hafner.util.IntegerParser;
 
 /**
  * Writes a comment in a pull request.
@@ -72,9 +73,18 @@ public class GitHubPullRequestWriter {
                     .withStatus(Status.COMPLETED)
                     .withStartedAt(Date.from(Instant.now()))
                     .withConclusion(Conclusion.SUCCESS);
+
+            FileNameResolver fileNameResolver = new FileNameResolver();
+
+            Report issues = new Report();
+            issues.addAll(testReports.stream().flatMap(Report::stream).collect(Collectors.toList()));
+            issues.addAll(analysisReports.stream().flatMap(Report::stream).collect(Collectors.toList()));
+
+            fileNameResolver.run(issues, workspace, f -> false);
+
             Output output = new Output(header, summary).withText(comment);
-            testReports.stream().flatMap(Report::stream).map(this::createAnnotation).forEach(output::add);
-            analysisReports.stream().flatMap(Report::stream).map(this::createAnnotation).forEach(output::add);
+            issues.stream().map(this::createAnnotation).forEach(output::add);
+
             check.add(output);
             GHCheckRun run = check.create();
 
