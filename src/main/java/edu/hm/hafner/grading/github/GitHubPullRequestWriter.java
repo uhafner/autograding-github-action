@@ -67,6 +67,9 @@ public class GitHubPullRequestWriter {
         String workspace = System.getenv("GITHUB_WORKSPACE");
         System.out.println(">>>> GITHUB_WORKSPACE: " + workspace);
 
+        String filesPrefix = StringUtils.defaultString(System.getenv("FILES_PREFIX"));
+        System.out.println(">>>> FILES_PREFIX: " + filesPrefix);
+
         try {
             GitHub github = new GitHubBuilder().withAppInstallationToken(oAuthToken).build();
             GHCheckRunBuilder check = github.getRepository(repository)
@@ -75,7 +78,7 @@ public class GitHubPullRequestWriter {
                     .withStartedAt(Date.from(Instant.now()))
                     .withConclusion(Conclusion.SUCCESS);
 
-            Pattern prefix = Pattern.compile("^.*" + StringUtils.substringAfterLast(repository, '/') + "/");
+            Pattern prefix = Pattern.compile("^.*" + StringUtils.substringAfterLast(repository, '/') + "/" + filesPrefix);
             System.out.println(">>>> Pattern: " + prefix.pattern());
             
             Output output = new Output(header, summary).withText(comment);
