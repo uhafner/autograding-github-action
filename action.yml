@@ -17,7 +17,7 @@ inputs:
 
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: 'docker://uhafner/autograding-github-action'
   env:
     CONFIG: ${{ inputs.CONFIG }}
     TOKEN: ${{ inputs.TOKEN }}
