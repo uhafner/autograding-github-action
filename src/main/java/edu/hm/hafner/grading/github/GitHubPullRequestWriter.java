@@ -64,6 +64,9 @@ public class GitHubPullRequestWriter {
         String prSha = System.getenv("HEAD_SHA");
         System.out.println(">>>> HEAD_SHA: " + prSha);
 
+        String actualSha = StringUtils.defaultIfBlank(prSha, sha);
+        System.out.println(">>>> ACTUAL_SHA: " + actualSha);
+
         String workspace = System.getenv("GITHUB_WORKSPACE");
         System.out.println(">>>> GITHUB_WORKSPACE: " + workspace);
 
@@ -73,7 +76,7 @@ public class GitHubPullRequestWriter {
         try {
             GitHub github = new GitHubBuilder().withAppInstallationToken(oAuthToken).build();
             GHCheckRunBuilder check = github.getRepository(repository)
-                    .createCheckRun("Autograding", StringUtils.defaultString(prSha, sha))
+                    .createCheckRun("Autograding", actualSha)
                     .withStatus(Status.COMPLETED)
                     .withStartedAt(Date.from(Instant.now()))
                     .withConclusion(Conclusion.SUCCESS);
