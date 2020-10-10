@@ -22,5 +22,8 @@ jobs:
         run: mvn package
       - name: Move XML files
         run: sh copy_files.sh
-      - name: Get reports
-        run: java -jar target/autograding-github-action-jar-with-dependencies.jar
+      - name: Autograding
+        uses: uhafner/autograding-github-action@v0.7.1
+        with:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HEAD_SHA: ${{github.event.pull_request.head.sha}}
