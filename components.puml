@@ -1,19 +1,9 @@
 @startuml
 
-package "Actions Plugin" {
-[actions-plugin]
-}
+skinparam componentStyle uml2
 
-node "External-Dependencies" {
-[analysis-model]
-
-[autograding-model]
-
-[org.eclipse.egit.github.core]
-}
-
-[actions-plugin] --> [analysis-model]
-[actions-plugin] --> [autograding-model]
-[actions-plugin] --> [org.eclipse.egit.github.core]
+[actions-plugin] ..> [analysis-model]
+[actions-plugin] ..> [autograding-model]
+[actions-plugin] ..> [github-api]
 
 @enduml

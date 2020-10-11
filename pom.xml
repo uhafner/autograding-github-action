@@ -27,7 +27,7 @@
     <dependency>
       <groupId>edu.hm.hafner</groupId>
       <artifactId>autograding-model</artifactId>
-      <version>0.5.0</version>
+      <version>0.7.1</version>
     </dependency>
 
     <dependency>
@@ -53,26 +53,15 @@
     <finalName>${project.artifactId}</finalName>
     <plugins>
       <plugin>
-        <artifactId>maven-assembly-plugin</artifactId>
+        <groupId>com.google.cloud.tools</groupId>
+        <artifactId>jib-maven-plugin</artifactId>
+        <version>2.5.2</version>
         <configuration>
-          <archive>
-            <manifest>
-              <mainClass>edu.hm.hafner.grading.AutoGradingAction</mainClass>
-            </manifest>
-          </archive>
-          <descriptorRefs>
-            <descriptorRef>jar-with-dependencies</descriptorRef>
-          </descriptorRefs>
+          <to>
+            <image>docker.io/uhafner/autograding-github-action</image>
+          </to>
+          <from><image>maven:3.6.3-openjdk-8</image></from>
         </configuration>
-        <executions>
-          <execution>
-            <id>make-assembly</id>
-            <phase>package</phase>
-            <goals>
-              <goal>single</goal>
-            </goals>
-          </execution>
-        </executions>
       </plugin>
     </plugins>
   </build>

@@ -30,6 +30,9 @@ import de.tobiasmichael.me.Util.JacocoReport;
  */
 @SuppressWarnings("checkstyle:ClassDataAbstractionCoupling")
 public class AutoGradingAction {
+
+    private static final String JACOCO_RESULTS = "target/site/jacoco/jacoco.xml";
+
     /**
      * Public entry point, calls the action.
      *
@@ -68,8 +71,13 @@ public class AutoGradingAction {
                 spotBugsReport));
         score.addAnalysisScores(new AnalysisReportSupplier(analysisReports));
 
-        JacocoReport coverageReport = new JacocoParser().parse(read("target/site/jacoco/jacoco.xml"));
-        score.addCoverageScores(new CoverageReportSupplier(coverageReport));
+        if (Files.isReadable(Paths.get(JACOCO_RESULTS))) {
+            JacocoReport coverageReport = new JacocoParser().parse(read(JACOCO_RESULTS));
+            score.addCoverageScores(new CoverageReportSupplier(coverageReport));
+        }
+        else {
+            System.out.println("No JaCoCo coverage result files found!");
+        }
 
         GradingResults results = new GradingResults();
 
