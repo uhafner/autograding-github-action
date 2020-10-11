@@ -1,0 +1,47 @@
+name: Continuous Deployment
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build and deploy
+        run: mvn -ntp clean verify jib:build
+      - name: Test setup
+        run: sh copy_files.sh
+      - name: Run Autograding
+        uses: uhafner/autograding-github-action@v0.7.1
+        with:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HEAD_SHA: ${{github.event.pull_request.head.sha}}
+          CONFIG: >
+            {
+              "analysis": {
+                "maxScore": 100,
+                "errorImpact": -5,
+                "highImpact": -3,
+                "normalImpact": -2,
+                "lowImpact": -1
+              },
+              "tests": {
+                "maxScore": 100,
+                "passedImpact": 0,
+                "failureImpact": -5,
+                "skippedImpact": -1
+              },
+              "coverage": {
+                "maxScore": 100,
+                "coveredPercentageImpact": 0,
+                "missedPercentageImpact": -1
+              },
+              "pit": {
+                "maxScore": 100,
+                "detectedImpact": 0,
+                "undetectedImpact": 0,
+                "detectedPercentageImpact": 0,
+                "undetectedPercentageImpact": -1
+              }
+            }
