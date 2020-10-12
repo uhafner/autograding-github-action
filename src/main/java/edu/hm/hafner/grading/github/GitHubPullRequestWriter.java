@@ -76,14 +76,12 @@ public class GitHubPullRequestWriter {
         try {
             GitHub github = new GitHubBuilder().withAppInstallationToken(oAuthToken).build();
             GHCheckRunBuilder check = github.getRepository(repository)
-                    .createCheckRun("Autograding", actualSha)
+                    .createCheckRun("Autograding results", actualSha)
                     .withStatus(Status.COMPLETED)
                     .withStartedAt(Date.from(Instant.now()))
                     .withConclusion(Conclusion.SUCCESS);
 
             Pattern prefix = Pattern.compile("^.*" + StringUtils.substringAfterLast(repository, '/') + "/" + filesPrefix);
-            System.out.println(">>>> Pattern: " + prefix.pattern());
-            
             Output output = new Output(header, summary).withText(comment);
             analysisReports.stream()
                     .flatMap(Report::stream)
@@ -91,9 +89,7 @@ public class GitHubPullRequestWriter {
                     .forEach(output::add);
 
             check.add(output);
-            GHCheckRun run = check.create();
-
-            System.out.println(run);
+            check.create();
         }
         catch (IOException exception) {
             System.out.println("Could not create check due to " + exception);
