@@ -12,6 +12,8 @@ import edu.hm.hafner.analysis.parser.violations.JUnitAdapter;
  * @author Ullrich Hafner
  */
 public class TestReportSupplier extends TestSupplier {
+    private static final FileNameRenderer RENDERER = new FileNameRenderer();
+
     private final List<Report> testReports;
 
     /**
@@ -34,7 +36,7 @@ public class TestReportSupplier extends TestSupplier {
     private TestScore createTestScore(final TestConfiguration configuration, final Report report) {
         return new TestScore.TestScoreBuilder()
                 .withConfiguration(configuration)
-                .withDisplayName("JUnit")
+                .withDisplayName(RENDERER.getFileName(report, "JUnit"))
                 .withTotalSize(report.getCounter(JUnitAdapter.TOTAL_TESTS))
                 .withFailedSize(report.getCounter(JUnitAdapter.FAILED_TESTS))
                 .build();

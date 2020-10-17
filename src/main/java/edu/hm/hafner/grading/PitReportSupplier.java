@@ -12,6 +12,8 @@ import edu.hm.hafner.analysis.parser.violations.PitAdapter;
  * @author Ullrich Hafner
  */
 public class PitReportSupplier extends PitSupplier {
+    private static final FileNameRenderer RENDERER = new FileNameRenderer();
+
     private final List<Report> pitReports;
 
     /**
@@ -35,7 +37,7 @@ public class PitReportSupplier extends PitSupplier {
     private PitScore createPitScore(final PitConfiguration configuration, final Report report) {
         return new PitScore.PitScoreBuilder()
                 .withConfiguration(configuration)
-                .withDisplayName("PIT")
+                .withDisplayName(RENDERER.getFileName(report, "PIT"))
                 .withTotalMutations(report.getCounter(PitAdapter.TOTAL_MUTATIONS))
                 .withUndetectedMutations(report.getCounter(PitAdapter.SURVIVED_MUTATIONS))
                 .build();

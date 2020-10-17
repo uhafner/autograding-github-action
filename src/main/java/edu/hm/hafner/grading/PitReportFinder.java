@@ -46,7 +46,7 @@ public class PitReportFinder extends ReportFinder {
         PitAdapter parser = new PitAdapter();
         return reportFiles.stream()
                 .map(FileReaderFactory::new)
-                .map(parser::parse)
+                .map(parser::parseFile)
                 .collect(Collectors.toList());
     }
 }

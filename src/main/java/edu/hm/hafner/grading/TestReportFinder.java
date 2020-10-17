@@ -36,7 +36,7 @@ public class TestReportFinder extends ReportFinder {
         JUnitAdapter parser = new JUnitAdapter();
         return reportFiles.stream()
                 .map(FileReaderFactory::new)
-                .map(parser::parse)
+                .map(parser::parseFile)
                 .collect(Collectors.toList());
     }
 }
