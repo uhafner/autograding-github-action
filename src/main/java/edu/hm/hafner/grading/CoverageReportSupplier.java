@@ -6,14 +6,14 @@ import java.util.List;
 import de.tobiasmichael.me.Util.JacocoReport;
 
 /**
- * FIXME: comment class.
+ * Provides code coverage scores by converting corresponding {@link JacocoReport} instances.
  *
  * @author Ullrich Hafner
  */
-public class CoverageReportSupplier extends CoverageSupplier {
+class CoverageReportSupplier extends CoverageSupplier {
     private final JacocoReport coverageReport;
 
-    public CoverageReportSupplier(final JacocoReport coverageReport) {
+    CoverageReportSupplier(final JacocoReport coverageReport) {
         this.coverageReport = coverageReport;
     }
 

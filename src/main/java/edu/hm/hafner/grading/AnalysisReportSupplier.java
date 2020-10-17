@@ -11,16 +11,10 @@ import edu.hm.hafner.analysis.parser.violations.PitAdapter;
  *
  * @author Ullrich Hafner
  */
-public class AnalysisReportSupplier extends AnalysisSupplier {
+class AnalysisReportSupplier extends AnalysisSupplier {
     private final List<AnalysisScore> analysisReports;
 
-    /**
-     * Creates a new instance of {@link AnalysisReportSupplier}.
-     *
-     * @param analysisReports
-     *         the static analysis reports
-     */
-    public AnalysisReportSupplier(final List<AnalysisScore> analysisReports) {
+    AnalysisReportSupplier(final List<AnalysisScore> analysisReports) {
         this.analysisReports = analysisReports;
     }
 

@@ -11,18 +11,12 @@ import edu.hm.hafner.analysis.parser.violations.PitAdapter;
  *
  * @author Ullrich Hafner
  */
-public class PitReportSupplier extends PitSupplier {
+class PitReportSupplier extends PitSupplier {
     private static final FileNameRenderer RENDERER = new FileNameRenderer();
 
     private final List<Report> pitReports;
 
-    /**
-     * Creates a new instance of {@link PitReportSupplier}.
-     *
-     * @param pitReports
-     *         the PIT mutation reports
-     */
-    public PitReportSupplier(final List<Report> pitReports) {
+    PitReportSupplier(final List<Report> pitReports) {
         this.pitReports = pitReports;
     }
 

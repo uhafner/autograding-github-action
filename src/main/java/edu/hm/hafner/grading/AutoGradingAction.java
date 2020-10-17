@@ -30,7 +30,6 @@ import de.tobiasmichael.me.Util.JacocoReport;
  */
 @SuppressWarnings("checkstyle:ClassDataAbstractionCoupling")
 public class AutoGradingAction {
-
     private static final String JACOCO_RESULTS = "target/site/jacoco/jacoco.xml";
 
     /**
@@ -60,12 +59,12 @@ public class AutoGradingAction {
         score.addPitScores(new PitReportSupplier(pitReports));
 
         List<AnalysisScore> analysisReports = new ArrayList<>();
-        Report pmdReport = new PmdParser().parse(read("target/pmd.xml"));
-        analysisReports.add(createAnalysisScore(analysisConfiguration, "PMD", "pmd",
-                pmdReport));
         Report checkStyleReport = new CheckStyleParser().parse(read("target/checkstyle-result.xml"));
         analysisReports.add(createAnalysisScore(analysisConfiguration, "CheckStyle", "checkstyle",
                 checkStyleReport));
+        Report pmdReport = new PmdParser().parse(read("target/pmd.xml"));
+        analysisReports.add(createAnalysisScore(analysisConfiguration, "PMD", "pmd",
+                pmdReport));
         Report spotBugsReport = new FindBugsParser(PriorityProperty.RANK).parse(read("target/spotbugsXml.xml"));
         analysisReports.add(createAnalysisScore(analysisConfiguration, "SpotBugs", "spotbugs",
                 spotBugsReport));

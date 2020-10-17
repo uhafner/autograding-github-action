@@ -1,30 +1,18 @@
 package edu.hm.hafner.grading;
 
-import java.io.IOException;
-import java.nio.file.FileSystems;
-import java.nio.file.FileVisitResult;
-import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.PathMatcher;
-import java.nio.file.Paths;
-import java.nio.file.SimpleFileVisitor;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import edu.hm.hafner.analysis.FileReaderFactory;
 import edu.hm.hafner.analysis.Report;
-import edu.hm.hafner.analysis.parser.violations.JUnitAdapter;
 import edu.hm.hafner.analysis.parser.violations.PitAdapter;
 
 /**
- * Finds JUnit test reports in the file system.
- *
- * @author Ullrich Hafner
+ * Provides PIT mutation coverage scores by converting corresponding {@link Report} instances.
  */
-public class PitReportFinder extends ReportFinder {
+class PitReportFinder extends ReportFinder {
     private static final String PIT_REPORT_PATTERN = "target/pit-reports/";
 
     /**
