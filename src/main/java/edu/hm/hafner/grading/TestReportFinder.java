@@ -14,7 +14,7 @@ import edu.hm.hafner.analysis.parser.violations.JUnitAdapter;
  *
  * @author Ullrich Hafner
  */
-public class TestReportFinder extends ReportFinder {
+class TestReportFinder extends ReportFinder {
     private static final String SUREFIRE_REPORT_PATTERN = "target/surefire-reports/";
 
     /**
@@ -30,13 +30,14 @@ public class TestReportFinder extends ReportFinder {
             return Collections.emptyList();
         }
 
+        Collections.sort(reportFiles);
         System.out.println("Reading test results: ");
         System.out.println(reportFiles);
 
         JUnitAdapter parser = new JUnitAdapter();
         return reportFiles.stream()
                 .map(FileReaderFactory::new)
-                .map(parser::parse)
+                .map(parser::parseFile)
                 .collect(Collectors.toList());
     }
 }

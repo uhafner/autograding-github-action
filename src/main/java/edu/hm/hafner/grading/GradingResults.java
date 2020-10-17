@@ -9,7 +9,7 @@ import edu.hm.hafner.analysis.Report;
  *
  * @author Tobias Effner
  */
-public class GradingResults {
+class GradingResults {
     /**
      * Creates a summary comment in Markdown.
      *
