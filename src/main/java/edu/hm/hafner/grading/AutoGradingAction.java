@@ -78,11 +78,11 @@ public class AutoGradingAction {
             System.out.println("No JaCoCo coverage result files found!");
         }
 
-        GradingResults results = new GradingResults();
+        GradingReport results = new GradingReport();
 
         GitHubPullRequestWriter pullRequestWriter = new GitHubPullRequestWriter();
-        pullRequestWriter.addComment(results.getHeader(), results.createSummary(score),
-                results.createDetails(score, testReports, Arrays.asList(pmdReport, checkStyleReport, spotBugsReport)),
+        pullRequestWriter.addComment(results.getHeader(), results.getSummary(score),
+                results.getDetails(score, testReports, Arrays.asList(pmdReport, checkStyleReport, spotBugsReport)),
                 testReports, Arrays.asList(pmdReport, checkStyleReport, spotBugsReport));
     }
 
