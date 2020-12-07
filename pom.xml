@@ -53,7 +53,7 @@
   <properties>
     <module.name>${project.groupId}.autograding.ghaction</module.name>
 
-    <jib-maven-plugin.version>2.6.0</jib-maven-plugin.version>
+    <jib-maven-plugin.version>2.7.0</jib-maven-plugin.version>
   </properties>
 
   <build>
