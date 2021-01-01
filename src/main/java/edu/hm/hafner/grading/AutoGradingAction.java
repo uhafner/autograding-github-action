@@ -82,7 +82,7 @@ public class AutoGradingAction {
 
         GitHubPullRequestWriter pullRequestWriter = new GitHubPullRequestWriter();
         pullRequestWriter.addComment(results.getHeader(), results.getSummary(score),
-                results.getDetails(score, testReports, Arrays.asList(pmdReport, checkStyleReport, spotBugsReport)),
+                results.getDetails(score, testReports),
                 testReports, Arrays.asList(pmdReport, checkStyleReport, spotBugsReport));
     }
 
