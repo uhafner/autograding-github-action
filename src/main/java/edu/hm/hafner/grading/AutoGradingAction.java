@@ -11,6 +11,7 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 
 import edu.hm.hafner.analysis.FileReaderFactory;
+import edu.hm.hafner.analysis.IssueParser;
 import edu.hm.hafner.analysis.Report;
 import edu.hm.hafner.analysis.Report.IssueFilterBuilder;
 import edu.hm.hafner.analysis.Severity;
@@ -65,17 +66,17 @@ public class AutoGradingAction {
 
         List<AnalysisScore> analysisReports = new ArrayList<>();
 
-        Report checkStyleReport = new CheckStyleParser().parse(read("target/checkstyle-result.xml"));
+        Report checkStyleReport = parse(configuration, new CheckStyleParser(), "target/checkstyle-result.xml");
         analysisReports.add(createAnalysisScore(analysisConfiguration, "CheckStyle", "checkstyle",
-                filterAnalysisReport(checkStyleReport, configuration.getAnalysisPattern())));
+                checkStyleReport));
 
-        Report pmdReport = new PmdParser().parse(read("target/pmd.xml"));
+        Report pmdReport = parse(configuration, new PmdParser(), "target/pmd.xml");
         analysisReports.add(createAnalysisScore(analysisConfiguration, "PMD", "pmd",
-                filterAnalysisReport(pmdReport, configuration.getAnalysisPattern())));
+                pmdReport));
 
-        Report spotBugsReport = new FindBugsParser(PriorityProperty.RANK).parse(read("target/spotbugsXml.xml"));
+        Report spotBugsReport = parse(configuration, new FindBugsParser(PriorityProperty.RANK), "target/spotbugsXml.xml");
         analysisReports.add(createAnalysisScore(analysisConfiguration, "SpotBugs", "spotbugs",
-                filterAnalysisReport(spotBugsReport, configuration.getAnalysisPattern())));
+                spotBugsReport));
 
         score.addAnalysisScores(new AnalysisReportSupplier(analysisReports));
 
@@ -93,6 +94,11 @@ public class AutoGradingAction {
         pullRequestWriter.addComment(getChecksName(), results.getHeader(), results.getSummary(score),
                 results.getDetails(score, testReports),
                 Arrays.asList(pmdReport, checkStyleReport, spotBugsReport));
+    }
+
+    private Report parse(final GradingConfiguration configuration,
+            final IssueParser parser, final String filePattern) {
+        return filterAnalysisReport(parser.parse(read(filePattern)), configuration.getAnalysisPattern());
     }
 
     private Report filterAnalysisReport(final Report checkStyleReport, final String analysisPattern) {
@@ -116,7 +122,7 @@ public class AutoGradingAction {
     }
 
     private String getChecksName() {
-        return StringUtils.defaultString(System.getenv("CHECKS_NAME"), "Autograding results");
+        return StringUtils.defaultIfBlank(System.getenv("CHECKS_NAME"), "Autograding results");
     }
 
     private String getConfiguration() {
