@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 import org.apache.commons.lang3.StringUtils;
-import org.kohsuke.github.GHCheckRun;
 import org.kohsuke.github.GHCheckRun.AnnotationLevel;
 import org.kohsuke.github.GHCheckRun.Conclusion;
 import org.kohsuke.github.GHCheckRun.Status;
@@ -17,9 +16,7 @@ import org.kohsuke.github.GHCheckRunBuilder.Output;
 import org.kohsuke.github.GitHub;
 import org.kohsuke.github.GitHubBuilder;
 
-import edu.hm.hafner.analysis.FileNameResolver;
 import edu.hm.hafner.analysis.Issue;
-import edu.hm.hafner.analysis.IssueBuilder;
 import edu.hm.hafner.analysis.Report;
 
 /**
@@ -33,20 +30,20 @@ public class GitHubPullRequestWriter {
      * Writes the specified comment as GitHub checks result. Requires that the environment variables {@code HEAD_SHA},
      * {@code GITHUB_SHA}, {@code GITHUB_REPOSITORY}, and {@code TOKEN} are correctly set.
      *
+     * @param name
+     *         the name of the checks result
      * @param header
      *         the header of the check
      * @param summary
      *         the summary of the check
      * @param comment
      *         the details of the check (supports Markdown)
-     * @param testReports
-     *         JUnit test reports
      * @param analysisReports
      *         the static analysis reports
      */
     @SuppressWarnings("deprecation")
-    public void addComment(final String header, final String summary, final String comment,
-            final List<Report> testReports, final List<Report> analysisReports) {
+    public void addComment(final String name, final String header, final String summary, final String comment,
+            final List<Report> analysisReports) {
         String repository = System.getenv("GITHUB_REPOSITORY");
         if (repository == null) {
             System.out.println("No GITHUB_REPOSITORY defined - skipping");
@@ -76,12 +73,13 @@ public class GitHubPullRequestWriter {
         try {
             GitHub github = new GitHubBuilder().withAppInstallationToken(oAuthToken).build();
             GHCheckRunBuilder check = github.getRepository(repository)
-                    .createCheckRun("Autograding results", actualSha)
+                    .createCheckRun(name, actualSha)
                     .withStatus(Status.COMPLETED)
                     .withStartedAt(Date.from(Instant.now()))
                     .withConclusion(Conclusion.SUCCESS);
 
-            Pattern prefix = Pattern.compile("^.*" + StringUtils.substringAfterLast(repository, '/') + "/" + filesPrefix);
+            Pattern prefix = Pattern.compile(
+                    "^.*" + StringUtils.substringAfterLast(repository, '/') + "/" + filesPrefix);
             Output output = new Output(header, summary).withText(comment);
             analysisReports.stream()
                     .flatMap(Report::stream)
