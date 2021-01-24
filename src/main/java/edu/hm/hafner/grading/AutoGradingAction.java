@@ -12,6 +12,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import edu.hm.hafner.analysis.FileReaderFactory;
 import edu.hm.hafner.analysis.Report;
+import edu.hm.hafner.analysis.Report.IssueFilterBuilder;
 import edu.hm.hafner.analysis.Severity;
 import edu.hm.hafner.analysis.parser.FindBugsParser;
 import edu.hm.hafner.analysis.parser.FindBugsParser.PriorityProperty;
@@ -43,31 +44,39 @@ public class AutoGradingAction {
     }
 
     void run() {
-        AggregatedScore score = new AggregatedScore(getConfiguration());
+        String jsonConfiguration = getConfiguration();
+        AggregatedScore score = new AggregatedScore(jsonConfiguration);
 
         JacksonFacade jackson = new JacksonFacade();
+
         System.out.println("Test Configuration: " + jackson.toJson(score.getTestConfiguration()));
         System.out.println("Code Coverage Configuration: " + jackson.toJson(score.getCoverageConfiguration()));
         System.out.println("PIT Mutation Coverage Configuration: " + jackson.toJson(score.getPitConfiguration()));
         AnalysisConfiguration analysisConfiguration = score.getAnalysisConfiguration();
         System.out.println("Static Analysis Configuration: " + jackson.toJson(analysisConfiguration));
 
-        List<Report> testReports = new TestReportFinder().find();
+        GradingConfiguration configuration = new GradingConfiguration(jsonConfiguration);
+        List<Report> testReports = new TestReportFinder().find(configuration.getTestPattern());
+
         score.addTestScores(new TestReportSupplier(testReports));
 
         List<Report> pitReports = new PitReportFinder().find();
         score.addPitScores(new PitReportSupplier(pitReports));
 
         List<AnalysisScore> analysisReports = new ArrayList<>();
+
         Report checkStyleReport = new CheckStyleParser().parse(read("target/checkstyle-result.xml"));
         analysisReports.add(createAnalysisScore(analysisConfiguration, "CheckStyle", "checkstyle",
-                checkStyleReport));
+                filterAnalysisReport(checkStyleReport, configuration.getAnalysisPattern())));
+
         Report pmdReport = new PmdParser().parse(read("target/pmd.xml"));
         analysisReports.add(createAnalysisScore(analysisConfiguration, "PMD", "pmd",
-                pmdReport));
+                filterAnalysisReport(pmdReport, configuration.getAnalysisPattern())));
+
         Report spotBugsReport = new FindBugsParser(PriorityProperty.RANK).parse(read("target/spotbugsXml.xml"));
         analysisReports.add(createAnalysisScore(analysisConfiguration, "SpotBugs", "spotbugs",
-                spotBugsReport));
+                filterAnalysisReport(spotBugsReport, configuration.getAnalysisPattern())));
+
         score.addAnalysisScores(new AnalysisReportSupplier(analysisReports));
 
         if (Files.isReadable(Paths.get(JACOCO_RESULTS))) {
@@ -81,9 +90,15 @@ public class AutoGradingAction {
         GradingReport results = new GradingReport();
 
         GitHubPullRequestWriter pullRequestWriter = new GitHubPullRequestWriter();
-        pullRequestWriter.addComment(results.getHeader(), results.getSummary(score),
+        pullRequestWriter.addComment(getChecksName(), results.getHeader(), results.getSummary(score),
                 results.getDetails(score, testReports),
-                testReports, Arrays.asList(pmdReport, checkStyleReport, spotBugsReport));
+                Arrays.asList(pmdReport, checkStyleReport, spotBugsReport));
+    }
+
+    private Report filterAnalysisReport(final Report checkStyleReport, final String analysisPattern) {
+        IssueFilterBuilder builder = new IssueFilterBuilder();
+        builder.setIncludeFileNameFilter(analysisPattern);
+        return checkStyleReport.filter(builder.build());
     }
 
     private static AnalysisScore createAnalysisScore(final AnalysisConfiguration configuration,
@@ -98,6 +113,10 @@ public class AutoGradingAction {
                 .withTotalNormalSeveritySize(report.getSizeOf(Severity.WARNING_NORMAL))
                 .withTotalLowSeveritySize(report.getSizeOf(Severity.WARNING_LOW))
                 .build();
+    }
+
+    private String getChecksName() {
+        return StringUtils.defaultString(System.getenv("CHECKS_NAME"), "Autograding results");
     }
 
     private String getConfiguration() {
