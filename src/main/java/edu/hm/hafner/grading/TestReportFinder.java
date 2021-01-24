@@ -1,5 +1,6 @@
 package edu.hm.hafner.grading;
 
+import java.nio.file.FileSystem;
 import java.nio.file.Path;
 import java.util.Collections;
 import java.util.List;
@@ -15,17 +16,19 @@ import edu.hm.hafner.analysis.parser.violations.JUnitAdapter;
  * @author Ullrich Hafner
  */
 class TestReportFinder extends ReportFinder {
-    private static final String SUREFIRE_REPORT_PATTERN = "target/surefire-reports/";
-
     /**
-     * Finds all JUnit result files of the pattern {@link #SUREFIRE_REPORT_PATTERN}.
+     * Finds and parses all JUnit result files that match the specified pattern.
+     *
+     * @param pattern
+     *         the file name pattern
      *
      * @return the JUnit result files
+     * @see FileSystem#getPathMatcher(String)
      */
-    public List<Report> find() {
-        List<Path> reportFiles = getPaths(SUREFIRE_REPORT_PATTERN);
+    public List<Report> find(final String pattern) {
+        List<Path> reportFiles = find(".", pattern);
         if (reportFiles.size() == 0) {
-            System.out.println("No JUnit result files found!");
+            System.out.format("[ERROR] No JUnit result files found for pattern '%s'%n", pattern);
 
             return Collections.emptyList();
         }

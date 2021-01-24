@@ -33,13 +33,13 @@
     <dependency>
       <groupId>edu.hm.hafner</groupId>
       <artifactId>analysis-model</artifactId>
-      <version>9.4.0</version>
+      <version>9.6.0</version>
     </dependency>
 
     <dependency>
       <groupId>org.kohsuke</groupId>
       <artifactId>github-api</artifactId>
-      <version>1.117</version>
+      <version>1.122</version>
     </dependency>
 
     <dependency>
@@ -53,7 +53,7 @@
   <properties>
     <module.name>${project.groupId}.autograding.ghaction</module.name>
 
-    <jib-maven-plugin.version>2.7.0</jib-maven-plugin.version>
+    <jib-maven-plugin.version>2.7.1</jib-maven-plugin.version>
   </properties>
 
   <build>

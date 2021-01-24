@@ -20,6 +20,7 @@ runs:
   image: 'docker://uhafner/autograding-github-action'
   env:
     CONFIG: ${{ inputs.CONFIG }}
+    CHECKS_NAME: ${{ inputs.CHECKS_NAME }}
     TOKEN: ${{ inputs.TOKEN }}
     HEAD_SHA: ${{ inputs.HEAD_SHA }}
     FILES_PREFIX: ${{ inputs.FILES_PREFIX }}

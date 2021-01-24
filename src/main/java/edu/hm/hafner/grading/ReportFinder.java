@@ -1,6 +1,7 @@
 package edu.hm.hafner.grading;
 
 import java.io.IOException;
+import java.nio.file.FileSystem;
 import java.nio.file.FileSystems;
 import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
@@ -21,10 +22,6 @@ import edu.hm.hafner.analysis.Report;
  * @author Ullrich Hafner
  */
 class ReportFinder {
-    protected ReportFinder() {
-       // empty
-    }
-
     /**
      * Returns a list of paths that matches the glob pattern.
      *
@@ -35,7 +32,7 @@ class ReportFinder {
      */
     protected static List<Path> getPaths(final String location) {
         try {
-            PathSimpleFileVisitor visitor = new PathSimpleFileVisitor();
+            PathMatcherFileVisitor visitor = new PathMatcherFileVisitor();
             Files.walkFileTree(Paths.get(location), visitor);
             return visitor.getMatches();
         }
@@ -46,9 +43,47 @@ class ReportFinder {
         }
     }
 
-    private static class PathSimpleFileVisitor extends SimpleFileVisitor<Path> {
-        private final PathMatcher pathMatcher = FileSystems.getDefault().getPathMatcher("glob:**/*.xml");
+    /**
+     * Returns the paths that match the specified pattern.
+     *
+     * @param directory
+     *         the directory where to search for files
+     * @param pattern
+     *         the pattern to use when searching
+     *
+     * @return the matching paths
+     * @see FileSystem#getPathMatcher(String)
+     */
+    protected List<Path> find(final String directory, final String pattern) {
+        try {
+            PathMatcherFileVisitor visitor = new PathMatcherFileVisitor(pattern);
+            Files.walkFileTree(Paths.get(directory), visitor);
+            return visitor.getMatches();
+        }
+        catch (IOException exception) {
+            System.out.println("Cannot find files due to " + exception);
+
+            return new ArrayList<>();
+        }
+    }
+
+
+    private static class PathMatcherFileVisitor extends SimpleFileVisitor<Path> {
+        private final PathMatcher pathMatcher;
         private final List<Path> matches = new ArrayList<>();
+
+        PathMatcherFileVisitor() {
+            this("glob:**/*.xml");
+        }
+
+        PathMatcherFileVisitor(final String syntaxAndPattern) {
+            try {
+                this.pathMatcher = FileSystems.getDefault().getPathMatcher(syntaxAndPattern);
+            }
+            catch (IllegalArgumentException exception) {
+                throw new IllegalArgumentException("Pattern not valid for FileSystem.getPathMatcher: " + syntaxAndPattern);
+            }
+        }
 
         List<Path> getMatches() {
             return matches;
