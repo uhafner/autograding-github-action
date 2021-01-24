@@ -35,6 +35,7 @@ jobs:
 #### Configuration
 
 - ``TOKEN: ${{ secrets.GITHUB_TOKEN }}``: mandatory GitHub access token.
+- ``CHECKS_NAME: "Name of checks"``: optional name of GitHub checks (overwrites default: "Autograding result").
 - ``HEAD_SHA: ${{github.event.pull_request.head.sha}}``: optional SHA of the pull request head. If not set then 
 ``GITHUB_SHA`` will be used.
 - ``CONFIG: "{\"analysis\": { \"maxScore\": 100, \"errorImpact\": -5}}"``: optional configuration, see 

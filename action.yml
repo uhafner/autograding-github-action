@@ -5,6 +5,9 @@ inputs:
   CONFIG:
     description: "Autograding configuration"
     required: false
+  CHECKS_NAME:
+    description: "Name of the GitHub checks (if not set the default name will be used)"
+    required: false
   TOKEN:
     description: "GitHub authentication token (GITHUB_TOKEN)"
     required: true
