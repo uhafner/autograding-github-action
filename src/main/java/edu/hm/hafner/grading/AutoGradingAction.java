@@ -74,7 +74,8 @@ public class AutoGradingAction {
         analysisReports.add(createAnalysisScore(analysisConfiguration, "PMD", "pmd",
                 pmdReport));
 
-        Report spotBugsReport = parse(configuration, new FindBugsParser(PriorityProperty.RANK), "target/spotbugsXml.xml");
+        Report spotBugsReport = parse(configuration, new FindBugsParser(PriorityProperty.RANK),
+                "target/spotbugsXml.xml");
         analysisReports.add(createAnalysisScore(analysisConfiguration, "SpotBugs", "spotbugs",
                 spotBugsReport));
 
@@ -91,9 +92,21 @@ public class AutoGradingAction {
         GradingReport results = new GradingReport();
 
         GitHubPullRequestWriter pullRequestWriter = new GitHubPullRequestWriter();
-        pullRequestWriter.addComment(getChecksName(), results.getHeader(), results.getSummary(score),
+
+        String files = createAffectedFiles(configuration);
+
+        pullRequestWriter.addComment(getChecksName(), results.getHeader(), results.getSummary(score) + files,
                 results.getDetails(score, testReports),
                 Arrays.asList(pmdReport, checkStyleReport, spotBugsReport));
+    }
+
+    private String createAffectedFiles(final GradingConfiguration configuration) {
+        String analysisPattern = configuration.getAnalysisPattern();
+        if (StringUtils.isNotBlank(analysisPattern) && !StringUtils.equals(analysisPattern, GradingConfiguration.ALL_FILES)) {
+            return "\n" + new ReportFinder().renderLinks("./", "regex:" + analysisPattern);
+        }
+        return StringUtils.EMPTY;
+
     }
 
     private Report parse(final GradingConfiguration configuration,
@@ -123,6 +136,10 @@ public class AutoGradingAction {
 
     private String getChecksName() {
         return StringUtils.defaultIfBlank(System.getenv("CHECKS_NAME"), "Autograding results");
+    }
+
+    private String getRepository() {
+        return StringUtils.defaultIfBlank(System.getenv("GITHUB_REPOSITORY"), "Autograding results");
     }
 
     private String getConfiguration() {

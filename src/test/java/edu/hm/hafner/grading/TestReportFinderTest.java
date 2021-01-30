@@ -39,4 +39,15 @@ class TestReportFinderTest {
                 }
         );
     }
+
+    @Test
+    void shouldReadArchitectureTests() {
+        TestReportFinder finder = new TestReportFinder();
+        assertThat(finder.find("glob:./src/test/resources/junit/*Aufgabe*.xml")).hasSize(1).element(0).satisfies(
+                r -> {
+                    assertThat(r.getCounter(JUnitAdapter.FAILED_TESTS)).isEqualTo(12);
+                    assertThat(r.getCounter(JUnitAdapter.PASSED_TESTS)).isEqualTo(21);
+                }
+        );
+    }
 }

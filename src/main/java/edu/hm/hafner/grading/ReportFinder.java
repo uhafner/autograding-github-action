@@ -12,6 +12,9 @@ import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import org.apache.commons.lang3.StringUtils;
 
 import edu.hm.hafner.analysis.Report;
 
@@ -22,27 +25,6 @@ import edu.hm.hafner.analysis.Report;
  * @author Ullrich Hafner
  */
 class ReportFinder {
-    /**
-     * Returns a list of paths that matches the glob pattern.
-     *
-     * @param location
-     *         path where to search for files
-     *
-     * @return list with paths
-     */
-    protected static List<Path> getPaths(final String location) {
-        try {
-            PathMatcherFileVisitor visitor = new PathMatcherFileVisitor();
-            Files.walkFileTree(Paths.get(location), visitor);
-            return visitor.getMatches();
-        }
-        catch (IOException exception) {
-            System.out.println("Cannot find files due to " + exception);
-
-            return new ArrayList<>();
-        }
-    }
-
     /**
      * Returns the paths that match the specified pattern.
      *
@@ -67,14 +49,21 @@ class ReportFinder {
         }
     }
 
+    public String renderLinks(final String directory, final String pattern) {
+        String result = "### Analyzed files\n\n";
+        String repo = StringUtils.defaultString(System.getenv("GITHUB_REPOSITORY"));
+        String ref = StringUtils.remove(StringUtils.defaultString(System.getenv("GITHUB_REF")), "refs/heads/");
+        return find(directory, pattern).stream()
+                .map(file -> String.format("- [%s](https://github.com/%s/blob/%s/%s)",
+                        StringUtils.substringAfterLast(file.toString(), "/"),
+                        repo,
+                        ref,
+                        file)).collect(Collectors.joining("\n", result, "\n"));
+    }
 
     private static class PathMatcherFileVisitor extends SimpleFileVisitor<Path> {
         private final PathMatcher pathMatcher;
         private final List<Path> matches = new ArrayList<>();
-
-        PathMatcherFileVisitor() {
-            this("glob:**/*.xml");
-        }
 
         PathMatcherFileVisitor(final String syntaxAndPattern) {
             try {

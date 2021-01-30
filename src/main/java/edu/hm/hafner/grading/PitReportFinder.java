@@ -21,7 +21,7 @@ class PitReportFinder extends ReportFinder {
      * @return the PIT result files
      */
     public List<Report> find() {
-        List<Path> reportFiles = getPaths(PIT_REPORT_PATTERN);
+        List<Path> reportFiles = find(PIT_REPORT_PATTERN, "glob:**/*.xml");
         if (reportFiles.size() == 0) {
             System.out.println("No PIT result files found!");
 
