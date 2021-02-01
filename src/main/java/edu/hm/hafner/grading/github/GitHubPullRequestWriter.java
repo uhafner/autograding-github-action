@@ -67,7 +67,7 @@ public class GitHubPullRequestWriter {
         String workspace = System.getenv("GITHUB_WORKSPACE");
         System.out.println(">>>> GITHUB_WORKSPACE: " + workspace);
 
-        String filesPrefix = StringUtils.defaultString(System.getenv("FILES_PREFIX"));
+        String filesPrefix = getEnv("FILES_PREFIX");
         System.out.println(">>>> FILES_PREFIX: " + filesPrefix);
 
         try {
@@ -81,10 +81,12 @@ public class GitHubPullRequestWriter {
             Pattern prefix = Pattern.compile(
                     "^.*" + StringUtils.substringAfterLast(repository, '/') + "/" + filesPrefix);
             Output output = new Output(header, summary).withText(comment);
-            analysisReports.stream()
-                    .flatMap(Report::stream)
-                    .map(issue -> createAnnotation(prefix, issue))
-                    .forEach(output::add);
+            if (getEnv("SKIP_ANNOTATIONS").isEmpty()) {
+                analysisReports.stream()
+                        .flatMap(Report::stream)
+                        .map(issue -> createAnnotation(prefix, issue))
+                        .forEach(output::add);
+            }
 
             check.add(output);
             check.create();
@@ -92,6 +94,10 @@ public class GitHubPullRequestWriter {
         catch (IOException exception) {
             System.out.println("Could not create check due to " + exception);
         }
+    }
+
+    private String getEnv(final String env) {
+        return StringUtils.defaultString(System.getenv(env));
     }
 
     private Annotation createAnnotation(final Pattern prefix, final Issue issue) {

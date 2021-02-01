@@ -17,6 +17,9 @@ inputs:
   FILES_PREFIX:
     description: "Prefix to remove from all paths so that files can be found in repository"
     required: false
+  SKIP_ANNOTATIONS:
+    description: "Skip the creation of annotations if not empty"
+    required: false
 
 runs:
   using: 'docker'
@@ -27,6 +30,7 @@ runs:
     TOKEN: ${{ inputs.TOKEN }}
     HEAD_SHA: ${{ inputs.HEAD_SHA }}
     FILES_PREFIX: ${{ inputs.FILES_PREFIX }}
+    SKIP_ANNOTATIONS: ${{ inputs.SKIP_ANNOTATIONS }}
 
 branding:
   icon: check
