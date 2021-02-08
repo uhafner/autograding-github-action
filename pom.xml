@@ -39,7 +39,7 @@
     <dependency>
       <groupId>edu.hm.hafner</groupId>
       <artifactId>analysis-model</artifactId>
-      <version>9.7.0</version>
+      <version>9.8.0</version>
     </dependency>
 
     <dependency>
