@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 import org.apache.commons.lang3.StringUtils;
+import org.kohsuke.github.GHCheckRun;
 import org.kohsuke.github.GHCheckRun.AnnotationLevel;
 import org.kohsuke.github.GHCheckRun.Conclusion;
 import org.kohsuke.github.GHCheckRun.Status;
@@ -89,7 +90,9 @@ public class GitHubPullRequestWriter {
             }
 
             check.add(output);
-            check.create();
+            GHCheckRun run = check.create();
+
+            System.out.println("Successfully created check " + run);
         }
         catch (IOException exception) {
             System.out.println("Could not create check due to " + exception);
