@@ -5,7 +5,6 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
@@ -15,10 +14,8 @@ import edu.hm.hafner.analysis.IssueParser;
 import edu.hm.hafner.analysis.Report;
 import edu.hm.hafner.analysis.Report.IssueFilterBuilder;
 import edu.hm.hafner.analysis.Severity;
-import edu.hm.hafner.analysis.parser.FindBugsParser;
-import edu.hm.hafner.analysis.parser.FindBugsParser.PriorityProperty;
-import edu.hm.hafner.analysis.parser.checkstyle.CheckStyleParser;
-import edu.hm.hafner.analysis.parser.pmd.PmdParser;
+import edu.hm.hafner.analysis.registry.ParserDescriptor;
+import edu.hm.hafner.analysis.registry.ParserRegistry;
 import edu.hm.hafner.grading.github.GitHubPullRequestWriter;
 
 import de.tobiasmichael.me.Util.JacocoParser;
@@ -33,6 +30,9 @@ import de.tobiasmichael.me.Util.JacocoReport;
 @SuppressWarnings("checkstyle:ClassDataAbstractionCoupling")
 public class AutoGradingAction {
     private static final String JACOCO_RESULTS = "target/site/jacoco/jacoco.xml";
+    private static final String CHECKSTYLE = "checkstyle";
+    private static final String PMD = "pmd";
+    private static final String SPOTBUGS = "spotbugs";
 
     /**
      * Public entry point, calls the action.
@@ -64,22 +64,18 @@ public class AutoGradingAction {
         List<Report> pitReports = new PitReportFinder().find();
         score.addPitScores(new PitReportSupplier(pitReports));
 
-        List<AnalysisScore> analysisReports = new ArrayList<>();
+        ParserRegistry registry = new ParserRegistry();
 
-        Report checkStyleReport = parse(configuration, new CheckStyleParser(), "target/checkstyle-result.xml");
-        analysisReports.add(createAnalysisScore(analysisConfiguration, "CheckStyle", "checkstyle",
-                checkStyleReport));
-
-        Report pmdReport = parse(configuration, new PmdParser(), "target/pmd.xml");
-        analysisReports.add(createAnalysisScore(analysisConfiguration, "PMD", "pmd",
-                pmdReport));
-
-        Report spotBugsReport = parse(configuration, new FindBugsParser(PriorityProperty.RANK),
-                "target/spotbugsXml.xml");
-        analysisReports.add(createAnalysisScore(analysisConfiguration, "SpotBugs", "spotbugs",
-                spotBugsReport));
-
-        score.addAnalysisScores(new AnalysisReportSupplier(analysisReports));
+        String[] tools = {CHECKSTYLE, PMD, SPOTBUGS};
+        List<Report> analysisReports = new ArrayList<>();
+        List<AnalysisScore> analysisScores = new ArrayList<>();
+        for (String tool : tools) {
+            ParserDescriptor parser = registry.get(tool);
+            Report report = parse(configuration, parser);
+            analysisReports.add(report);
+            analysisScores.add(createAnalysisScore(analysisConfiguration, parser.getName(), parser.getId(), report));
+        }
+        score.addAnalysisScores(new AnalysisReportSupplier(analysisScores));
 
         if (Files.isReadable(Paths.get(JACOCO_RESULTS))) {
             JacocoReport coverageReport = new JacocoParser().parse(read(JACOCO_RESULTS));
@@ -90,23 +86,26 @@ public class AutoGradingAction {
         }
 
         GradingReport results = new GradingReport();
-
         GitHubPullRequestWriter pullRequestWriter = new GitHubPullRequestWriter();
 
         String files = createAffectedFiles(configuration);
 
         pullRequestWriter.addComment(getChecksName(), results.getHeader(), results.getSummary(score) + files,
-                results.getDetails(score, testReports),
-                Arrays.asList(pmdReport, checkStyleReport, spotBugsReport));
+                results.getDetails(score, testReports), analysisReports);
     }
 
     private String createAffectedFiles(final GradingConfiguration configuration) {
         String analysisPattern = configuration.getAnalysisPattern();
-        if (StringUtils.isNotBlank(analysisPattern) && !StringUtils.equals(analysisPattern, GradingConfiguration.ALL_FILES)) {
+        if (StringUtils.isNotBlank(analysisPattern) && !StringUtils.equals(analysisPattern,
+                GradingConfiguration.ALL_FILES)) {
             return "\n" + new ReportFinder().renderLinks("./", "regex:" + analysisPattern);
         }
         return StringUtils.EMPTY;
+    }
 
+    private Report parse(final GradingConfiguration configuration, final ParserDescriptor descriptor) {
+        return filterAnalysisReport(descriptor.createParser().parse(read(descriptor.getPattern())),
+                configuration.getAnalysisPattern());
     }
 
     private Report parse(final GradingConfiguration configuration,
