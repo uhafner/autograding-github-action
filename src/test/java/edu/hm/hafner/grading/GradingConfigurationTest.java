@@ -39,8 +39,7 @@ class GradingConfigurationTest {
 
     @Test
     void shouldReturnProvidedAnalysisPattern() {
-        assertThat(new GradingConfiguration(
-                "{\n"
+        assertThat(new GradingConfiguration("{\n"
                         + "  \"analysis\": {\n"
                         + "    \"pattern\": \"File.*\",\n"
                         + "    \"maxScore\": 100,\n"
