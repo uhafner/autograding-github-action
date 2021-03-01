@@ -5,6 +5,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
@@ -50,32 +51,61 @@ public class AutoGradingAction {
 
         JacksonFacade jackson = new JacksonFacade();
 
-        System.out.println("Test Configuration: " + jackson.toJson(score.getTestConfiguration()));
-        System.out.println("Code Coverage Configuration: " + jackson.toJson(score.getCoverageConfiguration()));
-        System.out.println("PIT Mutation Coverage Configuration: " + jackson.toJson(score.getPitConfiguration()));
-        AnalysisConfiguration analysisConfiguration = score.getAnalysisConfiguration();
-        System.out.println("Static Analysis Configuration: " + jackson.toJson(analysisConfiguration));
+        System.out.println("------------------------------------------------------------------");
+        System.out.println("------------------------ Configuration ---------------------------");
+        System.out.println("------------------------------------------------------------------");
+        System.out.println("-> Test Configuration: " + jackson.toJson(score.getTestConfiguration()));
+        System.out.println("-> Code Coverage Configuration: " + jackson.toJson(score.getCoverageConfiguration()));
+        System.out.println("-> PIT Mutation Coverage Configuration: " + jackson.toJson(score.getPitConfiguration()));
+        System.out.println("-> Static Analysis Configuration: " + jackson.toJson(score.getAnalysisConfiguration()));
 
         GradingConfiguration configuration = new GradingConfiguration(jsonConfiguration);
+
+        System.out.println("==================================================================");
         List<Report> testReports = new TestReportFinder().find(configuration.getTestPattern());
-
         score.addTestScores(new TestReportSupplier(testReports));
-
+        System.out.println("==================================================================");
         List<Report> pitReports = new PitReportFinder().find();
         score.addPitScores(new PitReportSupplier(pitReports));
-
+        System.out.println("==================================================================");
+        if (Files.isReadable(Paths.get(JACOCO_RESULTS))) {
+            JacocoReport coverageReport = new JacocoParser().parse(new FileReaderFactory(Paths.get(JACOCO_RESULTS)));
+            score.addCoverageScores(new CoverageReportSupplier(coverageReport));
+        }
+        else {
+            System.out.println("No JaCoCo coverage result files found!");
+        }
+        System.out.println("==================================================================");
+        ReportFinder reportFinder = new ReportFinder();
         ParserRegistry registry = new ParserRegistry();
 
         String[] tools = {CHECKSTYLE, PMD, SPOTBUGS};
         List<Report> analysisReports = new ArrayList<>();
         List<AnalysisScore> analysisScores = new ArrayList<>();
+
         for (String tool : tools) {
             ParserDescriptor parser = registry.get(tool);
-            Report report = parse(configuration, parser);
-            analysisReports.add(report);
-            analysisScores.add(createAnalysisScore(analysisConfiguration, parser.getName(), parser.getId(), report));
+            List<Path> files = reportFinder.find("target", "glob:" + parser.getPattern());
+            System.out.format("Searching for '%s' results matching file name pattern %s%n", parser.getName(), parser.getPattern());
+
+            if (files.size() == 0) {
+                System.out.println("No matching report result files found!");
+            }
+            else {
+                Collections.sort(files);
+
+                for (Path file : files) {
+                    Report allIssues = parser.createParser().parse(new FileReaderFactory(file));
+                    Report filteredIssues = filterAnalysisReport(allIssues, configuration.getAnalysisPattern());
+                    System.out.format("- %s : %d warnings (from total %d)%n", file, filteredIssues.size(), allIssues.size());
+                    analysisReports.add(filteredIssues);
+                    analysisScores.add(createAnalysisScore(score.getAnalysisConfiguration(), parser.getName(),
+                            parser.getId(), filteredIssues));
+                }
+            }
         }
         score.addAnalysisScores(new AnalysisReportSupplier(analysisScores));
+        System.out.println("==================================================================");
 
         if (Files.isReadable(Paths.get(JACOCO_RESULTS))) {
             JacocoReport coverageReport = new JacocoParser().parse(read(JACOCO_RESULTS));
@@ -97,7 +127,7 @@ public class AutoGradingAction {
     private String createAffectedFiles(final GradingConfiguration configuration) {
         String analysisPattern = configuration.getAnalysisPattern();
         if (StringUtils.isNotBlank(analysisPattern) && !StringUtils.equals(analysisPattern,
-                GradingConfiguration.ALL_FILES)) {
+                GradingConfiguration.INCLUDE_ALL_FILES)) {
             return "\n" + new ReportFinder().renderLinks("./", "regex:" + analysisPattern);
         }
         return StringUtils.EMPTY;
