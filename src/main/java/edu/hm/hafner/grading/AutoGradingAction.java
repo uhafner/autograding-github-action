@@ -3,6 +3,7 @@ package edu.hm.hafner.grading;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,7 +12,6 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 
 import edu.hm.hafner.analysis.FileReaderFactory;
-import edu.hm.hafner.analysis.IssueParser;
 import edu.hm.hafner.analysis.Report;
 import edu.hm.hafner.analysis.Report.IssueFilterBuilder;
 import edu.hm.hafner.analysis.Severity;
@@ -107,14 +107,6 @@ public class AutoGradingAction {
         score.addAnalysisScores(new AnalysisReportSupplier(analysisScores));
         System.out.println("==================================================================");
 
-        if (Files.isReadable(Paths.get(JACOCO_RESULTS))) {
-            JacocoReport coverageReport = new JacocoParser().parse(read(JACOCO_RESULTS));
-            score.addCoverageScores(new CoverageReportSupplier(coverageReport));
-        }
-        else {
-            System.out.println("No JaCoCo coverage result files found!");
-        }
-
         GradingReport results = new GradingReport();
         GitHubPullRequestWriter pullRequestWriter = new GitHubPullRequestWriter();
 
@@ -131,16 +123,6 @@ public class AutoGradingAction {
             return "\n" + new ReportFinder().renderLinks("./", "regex:" + analysisPattern);
         }
         return StringUtils.EMPTY;
-    }
-
-    private Report parse(final GradingConfiguration configuration, final ParserDescriptor descriptor) {
-        return filterAnalysisReport(descriptor.createParser().parse(read(descriptor.getPattern())),
-                configuration.getAnalysisPattern());
-    }
-
-    private Report parse(final GradingConfiguration configuration,
-            final IssueParser parser, final String filePattern) {
-        return filterAnalysisReport(parser.parse(read(filePattern)), configuration.getAnalysisPattern());
     }
 
     private Report filterAnalysisReport(final Report checkStyleReport, final String analysisPattern) {
@@ -167,10 +149,6 @@ public class AutoGradingAction {
         return StringUtils.defaultIfBlank(System.getenv("CHECKS_NAME"), "Autograding results");
     }
 
-    private String getRepository() {
-        return StringUtils.defaultIfBlank(System.getenv("GITHUB_REPOSITORY"), "Autograding results");
-    }
-
     private String getConfiguration() {
         String configuration = System.getenv("CONFIG");
         if (StringUtils.isBlank(configuration)) {
@@ -195,7 +173,4 @@ public class AutoGradingAction {
         }
     }
 
-    private static FileReaderFactory read(final String s) {
-        return new FileReaderFactory(Paths.get(s));
-    }
 }
