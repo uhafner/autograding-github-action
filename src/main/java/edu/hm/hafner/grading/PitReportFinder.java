@@ -29,7 +29,8 @@ class PitReportFinder extends ReportFinder {
         }
 
         System.out.println("Reading PIT results: ");
-        System.out.println(reportFiles);
+        Collections.sort(reportFiles);
+        reportFiles.forEach(file -> System.out.format("- %s%n", file));
 
         PitAdapter parser = new PitAdapter();
         return reportFiles.stream()

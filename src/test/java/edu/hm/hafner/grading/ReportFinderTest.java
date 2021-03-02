@@ -30,13 +30,13 @@ class ReportFinderTest {
 
     @Test
     void shouldCreateAffectedFilesReport() {
-        ReportFinder finder = new ReportFinder();
+        ReportFinder finder = new ReportFinder("uhafner/autograding-github-action", "master");
 
         assertThat(finder.renderLinks("src/main/java/", "regex:.*Jacoco.*\\.java"))
                 .contains("# Analyzed files",
-                        "- [JacocoParser.java](https://github.com//blob//src/main/java/de/tobiasmichael/me/Util/JacocoParser.java)",
-                        "- [JacocoCounter.java](https://github.com//blob//src/main/java/de/tobiasmichael/me/Util/JacocoCounter.java)",
-                        "- [JacocoReport.java](https://github.com//blob//src/main/java/de/tobiasmichael/me/Util/JacocoReport.java)");
+                        "- [JacocoParser.java](https://github.com/uhafner/autograding-github-action/blob/master/src/main/java/de/tobiasmichael/me/Util/JacocoParser.java)",
+                        "- [JacocoCounter.java](https://github.com/uhafner/autograding-github-action/blob/master/src/main/java/de/tobiasmichael/me/Util/JacocoCounter.java)",
+                        "- [JacocoReport.java](https://github.com/uhafner/autograding-github-action/blob/master/src/main/java/de/tobiasmichael/me/Util/JacocoReport.java)");
 
     }
 }

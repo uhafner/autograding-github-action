@@ -12,8 +12,8 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
  * @author Ullrich Hafner
  */
 public class GradingConfiguration {
-    static final String SUREFIRE_REPORT_PATTERN = "glob:./target/surefire-reports/*.xml";
-    static final String ALL_FILES = ".*";
+    static final String SUREFIRE_DEFAULT_PATTERN = "./target/surefire-reports/*.xml";
+    static final String INCLUDE_ALL_FILES = ".*";
 
     private final String testPattern;
     private final String analysisPattern;
@@ -22,20 +22,20 @@ public class GradingConfiguration {
         ObjectMapper mapper = new ObjectMapper()
                 .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
-        testPattern = asString(configuration, mapper, "tests", SUREFIRE_REPORT_PATTERN);
-        System.out.println("Using test file pattern: " + testPattern);
+        testPattern = asString(configuration, mapper, "tests", "pattern", SUREFIRE_DEFAULT_PATTERN);
+        System.out.println("-> Using test files pattern: " + testPattern);
 
-        analysisPattern = asString(configuration, mapper, "analysis", ALL_FILES);
-        System.out.println("Using analysis file pattern: " + analysisPattern);
+        analysisPattern = asString(configuration, mapper, "analysis", "fileFilter", INCLUDE_ALL_FILES);
+        System.out.println("-> Using file name filter (include) for static analysis: " + analysisPattern);
     }
 
     private String asString(final String configuration, final ObjectMapper mapper, final String type,
-            final String defaultValue) {
+            final String propertyName, final String defaultValue) {
         try {
             ObjectNode node = mapper.readValue(configuration, ObjectNode.class);
-            JsonNode tests = node.get(type);
-            if (tests != null) {
-                JsonNode pattern = tests.get("pattern");
+            JsonNode typeNode = node.get(type);
+            if (typeNode != null) {
+                JsonNode pattern = typeNode.get(propertyName);
                 if (pattern != null) {
                     return pattern.asText(defaultValue);
                 }
@@ -48,7 +48,7 @@ public class GradingConfiguration {
     }
 
     public String getTestPattern() {
-        return testPattern;
+        return "glob:" + testPattern;
     }
 
     public String getAnalysisPattern() {

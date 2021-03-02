@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 import org.apache.commons.lang3.StringUtils;
 
 import edu.hm.hafner.analysis.Report;
+import edu.hm.hafner.util.VisibleForTesting;
 
 /**
  * Base class that finds files in the workspace and parses these files with a parser that returns a {@link Report}
@@ -25,6 +26,20 @@ import edu.hm.hafner.analysis.Report;
  * @author Ullrich Hafner
  */
 class ReportFinder {
+    private final String repository;
+    private final String branch;
+
+    ReportFinder() {
+        this(StringUtils.defaultString(System.getenv("GITHUB_REPOSITORY")),
+                StringUtils.remove(StringUtils.defaultString(System.getenv("GITHUB_REF")), "refs/heads/"));
+    }
+
+    @VisibleForTesting
+    ReportFinder(final String repository, final String branch) {
+        this.repository = repository;
+        this.branch = branch;
+    }
+
     /**
      * Returns the paths that match the specified pattern.
      *
@@ -51,13 +66,11 @@ class ReportFinder {
 
     public String renderLinks(final String directory, final String pattern) {
         String result = "### Analyzed files\n\n";
-        String repo = StringUtils.defaultString(System.getenv("GITHUB_REPOSITORY"));
-        String ref = StringUtils.remove(StringUtils.defaultString(System.getenv("GITHUB_REF")), "refs/heads/");
         return find(directory, pattern).stream()
                 .map(file -> String.format("- [%s](https://github.com/%s/blob/%s/%s)",
                         StringUtils.substringAfterLast(file.toString(), "/"),
-                        repo,
-                        ref,
+                        repository,
+                        branch,
                         file)).collect(Collectors.joining("\n", result, "\n"));
     }
 
@@ -67,7 +80,7 @@ class ReportFinder {
 
         PathMatcherFileVisitor(final String syntaxAndPattern) {
             try {
-                this.pathMatcher = FileSystems.getDefault().getPathMatcher(syntaxAndPattern);
+                pathMatcher = FileSystems.getDefault().getPathMatcher(syntaxAndPattern);
             }
             catch (IllegalArgumentException exception) {
                 throw new IllegalArgumentException("Pattern not valid for FileSystem.getPathMatcher: " + syntaxAndPattern);

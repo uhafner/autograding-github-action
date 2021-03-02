@@ -35,7 +35,7 @@ class TestReportFinder extends ReportFinder {
 
         Collections.sort(reportFiles);
         System.out.println("Reading test results: ");
-        System.out.println(reportFiles);
+        reportFiles.forEach(file -> System.out.format("- %s%n", file));
 
         JUnitAdapter parser = new JUnitAdapter();
         return reportFiles.stream()

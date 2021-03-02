@@ -10,39 +10,40 @@ import static org.assertj.core.api.Assertions.*;
  * @author Ullrich Hafner
  */
 class GradingConfigurationTest {
+    private static final String DEFAULT_PATTERN = "glob:" + GradingConfiguration.SUREFIRE_DEFAULT_PATTERN;
+
     @Test
     void shouldReturnDefaultPattern() {
         assertThat(new GradingConfiguration(
                 "{ \"tests\": {\"maxScore\":5,\"failureImpact\":1,\"passedImpact\":2,\"skippedImpact\":3}}")
-                .getTestPattern()).isEqualTo(GradingConfiguration.SUREFIRE_REPORT_PATTERN);
+                .getTestPattern()).isEqualTo(DEFAULT_PATTERN);
         assertThat(new GradingConfiguration("{ \"tests\": {}}").getTestPattern()).isEqualTo(
-                GradingConfiguration.SUREFIRE_REPORT_PATTERN);
+                DEFAULT_PATTERN);
 
         assertThat(new GradingConfiguration("{}").getTestPattern()).isEqualTo(
-                GradingConfiguration.SUREFIRE_REPORT_PATTERN);
+                DEFAULT_PATTERN);
         assertThat(new GradingConfiguration("").getTestPattern()).isEqualTo(
-                GradingConfiguration.SUREFIRE_REPORT_PATTERN);
+                DEFAULT_PATTERN);
         assertThat(new GradingConfiguration("<[+").getTestPattern()).isEqualTo(
-                GradingConfiguration.SUREFIRE_REPORT_PATTERN);
+                DEFAULT_PATTERN);
         assertThat(new GradingConfiguration("<[+").getTestPattern()).isEqualTo(
-                GradingConfiguration.SUREFIRE_REPORT_PATTERN);
+                DEFAULT_PATTERN);
 
-        assertThat(new GradingConfiguration("<[+").getAnalysisPattern()).isEqualTo(GradingConfiguration.ALL_FILES);
+        assertThat(new GradingConfiguration("<[+").getAnalysisPattern()).isEqualTo(GradingConfiguration.INCLUDE_ALL_FILES);
     }
 
     @Test
     void shouldReturnProvidedTestPattern() {
         assertThat(new GradingConfiguration(
                 "{ \"tests\": {\"pattern\":\"*/*.xml\", \"maxScore\":5,\"failureImpact\":1,\"passedImpact\":2,\"skippedImpact\":3}}")
-                .getTestPattern()).isEqualTo("*/*.xml");
+                .getTestPattern()).isEqualTo("glob:*/*.xml");
     }
 
     @Test
     void shouldReturnProvidedAnalysisPattern() {
-        assertThat(new GradingConfiguration(
-                "{\n"
+        assertThat(new GradingConfiguration("{\n"
                         + "  \"analysis\": {\n"
-                        + "    \"pattern\": \"File.*\",\n"
+                        + "    \"fileFilter\": \"File.*\",\n"
                         + "    \"maxScore\": 100,\n"
                         + "    \"errorImpact\": -5,\n"
                         + "    \"highImpact\": -3,\n"
