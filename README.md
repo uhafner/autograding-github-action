@@ -2,14 +2,27 @@
 
 This GitHub action autogrades projects based on a configurable set of metrics and gives feedback on the pull request. 
 Currently, you can select from the following metrics:
-- Test statistics (e.g., number of failed tests)
-- Code coverage (e.g., line coverage percentage)
-- PIT mutation coverage (e.g., missed mutations' percentage)
-- Static analysis (e.g., number of warnings)
+
+## Test statistics (e.g., number of failed tests)
+
+![Test statistics](images/tests.png)
+
+## Code coverage (e.g., line coverage percentage)
+
+![Code coverage](images/coverage.png)
+
+## PIT mutation coverage (e.g., missed mutations' percentage)
+
+![PIT mutation coverage](images/pit.png)
+
+## Static analysis (e.g., number of warnings)
+
+![Static analysis](images/analysis-all-ok.png)
+![Static analysis](images/annotations.png)
                    
 ### How to use?
 
-This is an example config you could use in your workflow.
+Here is an example configuration you could use in your workflow.
 
 ```
 name: 'Autograding Pull Pequest'
