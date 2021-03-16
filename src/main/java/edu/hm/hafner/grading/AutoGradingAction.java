@@ -18,6 +18,7 @@ import edu.hm.hafner.analysis.Severity;
 import edu.hm.hafner.analysis.registry.ParserDescriptor;
 import edu.hm.hafner.analysis.registry.ParserRegistry;
 import edu.hm.hafner.grading.github.GitHubPullRequestWriter;
+import edu.hm.hafner.util.FilteredLog;
 
 import de.tobiasmichael.me.Util.JacocoParser;
 import de.tobiasmichael.me.Util.JacocoReport;
@@ -47,7 +48,9 @@ public class AutoGradingAction {
 
     void run() {
         String jsonConfiguration = getConfiguration();
-        AggregatedScore score = new AggregatedScore(jsonConfiguration);
+        FilteredLog log = new FilteredLog("Autograding Action Errors:");
+
+        AggregatedScore score = new AggregatedScore(jsonConfiguration, log);
 
         JacksonFacade jackson = new JacksonFacade();
 
@@ -71,6 +74,8 @@ public class AutoGradingAction {
         if (Files.isReadable(Paths.get(JACOCO_RESULTS))) {
             JacocoReport coverageReport = new JacocoParser().parse(new FileReaderFactory(Paths.get(JACOCO_RESULTS)));
             score.addCoverageScores(new CoverageReportSupplier(coverageReport));
+            System.out.println("Reading JaCoCo results:");
+            System.out.format("- %s%n", JACOCO_RESULTS);
         }
         else {
             System.out.println("No JaCoCo coverage result files found!");
@@ -105,6 +110,10 @@ public class AutoGradingAction {
             }
         }
         score.addAnalysisScores(new AnalysisReportSupplier(analysisScores));
+        System.out.println("==================================================================");
+
+        log.getInfoMessages().forEach(System.out::println);
+
         System.out.println("==================================================================");
 
         GradingReport results = new GradingReport();

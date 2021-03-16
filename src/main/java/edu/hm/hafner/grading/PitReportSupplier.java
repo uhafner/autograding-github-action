@@ -33,7 +33,8 @@ class PitReportSupplier extends PitSupplier {
                 .withConfiguration(configuration)
                 .withDisplayName(RENDERER.getFileName(report, "PIT"))
                 .withTotalMutations(report.getCounter(PitAdapter.TOTAL_MUTATIONS))
-                .withUndetectedMutations(report.getCounter(PitAdapter.SURVIVED_MUTATIONS))
+                .withUndetectedMutations(report.getCounter(PitAdapter.SURVIVED_MUTATIONS)
+                        + report.getCounter(PitAdapter.UNCOVERED_MUTATIONS))
                 .build();
     }
 }
