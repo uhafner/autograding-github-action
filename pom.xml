@@ -43,7 +43,7 @@
     <dependency>
       <groupId>edu.hm.hafner</groupId>
       <artifactId>analysis-model</artifactId>
-      <version>10.0.0-rc3980.fd5b09344558</version>
+      <version>10.0.0-rc4048.d126548ac92c</version>
     </dependency>
 
     <dependency>
