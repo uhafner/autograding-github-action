@@ -16,7 +16,7 @@ import edu.hm.hafner.analysis.Report;
 import edu.hm.hafner.analysis.Report.IssueFilterBuilder;
 import edu.hm.hafner.analysis.Severity;
 import edu.hm.hafner.analysis.registry.ParserDescriptor;
-import edu.hm.hafner.analysis.registry.ParserRegistry;
+import edu.hm.hafner.grading.AnalysisToolsConfiguration.ToolConfiguration;
 import edu.hm.hafner.grading.github.GitHubPullRequestWriter;
 import edu.hm.hafner.util.FilteredLog;
 
@@ -80,37 +80,49 @@ public class AutoGradingAction {
         else {
             System.out.println("No JaCoCo coverage result files found!");
         }
+
         System.out.println("==================================================================");
-        ReportFinder reportFinder = new ReportFinder();
-        ParserRegistry registry = new ParserRegistry();
-
-        String[] tools = {CHECKSTYLE, PMD, SPOTBUGS};
         List<Report> analysisReports = new ArrayList<>();
-        List<AnalysisScore> analysisScores = new ArrayList<>();
 
-        for (String tool : tools) {
-            ParserDescriptor parser = registry.get(tool);
-            List<Path> files = reportFinder.find("target", "glob:" + parser.getPattern());
-            System.out.format("Searching for '%s' results matching file name pattern %s%n", parser.getName(), parser.getPattern());
-
-            if (files.size() == 0) {
-                System.out.println("No matching report result files found!");
+        if (score.getAnalysisConfiguration().isEnabled()) {
+            AnalysisToolsConfiguration toolsConfiguration = new AnalysisToolsConfiguration();
+            ToolConfiguration[] tools = toolsConfiguration.getTools(jsonConfiguration);
+            if (tools.length == 0) { // TODO: remove if all assignments use the new version
+                tools = new ToolConfiguration[] {
+                        new ToolConfiguration(CHECKSTYLE),
+                        new ToolConfiguration(PMD),
+                        new ToolConfiguration(SPOTBUGS)
+                };
             }
-            else {
-                Collections.sort(files);
 
-                for (Path file : files) {
-                    Report allIssues = parser.createParser().parse(new FileReaderFactory(file));
-                    Report filteredIssues = filterAnalysisReport(allIssues, configuration.getAnalysisPattern());
-                    System.out.format("- %s : %d warnings (from total %d)%n", file, filteredIssues.size(), allIssues.size());
-                    analysisReports.add(filteredIssues);
-                    analysisScores.add(createAnalysisScore(score.getAnalysisConfiguration(), parser.getName(),
-                            parser.getId(), filteredIssues));
+            List<AnalysisScore> analysisScores = new ArrayList<>();
+            ReportFinder reportFinder = new ReportFinder();
+            for (ToolConfiguration tool : tools) {
+                ParserDescriptor parser = tool.getDescriptor();
+                System.out.format("Searching for '%s' results matching file name pattern %s%n",
+                        parser.getName(), tool.getPattern());
+                List<Path> files = reportFinder.find("target", "glob:" + tool.getPattern());
+
+                if (files.size() == 0) {
+                    System.out.println("No matching report result files found!");
+                }
+                else {
+                    Collections.sort(files);
+
+                    for (Path file : files) {
+                        Report allIssues = parser.createParser().parse(new FileReaderFactory(file));
+                        Report filteredIssues = filterAnalysisReport(allIssues, configuration.getAnalysisPattern());
+                        System.out.format("- %s : %d warnings (from total %d)%n", file, filteredIssues.size(),
+                                allIssues.size());
+                        analysisReports.add(filteredIssues);
+                        analysisScores.add(createAnalysisScore(score.getAnalysisConfiguration(), parser.getName(),
+                                parser.getId(), filteredIssues));
+                    }
                 }
             }
+            score.addAnalysisScores(new AnalysisReportSupplier(analysisScores));
+            System.out.println("==================================================================");
         }
-        score.addAnalysisScores(new AnalysisReportSupplier(analysisScores));
-        System.out.println("==================================================================");
 
         log.getInfoMessages().forEach(System.out::println);
 
@@ -181,5 +193,4 @@ public class AutoGradingAction {
             return StringUtils.EMPTY;
         }
     }
-
 }

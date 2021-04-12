@@ -1,6 +1,7 @@
 package edu.hm.hafner.grading;
 
 import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import edu.hm.hafner.analysis.Report;
 
@@ -11,6 +12,6 @@ import edu.hm.hafner.analysis.Report;
  */
 class FileNameRenderer {
     String getFileName(final Report report, final String defaultFileName) {
-        return FilenameUtils.getBaseName(report.getFileNames().stream().findAny().orElse(defaultFileName));
+        return StringUtils.defaultIfBlank(FilenameUtils.getBaseName(report.getOriginReportFile()), defaultFileName);
     }
 }

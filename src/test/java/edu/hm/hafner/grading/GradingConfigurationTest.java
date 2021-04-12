@@ -52,4 +52,5 @@ class GradingConfigurationTest {
                         + "  }}")
                 .getAnalysisPattern()).isEqualTo("File.*");
     }
+
 }

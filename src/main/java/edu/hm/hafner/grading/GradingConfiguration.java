@@ -47,6 +47,7 @@ public class GradingConfiguration {
         return defaultValue;
     }
 
+
     public String getTestPattern() {
         return "glob:" + testPattern;
     }
@@ -54,4 +55,5 @@ public class GradingConfiguration {
     public String getAnalysisPattern() {
         return analysisPattern;
     }
+
 }
