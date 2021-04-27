@@ -1,9 +1,0 @@
-@startuml
-
-skinparam componentStyle uml2
-
-[actions-plugin] ..> [analysis-model]
-[actions-plugin] ..> [autograding-model]
-[actions-plugin] ..> [github-api]
-
-@enduml
