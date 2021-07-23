@@ -49,7 +49,7 @@
     <dependency>
       <groupId>org.kohsuke</groupId>
       <artifactId>github-api</artifactId>
-      <version>1.131</version>
+      <version>1.132</version>
     </dependency>
 
     <dependency>
