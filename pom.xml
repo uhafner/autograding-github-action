@@ -85,7 +85,7 @@
     <dependency>
       <groupId>org.kohsuke</groupId>
       <artifactId>github-api</artifactId>
-      <version>1.302</version>
+      <version>1.305</version>
       <exclusions>
         <exclusion>
           <groupId>org.apache.commons</groupId>
