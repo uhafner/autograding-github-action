@@ -118,7 +118,7 @@
   <properties>
     <module.name>${project.groupId}.autograding.ghaction</module.name>
 
-    <jib-maven-plugin.version>3.2.0</jib-maven-plugin.version>
+    <jib-maven-plugin.version>3.2.1</jib-maven-plugin.version>
   </properties>
 
   <build>
