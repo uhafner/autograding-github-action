@@ -138,7 +138,7 @@
       <plugin>
         <groupId>com.github.ferstl</groupId>
         <artifactId>depgraph-maven-plugin</artifactId>
-        <version>3.3.1</version>
+        <version>4.0.2</version>
         <configuration>
           <outputFileName>dependency-graph</outputFileName>
           <outputDirectory>${project.basedir}/doc</outputDirectory>
