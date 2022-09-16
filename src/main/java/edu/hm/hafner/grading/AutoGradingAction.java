@@ -101,7 +101,7 @@ public class AutoGradingAction {
                 ParserDescriptor parser = tool.getDescriptor();
                 System.out.format("Searching for '%s' results matching file name pattern %s%n",
                         parser.getName(), tool.getPattern());
-                List<Path> files = reportFinder.find("target", "glob:" + tool.getPattern());
+                List<Path> files = reportFinder.find("./", "glob:" + tool.getPattern());
 
                 if (files.size() == 0) {
                     System.out.println("No matching report result files found!");
