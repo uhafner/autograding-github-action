@@ -7,6 +7,10 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 import org.apache.commons.lang3.StringUtils;
+
+import edu.hm.hafner.analysis.Issue;
+import edu.hm.hafner.analysis.Report;
+
 import org.kohsuke.github.GHCheckRun;
 import org.kohsuke.github.GHCheckRun.AnnotationLevel;
 import org.kohsuke.github.GHCheckRun.Conclusion;
@@ -16,9 +20,6 @@ import org.kohsuke.github.GHCheckRunBuilder.Annotation;
 import org.kohsuke.github.GHCheckRunBuilder.Output;
 import org.kohsuke.github.GitHub;
 import org.kohsuke.github.GitHubBuilder;
-
-import edu.hm.hafner.analysis.Issue;
-import edu.hm.hafner.analysis.Report;
 
 /**
  * Writes a comment in a pull request.
@@ -46,6 +47,7 @@ public class GitHubPullRequestWriter {
     public void addComment(final String name, final String header, final String summary, final String comment,
             final List<Report> analysisReports) {
         String repository = System.getenv("GITHUB_REPOSITORY");
+        System.out.println(">>>> GITHUB_REPOSITORY: " + repository);
         if (repository == null) {
             System.out.println("No GITHUB_REPOSITORY defined - skipping");
 
