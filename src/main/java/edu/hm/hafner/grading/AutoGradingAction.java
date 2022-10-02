@@ -111,7 +111,7 @@ public class AutoGradingAction {
 
                     for (Path file : files) {
                         Report allIssues = parser.createParser().parse(new FileReaderFactory(file));
-                        Report filteredIssues = filterAnalysisReport(allIssues, configuration.getAnalysisPattern());
+                        Report filteredIssues = filterAnalysisReport(allIssues, configuration);
                         System.out.format("- %s : %d warnings (from total %d)%n", file, filteredIssues.size(),
                                 allIssues.size());
                         analysisReports.add(filteredIssues);
@@ -146,10 +146,13 @@ public class AutoGradingAction {
         return StringUtils.EMPTY;
     }
 
-    private Report filterAnalysisReport(final Report checkStyleReport, final String analysisPattern) {
+    Report filterAnalysisReport(final Report report, final GradingConfiguration configuration) {
         IssueFilterBuilder builder = new IssueFilterBuilder();
-        builder.setIncludeFileNameFilter(analysisPattern);
-        return checkStyleReport.filter(builder.build());
+        builder.setIncludeFileNameFilter(configuration.getAnalysisPattern());
+        if (configuration.hasTypeIgnores()) {
+            builder.setExcludeTypeFilter(configuration.getTypesIgnorePattern());
+        }
+        return report.filter(builder.build());
     }
 
     private static AnalysisScore createAnalysisScore(final AnalysisConfiguration configuration,

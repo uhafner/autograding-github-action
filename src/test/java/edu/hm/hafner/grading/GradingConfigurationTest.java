@@ -1,6 +1,13 @@
 package edu.hm.hafner.grading;
 
+import java.nio.file.Paths;
+
 import org.junit.jupiter.api.Test;
+
+import edu.hm.hafner.analysis.FileReaderFactory;
+import edu.hm.hafner.analysis.Report;
+import edu.hm.hafner.analysis.parser.checkstyle.CheckStyleParser;
+import edu.hm.hafner.analysis.parser.pmd.PmdParser;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -44,13 +51,32 @@ class GradingConfigurationTest {
         assertThat(new GradingConfiguration("{\n"
                         + "  \"analysis\": {\n"
                         + "    \"fileFilter\": \"File.*\",\n"
-                        + "    \"maxScore\": 100,\n"
-                        + "    \"errorImpact\": -5,\n"
-                        + "    \"highImpact\": -3,\n"
-                        + "    \"normalImpact\": -2,\n"
-                        + "    \"lowImpact\": -1\n"
+                        + "    \"maxScore\": 100\n"
                         + "  }}")
                 .getAnalysisPattern()).isEqualTo("File.*");
     }
 
+    @Test
+    void shouldIgnoreSomeTypes() {
+        GradingConfiguration gradingConfiguration = new GradingConfiguration("{\n"
+                + "  \"analysis\": {\n"
+                + "    \"typesIgnorePattern\": \"HideUtilityClassConstructorCheck|UseUtilityClass|UseVarargs\",\n"
+                + "    \"maxScore\": 100\n"
+                + "  }}");
+        assertThat(gradingConfiguration.getTypesIgnorePattern()).isEqualTo("HideUtilityClassConstructorCheck|UseUtilityClass|UseVarargs");
+
+        Report checkstyle = new CheckStyleParser().parse(new FileReaderFactory(
+                Paths.get(getClass().getResource("/checkstyle/checkstyle-ignores.xml").getPath())));
+        assertThat(checkstyle.size()).isEqualTo(18);
+
+        Report checkstyleFiltered = new AutoGradingAction().filterAnalysisReport(checkstyle, gradingConfiguration);
+        assertThat(checkstyleFiltered.size()).isEqualTo(1);
+
+        Report pmd = new PmdParser().parse(new FileReaderFactory(
+                Paths.get(getClass().getResource("/pmd/pmd-ignores.xml").getPath())));
+        assertThat(pmd.size()).isEqualTo(40);
+
+        Report pmdFiltered = new AutoGradingAction().filterAnalysisReport(pmd, gradingConfiguration);
+        assertThat(pmdFiltered.size()).isEqualTo(21);
+    }
 }

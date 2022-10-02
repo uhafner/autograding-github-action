@@ -112,7 +112,7 @@ class AnalysisToolsConfigurationTest {
     }
 
     @Test
-    void shouldSkipAnalysisIfNotConfigurex() {
+    void shouldSkipAnalysisIfNotConfigured() {
         AnalysisToolsConfiguration configuration = new AnalysisToolsConfiguration();
 
         ToolConfiguration[] tools = configuration.getTools("{\n"
