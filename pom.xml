@@ -69,7 +69,7 @@
     <dependency>
       <groupId>edu.hm.hafner</groupId>
       <artifactId>analysis-model</artifactId>
-      <version>10.20.0</version>
+      <version>10.22.0</version>
       <exclusions>
         <exclusion>
           <groupId>com.github.spotbugs</groupId>
