@@ -1,4 +1,13 @@
+node
+node_modules
 target
 *.iml
-.idea
+.classpath
+.project
+.settings
+pom.xml.versionsBackup
+pom.xml.releaseBackup
+release.properties
 .DS_Store
+.idea
+/package-lock.json
