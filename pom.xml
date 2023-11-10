@@ -7,25 +7,22 @@
   <parent>
     <groupId>edu.hm.hafner</groupId>
     <artifactId>codingstyle-pom</artifactId>
-    <version>2.29.0</version>
+    <version>3.35.0</version>
     <relativePath/>
   </parent>
 
   <groupId>edu.hm.hafner</groupId>
   <artifactId>autograding-github-action</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>2.0.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <repositories>
-    <repository>
-      <id>repo.jenkins-ci.org</id>
-      <url>https://repo.jenkins-ci.org/public/</url>
-    </repository>
-    <repository>
-      <id>incrementals.jenkins-ci.org</id>
-      <url>https://repo.jenkins-ci.org/incrementals/</url>
-    </repository>
-  </repositories>
+  <properties>
+    <module.name>${project.groupId}.autograding.ghaction</module.name>
+
+    <java.version>17</java.version>
+
+    <jib-maven-plugin.version>3.4.0</jib-maven-plugin.version>
+  </properties>
 
   <dependencyManagement>
     <dependencies>
@@ -41,7 +38,7 @@
     <dependency>
       <groupId>edu.hm.hafner</groupId>
       <artifactId>autograding-model</artifactId>
-      <version>1.3.0</version>
+      <version>3.0.0-SNAPSHOT</version>
       <exclusions>
         <exclusion>
           <groupId>edu.hm.hafner</groupId>
@@ -63,13 +60,25 @@
           <groupId>commons-io</groupId>
           <artifactId>commons-io</artifactId>
         </exclusion>
+        <exclusion>
+          <artifactId>coverage-model</artifactId>
+          <groupId>edu.hm.hafner</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>codingstyle</artifactId>
+          <groupId>edu.hm.hafner</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>streamex</artifactId>
+          <groupId>one.util</groupId>
+        </exclusion>
       </exclusions>
     </dependency>
 
     <dependency>
       <groupId>edu.hm.hafner</groupId>
       <artifactId>analysis-model</artifactId>
-      <version>10.23.1</version>
+      <version>11.13.0</version>
       <exclusions>
         <exclusion>
           <groupId>com.github.spotbugs</groupId>
@@ -80,6 +89,12 @@
           <artifactId>commons-io</artifactId>
         </exclusion>
       </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>edu.hm.hafner</groupId>
+      <artifactId>coverage-model</artifactId>
+      <version>0.29.0</version>
     </dependency>
 
     <dependency>
@@ -115,12 +130,6 @@
     </dependency>
   </dependencies>
 
-  <properties>
-    <module.name>${project.groupId}.autograding.ghaction</module.name>
-
-    <jib-maven-plugin.version>3.4.0</jib-maven-plugin.version>
-  </properties>
-
   <build>
     <finalName>${project.artifactId}</finalName>
     <plugins>
@@ -138,30 +147,105 @@
         </configuration>
       </plugin>
       <plugin>
-        <groupId>com.github.ferstl</groupId>
-        <artifactId>depgraph-maven-plugin</artifactId>
-        <version>4.0.2</version>
-        <configuration>
-          <outputFileName>dependency-graph</outputFileName>
-          <outputDirectory>${project.basedir}/doc</outputDirectory>
-        </configuration>
-        <executions>
-          <execution>
-            <phase>verify</phase>
-            <goals>
-              <goal>graph</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
         <groupId>org.revapi</groupId>
         <artifactId>revapi-maven-plugin</artifactId>
         <configuration>
           <skip>true</skip>
         </configuration>
       </plugin>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration combine.children="append">
+          <compilerArgs>
+            <arg>-Xlint:-varargs</arg>
+            <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED</arg>
+            <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED</arg>
+            <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED</arg>
+            <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED</arg>
+            <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED</arg>
+            <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED</arg>
+            <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED</arg>
+            <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED</arg>
+            <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED</arg>
+            <!-- XXX: The awkward comment formatting used here ensures that the plugin arguments are
+            separated only by spaces. Once we drop support for JDK 8 we can clean this up; later versions
+            do properly handle newline separators. See https://github.com/google/error-prone/pull/1115.
+            -->
+            <arg>-Xplugin:ErrorProne <!--
+                ErrorProne configuration:
+                --> -XepExcludedPaths:.*/generated-test-sources/.* <!--
+                ErrorProne configuration:
+                --> -XepAllDisabledChecksAsWarnings <!--
+                ErrorProne configuration:
+                --> -XepIgnoreUnknownCheckNames <!--
+                ErrorProne configuration:
+                --> -XepDisableWarningsInGeneratedCode <!--
+                ErrorProne configuration:
+                --> -XepAllErrorsAsWarnings <!--
+                NullAway configuration:
+                --> -Xep:NullAway:WARN <!--
+                NullAway configuration:
+                --> -XepOpt:NullAway:AnnotatedPackages=edu.hm.hafner <!--
+                Disabled ErrorProne rule:
+                --> -Xep:ReturnMissingNullable:OFF <!--
+                Disabled ErrorProne rule:
+                --> -Xep:CannotMockFinalMethod:OFF <!--
+                Disabled ErrorProne rule:
+                --> -Xep:Java8ApiChecker:OFF <!--
+                Disabled ErrorProne rule:
+                --> -Xep:ImmutableMemberCollection:OFF <!--
+                Disabled ErrorProne rule:
+                --> -Xep:PreferJavaTimeOverload:OFF <!--
+                Disabled ErrorProne rule:
+                --> -Xep:EqualsGetClass:OFF <!--
+                Disabled ErrorProne rule:
+                --> -Xep:AndroidJdkLibsChecker:OFF <!--
+                Disabled ErrorProne rule:
+                --> -Xep:Java7ApiChecker:OFF <!--
+                Disabled ErrorProne rule:
+                --> -Xep:Var:OFF <!--
+                Disabled ErrorProne rule:
+                --> -Xep:PrivateConstructorForUtilityClass:OFF <!--
+                Disabled ErrorProne rule:
+                --> -Xep:MethodCanBeStatic:OFF <!--
+                Disabled ErrorProne rule:
+                --> -Xep:WildcardImport:OFF <!--
+                Disabled ErrorProne rule:
+                --> -Xep:ThrowsUncheckedException:OFF <!--
+                Disabled ErrorProne rule:
+                --> -Xep:UnusedMethod:OFF <!--
+                Disabled ErrorProne rule:
+                --> -Xep:BooleanParameter:OFF <!--
+                Disabled ErrorProne rule:
+                --> -Xep:MustBeClosedChecker:OFF <!--
+                Disabled ErrorProne rule:
+                --> -Xep:UnnecessaryFinal:OFF <!--
+                Disabled ErrorProne rule:
+                --> -Xep:NullableDereference:OFF
+            </arg>
+            <!-- The Error Prone plugin makes certain
+                assumptions about the state of the AST at the
+                moment it is invoked. Those assumptions are met
+                when using the `simple` compile policy. This
+                flag may be dropped after resolution of
+                https://bugs.openjdk.java.net/browse/JDK-8155674. -->
+            <arg>-XDcompilePolicy=simple</arg>
+          </compilerArgs>
+        </configuration>
+      </plugin>
+
     </plugins>
   </build>
+
+  <repositories>
+    <repository>
+      <id>repo.jenkins-ci.org</id>
+      <url>https://repo.jenkins-ci.org/public/</url>
+    </repository>
+    <repository>
+      <id>incrementals.jenkins-ci.org</id>
+      <url>https://repo.jenkins-ci.org/incrementals/</url>
+    </repository>
+  </repositories>
 
 </project>

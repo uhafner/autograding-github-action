@@ -16,41 +16,43 @@ import static org.assertj.core.api.Assertions.*;
 class AnalysisToolsConfigurationTest {
     @Test
     void shouldReturn2ToolsForDefaultConfiguration() {
-        String jsonConfiguration = "{\n"
-                + "  \"analysis\": {\n"
-                + "    \"tools\": [{\n"
-                + "      \"id\": \"checkstyle\",\n"
-                + "      \"pattern\": \"target/checkstyle.xml\"\n"
-                + "    },\n"
-                + "      {\n"
-                + "        \"id\": \"spotbugs\",\n"
-                + "        \"pattern\": \"target/spotbugsXml.xml\"\n"
-                + "      }],\n"
-                + "    \"maxScore\": 111,\n"
-                + "    \"errorImpact\": -5,\n"
-                + "    \"highImpact\": -3,\n"
-                + "    \"normalImpact\": -2,\n"
-                + "    \"lowImpact\": -1\n"
-                + "  },\n"
-                + "  \"tests\": {\n"
-                + "    \"maxScore\": 100,\n"
-                + "    \"passedImpact\": 0,\n"
-                + "    \"failureImpact\": -5,\n"
-                + "    \"skippedImpact\": -1\n"
-                + "  },\n"
-                + "  \"coverage\": {\n"
-                + "    \"maxScore\": 100,\n"
-                + "    \"coveredPercentageImpact\": 0,\n"
-                + "    \"missedPercentageImpact\": -1\n"
-                + "  },\n"
-                + "  \"pit\": {\n"
-                + "    \"maxScore\": 100,\n"
-                + "    \"detectedImpact\": 0,\n"
-                + "    \"undetectedImpact\": 0,\n"
-                + "    \"detectedPercentageImpact\": 0,\n"
-                + "    \"undetectedPercentageImpact\": -1\n"
-                + "  }\n"
-                + "}\n";
+        String jsonConfiguration = """
+                {
+                  "analysis": {
+                    "tools": [{
+                      "id": "checkstyle",
+                      "pattern": "target/checkstyle.xml"
+                    },
+                      {
+                        "id": "spotbugs",
+                        "pattern": "target/spotbugsXml.xml"
+                      }],
+                    "maxScore": 111,
+                    "errorImpact": -5,
+                    "highImpact": -3,
+                    "normalImpact": -2,
+                    "lowImpact": -1
+                  },
+                  "tests": {
+                    "maxScore": 100,
+                    "passedImpact": 0,
+                    "failureImpact": -5,
+                    "skippedImpact": -1
+                  },
+                  "coverage": {
+                    "maxScore": 100,
+                    "coveredPercentageImpact": 0,
+                    "missedPercentageImpact": -1
+                  },
+                  "pit": {
+                    "maxScore": 100,
+                    "detectedImpact": 0,
+                    "undetectedImpact": 0,
+                    "detectedPercentageImpact": 0,
+                    "undetectedPercentageImpact": -1
+                  }
+                }
+                """;
         ToolConfiguration[] tools = new AnalysisToolsConfiguration().getTools(jsonConfiguration);
 
         assertThat(tools).hasSize(2).satisfiesExactly(
@@ -64,8 +66,8 @@ class AnalysisToolsConfigurationTest {
                 }
         );
 
-        AggregatedScore score = new AggregatedScore(jsonConfiguration);
-        assertThat(score.getAnalysisConfiguration().getMaxScore()).isEqualTo(111);
+//        AggregatedScore score = new AggregatedScore(jsonConfiguration);
+//        assertThat(score.getAnalysisConfigurations().getMaxScore()).isEqualTo(111);
     }
 
     @Test

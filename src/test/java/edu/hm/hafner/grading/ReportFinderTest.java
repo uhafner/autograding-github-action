@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 
 /**
- * Tests the class {@link TestReportFinder}.
+ * Tests the class {@link ReportFinder}.
  *
  * @author Ullrich Hafner
  */
@@ -25,18 +25,18 @@ class ReportFinderTest {
     void shouldFindSources() {
         ReportFinder finder = new ReportFinder();
 
-        assertThat(finder.find("src/main/java/", "regex:.*Jacoco.*\\.java")).hasSize(3);
+        assertThat(finder.find("src/main/java/", "regex:.*Console.*\\.java")).hasSize(3);
     }
 
     @Test
     void shouldCreateAffectedFilesReport() {
         ReportFinder finder = new ReportFinder("uhafner/autograding-github-action", "master");
 
-        assertThat(finder.renderLinks("src/main/java/", "regex:.*Jacoco.*\\.java"))
+        assertThat(finder.renderLinks("src/main/java/", "regex:.*Console.*\\.java"))
                 .contains("# Analyzed files",
-                        "- [JacocoParser.java](https://github.com/uhafner/autograding-github-action/blob/master/src/main/java/de/tobiasmichael/me/Util/JacocoParser.java)",
-                        "- [JacocoCounter.java](https://github.com/uhafner/autograding-github-action/blob/master/src/main/java/de/tobiasmichael/me/Util/JacocoCounter.java)",
-                        "- [JacocoReport.java](https://github.com/uhafner/autograding-github-action/blob/master/src/main/java/de/tobiasmichael/me/Util/JacocoReport.java)");
+                        "- [ConsoleCoverageReportFactory.java](https://github.com/uhafner/autograding-github-action/blob/master/src/main/java/edu/hm/hafner/grading/ConsoleCoverageReportFactory.java)",
+                        "- [ConsoleAnalysisReportFactory.java](https://github.com/uhafner/autograding-github-action/blob/master/src/main/java/edu/hm/hafner/grading/ConsoleAnalysisReportFactory.java)",
+                        "- [ConsoleTestReportFactory.java](https://github.com/uhafner/autograding-github-action/blob/master/src/main/java/edu/hm/hafner/grading/ConsoleTestReportFactory.java)");
 
     }
 }

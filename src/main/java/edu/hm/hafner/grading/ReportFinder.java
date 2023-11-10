@@ -16,12 +16,10 @@ import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.StringUtils;
 
-import edu.hm.hafner.analysis.Report;
 import edu.hm.hafner.util.VisibleForTesting;
 
 /**
- * Base class that finds files in the workspace and parses these files with a parser that returns a {@link Report}
- * instance.
+ * Base class that finds files in the workspace.
  *
  * @author Ullrich Hafner
  */
@@ -30,8 +28,11 @@ class ReportFinder {
     private final String branch;
 
     ReportFinder() {
-        this(StringUtils.defaultString(System.getenv("GITHUB_REPOSITORY")),
-                StringUtils.remove(StringUtils.defaultString(System.getenv("GITHUB_REF")), "refs/heads/"));
+        this(getEnv("GITHUB_REPOSITORY"), StringUtils.remove(getEnv("GITHUB_REF"), "refs/heads/"));
+    }
+
+    private static String getEnv(final String name) {
+        return StringUtils.defaultString(System.getenv(name));
     }
 
     @VisibleForTesting
@@ -62,6 +63,19 @@ class ReportFinder {
 
             return new ArrayList<>();
         }
+    }
+
+    /**
+     * Returns the paths that match the specified pattern.
+     *
+     * @param pattern
+     *         the pattern to use when searching
+     *
+     * @return the matching paths
+     * @see FileSystem#getPathMatcher(String)
+     */
+    protected List<Path> find(final String pattern) {
+        return find(".", pattern);
     }
 
     public String renderLinks(final String directory, final String pattern) {

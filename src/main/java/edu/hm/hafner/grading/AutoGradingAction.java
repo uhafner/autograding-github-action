@@ -3,25 +3,16 @@ package edu.hm.hafner.grading;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 
-import edu.hm.hafner.analysis.FileReaderFactory;
 import edu.hm.hafner.analysis.Report;
 import edu.hm.hafner.analysis.Report.IssueFilterBuilder;
-import edu.hm.hafner.analysis.Severity;
-import edu.hm.hafner.analysis.registry.ParserDescriptor;
-import edu.hm.hafner.grading.AnalysisToolsConfiguration.ToolConfiguration;
+import edu.hm.hafner.grading.AnalysisScore.AnalysisScoreBuilder;
 import edu.hm.hafner.grading.github.GitHubPullRequestWriter;
 import edu.hm.hafner.util.FilteredLog;
-
-import de.tobiasmichael.me.Util.JacocoParser;
-import de.tobiasmichael.me.Util.JacocoReport;
 
 /**
  * GitHub action entrypoint for the autograding action.
@@ -31,98 +22,43 @@ import de.tobiasmichael.me.Util.JacocoReport;
  */
 @SuppressWarnings("checkstyle:ClassDataAbstractionCoupling")
 public class AutoGradingAction {
-    private static final String JACOCO_RESULTS = "target/site/jacoco/jacoco.xml";
-    private static final String CHECKSTYLE = "checkstyle";
-    private static final String PMD = "pmd";
-    private static final String SPOTBUGS = "spotbugs";
-
     /**
      * Public entry point, calls the action.
      *
      * @param args
      *         not used
      */
-    public static void main(final String[] args) {
+    public static void main(final String... args) {
         new AutoGradingAction().run();
     }
 
     void run() {
         String jsonConfiguration = getConfiguration();
+
         FilteredLog log = new FilteredLog("Autograding Action Errors:");
 
         AggregatedScore score = new AggregatedScore(jsonConfiguration, log);
 
-        JacksonFacade jackson = new JacksonFacade();
-
         System.out.println("------------------------------------------------------------------");
         System.out.println("------------------------ Configuration ---------------------------");
         System.out.println("------------------------------------------------------------------");
-        System.out.println("-> Test Configuration: " + jackson.toJson(score.getTestConfiguration()));
-        System.out.println("-> Code Coverage Configuration: " + jackson.toJson(score.getCoverageConfiguration()));
-        System.out.println("-> PIT Mutation Coverage Configuration: " + jackson.toJson(score.getPitConfiguration()));
-        System.out.println("-> Static Analysis Configuration: " + jackson.toJson(score.getAnalysisConfiguration()));
+        System.out.println("Reading configuration: " + jsonConfiguration);
 
         GradingConfiguration configuration = new GradingConfiguration(jsonConfiguration);
 
         System.out.println("==================================================================");
-        List<Report> testReports = new TestReportFinder().find(configuration.getTestPattern());
-        score.addTestScores(new TestReportSupplier(testReports));
-        System.out.println("==================================================================");
-        List<Report> pitReports = new PitReportFinder().find();
-        score.addPitScores(new PitReportSupplier(pitReports));
-        System.out.println("==================================================================");
-        if (Files.isReadable(Paths.get(JACOCO_RESULTS))) {
-            JacocoReport coverageReport = new JacocoParser().parse(new FileReaderFactory(Paths.get(JACOCO_RESULTS)));
-            score.addCoverageScores(new CoverageReportSupplier(coverageReport));
-            System.out.println("Reading JaCoCo results:");
-            System.out.format("- %s%n", JACOCO_RESULTS);
-        }
-        else {
-            System.out.println("No JaCoCo coverage result files found!");
-        }
+
+        score.gradeTests(new ConsoleTestReportFactory());
 
         System.out.println("==================================================================");
-        List<Report> analysisReports = new ArrayList<>();
 
-        if (score.getAnalysisConfiguration().isEnabled()) {
-            AnalysisToolsConfiguration toolsConfiguration = new AnalysisToolsConfiguration();
-            ToolConfiguration[] tools = toolsConfiguration.getTools(jsonConfiguration);
-            if (tools.length == 0) { // TODO: remove if all assignments use the new version
-                tools = new ToolConfiguration[] {
-                        new ToolConfiguration(CHECKSTYLE),
-                        new ToolConfiguration(PMD),
-                        new ToolConfiguration(SPOTBUGS)
-                };
-            }
+        score.gradeCoverage(new ConsoleCoverageReportFactory());
 
-            List<AnalysisScore> analysisScores = new ArrayList<>();
-            ReportFinder reportFinder = new ReportFinder();
-            for (ToolConfiguration tool : tools) {
-                ParserDescriptor parser = tool.getDescriptor();
-                System.out.format("Searching for '%s' results matching file name pattern %s%n",
-                        parser.getName(), tool.getPattern());
-                List<Path> files = reportFinder.find("./", "glob:" + tool.getPattern());
+        System.out.println("==================================================================");
 
-                if (files.size() == 0) {
-                    System.out.println("No matching report result files found!");
-                }
-                else {
-                    Collections.sort(files);
+        score.gradeAnalysis(new ConsoleAnalysisReportFactory());
 
-                    for (Path file : files) {
-                        Report allIssues = parser.createParser().parse(new FileReaderFactory(file));
-                        Report filteredIssues = filterAnalysisReport(allIssues, configuration);
-                        System.out.format("- %s : %d warnings (from total %d)%n", file, filteredIssues.size(),
-                                allIssues.size());
-                        analysisReports.add(filteredIssues);
-                        analysisScores.add(createAnalysisScore(score.getAnalysisConfiguration(), parser.getName(),
-                                parser.getId(), filteredIssues));
-                    }
-                }
-            }
-            score.addAnalysisScores(new AnalysisReportSupplier(analysisScores));
-            System.out.println("==================================================================");
-        }
+        System.out.println("==================================================================");
 
         log.getInfoMessages().forEach(System.out::println);
 
@@ -134,7 +70,7 @@ public class AutoGradingAction {
         String files = createAffectedFiles(configuration);
 
         pullRequestWriter.addComment(getChecksName(), results.getHeader(), results.getSummary(score) + files,
-                results.getDetails(score, testReports), analysisReports);
+                results.getDetails(score, List.of()), List.of());
     }
 
     private String createAffectedFiles(final GradingConfiguration configuration) {
@@ -156,16 +92,12 @@ public class AutoGradingAction {
     }
 
     private static AnalysisScore createAnalysisScore(final AnalysisConfiguration configuration,
-            final String displayName,
-            final String id, final Report report) {
-        return new AnalysisScore.AnalysisScoreBuilder()
+            final String displayName, final String id, final Report report) {
+        return new AnalysisScoreBuilder()
                 .withConfiguration(configuration)
-                .withDisplayName(displayName)
+                .withName(displayName)
                 .withId(id)
-                .withTotalErrorsSize(report.getSizeOf(Severity.ERROR))
-                .withTotalHighSeveritySize(report.getSizeOf(Severity.WARNING_HIGH))
-                .withTotalNormalSeveritySize(report.getSizeOf(Severity.WARNING_NORMAL))
-                .withTotalLowSeveritySize(report.getSizeOf(Severity.WARNING_LOW))
+                .withReport(report)
                 .build();
     }
 
