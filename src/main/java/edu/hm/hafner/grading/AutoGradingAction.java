@@ -1,7 +1,7 @@
 package edu.hm.hafner.grading;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
@@ -10,12 +10,10 @@ import java.util.NoSuchElementException;
 import org.apache.commons.lang3.StringUtils;
 
 import edu.hm.hafner.analysis.ParsingException;
-import edu.hm.hafner.analysis.Report;
-import edu.hm.hafner.analysis.Report.IssueFilterBuilder;
-import edu.hm.hafner.grading.AnalysisScore.AnalysisScoreBuilder;
 import edu.hm.hafner.grading.github.GitHubPullRequestWriter;
 import edu.hm.hafner.util.FilteredLog;
 import edu.hm.hafner.util.SecureXmlParserFactory;
+import edu.hm.hafner.util.VisibleForTesting;
 
 /**
  * GitHub action entrypoint for the autograding action.
@@ -48,7 +46,6 @@ public class AutoGradingAction {
         AggregatedScore score = new AggregatedScore(jsonConfiguration, log);
         logHandler.print();
 
-        GradingConfiguration configuration = new GradingConfiguration(jsonConfiguration);
         System.out.println("==================================================================");
 
         GradingReport results = new GradingReport();
@@ -86,48 +83,19 @@ public class AutoGradingAction {
 
         GitHubPullRequestWriter pullRequestWriter = new GitHubPullRequestWriter();
 
-        String files = createAffectedFiles(configuration);
-
-        pullRequestWriter.addComment(getChecksName(), results.getHeader(), results.getSummary(score) + files,
+        pullRequestWriter.addComment(getChecksName(), results.getHeader(), results.getSummary(score),
                 results.getDetails(score, List.of()), List.of());
-    }
-
-    private String createAffectedFiles(final GradingConfiguration configuration) {
-        String analysisPattern = configuration.getAnalysisPattern();
-        if (StringUtils.isNotBlank(analysisPattern) && !StringUtils.equals(analysisPattern,
-                GradingConfiguration.INCLUDE_ALL_FILES)) {
-            return "\n" + new ReportFinder().renderLinks("./", "regex:" + analysisPattern);
-        }
-        return StringUtils.EMPTY;
-    }
-
-    Report filterAnalysisReport(final Report report, final GradingConfiguration configuration) {
-        IssueFilterBuilder builder = new IssueFilterBuilder();
-        builder.setIncludeFileNameFilter(configuration.getAnalysisPattern());
-        if (configuration.hasTypeIgnores()) {
-            builder.setExcludeTypeFilter(configuration.getTypesIgnorePattern());
-        }
-        return report.filter(builder.build());
-    }
-
-    private static AnalysisScore createAnalysisScore(final AnalysisConfiguration configuration,
-            final String displayName, final String id, final Report report) {
-        return new AnalysisScoreBuilder()
-                .withConfiguration(configuration)
-                .withName(displayName)
-                .withId(id)
-                .withReport(report)
-                .build();
     }
 
     private String getChecksName() {
         return StringUtils.defaultIfBlank(System.getenv("CHECKS_NAME"), "Autograding results");
     }
 
-    private String getConfiguration() {
+    @VisibleForTesting
+    String getConfiguration() {
         String configuration = System.getenv("CONFIG");
         if (StringUtils.isBlank(configuration)) {
-            System.out.println("No configuration provided (environment CONFIG not set), using default configuration");
+            System.out.println("No configuration provided (environment variable CONFIG not set), using default configuration");
 
             return readDefaultConfiguration();
         }
@@ -138,11 +106,13 @@ public class AutoGradingAction {
 
     private String readDefaultConfiguration() {
         try {
-            byte[] encoded = Files.readAllBytes(Paths.get("/default.conf"));
-
-            return new String(encoded, StandardCharsets.UTF_8);
+            var defaultConfig = getClass().getResource("/default-config.json");
+            if (defaultConfig == null) {
+                throw new IOException("Can't find configuration in class path: default-conf.json");
+            }
+            return Files.readString(Paths.get(defaultConfig.toURI()));
         }
-        catch (IOException exception) {
+        catch (IOException | URISyntaxException exception) {
             System.out.println("Can't read configuration: default.conf");
             return StringUtils.EMPTY;
         }

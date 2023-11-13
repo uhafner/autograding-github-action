@@ -112,50 +112,76 @@ public class AutoGradingActionITest {
             }
             """;
     private static final String WS = "/github/workspace/";
+    private static final String[] DEFAULT_CONFIG_OUTPUT = {
+            "Processing 1 test configuration(s)",
+            "-> Unittests Total: 33 tests (21 passed, 12 failed, 0 skipped)",
+            "JUnit Score: 100 of 100",
+            "Processing 2 coverage configuration(s)",
+            "-> Line Coverage Total: LINE: 87.99% (315/358)",
+            "-> Branch Coverage Total: BRANCH: 61.54% (16/26)",
+            "=> JaCoCo Score: 50 of 100",
+            "-> Mutation Coverage Total: MUTATION: 72.77% (139/191)",
+            "=> PIT Score: 46 of 100",
+            "Processing 2 static analysis configuration(s)",
+            "-> CheckStyle Total: 3 warnings",
+            "-> PMD Total: 5 warnings",
+            "=> Style Score: 23 of 100",
+            "-> SpotBugs Total: 9 warnings",
+            "=> Bugs Score: 0 of 100",
+            "Autograding results",
+            "Total score: 219/500 (unit tests: 100/100, code coverage: 50/100, mutation coverage: 46/100, analysis: 23/200)"};
 
     @Test
     void shouldGradeInDockerContainer() throws TimeoutException {
-        try (var container = new GenericContainer<>(DockerImageName.parse("uhafner/autograding-github-action:2.0.0-alpha"))
-                .withEnv("CONFIG", CONFIGURATION)
-                .withWorkingDirectory("/github/workspace")
+        try (var container = createContainer()) {
+            container.withEnv("CONFIG", CONFIGURATION).start();
+            startContainerWithAllFiles(container);
+
+            assertThat(readStandardOut(container))
+                    .contains("Obtaining configuration from environment variable CONFIG")
+                    .contains(DEFAULT_CONFIG_OUTPUT);
+        }
+
+    }
+
+    private GenericContainer<?> createContainer() {
+        return new GenericContainer<>(DockerImageName.parse("uhafner/autograding-github-action:2.0.0-alpha"));
+    }
+
+    @Test
+    void shouldUseDefaultConfiguration() throws TimeoutException {
+        try (var container = createContainer()) {
+            startContainerWithAllFiles(container);
+
+            assertThat(readStandardOut(container))
+                    .contains("No configuration provided (environment variable CONFIG not set), using default configuration")
+                    .contains(DEFAULT_CONFIG_OUTPUT);
+        }
+
+    }
+
+    private String readStandardOut(final GenericContainer<? extends GenericContainer<?>> container) throws TimeoutException {
+        WaitingConsumer waitingConsumer = new WaitingConsumer();
+        ToStringConsumer toStringConsumer = new ToStringConsumer();
+
+        Consumer<OutputFrame> composedConsumer = toStringConsumer.andThen(waitingConsumer);
+        container.followOutput(composedConsumer);
+        waitingConsumer.waitUntil(frame ->
+                frame.getUtf8String().contains("Exception")
+                        || frame.getUtf8String().contains("End Grading"), 60, TimeUnit.SECONDS);
+
+        return toStringConsumer.toUtf8String();
+    }
+
+    private void startContainerWithAllFiles(final GenericContainer<?> container) {
+        container.withWorkingDirectory("/github/workspace")
                 .withCopyFileToContainer(read("checkstyle/checkstyle-result.xml"), WS + "checkstyle.xml")
                 .withCopyFileToContainer(read("jacoco/jacoco.xml"), WS + "jacoco.xml")
                 .withCopyFileToContainer(read("junit/TEST-Aufgabe3Test.xml"), WS + "junit.xml")
                 .withCopyFileToContainer(read("pit/mutations.xml"), WS + "mutations.xml")
                 .withCopyFileToContainer(read("pmd/pmd.xml"), WS + "pmd.xml")
-                .withCopyFileToContainer(read("spotbugs/spotbugsXml.xml"), WS + "spotbugs.xml")) {
-            container.start();
-            WaitingConsumer waitingConsumer = new WaitingConsumer();
-            ToStringConsumer toStringConsumer = new ToStringConsumer();
-
-            Consumer<OutputFrame> composedConsumer = toStringConsumer.andThen(waitingConsumer);
-            container.followOutput(composedConsumer);
-            waitingConsumer.waitUntil(frame ->
-                    frame.getUtf8String().contains("Exception")
-                            || frame.getUtf8String().contains("End Grading"), 60, TimeUnit.SECONDS);
-
-            assertThat(toStringConsumer.toUtf8String())
-                    .contains("Obtaining configuration from environment variable CONFIG",
-                            "Processing 1 test configuration(s)",
-                            "-> Unittests Total: 33 tests (21 passed, 12 failed, 0 skipped)",
-                            "JUnit Score: 100 of 100",
-                            "Processing 2 coverage configuration(s)",
-                            "-> Line Coverage Total: LINE: 87.99% (315/358)",
-                            "-> Branch Coverage Total: BRANCH: 61.54% (16/26)",
-                            "=> JaCoCo Score: 50 of 100",
-                            "-> Mutation Coverage Total: MUTATION: 72.77% (139/191)",
-                            "=> PIT Score: 46 of 100",
-                            "Processing 2 static analysis configuration(s)",
-                            "-> CheckStyle Total: 3 warnings",
-                            "-> PMD Total: 5 warnings",
-                            "=> Style Score: 23 of 100",
-                            "-> SpotBugs Total: 9 warnings",
-                            "=> Bugs Score: 0 of 100",
-                            "Autograding results",
-                            "Total score: 219/500 (unit tests: 100/100, code coverage: 50/100, mutation coverage: 46/100, analysis: 23/200)"
-                    );
-        }
-
+                .withCopyFileToContainer(read("spotbugs/spotbugsXml.xml"), WS + "spotbugs.xml")
+                .start();
     }
 
     private MountableFile read(final String resourceName) {
