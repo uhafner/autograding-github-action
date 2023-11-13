@@ -20,7 +20,7 @@ jobs:
       - name: Test setup
         run: sh copy_files.sh
       - name: Run Autograding
-        uses: uhafner/autograding-github-action@v1.7.0
+        uses: uhafner/autograding-github-action@v1.7.1
         with:
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
           HEAD_SHA: ${{github.event.pull_request.head.sha}}
