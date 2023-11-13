@@ -22,6 +22,8 @@
     <java.version>17</java.version>
 
     <jib-maven-plugin.version>3.4.0</jib-maven-plugin.version>
+    <testcontainers.version>1.19.1</testcontainers.version>
+
   </properties>
 
   <dependencyManagement>
@@ -128,6 +130,20 @@
       <artifactId>commons-lang3</artifactId>
       <version>3.13.0</version>
     </dependency>
+
+    <dependency>
+      <groupId>org.testcontainers</groupId>
+      <artifactId>testcontainers</artifactId>
+      <version>${testcontainers.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.testcontainers</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>${testcontainers.version}</version>
+      <scope>test</scope>
+    </dependency>
+
   </dependencies>
 
   <build>
@@ -137,12 +153,20 @@
         <groupId>com.google.cloud.tools</groupId>
         <artifactId>jib-maven-plugin</artifactId>
         <version>${jib-maven-plugin.version}</version>
+        <executions>
+          <execution>
+            <phase>pre-integration-test</phase>
+            <goals>
+              <goal>dockerBuild</goal>
+            </goals>
+          </execution>
+        </executions>
         <configuration>
           <to>
             <image>docker.io/uhafner/autograding-github-action</image>
           </to>
           <from>
-            <image>maven:3.6.3-openjdk-8</image>
+            <image>maven:3.9.5-eclipse-temurin-17</image>
           </from>
         </configuration>
       </plugin>

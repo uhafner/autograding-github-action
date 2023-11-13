@@ -24,15 +24,15 @@ import edu.hm.hafner.util.VisibleForTesting;
  * @author Ullrich Hafner
  */
 class ReportFinder {
+    private static String getEnv(final String name) {
+        return StringUtils.defaultString(System.getenv(name));
+    }
+
     private final String repository;
     private final String branch;
 
     ReportFinder() {
         this(getEnv("GITHUB_REPOSITORY"), StringUtils.remove(getEnv("GITHUB_REF"), "refs/heads/"));
-    }
-
-    private static String getEnv(final String name) {
-        return StringUtils.defaultString(System.getenv(name));
     }
 
     @VisibleForTesting
@@ -52,7 +52,7 @@ class ReportFinder {
      * @return the matching paths
      * @see FileSystem#getPathMatcher(String)
      */
-    protected List<Path> find(final String directory, final String pattern) {
+    public List<Path> find(final String directory, final String pattern) {
         try {
             PathMatcherFileVisitor visitor = new PathMatcherFileVisitor(pattern);
             Files.walkFileTree(Paths.get(directory), visitor);
@@ -74,7 +74,7 @@ class ReportFinder {
      * @return the matching paths
      * @see FileSystem#getPathMatcher(String)
      */
-    protected List<Path> find(final String pattern) {
+    public List<Path> find(final String pattern) {
         return find(".", pattern);
     }
 

@@ -5,14 +5,17 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.apache.commons.lang3.StringUtils;
 
+import edu.hm.hafner.analysis.ParsingException;
 import edu.hm.hafner.analysis.Report;
 import edu.hm.hafner.analysis.Report.IssueFilterBuilder;
 import edu.hm.hafner.grading.AnalysisScore.AnalysisScoreBuilder;
 import edu.hm.hafner.grading.github.GitHubPullRequestWriter;
 import edu.hm.hafner.util.FilteredLog;
+import edu.hm.hafner.util.SecureXmlParserFactory;
 
 /**
  * GitHub action entrypoint for the autograding action.
@@ -35,36 +38,55 @@ public class AutoGradingAction {
     void run() {
         String jsonConfiguration = getConfiguration();
 
-        FilteredLog log = new FilteredLog("Autograding Action Errors:");
+        FilteredLog log = new FilteredLog("Autograding GitHub Action Errors:");
+        var logHandler = new LogHandler(System.out, log);
+
+
+        System.out.println("------------------------------------------------------------------");
+        System.out.println("------------------------ Start Grading ---------------------------");
+        System.out.println("------------------------------------------------------------------");
 
         AggregatedScore score = new AggregatedScore(jsonConfiguration, log);
+        logHandler.print();
 
-        System.out.println("------------------------------------------------------------------");
-        System.out.println("------------------------ Configuration ---------------------------");
-        System.out.println("------------------------------------------------------------------");
         System.out.println("Reading configuration: " + jsonConfiguration);
 
         GradingConfiguration configuration = new GradingConfiguration(jsonConfiguration);
-
-        System.out.println("==================================================================");
-
-        score.gradeTests(new ConsoleTestReportFactory());
-
-        System.out.println("==================================================================");
-
-        score.gradeCoverage(new ConsoleCoverageReportFactory());
-
-        System.out.println("==================================================================");
-
-        score.gradeAnalysis(new ConsoleAnalysisReportFactory());
-
-        System.out.println("==================================================================");
-
-        log.getInfoMessages().forEach(System.out::println);
-
         System.out.println("==================================================================");
 
         GradingReport results = new GradingReport();
+
+        try {
+            score.gradeTests(new ConsoleTestReportFactory());
+            logHandler.print();
+
+            System.out.println("==================================================================");
+
+            score.gradeCoverage(new ConsoleCoverageReportFactory());
+            logHandler.print();
+
+            System.out.println("==================================================================");
+
+            score.gradeAnalysis(new ConsoleAnalysisReportFactory());
+            logHandler.print();
+
+            System.out.println("==================================================================");
+
+            System.out.println(results.getHeader());
+            System.out.println(results.getSummary(score));
+            System.out.println(results.getDetails(score, List.of()));
+        }
+        catch (NoSuchElementException | ParsingException | SecureXmlParserFactory.ParsingException exception) {
+            System.out.println("==================================================================");
+            System.out.println(results.getHeader());
+            System.out.println(results.getSummary(score));
+            System.out.println(results.getErrors(score, exception));
+        }
+
+        System.out.println("------------------------------------------------------------------");
+        System.out.println("------------------------- End Grading ----------------------------");
+        System.out.println("------------------------------------------------------------------");
+
         GitHubPullRequestWriter pullRequestWriter = new GitHubPullRequestWriter();
 
         String files = createAffectedFiles(configuration);
