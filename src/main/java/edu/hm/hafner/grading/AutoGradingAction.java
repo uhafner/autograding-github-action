@@ -49,8 +49,6 @@ public class AutoGradingAction {
         AggregatedScore score = new AggregatedScore(jsonConfiguration, log);
         logHandler.print();
 
-        System.out.println("Reading configuration: " + jsonConfiguration);
-
         GradingConfiguration configuration = new GradingConfiguration(jsonConfiguration);
         System.out.println("==================================================================");
 
@@ -135,7 +133,7 @@ public class AutoGradingAction {
             return readDefaultConfiguration();
         }
 
-        System.out.println("Using configuration: " + configuration);
+        System.out.println("Obtaining configuration from environment variable CONFIG: " + configuration);
         return configuration;
     }
 

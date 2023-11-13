@@ -163,7 +163,7 @@
         </executions>
         <configuration>
           <to>
-            <image>docker.io/uhafner/autograding-github-action</image>
+            <image>docker.io/uhafner/autograding-github-action:2.0.0-alpha</image>
           </to>
           <from>
             <image>maven:3.9.5-eclipse-temurin-17</image>

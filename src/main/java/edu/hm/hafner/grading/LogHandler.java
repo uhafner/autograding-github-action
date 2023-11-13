@@ -14,8 +14,8 @@ public class LogHandler {
     private final PrintStream printStream;
     private final FilteredLog logger;
 
-    private final int infoPosition;
-    private final int errorPosition;
+    private int infoPosition;
+    private int errorPosition;
     private boolean quiet = false;
 
     /**
@@ -51,6 +51,7 @@ public class LogHandler {
         var size = getSizeOfInfoMessages();
         if (infoPosition < size && !quiet) {
             logger.getInfoMessages().subList(infoPosition, size).forEach(printStream::println);
+            infoPosition = logger.getInfoMessages().size();
         }
     }
 
@@ -58,6 +59,7 @@ public class LogHandler {
         var size = getSizeOfErrorMessages();
         if (errorPosition < size && !quiet) {
             logger.getErrorMessages().subList(infoPosition, size).forEach(printStream::println);
+            errorPosition = logger.getErrorMessages().size();
         }
     }
 

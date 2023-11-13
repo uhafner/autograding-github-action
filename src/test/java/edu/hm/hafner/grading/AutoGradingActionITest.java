@@ -27,7 +27,7 @@ public class AutoGradingActionITest {
                   {
                     "id": "test",
                     "name": "Unittests",
-                    "pattern": "**/TEST*.xml"
+                    "pattern": "**/junit*.xml"
                   }
                 ],
                 "name": "JUnit",
@@ -115,15 +115,15 @@ public class AutoGradingActionITest {
 
     @Test
     void shouldGradeInDockerContainer() throws TimeoutException {
-        try (var container = new GenericContainer<>(DockerImageName.parse("uhafner/autograding-github-action"))
+        try (var container = new GenericContainer<>(DockerImageName.parse("uhafner/autograding-github-action:2.0.0-alpha"))
                 .withEnv("CONFIG", CONFIGURATION)
                 .withWorkingDirectory("/github/workspace")
-                .withCopyFileToContainer(read("checkstyle/checkstyle-result.xml"), WS)
-                .withCopyFileToContainer(read("jacoco/jacoco.xml"), WS)
-                .withCopyFileToContainer(read("junit/TEST-Aufgabe3Test.xml"), WS)
-                .withCopyFileToContainer(read("pit/mutations.xml"), WS)
-                .withCopyFileToContainer(read("pmd/pmd.xml"), WS)
-                .withCopyFileToContainer(read("spotbugs/spotbugsXml.xml"), WS)) {
+                .withCopyFileToContainer(read("checkstyle/checkstyle-result.xml"), WS + "checkstyle.xml")
+                .withCopyFileToContainer(read("jacoco/jacoco.xml"), WS + "jacoco.xml")
+                .withCopyFileToContainer(read("junit/TEST-Aufgabe3Test.xml"), WS + "junit.xml")
+                .withCopyFileToContainer(read("pit/mutations.xml"), WS + "mutations.xml")
+                .withCopyFileToContainer(read("pmd/pmd.xml"), WS + "pmd.xml")
+                .withCopyFileToContainer(read("spotbugs/spotbugsXml.xml"), WS + "spotbugs.xml")) {
             container.start();
             WaitingConsumer waitingConsumer = new WaitingConsumer();
             ToStringConsumer toStringConsumer = new ToStringConsumer();
@@ -135,7 +135,8 @@ public class AutoGradingActionITest {
                             || frame.getUtf8String().contains("End Grading"), 60, TimeUnit.SECONDS);
 
             assertThat(toStringConsumer.toUtf8String())
-                    .contains("Processing 1 test configuration(s)",
+                    .contains("Obtaining configuration from environment variable CONFIG",
+                            "Processing 1 test configuration(s)",
                             "-> Unittests Total: 33 tests (21 passed, 12 failed, 0 skipped)",
                             "JUnit Score: 100 of 100",
                             "Processing 2 coverage configuration(s)",
