@@ -130,7 +130,7 @@
         <version>${jib-maven-plugin.version}</version>
         <configuration>
           <to>
-            <image>docker.io/uhafner/autograding-github-action</image>
+            <image>docker.io/uhafner/autograding-github-action:1.7.1</image>
           </to>
           <from>
             <image>maven:3.6.3-openjdk-8</image>

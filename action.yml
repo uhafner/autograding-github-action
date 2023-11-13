@@ -23,7 +23,7 @@ inputs:
 
 runs:
   using: 'docker'
-  image: 'docker://uhafner/autograding-github-action'
+  image: 'docker://uhafner/autograding-github-action:1.7.1'
   env:
     CONFIG: ${{ inputs.CONFIG }}
     CHECKS_NAME: ${{ inputs.CHECKS_NAME }}
