@@ -8,7 +8,7 @@ import edu.hm.hafner.grading.AggregatedScore.TestResult;
 import edu.hm.hafner.util.FilteredLog;
 
 /**
- * Reads analysis reports of a specific type from the file system and creates an aggregated report.
+ * Reads test reports of a specific type from the file system and creates an aggregated report.
  *
  * @author Ullrich Hafner
  */

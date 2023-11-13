@@ -41,7 +41,6 @@ public class AutoGradingAction {
         FilteredLog log = new FilteredLog("Autograding GitHub Action Errors:");
         var logHandler = new LogHandler(System.out, log);
 
-
         System.out.println("------------------------------------------------------------------");
         System.out.println("------------------------ Start Grading ---------------------------");
         System.out.println("------------------------------------------------------------------");

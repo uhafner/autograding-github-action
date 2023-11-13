@@ -15,7 +15,7 @@ import edu.hm.hafner.grading.AggregatedScore.CoverageReportFactory;
 import edu.hm.hafner.util.FilteredLog;
 
 /**
- * Reads analysis reports of a specific type from the file system and creates an aggregated report.
+ * Reads coverage reports of a specific type from the file system and creates an aggregated report.
  *
  * @author Ullrich Hafner
  */
