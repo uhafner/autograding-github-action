@@ -24,6 +24,7 @@
     <jib-maven-plugin.version>3.4.0</jib-maven-plugin.version>
     <testcontainers.version>1.19.1</testcontainers.version>
 
+    <autograding-model.version>3.0.0</autograding-model.version>
     <analysis-model.version>11.13.0</analysis-model.version>
     <coverage-model.version>0.33.0</coverage-model.version>
     <docker-image-tag>2.0.0-alpha</docker-image-tag>
@@ -43,7 +44,7 @@
     <dependency>
       <groupId>edu.hm.hafner</groupId>
       <artifactId>autograding-model</artifactId>
-      <version>3.0.0-SNAPSHOT</version>
+      <version>${autograding-model.version}</version>
       <exclusions>
         <exclusion>
           <groupId>edu.hm.hafner</groupId>
