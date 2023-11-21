@@ -114,7 +114,7 @@ public class AutoGradingActionITest {
     private static final String WS = "/github/workspace/";
     private static final String[] DEFAULT_CONFIG_OUTPUT = {
             "Processing 1 test configuration(s)",
-            "-> Unittests Total: 33 tests (21 passed, 12 failed, 0 skipped)",
+            "-> Unittests Total: TESTS: 33 tests",
             "JUnit Score: 100 of 100",
             "Processing 2 coverage configuration(s)",
             "-> Line Coverage Total: LINE: 87.99% (315/358)",
@@ -125,7 +125,7 @@ public class AutoGradingActionITest {
             "Processing 2 static analysis configuration(s)",
             "-> CheckStyle Total: 3 warnings",
             "-> PMD Total: 5 warnings",
-            "=> Style Score: 23 of 100",
+            "=> Style Score: 23 of 100e",
             "-> SpotBugs Total: 9 warnings",
             "=> Bugs Score: 0 of 100",
             "Autograding results",
@@ -134,7 +134,7 @@ public class AutoGradingActionITest {
     @Test
     void shouldGradeInDockerContainer() throws TimeoutException {
         try (var container = createContainer()) {
-            container.withEnv("CONFIG", CONFIGURATION).start();
+            container.withEnv("CONFIG", CONFIGURATION);
             startContainerWithAllFiles(container);
 
             assertThat(readStandardOut(container))
@@ -167,7 +167,7 @@ public class AutoGradingActionITest {
         Consumer<OutputFrame> composedConsumer = toStringConsumer.andThen(waitingConsumer);
         container.followOutput(composedConsumer);
         waitingConsumer.waitUntil(frame ->
-                frame.getUtf8String().contains("Exception")
+                frame.getUtf8String().contains("at edu.hm.hafner.grading.AutoGradingAction.main(AutoGradingAction.java")
                         || frame.getUtf8String().contains("End Grading"), 60, TimeUnit.SECONDS);
 
         return toStringConsumer.toUtf8String();
@@ -185,6 +185,6 @@ public class AutoGradingActionITest {
     }
 
     private MountableFile read(final String resourceName) {
-        return MountableFile.forClasspathResource(resourceName);
+        return MountableFile.forClasspathResource("/" + resourceName);
     }
 }

@@ -8,19 +8,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Set up JDK 11
+      - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
-          java-version: '11'
+          java-version: '17'
           check-latest: true
           cache: 'maven'
+      - name: Set up Maven
+        uses: stCarolas/setup-maven@v4
+        with:
+          maven-version: 3.9.5
       - name: Build and deploy
         run: mvn -ntp clean verify jib:dockerBuild
       - name: Test setup
         run: sh copy_files.sh
       - name: Run Autograding
-        uses: uhafner/autograding-github-action@v1.7.0
+        uses: uhafner/autograding-github-action@2.0.0-alpha-1
         with:
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
           HEAD_SHA: ${{github.event.pull_request.head.sha}}

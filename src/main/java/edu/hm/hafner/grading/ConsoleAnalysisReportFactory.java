@@ -14,7 +14,7 @@ import edu.hm.hafner.util.FilteredLog;
  *
  * @author Ullrich Hafner
  */
-public class ConsoleAnalysisReportFactory extends ReportFactory implements AnalysisReportFactory {
+public final class ConsoleAnalysisReportFactory extends ReportFactory implements AnalysisReportFactory {
     @Override
     public Report create(final ToolConfiguration tool, final FilteredLog log) {
         ParserDescriptor parser = new ParserRegistry().get(tool.getId());
