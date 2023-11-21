@@ -41,7 +41,7 @@
     <dependency>
       <groupId>edu.hm.hafner</groupId>
       <artifactId>autograding-model</artifactId>
-      <version>1.3.0</version>
+      <version>3.0.0</version>
       <exclusions>
         <exclusion>
           <groupId>edu.hm.hafner</groupId>
