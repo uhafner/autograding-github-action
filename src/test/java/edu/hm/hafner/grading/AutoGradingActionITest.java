@@ -125,7 +125,7 @@ public class AutoGradingActionITest {
             "Processing 2 static analysis configuration(s)",
             "-> CheckStyle Total: 3 warnings",
             "-> PMD Total: 5 warnings",
-            "=> Style Score: 23 of 100e",
+            "=> Style Score: 23 of 100",
             "-> SpotBugs Total: 9 warnings",
             "=> Bugs Score: 0 of 100",
             "Autograding results",
