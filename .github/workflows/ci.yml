@@ -21,8 +21,6 @@ jobs:
           maven-version: 3.9.5
       - name: Build and deploy
         run: mvn -ntp clean verify jib:dockerBuild
-      - name: Test setup
-        run: sh copy_files.sh
       - name: Run Autograding
         uses: uhafner/autograding-github-action@v2.0.0-alpha-1
         with:
@@ -30,29 +28,91 @@ jobs:
           HEAD_SHA: ${{github.event.pull_request.head.sha}}
           CONFIG: >
             {
-              "analysis": {
-                "maxScore": 100,
-                "errorImpact": -5,
-                "highImpact": -3,
-                "normalImpact": -2,
-                "lowImpact": -1
-              },
               "tests": {
-                "maxScore": 100,
-                "passedImpact": 0,
+                "tools": [
+                  {
+                    "id": "test",
+                    "name": "Unittests",
+                    "pattern": "**/test-classes/**/TEST*.xml"
+                  }
+                ],
+                "name": "JUnit",
+                "passedImpact": 10,
+                "skippedImpact": -1,
                 "failureImpact": -5,
-                "skippedImpact": -1
+                "maxScore": 100
               },
-              "coverage": {
-                "maxScore": 100,
-                "coveredPercentageImpact": 0,
-                "missedPercentageImpact": -1
-              },
-              "pit": {
-                "maxScore": 100,
-                "detectedImpact": 0,
-                "undetectedImpact": 0,
-                "detectedPercentageImpact": 0,
-                "undetectedPercentageImpact": -1
-              }
+              "analysis": [
+                {
+                  "name": "Style",
+                  "tools": [
+                    {
+                      "id": "checkstyle",
+                      "name": "CheckStyle",
+                      "pattern": "**/test-classes/**/checkstyle*.xml"
+                    },
+                    {
+                      "id": "pmd",
+                      "name": "PMD",
+                      "pattern": "**/test-classes/**/pmd*.xml"
+                    }
+                  ],
+                  "errorImpact": 1,
+                  "highImpact": 2,
+                  "normalImpact": 3,
+                  "lowImpact": 4,
+                  "maxScore": 100
+                },
+                {
+                  "name": "Bugs",
+                  "tools": [
+                    {
+                      "id": "spotbugs",
+                      "name": "SpotBugs",
+                      "pattern": "**/test-classes/**/spotbugs*.xml"
+                    }
+                  ],
+                  "errorImpact": -11,
+                  "highImpact": -12,
+                  "normalImpact": -13,
+                  "lowImpact": -14,
+                  "maxScore": 100
+                }
+              ],
+              "coverage": [
+                {
+                  "tools": [
+                    {
+                      "id": "jacoco",
+                      "name": "Line Coverage",
+                      "metric": "line",
+                      "pattern": "**/test-classes/**/jacoco.xml"
+                    },
+                    {
+                      "id": "jacoco",
+                      "name": "Branch Coverage",
+                      "metric": "branch",
+                      "pattern": "**/test-classes/**/jacoco.xml"
+                    }
+                  ],
+                  "name": "JaCoCo",
+                  "maxScore": 100,
+                  "coveredPercentageImpact": 1,
+                  "missedPercentageImpact": -1
+                },
+                {
+                  "tools": [
+                    {
+                      "id": "pit",
+                      "name": "Mutation Coverage",
+                      "metric": "mutation",
+                      "pattern": "**/test-classes/**/mutations.xml"
+                    }
+                  ],
+                  "name": "PIT",
+                  "maxScore": 100,
+                  "coveredPercentageImpact": 1,
+                  "missedPercentageImpact": -1
+                }
+              ]
             }
