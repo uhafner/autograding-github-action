@@ -7,7 +7,7 @@
   <parent>
     <groupId>edu.hm.hafner</groupId>
     <artifactId>codingstyle-pom</artifactId>
-    <version>3.35.0</version>
+    <version>3.37.0</version>
     <relativePath/>
   </parent>
 
@@ -24,9 +24,9 @@
     <jib-maven-plugin.version>3.4.0</jib-maven-plugin.version>
     <testcontainers.version>1.19.1</testcontainers.version>
 
-    <autograding-model.version>3.0.0</autograding-model.version>
+    <autograding-model.version>3.1.0</autograding-model.version>
     <analysis-model.version>11.13.0</analysis-model.version>
-    <coverage-model.version>0.33.0</coverage-model.version>
+    <coverage-model.version>0.35.0</coverage-model.version>
     <docker-image-tag>2.0.0-alpha</docker-image-tag>
   </properties>
 
