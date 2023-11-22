@@ -24,6 +24,9 @@ jobs:
         run: mvn -ntp clean install
       - name: Run Autograding
         uses: uhafner/autograding-github-action@v2.0.0-alpha-2
+        env:
+          DOCKER_IO_USERNAME: ${{ secrets.DOCKER_IO_USERNAME }}
+          DOCKER_IO_PASSWORD: ${{ secrets.DOCKER_IO_PASSWORD }}
         with:
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
           HEAD_SHA: ${{github.event.pull_request.head.sha}}
