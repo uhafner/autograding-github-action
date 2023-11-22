@@ -1,8 +1,10 @@
 name: Eat your own dog food
 
 on:
-  push:
-
+  workflow_run:
+    workflows: ["Continuous Deployment"]
+    types:
+      - completed
 jobs:
   build:
     name: Run autograding with test data
