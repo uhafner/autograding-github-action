@@ -182,6 +182,13 @@
               <goal>build</goal>
             </goals>
             <configuration>
+              <to>
+                <image>docker.io/uhafner/autograding-github-action:${docker-image-tag}</image>
+                <auth>
+                  <username>${env.DOCKER_IO_USERNAME}</username>
+                  <password>${env.DOCKER_IO_PASSWORD}</password>
+                </auth>
+              </to>
             </configuration>
           </execution>
         </executions>
@@ -189,8 +196,8 @@
           <to>
             <image>docker.io/uhafner/autograding-github-action:${docker-image-tag}</image>
             <auth>
-              <username>${env.DOCKER_USERNAME}</username>
-              <password>${env.DOCKER_PASSWORD}</password>
+              <username>${env.DOCKER_IO_USERNAME}</username>
+              <password>${env.DOCKER_IO_PASSWORD}</password>
             </auth>
           </to>
           <from>
