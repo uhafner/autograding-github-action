@@ -5,6 +5,7 @@ on:
 
 jobs:
   build:
+    name: Build and deploy to Docker hub
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -20,7 +21,7 @@ jobs:
         with:
           maven-version: 3.9.5
       - name: Build and deploy
-        run: mvn -ntp clean verify jib:dockerBuild -DskipITs
+        run: mvn -ntp clean install
       - name: Run Autograding
         uses: uhafner/autograding-github-action@v2.0.0-alpha-2
         with:

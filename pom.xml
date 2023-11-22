@@ -169,15 +169,29 @@
         <version>${jib-maven-plugin.version}</version>
         <executions>
           <execution>
+            <id>local-docker</id>
             <phase>pre-integration-test</phase>
             <goals>
               <goal>dockerBuild</goal>
             </goals>
           </execution>
+          <execution>
+            <id>docker-io</id>
+            <phase>install</phase>
+            <goals>
+              <goal>build</goal>
+            </goals>
+            <configuration>
+            </configuration>
+          </execution>
         </executions>
         <configuration>
           <to>
             <image>docker.io/uhafner/autograding-github-action:${docker-image-tag}</image>
+            <auth>
+              <username>${env.DOCKER_USERNAME}</username>
+              <password>${env.DOCKER_PASSWORD}</password>
+            </auth>
           </to>
           <from>
             <image>maven:3.9.5-eclipse-temurin-17</image>
