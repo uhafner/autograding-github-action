@@ -1,5 +1,8 @@
 name: Continuous Deployment
 
+on:
+  push:
+
 jobs:
   build:
     on: [workflow_call]

@@ -1,11 +1,13 @@
 name: Eat your own dog food
 
 on:
-  push:
+  workflow_run:
+    workflows: ["Continuous Deployment"]
+    types:
+      - completed
 
 jobs:
   grade-test-data:
-    needs: ["Continuous Deployment"]
     name: Run autograding with test data
     runs-on: ubuntu-latest
     steps:
@@ -118,7 +120,6 @@ jobs:
               ]
             }
   grade-github-action:
-    needs: ["Continuous Deployment"]
     name: Eat your own dog food
     runs-on: ubuntu-latest
     steps:
