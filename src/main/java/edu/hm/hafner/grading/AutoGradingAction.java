@@ -66,10 +66,12 @@ public class AutoGradingAction {
             System.out.println("==================================================================");
 
             GradingReport results = new GradingReport();
+
+            System.out.println(results.getSummary(score));
+
             pullRequestWriter.addComment(getChecksName(), score,
                     results.getHeader(), results.getSummary(score),
                     results.getDetails(score, List.of()));
-
         }
         catch (NoSuchElementException | ParsingException | SecureXmlParserFactory.ParsingException exception) {
             System.out.println("==================================================================");
@@ -100,7 +102,7 @@ public class AutoGradingAction {
             return readDefaultConfiguration();
         }
 
-        System.out.println("Obtaining configuration from environment variable CONFIG: " + configuration);
+        System.out.println("Obtaining configuration from environment variable CONFIG");
         return configuration;
     }
 

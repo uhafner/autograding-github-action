@@ -2,15 +2,23 @@ package edu.hm.hafner.grading.github;
 
 import java.io.IOException;
 import java.time.Instant;
+import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.StringUtils;
 
 import edu.hm.hafner.analysis.Issue;
 import edu.hm.hafner.analysis.Report;
+import edu.hm.hafner.coverage.FileNode;
+import edu.hm.hafner.coverage.Mutation;
+import edu.hm.hafner.coverage.Node;
 import edu.hm.hafner.grading.AggregatedScore;
 import edu.hm.hafner.grading.AnalysisScore;
+import edu.hm.hafner.grading.CoverageScore;
+import edu.hm.hafner.util.LineRange;
 
 import org.kohsuke.github.GHCheckRun;
 import org.kohsuke.github.GHCheckRun.AnnotationLevel;
@@ -96,16 +104,19 @@ public class GitHubPullRequestWriter {
 
     private void handleAnnotations(final AggregatedScore score, final Pattern prefix, final Output output) {
         if (getEnv("SKIP_ANNOTATIONS").isEmpty()) {
-            score.getAnalysisScores().stream()
-                    .map(AnalysisScore::getReport)
-                    .flatMap(Report::stream)
-                    .map(issue -> createAnnotation(prefix, issue))
-                    .forEach(output::add);
+            createLineAnnotationsForWarnings(score, prefix, output);
+            createLineAnnotationsForMissedLines(score, prefix, output);
+            createLineAnnotationsForPartiallyCoveredLines(score, prefix, output);
+            createLineAnnotationsForSurvivedMutations(score, prefix, output);
         }
     }
 
-    private String getEnv(final String env) {
-        return StringUtils.defaultString(System.getenv(env));
+    private void createLineAnnotationsForWarnings(final AggregatedScore score, final Pattern prefix, final Output output) {
+        score.getAnalysisScores().stream()
+                .map(AnalysisScore::getReport)
+                .flatMap(Report::stream)
+                .map(issue -> createAnnotation(prefix, issue))
+                .forEach(output::add);
     }
 
     private Annotation createAnnotation(final Pattern prefix, final Issue issue) {
@@ -116,5 +127,109 @@ public class GitHubPullRequestWriter {
             return annotation.withStartColumn(issue.getColumnStart()).withEndColumn(issue.getColumnEnd());
         }
         return annotation;
+    }
+
+    private void createLineAnnotationsForMissedLines(final AggregatedScore score, final Pattern prefix, final Output output) {
+        score.getCodeCoverageScores().stream()
+                .map(CoverageScore::getReport)
+                .map(Node::getAllFileNodes)
+                .flatMap(Collection::stream)
+                .map(file -> createLineCoverageAnnotation(prefix, file))
+                .flatMap(Collection::stream)
+                .forEach(output::add);
+    }
+
+    private List<Annotation> createLineCoverageAnnotation(final Pattern prefix, final FileNode file) {
+        return file.getMissedLineRanges().stream()
+                .map(range -> new Annotation(prefix.matcher(file.getName()).replaceAll(""),
+                        range.getStart(), range.getEnd(),
+                        AnnotationLevel.WARNING,
+                        getMissedLinesDescription(range))
+                        .withTitle(getMissedLinesMessage(range)))
+                .collect(Collectors.toList());
+    }
+
+    private String getMissedLinesMessage(final LineRange range) {
+        if (range.getStart() == range.getEnd()) {
+            return "Not covered line";
+        }
+        return "Not covered lines";
+    }
+
+    private String getMissedLinesDescription(final LineRange range) {
+        if (range.getStart() == range.getEnd()) {
+            return String.format("Line %d is not covered by tests", range.getStart());
+        }
+        return String.format("Lines %d-%d are not covered by tests", range.getStart(), range.getEnd());
+    }
+
+    private void createLineAnnotationsForPartiallyCoveredLines(final AggregatedScore score, final Pattern prefix, final Output output) {
+        score.getCodeCoverageScores().stream()
+                .map(CoverageScore::getReport)
+                .map(Node::getAllFileNodes)
+                .flatMap(Collection::stream)
+                .map(file -> createBranchCoverageAnnotation(prefix, file))
+                .flatMap(Collection::stream)
+                .forEach(output::add);
+    }
+
+    private List<Annotation> createBranchCoverageAnnotation(final Pattern prefix, final FileNode file) {
+        return file.getPartiallyCoveredLines().entrySet().stream()
+                .map(entry -> new Annotation(prefix.matcher(file.getName()).replaceAll(""),
+                        entry.getKey(),
+                        AnnotationLevel.WARNING,
+                        createBranchMessage(entry.getKey(), entry.getValue()))
+                        .withTitle("Partially covered line"))
+                .collect(Collectors.toList());
+    }
+
+    private String createBranchMessage(final int line, final int missed) {
+        if (missed == 1) {
+            return String.format("Line %d is only partially covered, one branch is missing", line);
+
+        }
+        return String.format("Line %d is only partially covered, %d branches are missing", line, missed);
+    }
+
+    private void createLineAnnotationsForSurvivedMutations(final AggregatedScore score, final Pattern prefix, final Output output) {
+        score.getMutationCoverageScores().stream()
+                .map(CoverageScore::getReport)
+                .map(Node::getAllFileNodes)
+                .flatMap(Collection::stream)
+                .map(file -> createMutationCoverageAnnotation(prefix, file))
+                .flatMap(Collection::stream)
+                .forEach(output::add);
+    }
+
+    private List<Annotation> createMutationCoverageAnnotation(final Pattern prefix, final FileNode file) {
+        return file.getSurvivedMutationsPerLine().entrySet().stream()
+                .map(entry -> new Annotation(prefix.matcher(file.getName()).replaceAll(""),
+                        entry.getKey(),
+                        AnnotationLevel.WARNING,
+                        createMutationMessage(entry.getKey(), entry.getValue()))
+                        .withTitle("Mutation survived")
+                        .withRawDetails(createMutationDetails(entry.getValue())))
+                .collect(Collectors.toList());
+    }
+
+    private String createMutationMessage(final int line, final List<Mutation> survived) {
+        if (survived.size() == 1) {
+            return String.format("One mutation survived in line %d (%s)", line, formatMutator(survived));
+        }
+        return String.format("%d mutations survived in line %d", survived.size(), line);
+    }
+
+    private String formatMutator(final List<Mutation> survived) {
+        return survived.get(0).getMutator().replaceAll(".*\\.", "");
+    }
+
+    private String createMutationDetails(final List<Mutation> mutations) {
+        return mutations.stream()
+                .map(mutation -> String.format("- %s (%s)", mutation.getDescription(), mutation.getMutator()))
+                .collect(Collectors.joining("\n", "Survived mutations:\n", ""));
+    }
+
+    private String getEnv(final String env) {
+        return StringUtils.defaultString(System.getenv(env));
     }
 }

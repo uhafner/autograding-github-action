@@ -128,7 +128,6 @@ public class AutoGradingActionITest {
             "=> Style Score: 23 of 100",
             "-> SpotBugs Total: 9 warnings",
             "=> Bugs Score: 0 of 100",
-            "Autograding results",
             "Total score: 219/500 (unit tests: 100/100, code coverage: 50/100, mutation coverage: 46/100, analysis: 23/200)"};
 
     @Test
