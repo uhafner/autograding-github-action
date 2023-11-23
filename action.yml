@@ -1,5 +1,5 @@
 name: Autograding Action
-description:  Action that autogrades assignments based on configurable quality critera.
+description:  Action that autogrades assignments based on configurable quality criteria.
 
 inputs:
   CONFIG:
@@ -23,7 +23,7 @@ inputs:
 
 runs:
   using: 'docker'
-  image: 'docker://uhafner/autograding-github-action:1.7.3'
+  image: 'docker://uhafner/autograding-github-action:2.0.0-alpha'
   env:
     CONFIG: ${{ inputs.CONFIG }}
     CHECKS_NAME: ${{ inputs.CHECKS_NAME }}

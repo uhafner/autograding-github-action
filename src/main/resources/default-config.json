@@ -1,0 +1,89 @@
+{
+  "tests": {
+    "tools": [
+      {
+        "id": "test",
+        "name": "Unittests",
+        "pattern": "**/junit*.xml"
+      }
+    ],
+    "name": "JUnit",
+    "passedImpact": 10,
+    "skippedImpact": -1,
+    "failureImpact": -5,
+    "maxScore": 100
+  },
+  "analysis": [
+    {
+      "name": "Style",
+      "tools": [
+        {
+          "id": "checkstyle",
+          "name": "CheckStyle",
+          "pattern": "**/checkstyle*.xml"
+        },
+        {
+          "id": "pmd",
+          "name": "PMD",
+          "pattern": "**/pmd*.xml"
+        }
+      ],
+      "errorImpact": 1,
+      "highImpact": 2,
+      "normalImpact": 3,
+      "lowImpact": 4,
+      "maxScore": 100
+    },
+    {
+      "name": "Bugs",
+      "tools": [
+        {
+          "id": "spotbugs",
+          "name": "SpotBugs",
+          "pattern": "**/spotbugs*.xml"
+        }
+      ],
+      "errorImpact": -11,
+      "highImpact": -12,
+      "normalImpact": -13,
+      "lowImpact": -14,
+      "maxScore": 100
+    }
+  ],
+  "coverage": [
+    {
+      "tools": [
+        {
+          "id": "jacoco",
+          "name": "Line Coverage",
+          "metric": "line",
+          "pattern": "**/jacoco.xml"
+        },
+        {
+          "id": "jacoco",
+          "name": "Branch Coverage",
+          "metric": "branch",
+          "pattern": "**/jacoco.xml"
+        }
+      ],
+      "name": "JaCoCo",
+      "maxScore": 100,
+      "coveredPercentageImpact": 1,
+      "missedPercentageImpact": -1
+    },
+    {
+      "tools": [
+        {
+          "id": "pit",
+          "name": "Mutation Coverage",
+          "metric": "mutation",
+          "pattern": "**/mutations.xml"
+        }
+      ],
+      "name": "PIT",
+      "maxScore": 100,
+      "coveredPercentageImpact": 1,
+      "missedPercentageImpact": -1
+    }
+  ]
+}
