@@ -3,13 +3,14 @@ package edu.hm.hafner.grading.github;
 import java.io.IOException;
 import java.time.Instant;
 import java.util.Date;
-import java.util.List;
 import java.util.regex.Pattern;
 
 import org.apache.commons.lang3.StringUtils;
 
 import edu.hm.hafner.analysis.Issue;
 import edu.hm.hafner.analysis.Report;
+import edu.hm.hafner.grading.AggregatedScore;
+import edu.hm.hafner.grading.AnalysisScore;
 
 import org.kohsuke.github.GHCheckRun;
 import org.kohsuke.github.GHCheckRun.AnnotationLevel;
@@ -40,12 +41,8 @@ public class GitHubPullRequestWriter {
      *         the summary of the check
      * @param comment
      *         the details of the check (supports Markdown)
-     * @param analysisReports
-     *         the static analysis reports
      */
-    @SuppressWarnings("deprecation")
-    public void addComment(final String name, final String header, final String summary, final String comment,
-            final List<Report> analysisReports) {
+    public void addComment(final String name, final AggregatedScore score, final String header, final String summary, final String comment) {
         String repository = System.getenv("GITHUB_REPOSITORY");
         System.out.println(">>>> GITHUB_REPOSITORY: " + repository);
         if (repository == null) {
@@ -84,12 +81,8 @@ public class GitHubPullRequestWriter {
             Pattern prefix = Pattern.compile(
                     "^.*" + StringUtils.substringAfterLast(repository, '/') + "/" + filesPrefix);
             Output output = new Output(header, summary).withText(comment);
-            if (getEnv("SKIP_ANNOTATIONS").isEmpty()) {
-                analysisReports.stream()
-                        .flatMap(Report::stream)
-                        .map(issue -> createAnnotation(prefix, issue))
-                        .forEach(output::add);
-            }
+
+            handleAnnotations(score, prefix, output);
 
             check.add(output);
             GHCheckRun run = check.create();
@@ -98,6 +91,16 @@ public class GitHubPullRequestWriter {
         }
         catch (IOException exception) {
             System.out.println("Could not create check due to " + exception);
+        }
+    }
+
+    private void handleAnnotations(final AggregatedScore score, final Pattern prefix, final Output output) {
+        if (getEnv("SKIP_ANNOTATIONS").isEmpty()) {
+            score.getAnalysisScores().stream()
+                    .map(AnalysisScore::getReport)
+                    .flatMap(Report::stream)
+                    .map(issue -> createAnnotation(prefix, issue))
+                    .forEach(output::add);
         }
     }
 

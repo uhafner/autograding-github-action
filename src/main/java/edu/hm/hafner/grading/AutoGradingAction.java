@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 
 import edu.hm.hafner.analysis.ParsingException;
 import edu.hm.hafner.grading.github.GitHubPullRequestWriter;
@@ -34,8 +35,6 @@ public class AutoGradingAction {
     }
 
     void run() {
-        String jsonConfiguration = getConfiguration();
-
         FilteredLog log = new FilteredLog("Autograding GitHub Action Errors:");
         var logHandler = new LogHandler(System.out, log);
 
@@ -43,12 +42,12 @@ public class AutoGradingAction {
         System.out.println("------------------------ Start Grading ---------------------------");
         System.out.println("------------------------------------------------------------------");
 
-        AggregatedScore score = new AggregatedScore(jsonConfiguration, log);
+        AggregatedScore score = new AggregatedScore(getConfiguration(), log);
         logHandler.print();
 
         System.out.println("==================================================================");
 
-        GradingReport results = new GradingReport();
+        GitHubPullRequestWriter pullRequestWriter = new GitHubPullRequestWriter();
 
         try {
             score.gradeTests(new ConsoleTestReportFactory());
@@ -66,25 +65,26 @@ public class AutoGradingAction {
 
             System.out.println("==================================================================");
 
-            System.out.println(results.getHeader());
-            System.out.println(results.getSummary(score));
-            System.out.println(results.getDetails(score, List.of()));
+            GradingReport results = new GradingReport();
+            pullRequestWriter.addComment(getChecksName(), score,
+                    results.getHeader(), results.getSummary(score),
+                    results.getDetails(score, List.of()));
+
         }
         catch (NoSuchElementException | ParsingException | SecureXmlParserFactory.ParsingException exception) {
             System.out.println("==================================================================");
-            System.out.println(results.getHeader());
-            System.out.println(results.getSummary(score));
-            System.out.println(results.getErrors(score, exception));
+            System.out.println(ExceptionUtils.getStackTrace(exception));
+
+            GradingReport results = new GradingReport();
+            pullRequestWriter.addComment(getChecksName(), score,
+                    results.getHeader(), results.getSummary(score),
+                    results.getErrors(score, exception));
+
         }
 
         System.out.println("------------------------------------------------------------------");
         System.out.println("------------------------- End Grading ----------------------------");
         System.out.println("------------------------------------------------------------------");
-
-        GitHubPullRequestWriter pullRequestWriter = new GitHubPullRequestWriter();
-
-        pullRequestWriter.addComment(getChecksName(), results.getHeader(), results.getSummary(score),
-                results.getDetails(score, List.of()), List.of());
     }
 
     private String getChecksName() {
