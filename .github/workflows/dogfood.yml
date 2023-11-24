@@ -24,7 +24,7 @@ jobs:
         with:
           maven-version: 3.9.5
       - name: Run Autograding
-        uses: uhafner/autograding-github-action@v2.0.0-alpha-2
+        uses: uhafner/autograding-github-action@v2.0.0
         with:
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
           HEAD_SHA: ${{github.event.pull_request.head.sha}}
@@ -138,7 +138,7 @@ jobs:
       - name: Build
         run: mvn -ntp clean verify -Ppit
       - name: Run Autograding
-        uses: uhafner/autograding-github-action@v2.0.0-alpha-2
+        uses: uhafner/autograding-github-action@v2.0.0
         with:
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
           HEAD_SHA: ${{github.event.pull_request.head.sha}}
