@@ -203,7 +203,7 @@ jobs:
                       "id": "jacoco",
                       "name": "Line Coverage",
                       "metric": "line",
-                      "pattern": "**/target/site/jacoco.xml"
+                      "pattern": "**/target/site/jacoco/jacoco.xml"
                     },
                     {
                       "id": "jacoco",
