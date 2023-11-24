@@ -7,6 +7,7 @@ This GitHub action autogrades projects based on a configurable set of metrics an
 ![Test statistics](images/tests.png)
 
 This metric can be configured using the following parameters:
+
 ```json
 {
   "tests": {
@@ -29,6 +30,49 @@ This metric can be configured using the following parameters:
 ## Code coverage (e.g., line coverage percentage)
 
 ![Code coverage](images/coverage.png)
+
+This metric can be configured using the following parameters:
+
+```json
+{
+  "coverage": [
+    {
+      "tools": [
+        {
+          "id": "jacoco",
+          "name": "Line Coverage",
+          "metric": "line",
+          "pattern": "**/jacoco.xml"
+        },
+        {
+          "id": "jacoco",
+          "name": "Branch Coverage",
+          "metric": "branch",
+          "pattern": "**/jacoco.xml"
+        }
+      ],
+      "name": "JaCoCo",
+      "maxScore": 100,
+      "coveredPercentageImpact": 1,
+      "missedPercentageImpact": -1
+    },
+    {
+      "tools": [
+        {
+          "id": "pit",
+          "name": "Mutation Coverage",
+          "metric": "mutation",
+          "pattern": "**/mutations.xml"
+        }
+      ],
+      "name": "PIT",
+      "maxScore": 100,
+      "coveredPercentageImpact": 1,
+      "missedPercentageImpact": -1
+    }
+  ]
+}
+```
 
 ## PIT mutation coverage (e.g., missed mutations' percentage)
 
