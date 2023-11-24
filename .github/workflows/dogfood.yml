@@ -136,7 +136,7 @@ jobs:
         with:
           maven-version: 3.9.5
       - name: Build
-        run: mvn -ntp clean verify
+        run: mvn -ntp clean verify -Ppit
       - name: Run Autograding
         uses: uhafner/autograding-github-action@v2.0.0-alpha-2
         with:
@@ -150,7 +150,7 @@ jobs:
                   {
                     "id": "test",
                     "name": "Unittests",
-                    "pattern": "**/target/**/TEST*.xml"
+                    "pattern": "**/target/*-reports/TEST*.xml"
                   }
                 ],
                 "name": "JUnit",
@@ -166,12 +166,12 @@ jobs:
                     {
                       "id": "checkstyle",
                       "name": "CheckStyle",
-                      "pattern": "**/target/**/checkstyle*.xml"
+                      "pattern": "**/target/checkstyle-result.xml"
                     },
                     {
                       "id": "pmd",
                       "name": "PMD",
-                      "pattern": "**/target/**/pmd*.xml"
+                      "pattern": "**/target/pmd.xml"
                     }
                   ],
                   "errorImpact": 1,
@@ -186,7 +186,7 @@ jobs:
                     {
                       "id": "spotbugs",
                       "name": "SpotBugs",
-                      "pattern": "**/target/**/spotbugs*.xml"
+                      "pattern": "**/target/spotbugsXml.xml"
                     }
                   ],
                   "errorImpact": -11,
@@ -203,13 +203,13 @@ jobs:
                       "id": "jacoco",
                       "name": "Line Coverage",
                       "metric": "line",
-                      "pattern": "**/target/**/jacoco.xml"
+                      "pattern": "**/target/site/jacoco.xml"
                     },
                     {
                       "id": "jacoco",
                       "name": "Branch Coverage",
                       "metric": "branch",
-                      "pattern": "**/target/**/jacoco.xml"
+                      "pattern": "**/target/site/jacoco/jacoco.xml"
                     }
                   ],
                   "name": "JaCoCo",
@@ -223,7 +223,7 @@ jobs:
                       "id": "pit",
                       "name": "Mutation Coverage",
                       "metric": "mutation",
-                      "pattern": "**/target/**/mutations.xml"
+                      "pattern": "**/target/pit-reports/mutations.xml"
                     }
                   ],
                   "name": "PIT",
