@@ -28,7 +28,7 @@ public class AutoGradingActionITest {
                   {
                     "id": "test",
                     "name": "Unittests",
-                    "pattern": "**/junit*.xml"
+                    "pattern": "**/target/*-reports/TEST*.xml"
                   }
                 ],
                 "name": "JUnit",
@@ -112,24 +112,7 @@ public class AutoGradingActionITest {
               ]
             }
             """;
-    private static final String WS = "/github/workspace/";
-    private static final String[] DEFAULT_CONFIG_OUTPUT = {
-            "Processing 1 test configuration(s)",
-            "-> Unittests Total: TESTS: 33 tests",
-            "JUnit Score: 100 of 100",
-            "Processing 2 coverage configuration(s)",
-            "-> Line Coverage Total: LINE: 87.99% (315/358)",
-            "-> Branch Coverage Total: BRANCH: 61.54% (16/26)",
-            "=> JaCoCo Score: 50 of 100",
-            "-> Mutation Coverage Total: MUTATION: 72.77% (139/191)",
-            "=> PIT Score: 46 of 100",
-            "Processing 2 static analysis configuration(s)",
-            "-> CheckStyle Total: 3 warnings",
-            "-> PMD Total: 5 warnings",
-            "=> Style Score: 23 of 100",
-            "-> SpotBugs Total: 9 warnings",
-            "=> Bugs Score: 0 of 100",
-            "Total score: 219/500 (unit tests: 100/100, code coverage: 50/100, mutation coverage: 46/100, analysis: 23/200)"};
+    private static final String WS = "/github/workspace/target/";
 
     @Test
     void shouldGradeInDockerContainer() throws TimeoutException {
@@ -139,7 +122,23 @@ public class AutoGradingActionITest {
 
             assertThat(readStandardOut(container))
                     .contains("Obtaining configuration from environment variable CONFIG")
-                    .contains(DEFAULT_CONFIG_OUTPUT);
+                    .contains(new String[] {
+                            "Processing 1 test configuration(s)",
+                            "-> Unittests Total: TESTS: 33 tests",
+                            "JUnit Score: 100 of 100",
+                            "Processing 2 coverage configuration(s)",
+                            "-> Line Coverage Total: LINE: 87.99% (315/358)",
+                            "-> Branch Coverage Total: BRANCH: 61.54% (16/26)",
+                            "=> JaCoCo Score: 50 of 100",
+                            "-> Mutation Coverage Total: MUTATION: 72.77% (139/191)",
+                            "=> PIT Score: 46 of 100",
+                            "Processing 2 static analysis configuration(s)",
+                            "-> CheckStyle Total: 3 warnings",
+                            "-> PMD Total: 5 warnings",
+                            "=> Style Score: 23 of 100",
+                            "-> SpotBugs Total: 9 warnings",
+                            "=> Bugs Score: 0 of 100",
+                            "Total score: 219/500 (unit tests: 100/100, code coverage: 50/100, mutation coverage: 46/100, analysis: 23/200)"});
         }
 
     }
@@ -154,10 +153,26 @@ public class AutoGradingActionITest {
             startContainerWithAllFiles(container);
 
             assertThat(readStandardOut(container))
-                    .contains("No configuration provided (environment variable CONFIG not set), using default configuration")
-                    .contains(DEFAULT_CONFIG_OUTPUT);
+                    .contains(
+                            "No configuration provided (environment variable CONFIG not set), using default configuration")
+                    .contains(new String[] {
+                            "Processing 1 test configuration(s)",
+                            "-> Unittests Total: TESTS: 33 tests",
+                            "JUnit Score: 40 of 100",
+                            "Processing 2 coverage configuration(s)",
+                            "-> Line Coverage Total: LINE: 87.99% (315/358)",
+                            "-> Branch Coverage Total: BRANCH: 61.54% (16/26)",
+                            "=> JaCoCo Score: 75 of 100",
+                            "-> Mutation Coverage Total: MUTATION: 72.77% (139/191)",
+                            "=> PIT Score: 73 of 100",
+                            "Processing 2 static analysis configuration(s)",
+                            "-> CheckStyle Total: 3 warnings",
+                            "-> PMD Total: 5 warnings",
+                            "=> Style Score: 92 of 100",
+                            "-> SpotBugs Total: 9 warnings",
+                            "=> Bugs Score: 73 of 100",
+                            "Total score: 353/500 (unit tests: 40/100, code coverage: 75/100, mutation coverage: 73/100, analysis: 165/200)"});
         }
-
     }
 
     private String readStandardOut(final GenericContainer<? extends GenericContainer<?>> container) throws TimeoutException {
@@ -175,12 +190,12 @@ public class AutoGradingActionITest {
 
     private void startContainerWithAllFiles(final GenericContainer<?> container) {
         container.withWorkingDirectory("/github/workspace")
-                .withCopyFileToContainer(read("checkstyle/checkstyle-result.xml"), WS + "checkstyle.xml")
-                .withCopyFileToContainer(read("jacoco/jacoco.xml"), WS + "jacoco.xml")
-                .withCopyFileToContainer(read("junit/TEST-Aufgabe3Test.xml"), WS + "junit.xml")
-                .withCopyFileToContainer(read("pit/mutations.xml"), WS + "mutations.xml")
+                .withCopyFileToContainer(read("checkstyle/checkstyle-result.xml"), WS + "checkstyle-result.xml")
+                .withCopyFileToContainer(read("jacoco/jacoco.xml"), WS + "site/jacoco/jacoco.xml")
+                .withCopyFileToContainer(read("junit/TEST-Aufgabe3Test.xml"), WS + "surefire-reports/TEST-Aufgabe3Test.xml")
+                .withCopyFileToContainer(read("pit/mutations.xml"), WS + "pit-reports/mutations.xml")
                 .withCopyFileToContainer(read("pmd/pmd.xml"), WS + "pmd.xml")
-                .withCopyFileToContainer(read("spotbugs/spotbugsXml.xml"), WS + "spotbugs.xml")
+                .withCopyFileToContainer(read("spotbugs/spotbugsXml.xml"), WS + "spotbugsXml.xml")
                 .start();
     }
 
