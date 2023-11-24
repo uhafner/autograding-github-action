@@ -4,11 +4,11 @@
       {
         "id": "test",
         "name": "Unittests",
-        "pattern": "**/junit*.xml"
+        "pattern": "**/target/*-reports/TEST*.xml"
       }
     ],
     "name": "JUnit",
-    "passedImpact": 10,
+    "passedImpact": 0,
     "skippedImpact": -1,
     "failureImpact": -5,
     "maxScore": 100
@@ -20,18 +20,18 @@
         {
           "id": "checkstyle",
           "name": "CheckStyle",
-          "pattern": "**/checkstyle*.xml"
+          "pattern": "**/target/checkstyle-result.xml"
         },
         {
           "id": "pmd",
           "name": "PMD",
-          "pattern": "**/pmd*.xml"
+          "pattern": "**/target/pmd.xml"
         }
       ],
-      "errorImpact": 1,
-      "highImpact": 2,
-      "normalImpact": 3,
-      "lowImpact": 4,
+      "errorImpact": -1,
+      "highImpact": -1,
+      "normalImpact": -1,
+      "lowImpact": -1,
       "maxScore": 100
     },
     {
@@ -40,13 +40,13 @@
         {
           "id": "spotbugs",
           "name": "SpotBugs",
-          "pattern": "**/spotbugs*.xml"
+          "pattern": "**/target/spotbugsXml.xml"
         }
       ],
-      "errorImpact": -11,
-      "highImpact": -12,
-      "normalImpact": -13,
-      "lowImpact": -14,
+      "errorImpact": -3,
+      "highImpact": -3,
+      "normalImpact": -3,
+      "lowImpact": -3,
       "maxScore": 100
     }
   ],
@@ -57,18 +57,17 @@
           "id": "jacoco",
           "name": "Line Coverage",
           "metric": "line",
-          "pattern": "**/jacoco.xml"
+          "pattern": "**/target/site/jacoco/jacoco.xml"
         },
         {
           "id": "jacoco",
           "name": "Branch Coverage",
           "metric": "branch",
-          "pattern": "**/jacoco.xml"
+          "pattern": "**/target/site/jacoco/jacoco.xml"
         }
       ],
       "name": "JaCoCo",
       "maxScore": 100,
-      "coveredPercentageImpact": 1,
       "missedPercentageImpact": -1
     },
     {
@@ -77,12 +76,11 @@
           "id": "pit",
           "name": "Mutation Coverage",
           "metric": "mutation",
-          "pattern": "**/mutations.xml"
+          "pattern": "**/target/pit-reports/mutations.xml"
         }
       ],
       "name": "PIT",
       "maxScore": 100,
-      "coveredPercentageImpact": 1,
       "missedPercentageImpact": -1
     }
   ]
