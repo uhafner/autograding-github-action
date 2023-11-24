@@ -53,7 +53,7 @@ jobs:
             }
 ```
 
-Currently, you can select from the metrics shown in the following sections. Each metric can be configured individually. All of these configurations are composed in the same way: you can define a list of tools that are used to collect the data, a name for the metric, and a maximum score. All tools need to provide a pattern where the autograding action can find the result files in the workspace (e.g., JUnit XML reports). Additionally, each tool needs to provide the parser ID of the tool so that the underlying model can find the correct parser to read the results. See [analysis model](https:://github.com/jenkinsci/analysis-model) and [coverage model](https:://github.com/jenkinsci/coverage-model) for details. 
+Currently, you can select from the metrics shown in the following sections. Each metric can be configured individually. All of these configurations are composed in the same way: you can define a list of tools that are used to collect the data, a name for the metric, and a maximum score. All tools need to provide a pattern where the autograding action can find the result files in the workspace (e.g., JUnit XML reports). Additionally, each tool needs to provide the parser ID of the tool so that the underlying model can find the correct parser to read the results. See [analysis model](https:://github.com/jenkinsci/analysis-model) and [coverage model](https:://github.com/jenkinsci/coverage-model) for the list of supported parsers.
 
 Additionally, you can define the impact of each result (e.g., a failed test, a missed line in coverage) on the final score. The impact is a positive or negative number and will be multiplied with the actual value of the measured items during the evaluation. Negative values will be subtracted from the maximum score to compute the final score. Positive values will be directly used as the final score. You can choose the type of impact that matches your needs best.
 
@@ -82,11 +82,11 @@ This metric can be configured using the following parameters:
 }
 ``` 
 
-You can either count passed tests as positive impact or failed tests as negative impact (or use a mix of both). 
+You can either count passed tests as positive impact or failed tests as negative impact (or use a mix of both). For failed tests, the test error message and stack trace will be shown directly after the summary in the pull request.
 
 ## Code or mutation coverage (e.g., line coverage percentage)
 
-![Code coverage](images/coverage.png)
+![Code coverage summary](images/coverage.png)
 
 This metric can be configured using the following parameters:
 
@@ -131,49 +131,75 @@ This metric can be configured using the following parameters:
 }
 ```
 
-You can either use the covered percentage as positive impact or the missed percentage as negative impact (a mix of both makes little sense but would work as well).
+You can either use the covered percentage as positive impact or the missed percentage as negative impact (a mix of both makes little sense but would work as well). Please make sure to define exactly a unique and supported metric for each tool. For example, JaCoCo provides `line` and `branch` coverage, so you need to define two tools for JaCoCo. PIT provides mutation coverage, so you need to define a tool for PIT that uses the metric `mutation`. 
 
-## PIT mutation coverage (e.g., missed mutations' percentage)
+Missed lines or branches as well as survived mutations will be shown as annotations in the pull request:
 
-![PIT mutation coverage](images/pit.png)
+![Code coverage annotations](images/coverage-annotations.png)
+![Mutation coverage annotations](images/mutation-annotations.png)
+
 
 ## Static analysis (e.g., number of warnings)
 
-![Static analysis](images/analysis-all-ok.png)
-![Static analysis](images/annotations.png)
-                   
-### How to use?
+![Static analysis](images/analysis.png)
 
-Here is an example configuration you could use in your workflow.
+This metric can be configured using the following parameters:
 
+```json
+{
+  "analysis": [
+    {
+      "name": "Style",
+      "tools": [
+        {
+          "id": "checkstyle",
+          "name": "CheckStyle",
+          "pattern": "**/target/checkstyle-result.xml"
+        },
+        {
+          "id": "pmd",
+          "name": "PMD",
+          "pattern": "**/target/pmd.xml"
+        }
+      ],
+      "errorImpact": 1,
+      "highImpact": 2,
+      "normalImpact": 3,
+      "lowImpact": 4,
+      "maxScore": 100
+    },
+    {
+      "name": "Bugs",
+      "tools": [
+        {
+          "id": "spotbugs",
+          "name": "SpotBugs",
+          "pattern": "**/target/spotbugsXml.xml"
+        }
+      ],
+      "errorImpact": -11,
+      "highImpact": -12,
+      "normalImpact": -13,
+      "lowImpact": -14,
+      "maxScore": 100
+    }
+  ]
+}
 ```
-name: 'Autograding Pull Pequest'
 
-on:
-  pull_request:
-    branches: [ master ]
+Normally, you would only use a negative impact for this metric: each warning (of a given severity) will reduce the final score by the specified amount. You can define the impact of each severity level individually. 
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Build
-        run: mvn -V -ntp clean verify -Dmaven.test.failure.ignore=true --file pom.xml
-      - name: Autograding
-        uses: uhafner/autograding-github-action@v0.1.0
-        with:
-          TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          HEAD_SHA: ${{github.event.pull_request.head.sha}}
-```
+All warnings will be shown as annotations in the pull request:
 
-#### Configuration
+![Warning annotations](images/warning-annotations.png )
 
+
+#### Action Configuration
+
+This action can be configured using the following parameters (see example above):
 - ``TOKEN: ${{ secrets.GITHUB_TOKEN }}``: mandatory GitHub access token.
-- ``CHECKS_NAME: "Name of checks"``: optional name of GitHub checks (overwrites default: "Autograding result").
+- ``CHECKS_NAME: "Name of checks"``: optional name of GitHub checks (overwrites the default: "Autograding result").
 - ``HEAD_SHA: ${{github.event.pull_request.head.sha}}``: optional SHA of the pull request head. If not set then 
 ``GITHUB_SHA`` will be used.
-- ``CONFIG: "{\"analysis\": { \"maxScore\": 100, \"errorImpact\": -5}}"``: optional configuration, see 
-[manual](https://github.com/uhafner/autograding-model) for details. If not provided a [default configuration](default.conf)
-will be used.
+- ``CONFIG: "{...}"``: optional configuration, see sections above for details. Or consult the [autograding-model](https://github.com/uhafner/autograding-model) project for details. If not specified, a [default configuration](src/main/resources/default-config.json) will be used.
 

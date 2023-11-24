@@ -3,7 +3,7 @@ description:  Action that autogrades assignments based on configurable quality c
 
 inputs:
   CONFIG:
-    description: "Autograding configuration"
+    description: "Autograding configuration (if not set the default configuration will be used)"
     required: false
   CHECKS_NAME:
     description: "Name of the GitHub checks (if not set the default name will be used)"
@@ -12,13 +12,13 @@ inputs:
     description: "GitHub authentication token (GITHUB_TOKEN)"
     required: true
   HEAD_SHA:
-    description: "SHA of the pull request head"
+    description: "SHA of the pull request head (if not set GITHUB_SHA will be used)"
     required: false
   FILES_PREFIX:
     description: "Prefix to remove from all paths so that files can be found in repository"
     required: false
   SKIP_ANNOTATIONS:
-    description: "Skip the creation of annotations if not empty"
+    description: "Skip the creation of annotations (for warnings and missed coverage) if not empty"
     required: false
 
 runs:

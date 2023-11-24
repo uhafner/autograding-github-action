@@ -154,7 +154,7 @@ jobs:
                   }
                 ],
                 "name": "JUnit",
-                "passedImpact": 10,
+                "passedImpact": 0,
                 "skippedImpact": -1,
                 "failureImpact": -5,
                 "maxScore": 100
