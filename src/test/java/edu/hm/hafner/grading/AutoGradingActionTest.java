@@ -1,7 +1,6 @@
 package edu.hm.hafner.grading;
 
 import org.junit.jupiter.api.Test;
-import org.junitpioneer.jupiter.SetEnvironmentVariable;
 
 import edu.hm.hafner.util.ResourceTest;
 
@@ -14,13 +13,5 @@ class AutoGradingActionTest extends ResourceTest {
 
         assertThat(action.getConfiguration()).contains(
                 toString("/default-config.json"));
-    }
-
-    @Test
-    @SetEnvironmentVariable(key = "CONFIG", value = "{}")
-    void shouldReadConfigurationFromEnvironment() {
-        var action = new AutoGradingAction();
-
-        assertThat(action.getConfiguration()).isEqualTo("{}");
     }
 }

@@ -1,11 +1,30 @@
 # Autograding GitHub Action 
 
-This GitHub action autogrades projects based on a configurable set of metrics and gives feedback on the pull request. 
-Currently, you can select from the following metrics:
+This GitHub action autogrades projects based on a configurable set of metrics and gives feedback on the pull request (or single commits). Currently, you can select from the following metrics:
 
 ## Test statistics (e.g., number of failed tests)
 
 ![Test statistics](images/tests.png)
+
+This metric can be configured using the following parameters:
+```json
+{
+  "tests": {
+    "tools": [
+      {
+        "id": "test",
+        "name": "Unittests",
+        "pattern": "**/junit*.xml"
+      }
+    ],
+    "name": "JUnit",
+    "passedImpact": 10,
+    "skippedImpact": -1,
+    "failureImpact": -5,
+    "maxScore": 100
+  }
+}
+``` 
 
 ## Code coverage (e.g., line coverage percentage)
 

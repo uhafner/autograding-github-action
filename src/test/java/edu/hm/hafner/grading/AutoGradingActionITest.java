@@ -5,6 +5,7 @@ import java.util.concurrent.TimeoutException;
 import java.util.function.Consumer;
 
 import org.junit.jupiter.api.Test;
+import org.junitpioneer.jupiter.SetEnvironmentVariable;
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.containers.output.OutputFrame;
 import org.testcontainers.containers.output.ToStringConsumer;
@@ -185,5 +186,13 @@ public class AutoGradingActionITest {
 
     private MountableFile read(final String resourceName) {
         return MountableFile.forClasspathResource("/" + resourceName);
+    }
+
+    @Test
+    @SetEnvironmentVariable(key = "CONFIG", value = "{}")
+    void shouldReadConfigurationFromEnvironment() {
+        var action = new AutoGradingAction();
+
+        assertThat(action.getConfiguration()).isEqualTo("{}");
     }
 }
