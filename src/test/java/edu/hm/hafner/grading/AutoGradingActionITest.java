@@ -1,5 +1,8 @@
 package edu.hm.hafner.grading;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 import java.util.function.Consumer;
@@ -40,6 +43,7 @@ public class AutoGradingActionITest {
               "analysis": [
                 {
                   "name": "Style",
+                  "id": "style",
                   "tools": [
                     {
                       "id": "checkstyle",
@@ -60,6 +64,7 @@ public class AutoGradingActionITest {
                 },
                 {
                   "name": "Bugs",
+                  "id": "bugs",
                   "tools": [
                     {
                       "id": "spotbugs",
@@ -113,9 +118,10 @@ public class AutoGradingActionITest {
             }
             """;
     private static final String WS = "/github/workspace/target/";
+    private static final String LOCAL_METRICS_FILE = "target/metrics.env";
 
     @Test
-    void shouldGradeInDockerContainer() throws TimeoutException {
+    void shouldGradeInDockerContainer() throws TimeoutException, IOException {
         try (var container = createContainer()) {
             container.withEnv("CONFIG", CONFIGURATION);
             startContainerWithAllFiles(container);
@@ -138,13 +144,33 @@ public class AutoGradingActionITest {
                             "=> Style Score: 23 of 100",
                             "-> SpotBugs Total: 9 warnings",
                             "=> Bugs Score: 0 of 100",
+                            "tests=33",
+                            "line=88",
+                            "branch=62",
+                            "mutation=73",
+                            "bugs=9",
+                            "spotbugs=9",
+                            "style=8",
+                            "pmd=5",
+                            "checkstyle=3",
                             "Total score: 219/500 (unit tests: 100/100, code coverage: 50/100, mutation coverage: 46/100, analysis: 23/200)"});
-        }
 
+            container.copyFileFromContainer("/github/workspace/metrics.env", LOCAL_METRICS_FILE);
+            assertThat(Files.readString(Path.of(LOCAL_METRICS_FILE)))
+                    .contains("tests=33",
+                            "line=88",
+                            "branch=62",
+                            "mutation=73",
+                            "bugs=9",
+                            "spotbugs=9",
+                            "style=8",
+                            "pmd=5",
+                            "checkstyle=3");
+        }
     }
 
     private GenericContainer<?> createContainer() {
-        return new GenericContainer<>(DockerImageName.parse("uhafner/autograding-github-action:2.0.0-alpha"));
+        return new GenericContainer<>(DockerImageName.parse("uhafner/autograding-github-action:2.1.0"));
     }
 
     @Test
