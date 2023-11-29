@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.List;
+import java.nio.file.StandardOpenOption;
 import java.util.NoSuchElementException;
 
 import org.apache.commons.lang3.StringUtils;
@@ -22,15 +22,15 @@ import edu.hm.hafner.util.VisibleForTesting;
  * @author Tobias Effner
  * @author Ullrich Hafner
  */
-@SuppressWarnings("checkstyle:ClassDataAbstractionCoupling")
+@SuppressWarnings({"checkstyle:ClassDataAbstractionCoupling", "PMD.SystemPrintln"})
 public class AutoGradingAction {
     /**
      * Public entry point, calls the action.
      *
-     * @param args
+     * @param unused
      *         not used
      */
-    public static void main(final String... args) {
+    public static void main(final String... unused) {
         new AutoGradingAction().run();
     }
 
@@ -71,9 +71,15 @@ public class AutoGradingAction {
 
             pullRequestWriter.addComment(getChecksName(), score,
                     results.getHeader(), results.getSummary(score),
-                    results.getDetails(score, List.of()));
+                    results.getDetails(score));
+
+            var environmentVariables = createEnvironmentVariables(score);
+            Files.writeString(Paths.get("metrics.env"), environmentVariables, StandardOpenOption.CREATE);
         }
-        catch (NoSuchElementException | ParsingException | SecureXmlParserFactory.ParsingException exception) {
+        catch (NoSuchElementException
+               | IOException
+               | ParsingException
+               | SecureXmlParserFactory.ParsingException exception) {
             System.out.println("==================================================================");
             System.out.println(ExceptionUtils.getStackTrace(exception));
 
@@ -87,6 +93,16 @@ public class AutoGradingAction {
         System.out.println("------------------------------------------------------------------");
         System.out.println("------------------------- End Grading ----------------------------");
         System.out.println("------------------------------------------------------------------");
+    }
+
+    String createEnvironmentVariables(final AggregatedScore score) {
+        var metrics = new StringBuilder();
+        score.getMetrics().forEach((metric, value) -> metrics.append(String.format("%s=%d%n", metric, value)));
+        System.out.println("------------------------------------------------------------------");
+        System.out.println("--------------------------- Summary ------------------------------");
+        System.out.println("------------------------------------------------------------------");
+        System.out.println(metrics);
+        return metrics.toString();
     }
 
     private String getChecksName() {

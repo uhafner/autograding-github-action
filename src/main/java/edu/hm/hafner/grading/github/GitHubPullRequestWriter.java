@@ -36,6 +36,7 @@ import org.kohsuke.github.GitHubBuilder;
  * @author Tobias Effner
  * @author Ullrich Hafner
  */
+@SuppressWarnings("PMD.SystemPrintln")
 public class GitHubPullRequestWriter {
     /**
      * Writes the specified comment as GitHub checks result. Requires that the environment variables {@code HEAD_SHA},
@@ -43,6 +44,8 @@ public class GitHubPullRequestWriter {
      *
      * @param name
      *         the name of the checks result
+     * @param score
+     *         the score to write
      * @param header
      *         the header of the check
      * @param summary
@@ -50,7 +53,8 @@ public class GitHubPullRequestWriter {
      * @param comment
      *         the details of the check (supports Markdown)
      */
-    public void addComment(final String name, final AggregatedScore score, final String header, final String summary, final String comment) {
+    public void addComment(final String name, final AggregatedScore score, final String header, final String summary,
+            final String comment) {
         String repository = System.getenv("GITHUB_REPOSITORY");
         System.out.println(">>>> GITHUB_REPOSITORY: " + repository);
         if (repository == null) {
@@ -111,7 +115,8 @@ public class GitHubPullRequestWriter {
         }
     }
 
-    private void createLineAnnotationsForWarnings(final AggregatedScore score, final Pattern prefix, final Output output) {
+    private void createLineAnnotationsForWarnings(final AggregatedScore score, final Pattern prefix,
+            final Output output) {
         score.getAnalysisScores().stream()
                 .map(AnalysisScore::getReport)
                 .flatMap(Report::stream)
@@ -129,7 +134,8 @@ public class GitHubPullRequestWriter {
         return annotation;
     }
 
-    private void createLineAnnotationsForMissedLines(final AggregatedScore score, final Pattern prefix, final Output output) {
+    private void createLineAnnotationsForMissedLines(final AggregatedScore score, final Pattern prefix,
+            final Output output) {
         score.getCodeCoverageScores().stream()
                 .map(CoverageScore::getReport)
                 .map(Node::getAllFileNodes)
@@ -163,7 +169,8 @@ public class GitHubPullRequestWriter {
         return String.format("Lines %d-%d are not covered by tests", range.getStart(), range.getEnd());
     }
 
-    private void createLineAnnotationsForPartiallyCoveredLines(final AggregatedScore score, final Pattern prefix, final Output output) {
+    private void createLineAnnotationsForPartiallyCoveredLines(final AggregatedScore score, final Pattern prefix,
+            final Output output) {
         score.getCodeCoverageScores().stream()
                 .map(CoverageScore::getReport)
                 .map(Node::getAllFileNodes)
@@ -191,7 +198,8 @@ public class GitHubPullRequestWriter {
         return String.format("Line %d is only partially covered, %d branches are missing", line, missed);
     }
 
-    private void createLineAnnotationsForSurvivedMutations(final AggregatedScore score, final Pattern prefix, final Output output) {
+    private void createLineAnnotationsForSurvivedMutations(final AggregatedScore score, final Pattern prefix,
+            final Output output) {
         score.getMutationCoverageScores().stream()
                 .map(CoverageScore::getReport)
                 .map(Node::getAllFileNodes)
