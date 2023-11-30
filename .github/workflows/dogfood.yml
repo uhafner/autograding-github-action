@@ -8,6 +8,14 @@ jobs:
     name: Run autograding with test data
     runs-on: ubuntu-latest
     steps:
+      - name: Extract GitHub PR number
+        uses: actions/github-script@0.3.0
+        with:
+          github-token: ${{github.token}}
+          script: |
+            const core = require('@actions/core')
+            const prNumber = context.payload.number;
+            core.exportVariable('GITHUB_PR_NUMBER', prNumber);
       - uses: actions/checkout@v4
       - name: Set up JDK 17
         uses: actions/setup-java@v3

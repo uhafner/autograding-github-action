@@ -76,6 +76,7 @@ public class GitHubPullRequestWriter {
         getEnv("GITHUB_WORKSPACE");
         getEnv("GITHUB_REF");
         getEnv("GITHUB_REF_NAME");
+        getEnv("GITHUB_PR_NUMBER");
 
         String filesPrefix = getEnv("FILES_PREFIX");
 
