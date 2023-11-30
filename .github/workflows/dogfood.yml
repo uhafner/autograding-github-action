@@ -238,3 +238,30 @@ jobs:
               ]
             }
 
+
+      - name: Write metrics to GitHub output
+        id: metrics
+        run: |
+          cat metrics.env >> "${GITHUB_OUTPUT}"
+          mkdir -p badges
+      - name: Generate the badge SVG image
+        uses: emibcn/badge-action@v2.0.2
+        id: badge
+        with:
+          label: 'Test coverage'
+          status: ${{ steps.metrics.outputs.tests }}
+          color: 'green'
+          path: tests.svg
+      - name: Commit badge
+        continue-on-error: true
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add tests.svg
+          git commit -m "Update test coverage badge"
+      - name: Push badge commit
+        uses: ad-m/github-push-action@master
+        if: ${{ success() }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
