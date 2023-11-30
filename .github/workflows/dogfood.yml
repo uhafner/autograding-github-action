@@ -1,10 +1,7 @@
 name: Eat your own dog food
 
 on:
-  workflow_run:
-    workflows: ["CD"]
-    types:
-      - completed
+  push:
 
 jobs:
   grade-test-data:
