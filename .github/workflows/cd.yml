@@ -8,6 +8,12 @@ jobs:
     name: Build and deploy to Docker hub
     runs-on: ubuntu-latest
     steps:
+      - name: Get PR ID
+        id: pr-id
+        run: |
+          PR_ID=$(gh pr view -R "${{ github.repository }}" "${{ github.event.workflow_run.head_repository.owner.login }}:${{ github.event.workflow_run.head_branch }}" --json "number" --jq ".number")
+          echo "pr-id=${PR_ID}"      
+          echo "pr-id=${PR_ID}" >> $GITHUB_OUTPUT
       - uses: actions/checkout@v4
       - name: Set up JDK 17
         uses: actions/setup-java@v3
