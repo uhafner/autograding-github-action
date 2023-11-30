@@ -1,11 +1,18 @@
 # Autograding GitHub Action 
 
+[![GitHub Actions](https://github.com/uhafner/autograding-github-action/workflows/Continuous%20Deployment/badge.svg)](https://github.com/uhafner/autograding-github-action/actions/workflows/cd.yml)
+[![Line Coverage](https://raw.githubusercontent.com/uhafner/autograding-github-action/main/badges/line-coverage.svg)](https://github.com/uhafner/autograding-github-action/actions/workflows/dogfood.yml)
+[![Branch Coverage](https://raw.githubusercontent.com/uhafner/autograding-github-action/main/badges/branch-coverage.svg)](https://github.com/uhafner/autograding-github-action/actions/workflows/dogfood.yml)
+[![Mutation Coverage](https://raw.githubusercontent.com/uhafner/autograding-github-action/main/badges/mutation-coverage.svg)](https://github.com/uhafner/autograding-github-action/actions/workflows/dogfood.yml)
+[![Style Warnings](https://raw.githubusercontent.com/uhafner/autograding-github-action/main/badges/style-warnings.svg)](https://github.com/uhafner/autograding-github-action/actions/workflows/dogfood.yml)
+[![Potential Bugs](https://raw.githubusercontent.com/uhafner/autograding-github-action/main/badges/bugs.svg)](https://github.com/uhafner/autograding-github-action/actions/workflows/dogfood.yml)
+
 This GitHub action autogrades projects based on a configurable set of metrics and gives feedback on pull requests (or single commits). I use this action to automatically grade student projects in my lectures at the Munich University of Applied Sciences. Please have a look at my [companion coding style](https://github.com/uhafner/codingstyle) and [Maven parent POM](https://github.com/uhafner/codingstyle-pom) to see how to create Java projects that can be graded using this GitHub action.
 
 This action is inspired by my similar Jenkins plugins: 
 - [Jenkins Warnings plugin](https://github.com/jenkinsci/warnings-ng-plugin)
 - [Jenkins Coverage plugin](https://github.com/jenkinsci/coverage-plugin)
-- [Jenkins Auto grading plugin](https://github.com/jenkinsci/autograding-plugin)
+- [Jenkins Autograding plugin](https://github.com/jenkinsci/autograding-plugin)
 
 They work in the same way but are much more powerful and flexible and show the results additionally in Jenkins' UI. 
 
