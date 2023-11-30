@@ -68,14 +68,10 @@ public class GitHubPullRequestWriter {
             return;
         }
 
-        String sha = getEnv("GITHUB_SHA");
-        String prSha = getEnv("HEAD_SHA");
-        String actualSha = StringUtils.defaultIfBlank(prSha, sha);
+        String actualSha = StringUtils.defaultIfBlank(getEnv("HEAD_SHA"), getEnv("GITHUB_SHA"));
         System.out.println(">>>> ACTUAL_SHA: " + actualSha);
 
-        getEnv("GITHUB_WORKSPACE");
-        getEnv("GITHUB_REF");
-        getEnv("GITHUB_REF_NAME");
+        getEnv("PR_NUMBER");
 
         String filesPrefix = getEnv("FILES_PREFIX");
 

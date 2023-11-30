@@ -8,6 +8,9 @@ inputs:
   CHECKS_NAME:
     description: "Name of the GitHub checks (if not set the default name will be used)"
     required: false
+  PR_NUMBER:
+    description: "Pull request number (if not set, PR comments will be skipped)"
+    required: false
   TOKEN:
     description: "GitHub authentication token (GITHUB_TOKEN)"
     required: true
@@ -27,6 +30,7 @@ runs:
   env:
     CONFIG: ${{ inputs.CONFIG }}
     CHECKS_NAME: ${{ inputs.CHECKS_NAME }}
+    PR_NUMBER: ${{ inputs.PR_NUMBER }}
     TOKEN: ${{ inputs.TOKEN }}
     HEAD_SHA: ${{ inputs.HEAD_SHA }}
     FILES_PREFIX: ${{ inputs.FILES_PREFIX }}
