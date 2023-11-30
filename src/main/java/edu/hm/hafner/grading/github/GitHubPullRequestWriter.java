@@ -71,8 +71,6 @@ public class GitHubPullRequestWriter {
         String actualSha = StringUtils.defaultIfBlank(getEnv("HEAD_SHA"), getEnv("GITHUB_SHA"));
         System.out.println(">>>> ACTUAL_SHA: " + actualSha);
 
-        getEnv("PR_NUMBER");
-
         String filesPrefix = getEnv("FILES_PREFIX");
 
         try {
@@ -93,6 +91,15 @@ public class GitHubPullRequestWriter {
             GHCheckRun run = check.create();
 
             System.out.println("Successfully created check " + run);
+
+            var prNumber = getEnv("PR_NUMBER");
+            if (!prNumber.isBlank()) {
+                github.getRepository(repository)
+                        .getPullRequest(Integer.parseInt(prNumber))
+                        .comment(header + "\n\n" + summary + "\n\n");
+                System.out.println("Successfully commented PR#" + prNumber);
+            }
+
         }
         catch (IOException exception) {
             System.out.println("Could not create check due to " + exception);
