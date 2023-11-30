@@ -20,6 +20,8 @@ jobs:
         uses: stCarolas/setup-maven@v4.5
         with:
           maven-version: 3.9.5
+      - name: Echo GitHub PR
+        run: echo "PR# ${{ github.event.pull_request.number }}"
       - name: Build and deploy
         env:
           DOCKER_IO_USERNAME: ${{ secrets.DOCKER_IO_USERNAME }}
