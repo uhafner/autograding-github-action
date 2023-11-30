@@ -14,7 +14,7 @@ jobs:
           PR_ID=$(gh pr view -R "${{ github.repository }}" "${{ github.event.workflow_run.head_repository.owner.login }}:${{ github.event.workflow_run.head_branch }}" --json "number" --jq ".number")
           echo "pr-id=${PR_ID}"      
           echo "pr-id=${PR_ID}" >> $GITHUB_OUTPUT
-        with:
+        env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/checkout@v4
       - name: Set up JDK 17
