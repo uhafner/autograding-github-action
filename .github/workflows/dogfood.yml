@@ -244,21 +244,48 @@ jobs:
         run: |
           cat metrics.env >> "${GITHUB_OUTPUT}"
           mkdir -p badges
-      - name: Generate the badge SVG image
+      - name: Generate the badge SVG image for the line coverage
         uses: emibcn/badge-action@v2.0.2
-        id: badge
         with:
-          label: 'Test coverage'
-          status: ${{ steps.metrics.outputs.tests }}
+          label: 'Line coverage'
+          status: ${{ steps.metrics.outputs.line }}%
           color: 'green'
-          path: tests.svg
+          path: badges/line-coverage.svg
+      - name: Generate the badge SVG image for the branch coverage
+        uses: emibcn/badge-action@v2.0.2
+        with:
+          label: 'Branch coverage'
+          status: ${{ steps.metrics.outputs.branch }}%
+          color: 'green'
+          path: badges/branch-coverage.svg
+      - name: Generate the badge SVG image for the mutation coverage
+        uses: emibcn/badge-action@v2.0.2
+        with:
+          label: 'Mutation coverage'
+          status: ${{ steps.metrics.outputs.mutation }}%
+          color: 'green'
+          path: badges/mutation-coverage.svg
+      - name: Generate the badge SVG image for the style warnings
+        uses: emibcn/badge-action@v2.0.2
+        with:
+          label: 'Style warnings'
+          status: ${{ steps.metrics.outputs.style }}
+          color: 'orange'
+          path: badges/style-warnings.svg
+      - name: Generate the badge SVG image for the potential bugs
+        uses: emibcn/badge-action@v2.0.2
+        with:
+          label: 'Potential Bugs'
+          status: ${{ steps.metrics.outputs.bugs }}
+          color: 'red'
+          path: badges/bugs.svg
       - name: Commit badge
         continue-on-error: true
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add tests.svg
-          git commit -m "Update test coverage badge"
+          git add badges/*.svg
+          git commit -m "Update badges with results from latest autograding"
       - name: Push badge commit
         uses: ad-m/github-push-action@master
         if: ${{ success() }}
