@@ -55,32 +55,29 @@ public class GitHubPullRequestWriter {
      */
     public void addComment(final String name, final AggregatedScore score, final String header, final String summary,
             final String comment) {
-        String repository = System.getenv("GITHUB_REPOSITORY");
-        System.out.println(">>>> GITHUB_REPOSITORY: " + repository);
+        var repository = getEnv("GITHUB_REPOSITORY");
         if (repository == null) {
             System.out.println("No GITHUB_REPOSITORY defined - skipping");
 
             return;
         }
-        String oAuthToken = System.getenv("TOKEN");
+        String oAuthToken = getEnv("TOKEN");
         if (oAuthToken == null) {
             System.out.println("No valid TOKEN found - skipping");
+
+            return;
         }
 
-        String sha = System.getenv("GITHUB_SHA");
-        System.out.println(">>>> GITHUB_SHA: " + sha);
-
-        String prSha = System.getenv("HEAD_SHA");
-        System.out.println(">>>> HEAD_SHA: " + prSha);
-
+        String sha = getEnv("GITHUB_SHA");
+        String prSha = getEnv("HEAD_SHA");
         String actualSha = StringUtils.defaultIfBlank(prSha, sha);
         System.out.println(">>>> ACTUAL_SHA: " + actualSha);
 
-        String workspace = System.getenv("GITHUB_WORKSPACE");
-        System.out.println(">>>> GITHUB_WORKSPACE: " + workspace);
+        getEnv("GITHUB_WORKSPACE");
+        getEnv("GITHUB_REF");
+        getEnv("GITHUB_REF_NAME");
 
         String filesPrefix = getEnv("FILES_PREFIX");
-        System.out.println(">>>> FILES_PREFIX: " + filesPrefix);
 
         try {
             GitHub github = new GitHubBuilder().withAppInstallationToken(oAuthToken).build();
@@ -104,6 +101,12 @@ public class GitHubPullRequestWriter {
         catch (IOException exception) {
             System.out.println("Could not create check due to " + exception);
         }
+    }
+
+    private String getEnv(final String env) {
+        String repository = StringUtils.defaultString(System.getenv(env));
+        System.out.println(">>>> " + env + ": " + repository);
+        return repository;
     }
 
     private void handleAnnotations(final AggregatedScore score, final Pattern prefix, final Output output) {
@@ -235,9 +238,5 @@ public class GitHubPullRequestWriter {
         return mutations.stream()
                 .map(mutation -> String.format("- %s (%s)", mutation.getDescription(), mutation.getMutator()))
                 .collect(Collectors.joining("\n", "Survived mutations:\n", ""));
-    }
-
-    private String getEnv(final String env) {
-        return StringUtils.defaultString(System.getenv(env));
     }
 }
