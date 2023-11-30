@@ -166,6 +166,7 @@ This metric can be configured using the following parameters:
   "analysis": [
     {
       "name": "Style",
+      "id": "style",
       "tools": [
         {
           "id": "checkstyle",
@@ -186,6 +187,7 @@ This metric can be configured using the following parameters:
     },
     {
       "name": "Bugs",
+      "id": "bugs",
       "tools": [
         {
           "id": "spotbugs",
