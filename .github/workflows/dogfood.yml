@@ -2,7 +2,7 @@ name: Eat your own dog food
 
 on:
   workflow_run:
-    workflows: ["Continuous Deployment"]
+    workflows: ["CD"]
     types:
       - completed
 
