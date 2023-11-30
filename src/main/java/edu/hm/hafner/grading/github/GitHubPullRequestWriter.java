@@ -56,13 +56,13 @@ public class GitHubPullRequestWriter {
     public void addComment(final String name, final AggregatedScore score, final String header, final String summary,
             final String comment) {
         var repository = getEnv("GITHUB_REPOSITORY");
-        if (repository == null) {
+        if (repository.isBlank()) {
             System.out.println("No GITHUB_REPOSITORY defined - skipping");
 
             return;
         }
         String oAuthToken = getEnv("TOKEN");
-        if (oAuthToken == null) {
+        if (oAuthToken.isBlank()) {
             System.out.println("No valid TOKEN found - skipping");
 
             return;
@@ -103,10 +103,10 @@ public class GitHubPullRequestWriter {
         }
     }
 
-    private String getEnv(final String env) {
-        String repository = StringUtils.defaultString(System.getenv(env));
-        System.out.println(">>>> " + env + ": " + repository);
-        return repository;
+    private String getEnv(final String key) {
+        String value = StringUtils.defaultString(System.getenv(key));
+        System.out.println(">>>> " + key + ": " + value);
+        return value;
     }
 
     private void handleAnnotations(final AggregatedScore score, final Pattern prefix, final Output output) {
