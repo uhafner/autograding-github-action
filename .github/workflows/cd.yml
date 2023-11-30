@@ -10,11 +10,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Get PR ID
-        id: pr-id
+        id: pr
         run: |
-          PR_ID=$(gh pr view --json "number" --jq ".number")
-          echo "pr-id=${PR_ID}"      
-          echo "pr-id=${PR_ID}" >> $GITHUB_OUTPUT
+          PR_NUMBER=$(gh pr view --json "number" --jq ".number")
+          echo "pr-number=${PR_NUMBER}" >> $GITHUB_OUTPUT
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Set up JDK 17
@@ -29,7 +28,7 @@ jobs:
         with:
           maven-version: 3.9.5
       - name: Echo GitHub PR
-        run: echo "PR# ${{ github.event.pull_request.number }}"
+        run: echo "PR# ${{ steps.pr.outputs.pr-number }}"
       - name: Build and deploy
         env:
           DOCKER_IO_USERNAME: ${{ secrets.DOCKER_IO_USERNAME }}
