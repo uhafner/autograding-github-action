@@ -8,15 +8,15 @@ jobs:
     name: Build and deploy to Docker hub
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - name: Get PR ID
         id: pr-id
         run: |
-          PR_ID=$(gh pr view -R "${{ github.repository }}" --json "number" --jq ".number")
+          PR_ID=$(gh pr view --json "number" --jq ".number")
           echo "pr-id=${PR_ID}"      
           echo "pr-id=${PR_ID}" >> $GITHUB_OUTPUT
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - uses: actions/checkout@v4
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
