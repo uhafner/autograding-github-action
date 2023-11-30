@@ -1,6 +1,6 @@
 # Autograding GitHub Action 
 
-[![GitHub Actions](https://github.com/uhafner/autograding-github-action/workflows/Continuous%20Deployment/badge.svg)](https://github.com/uhafner/autograding-github-action/actions/workflows/cd.yml)
+[![GitHub Actions](https://github.com/uhafner/autograding-github-action/workflows/CD/badge.svg)](https://github.com/uhafner/autograding-github-action/actions/workflows/cd.yml)
 [![Line Coverage](https://raw.githubusercontent.com/uhafner/autograding-github-action/main/badges/line-coverage.svg)](https://github.com/uhafner/autograding-github-action/actions/workflows/dogfood.yml)
 [![Branch Coverage](https://raw.githubusercontent.com/uhafner/autograding-github-action/main/badges/branch-coverage.svg)](https://github.com/uhafner/autograding-github-action/actions/workflows/dogfood.yml)
 [![Mutation Coverage](https://raw.githubusercontent.com/uhafner/autograding-github-action/main/badges/mutation-coverage.svg)](https://github.com/uhafner/autograding-github-action/actions/workflows/dogfood.yml)
