@@ -63,9 +63,9 @@ public class GitHubPullRequestWriter {
 
             return;
         }
-        String oAuthToken = getEnv("TOKEN");
+        String oAuthToken = getEnv("GITHUB_TOKEN");
         if (oAuthToken.isBlank()) {
-            System.out.println("No valid TOKEN found - skipping");
+            System.out.println("No valid GITHUB_TOKEN found - skipping");
 
             return;
         }

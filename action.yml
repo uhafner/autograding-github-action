@@ -31,7 +31,7 @@ runs:
     CONFIG: ${{ inputs.config }}
     CHECKS_NAME: ${{ inputs.checks-name }}
     PR_NUMBER: ${{ inputs.pr-number }}
-    TOKEN: ${{ inputs.token }}
+    GITHUB_TOKEN: ${{ inputs.github-token }}
     HEAD_SHA: ${{ inputs.head-sha }}
     FILES_PREFIX: ${{ inputs.files-prefix }}
     SKIP_ANNOTATIONS: ${{ inputs.skip-annotations }}
