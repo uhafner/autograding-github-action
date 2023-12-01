@@ -11,7 +11,7 @@ inputs:
   pr-number:
     description: "Pull request number (if not set, PR comments will be skipped)"
     required: false
-  token:
+  github-token:
     description: "GitHub authentication token (GITHUB_TOKEN)"
     required: true
   head-sha:
@@ -26,8 +26,7 @@ inputs:
 
 runs:
   using: 'docker'
-  image: 'docker://uhafner/autograding-github-action:3.1.0-SNAPSHOT
-'
+  image: 'docker://uhafner/autograding-github-action:3.1.0
   env:
     CONFIG: ${{ inputs.config }}
     CHECKS_NAME: ${{ inputs.checks-name }}
