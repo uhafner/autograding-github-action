@@ -306,14 +306,14 @@ The results of the action can be used to create various badges that show the cur
       status: ${{ steps.metrics.outputs.bugs }}
       color: 'red'
       path: badges/bugs.svg
-  - name: Commit badge
+  - name: Commit updated badges
     continue-on-error: true
     run: |
       git config --local user.email "action@github.com"
       git config --local user.name "GitHub Action"
       git add badges/*.svg
       git commit -m "Update badges with results from latest autograding"
-  - name: Push badge commit
+  - name: Push updated badges to GitHub repository
     uses: ad-m/github-push-action@master
     if: ${{ success() }}
     with:

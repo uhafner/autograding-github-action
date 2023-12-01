@@ -139,14 +139,6 @@ jobs:
           maven-version: 3.9.5
       - name: Build
         run: mvn -ntp clean verify -Ppit
-      - name: Get PR ID
-        id: pr
-        continue-on-error: true
-        run: |
-          PR_NUMBER=$(gh pr view --json "number" --jq ".number")
-          echo "pr-number=${PR_NUMBER}" >> $GITHUB_OUTPUT
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Run Autograding
         uses: uhafner/autograding-github-action@main
         with:
