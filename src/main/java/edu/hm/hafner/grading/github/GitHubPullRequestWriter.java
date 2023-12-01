@@ -52,18 +52,20 @@ public class GitHubPullRequestWriter {
      *         the summary of the check
      * @param comment
      *         the details of the check (supports Markdown)
+     * @param prComment
+     *         the comment to write in the pull request
      */
-    public void addComment(final String name, final AggregatedScore score, final String header, final String summary,
-            final String comment) {
+    public void addComment(final String name, final AggregatedScore score,
+            final String header, final String summary, final String comment, final String prComment) {
         var repository = getEnv("GITHUB_REPOSITORY");
         if (repository.isBlank()) {
             System.out.println("No GITHUB_REPOSITORY defined - skipping");
 
             return;
         }
-        String oAuthToken = getEnv("TOKEN");
+        String oAuthToken = getEnv("GITHUB_TOKEN");
         if (oAuthToken.isBlank()) {
-            System.out.println("No valid TOKEN found - skipping");
+            System.out.println("No valid GITHUB_TOKEN found - skipping");
 
             return;
         }
@@ -96,14 +98,18 @@ public class GitHubPullRequestWriter {
             if (!prNumber.isBlank()) {
                 github.getRepository(repository)
                         .getPullRequest(Integer.parseInt(prNumber))
-                        .comment(header + "\n\n" + summary + "\n\n");
+                        .comment(prComment + addCheckLink(run));
                 System.out.println("Successfully commented PR#" + prNumber);
             }
-
         }
         catch (IOException exception) {
             System.out.println("Could not create check due to " + exception);
         }
+    }
+
+    private String addCheckLink(final GHCheckRun run) {
+        return String.format("Details are available on the [GitHub Checks Page](%s)%n",
+                run.getDetailsUrl().toString());
     }
 
     private String getEnv(final String key) {
