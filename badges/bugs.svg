@@ -1,5 +1,5 @@
-<svg width="106.1" height="20" viewBox="0 0 1061 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Potential Bugs: 2">
-  <title>Potential Bugs: 2</title>
+<svg width="106.1" height="20" viewBox="0 0 1061 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Potential Bugs: 1">
+  <title>Potential Bugs: 1</title>
   <linearGradient id="a" x2="0" y2="100%">
     <stop offset="0" stop-opacity=".1" stop-color="#EEE"/>
     <stop offset="1" stop-opacity=".1"/>
@@ -13,8 +13,8 @@
   <g aria-hidden="true" fill="#fff" text-anchor="start" font-family="Verdana,DejaVu Sans,sans-serif" font-size="110">
     <text x="60" y="148" textLength="791" fill="#000" opacity="0.25">Potential Bugs</text>
     <text x="50" y="138" textLength="791">Potential Bugs</text>
-    <text x="946" y="148" textLength="70" fill="#000" opacity="0.25">2</text>
-    <text x="936" y="138" textLength="70">2</text>
+    <text x="946" y="148" textLength="70" fill="#000" opacity="0.25">1</text>
+    <text x="936" y="138" textLength="70">1</text>
   </g>
   
 </svg>
