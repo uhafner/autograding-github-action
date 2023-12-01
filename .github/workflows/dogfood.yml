@@ -26,7 +26,7 @@ jobs:
       - name: Run Autograding
         uses: uhafner/autograding-github-action@main
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           head-sha: ${{github.event.pull_request.head.sha}}
           checks-name: "Autograding with Test Data"
           config: >
@@ -150,7 +150,7 @@ jobs:
       - name: Run Autograding
         uses: uhafner/autograding-github-action@main
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           checks-name: "Autograding GitHub Action"
           config: >
             {
