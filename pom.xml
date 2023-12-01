@@ -279,6 +279,9 @@
                 --> -Xep:MustBeClosedChecker:OFF <!--
                 Disabled ErrorProne rule:
                 --> -Xep:UnnecessaryFinal:OFF <!--
+                Disabled ErrorPron
+                e rule:
+                --> -Xep:SystemOut:OFF <!--
                 Disabled ErrorProne rule:
                 --> -Xep:NullableDereference:OFF
             </arg>

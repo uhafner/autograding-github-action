@@ -12,25 +12,25 @@ import static org.assertj.core.api.Assertions.*;
 class ReportFinderTest {
     @Test
     void shouldFindTestReports() {
-        ReportFinder finder = new ReportFinder();
+        var finder = new ReportFinder();
 
-        assertThat(finder.find("src/test/resources/", "glob:**/junit/*.xml")).hasSize(3);
-        assertThat(finder.find("src/test/resources/", "glob:src/test/resources/junit/*Not-Passed.xml")).hasSize(1);
-        assertThat(finder.find("src/test/resources/", "glob:src/**/junit/*.html")).isEmpty();
+        assertThat(finder.find("glob:**/junit/*.xml", "src/test/resources/")).hasSize(3);
+        assertThat(finder.find("glob:src/test/resources/junit/*Not-Passed.xml", "src/test/resources/")).hasSize(1);
+        assertThat(finder.find("glob:src/**/junit/*.html", "src/test/resources/")).isEmpty();
 
-        assertThat(finder.find("src/java/", "glob:**/*.xml")).isEmpty();
+        assertThat(finder.find("glob:**/*.xml", "src/java/")).isEmpty();
     }
 
     @Test
     void shouldFindSources() {
-        ReportFinder finder = new ReportFinder();
+        var finder = new ReportFinder();
 
-        assertThat(finder.find("src/main/java/", "regex:.*Console.*\\.java")).hasSize(3);
+        assertThat(finder.find("regex:.*Console.*\\.java", "src/main/java/")).hasSize(3);
     }
 
     @Test
     void shouldCreateAffectedFilesReport() {
-        ReportFinder finder = new ReportFinder("uhafner/autograding-github-action", "master");
+        var finder = new ReportFinder("uhafner/autograding-github-action", "master");
 
         assertThat(finder.renderLinks("src/main/java/", "regex:.*Console.*\\.java"))
                 .contains("# Analyzed files",

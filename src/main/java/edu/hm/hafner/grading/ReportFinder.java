@@ -23,6 +23,7 @@ import edu.hm.hafner.util.VisibleForTesting;
  *
  * @author Ullrich Hafner
  */
+@SuppressWarnings("PMD.SystemPrintln")
 class ReportFinder {
     private static String getEnv(final String name) {
         return StringUtils.defaultString(System.getenv(name));
@@ -44,17 +45,17 @@ class ReportFinder {
     /**
      * Returns the paths that match the specified pattern.
      *
-     * @param directory
-     *         the directory where to search for files
      * @param pattern
      *         the pattern to use when searching
+     * @param directory
+     *         the directory where to search for files
      *
      * @return the matching paths
      * @see FileSystem#getPathMatcher(String)
      */
-    public List<Path> find(final String directory, final String pattern) {
+    public List<Path> find(final String pattern, final String directory) {
         try {
-            PathMatcherFileVisitor visitor = new PathMatcherFileVisitor(pattern);
+            var visitor = new PathMatcherFileVisitor(pattern);
             Files.walkFileTree(Paths.get(directory), visitor);
             return visitor.getMatches();
         }
@@ -75,12 +76,12 @@ class ReportFinder {
      * @see FileSystem#getPathMatcher(String)
      */
     public List<Path> find(final String pattern) {
-        return find(".", pattern);
+        return find(pattern, ".");
     }
 
     public String renderLinks(final String directory, final String pattern) {
         String result = "### Analyzed files\n\n";
-        return find(directory, pattern).stream()
+        return find(pattern, directory).stream()
                 .map(file -> String.format("- [%s](https://github.com/%s/blob/%s/%s)",
                         StringUtils.substringAfterLast(file.toString(), "/"),
                         repository,
@@ -93,11 +94,13 @@ class ReportFinder {
         private final List<Path> matches = new ArrayList<>();
 
         PathMatcherFileVisitor(final String syntaxAndPattern) {
+            super();
+
             try {
                 pathMatcher = FileSystems.getDefault().getPathMatcher(syntaxAndPattern);
             }
             catch (IllegalArgumentException exception) {
-                throw new IllegalArgumentException("Pattern not valid for FileSystem.getPathMatcher: " + syntaxAndPattern);
+                throw new IllegalArgumentException("Pattern not valid for FileSystem.getPathMatcher: " + syntaxAndPattern, exception);
             }
         }
 

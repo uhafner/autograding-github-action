@@ -5,12 +5,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
-import java.util.function.Consumer;
 
 import org.junit.jupiter.api.Test;
 import org.junitpioneer.jupiter.SetEnvironmentVariable;
 import org.testcontainers.containers.GenericContainer;
-import org.testcontainers.containers.output.OutputFrame;
 import org.testcontainers.containers.output.ToStringConsumer;
 import org.testcontainers.containers.output.WaitingConsumer;
 import org.testcontainers.utility.DockerImageName;
@@ -202,10 +200,10 @@ public class AutoGradingActionITest {
     }
 
     private String readStandardOut(final GenericContainer<? extends GenericContainer<?>> container) throws TimeoutException {
-        WaitingConsumer waitingConsumer = new WaitingConsumer();
-        ToStringConsumer toStringConsumer = new ToStringConsumer();
+        var waitingConsumer = new WaitingConsumer();
+        var toStringConsumer = new ToStringConsumer();
 
-        Consumer<OutputFrame> composedConsumer = toStringConsumer.andThen(waitingConsumer);
+        var composedConsumer = toStringConsumer.andThen(waitingConsumer);
         container.followOutput(composedConsumer);
         waitingConsumer.waitUntil(frame ->
                 frame.getUtf8String().contains("at edu.hm.hafner.grading.AutoGradingAction.main(AutoGradingAction.java")

@@ -35,19 +35,19 @@ public class AutoGradingAction {
     }
 
     void run() {
-        FilteredLog log = new FilteredLog("Autograding GitHub Action Errors:");
+        var log = new FilteredLog("Autograding GitHub Action Errors:");
         var logHandler = new LogHandler(System.out, log);
 
         System.out.println("------------------------------------------------------------------");
         System.out.println("------------------------ Start Grading ---------------------------");
         System.out.println("------------------------------------------------------------------");
 
-        AggregatedScore score = new AggregatedScore(getConfiguration(), log);
+        var score = new AggregatedScore(getConfiguration(), log);
         logHandler.print();
 
         System.out.println("==================================================================");
 
-        GitHubPullRequestWriter pullRequestWriter = new GitHubPullRequestWriter();
+        var pullRequestWriter = new GitHubPullRequestWriter();
 
         try {
             score.gradeTests(new ConsoleTestReportFactory());
@@ -65,7 +65,7 @@ public class AutoGradingAction {
 
             System.out.println("==================================================================");
 
-            GradingReport results = new GradingReport();
+            var results = new GradingReport();
 
             System.out.println(results.getTextSummary(score));
 
@@ -83,7 +83,7 @@ public class AutoGradingAction {
             System.out.println("==================================================================");
             System.out.println(ExceptionUtils.getStackTrace(exception));
 
-            GradingReport results = new GradingReport();
+            var results = new GradingReport();
             pullRequestWriter.addComment(getChecksName(), score,
                     results.getHeader(), results.getTextSummary(score),
                     results.getMarkdownErrors(score, exception), results.getMarkdownErrors(score, exception));
