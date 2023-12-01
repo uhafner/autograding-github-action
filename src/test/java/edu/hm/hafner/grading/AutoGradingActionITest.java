@@ -168,8 +168,7 @@ public class AutoGradingActionITest {
     }
 
     private GenericContainer<?> createContainer() {
-        return new GenericContainer<>(DockerImageName.parse("uhafner/autograding-github-action:3.1.0-SNAPSHOT
-"));
+        return new GenericContainer<>(DockerImageName.parse("uhafner/autograding-github-action:3.1.0-SNAPSHOT"));
     }
 
     @Test
