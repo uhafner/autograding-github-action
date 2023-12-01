@@ -232,7 +232,7 @@ The action writes a summary of the results to the pull request as well. Since th
 
 ```yaml
   [... ]
-  - 
+  
       - uses: jwalton/gh-find-current-pr@v1
         id: pr
       - name: Run Autograding
@@ -241,7 +241,7 @@ The action writes a summary of the results to the pull request as well. Since th
           github-token: ${{ secrets.GITHUB_TOKEN }}
           pr-number: ${{ steps.pr.outputs.number }}
           checks-name: "Autograding GitHub Action"
-          config: >
+          config: {...}
 
   [... ]
 ```
