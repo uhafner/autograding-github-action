@@ -47,7 +47,8 @@ jobs:
           maven-version: 3.9.5
       - name: Build # (compile, test with code and mutation coverage, and run static analysis)
         run: mvn -ntp clean verify -Ppit
-      - uses: jwalton/gh-find-current-pr@v1
+      - name: Extract pull request number
+        uses: jwalton/gh-find-current-pr@v1
         id: pr
       - name: Run Autograding
         uses: uhafner/autograding-github-action@v3
@@ -233,8 +234,9 @@ The action writes a summary of the results to the pull request as well. Since th
 
 ```yaml
   [... ]
-  
-      - uses: jwalton/gh-find-current-pr@v1
+
+      - name: Extract pull request number
+        uses: jwalton/gh-find-current-pr@v1
         id: pr
       - name: Run Autograding
         uses: uhafner/autograding-github-action@v3
