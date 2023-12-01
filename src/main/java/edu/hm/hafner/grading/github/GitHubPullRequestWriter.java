@@ -108,7 +108,7 @@ public class GitHubPullRequestWriter {
     }
 
     private String addCheckLink(final GHCheckRun run) {
-        return String.format("## %n%n Mode details are available on the separate [GitHub Checks Page](%s).%n",
+        return String.format("## %n%n More details are available in the [GitHub Checks Result](%s).%n",
                 run.getDetailsUrl().toString());
     }
 

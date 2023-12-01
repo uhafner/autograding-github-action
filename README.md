@@ -47,17 +47,13 @@ jobs:
           maven-version: 3.9.5
       - name: Build # (compile, test with code and mutation coverage, and run static analysis)
         run: mvn -ntp clean verify -Ppit
-      - name: Obtain PR number to write the comments to
+      - uses: jwalton/gh-find-current-pr@v1
         id: pr
-        run: |
-          PR_NUMBER=$(gh pr view --json "number" --jq ".number")
-          echo "pr-number=${PR_NUMBER}" >> $GITHUB_OUTPUT
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Run Autograding
         uses: uhafner/autograding-github-action@v3
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          pr-number: ${{ steps.pr.outputs.number }}
           checks-name: "Autograding GitHub Action"
           config: >
             {
@@ -222,7 +218,7 @@ All warnings will be shown as annotations in the pull request:
 ## Action Parameters
 
 This action can be configured using the following parameters (see example above):
-- ``token: ${{ secrets.GITHUB_TOKEN }}``: mandatory GitHub access token.
+- ``github-token: ${{ secrets.GITHUB_TOKEN }}``: mandatory GitHub access token.
 - ``config: "{...}"``: optional configuration, see sections above for details. Or consult the [autograding-model](https://github.com/uhafner/autograding-model) project for details. If not specified, a [default configuration](src/main/resources/default-config.json) will be used.
 - ``checks-name: "Name of checks"``: optional name of GitHub checks (overwrites the default: "Autograding result").
 - ``head-sha: ${{github.event.pull_request.head.sha}}``: optional SHA of the pull request head. If not set then 
@@ -230,7 +226,38 @@ This action can be configured using the following parameters (see example above)
 - ``files-prefix: "prefix"``: Optional file name prefix to remove from all paths so that files can be found and linked in the repository.
 - ``skip-annotations: true``: Optional flag to skip the creation of annotations (for warnings and missed coverage).
 
+## Pull Request Comments
+
+The action writes a summary of the results to the pull request as well. Since the action cannot identify the correct pull request on its own, you need to provide the pull request as an action argument. 
+
+```yaml
+  [... ]
+  - 
+      - uses: jwalton/gh-find-current-pr@v1
+        id: pr
+      - name: Run Autograding
+        uses: uhafner/autograding-github-action@v3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          pr-number: ${{ steps.pr.outputs.number }}
+          checks-name: "Autograding GitHub Action"
+          config: >
+
+  [... ]
+```
+
+Configuring the action in this way will produce an additional comment of the form:
+
+![Pull request comment](images/pr-comment.png)
+
 ## Automatic Badge Creation
+
+[![Line Coverage](https://raw.githubusercontent.com/uhafner/autograding-github-action/main/badges/line-coverage.svg)](https://github.com/uhafner/autograding-github-action/actions/workflows/dogfood.yml)
+[![Branch Coverage](https://raw.githubusercontent.com/uhafner/autograding-github-action/main/badges/branch-coverage.svg)](https://github.com/uhafner/autograding-github-action/actions/workflows/dogfood.yml)
+[![Mutation Coverage](https://raw.githubusercontent.com/uhafner/autograding-github-action/main/badges/mutation-coverage.svg)](https://github.com/uhafner/autograding-github-action/actions/workflows/dogfood.yml)
+[![Style Warnings](https://raw.githubusercontent.com/uhafner/autograding-github-action/main/badges/style-warnings.svg)](https://github.com/uhafner/autograding-github-action/actions/workflows/dogfood.yml)
+[![Potential Bugs](https://raw.githubusercontent.com/uhafner/autograding-github-action/main/badges/bugs.svg)](https://github.com/uhafner/autograding-github-action/actions/workflows/dogfood.yml)
+
 
 The results of the action can be used to create various badges that show the current status of the project. The action writes the results of the action to a file called `metrics.env` in the workspace. This file can be used to create badges using the [GitHub Badge Action](https://github.com/marketplace/actions/badge-action). The following snippet shows how to create severage badges for your project, the full example is visible in [my autograding workflow](https://raw.githubusercontent.com/uhafner/autograding-github-action/main/.github/workflows/dogfood.yml). 
 
