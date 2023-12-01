@@ -67,11 +67,11 @@ public class AutoGradingAction {
 
             GradingReport results = new GradingReport();
 
-            System.out.println(results.getSummary(score));
+            System.out.println(results.getTextSummary(score));
 
             pullRequestWriter.addComment(getChecksName(), score,
-                    results.getHeader(), results.getSummary(score),
-                    results.getDetails(score));
+                    results.getHeader(), results.getTextSummary(score),
+                    results.getMarkdownDetails(score), results.getMarkdownSummary(score, getChecksName()));
 
             var environmentVariables = createEnvironmentVariables(score);
             Files.writeString(Paths.get("metrics.env"), environmentVariables, StandardOpenOption.CREATE);
@@ -85,8 +85,8 @@ public class AutoGradingAction {
 
             GradingReport results = new GradingReport();
             pullRequestWriter.addComment(getChecksName(), score,
-                    results.getHeader(), results.getSummary(score),
-                    results.getErrors(score, exception));
+                    results.getHeader(), results.getTextSummary(score),
+                    results.getMarkdownErrors(score, exception), results.getMarkdownErrors(score, exception));
 
         }
 

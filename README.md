@@ -216,13 +216,13 @@ All warnings will be shown as annotations in the pull request:
 ## Action Parameters
 
 This action can be configured using the following parameters (see example above):
-- ``TOKEN: ${{ secrets.GITHUB_TOKEN }}``: mandatory GitHub access token.
-- ``CONFIG: "{...}"``: optional configuration, see sections above for details. Or consult the [autograding-model](https://github.com/uhafner/autograding-model) project for details. If not specified, a [default configuration](src/main/resources/default-config.json) will be used.
-- ``CHECKS_NAME: "Name of checks"``: optional name of GitHub checks (overwrites the default: "Autograding result").
-- ``HEAD_SHA: ${{github.event.pull_request.head.sha}}``: optional SHA of the pull request head. If not set then 
+- ``token: ${{ secrets.GITHUB_TOKEN }}``: mandatory GitHub access token.
+- ``config: "{...}"``: optional configuration, see sections above for details. Or consult the [autograding-model](https://github.com/uhafner/autograding-model) project for details. If not specified, a [default configuration](src/main/resources/default-config.json) will be used.
+- ``checks-name: "Name of checks"``: optional name of GitHub checks (overwrites the default: "Autograding result").
+- ``head-sha: ${{github.event.pull_request.head.sha}}``: optional SHA of the pull request head. If not set then 
 ``GITHUB_SHA`` will be used.
-- ``FILES_PREFIX: "prefix"``: Optional file name prefix to remove from all paths so that files can be found and linked in the repository.
-- ``SKIP_ANNOTATIONS: true``: Optional flag to skip the creation of annotations (for warnings and missed coverage).
+- ``files-prefix: "prefix"``: Optional file name prefix to remove from all paths so that files can be found and linked in the repository.
+- ``skip-annotations: true``: Optional flag to skip the creation of annotations (for warnings and missed coverage).
 
 ## Automatic Badge Creation
 
