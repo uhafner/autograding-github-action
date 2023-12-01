@@ -290,3 +290,4 @@ The results of the action can be used to create various badges that show the cur
       github_token: ${{ secrets.GITHUB_TOKEN }}
       branch: main
 ```
+
