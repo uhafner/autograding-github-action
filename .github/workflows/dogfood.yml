@@ -26,11 +26,10 @@ jobs:
       - name: Run Autograding
         uses: uhafner/autograding-github-action@main
         with:
-          TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PR_NUMBER: ${{ github.event.pull_request.number }}
-          HEAD_SHA: ${{github.event.pull_request.head.sha}}
-          CHECKS_NAME: "Autograding with Test Data"
-          CONFIG: >
+          token: ${{ secrets.GITHUB_TOKEN }}
+          head-sha: ${{github.event.pull_request.head.sha}}
+          checks-name: "Autograding with Test Data"
+          config: >
             {
               "tests": {
                 "tools": [
@@ -142,6 +141,7 @@ jobs:
         run: mvn -ntp clean verify -Ppit
       - name: Get PR ID
         id: pr
+        continue-on-error: true
         run: |
           PR_NUMBER=$(gh pr view --json "number" --jq ".number")
           echo "pr-number=${PR_NUMBER}" >> $GITHUB_OUTPUT
@@ -150,10 +150,9 @@ jobs:
       - name: Run Autograding
         uses: uhafner/autograding-github-action@main
         with:
-          TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PR_NUMBER: ${{ steps.pr.outputs.pr-number }}
-          CHECKS_NAME: "Autograding GitHub Action"
-          CONFIG: >
+          token: ${{ secrets.GITHUB_TOKEN }}
+          checks-name: "Autograding GitHub Action"
+          config: >
             {
               "tests": {
                 "tools": [
