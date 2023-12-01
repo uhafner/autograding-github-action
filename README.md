@@ -47,13 +47,19 @@ jobs:
           maven-version: 3.9.5
       - name: Build # (compile, test with code and mutation coverage, and run static analysis)
         run: mvn -ntp clean verify -Ppit
+      - name: Obtain PR number to write the comments to
+        id: pr
+        run: |
+          PR_NUMBER=$(gh pr view --json "number" --jq ".number")
+          echo "pr-number=${PR_NUMBER}" >> $GITHUB_OUTPUT
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Run Autograding
-        uses: uhafner/autograding-github-action@v2.1.0
+        uses: uhafner/autograding-github-action@v3
         with:
-          TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          HEAD_SHA: ${{github.event.pull_request.head.sha}}
-          CHECKS_NAME: "Autograding GitHub Action"
-          CONFIG: >
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          checks-name: "Autograding GitHub Action"
+          config: >
             {
               "tests": {
                 "tools": [
