@@ -151,7 +151,7 @@ public class AutoGradingActionITest {
                             "style=8",
                             "pmd=5",
                             "checkstyle=3",
-                            "Total score: 219/500 (unit tests: 100/100, code coverage: 50/100, mutation coverage: 46/100, analysis: 23/200)"});
+                            "Total score - 219 of 500 (unit tests: 100/100, code coverage: 50/100, mutation coverage: 46/100, analysis: 23/200)"});
 
             container.copyFileFromContainer("/github/workspace/metrics.env", LOCAL_METRICS_FILE);
             assertThat(Files.readString(Path.of(LOCAL_METRICS_FILE)))
@@ -195,7 +195,7 @@ public class AutoGradingActionITest {
                             "=> Style Score: 92 of 100",
                             "-> SpotBugs Total: 9 warnings",
                             "=> Bugs Score: 73 of 100",
-                            "Total score: 353/500 (unit tests: 40/100, code coverage: 75/100, mutation coverage: 73/100, analysis: 165/200)"});
+                            "Total score - 353 of 500 (unit tests: 40/100, code coverage: 75/100, mutation coverage: 73/100, analysis: 165/200)"});
         }
     }
 
