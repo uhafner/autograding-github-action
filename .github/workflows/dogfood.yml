@@ -22,10 +22,14 @@ jobs:
           maven-version: 3.9.5
       - name: Build
         run: mvn -ntp clean verify -Ppit
+      - name: Extract pull request number
+        uses: jwalton/gh-find-current-pr@v1
+        id: pr
       - name: Run Autograding
         uses: uhafner/autograding-github-action@main
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          pr-number: ${{ steps.pr.outputs.number }}
           checks-name: "Autograding GitHub Action"
           config: >
             {
