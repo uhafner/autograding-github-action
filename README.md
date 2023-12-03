@@ -74,7 +74,7 @@ jobs:
             }
 ```
 
-Currently, you can select from the metrics shown in the following sections. Each metric can be configured individually. All of these configurations are composed in the same way: you can define a list of tools that are used to collect the data, a name for the metric, and a maximum score. All tools need to provide a pattern where the autograding action can find the result files in the workspace (e.g., JUnit XML reports). Additionally, each tool needs to provide the parser ID of the tool so that the underlying model can find the correct parser to read the results. See [analysis model](https:://github.com/jenkinsci/analysis-model) and [coverage model](https:://github.com/jenkinsci/coverage-model) for the list of supported parsers.
+Currently, you can select from the metrics shown in the following sections. Each metric can be configured individually. All of these configurations are composed in the same way: you can define a list of tools that are used to collect the data, a name and icon for the metric, and a maximum score. All tools need to provide a pattern where the autograding action can find the result files in the workspace (e.g., JUnit XML reports). Additionally, each tool needs to provide the parser ID of the tool so that the underlying model can find the correct parser to read the results. See [analysis model](https:://github.com/jenkinsci/analysis-model) and [coverage model](https:://github.com/jenkinsci/coverage-model) for the list of supported parsers.
 
 Additionally, you can define the impact of each result (e.g., a failed test, a missed line in coverage) on the final score. The impact is a positive or negative number and will be multiplied with the actual value of the measured items during the evaluation. Negative values will be subtracted from the maximum score to compute the final score. Positive values will be directly used as the final score. You can choose the type of impact that matches your needs best.
 
@@ -82,7 +82,7 @@ Additionally, you can define the impact of each result (e.g., a failed test, a m
 
 ![Test statistics](images/tests.png)
 
-This metric can be configured using the following parameters:
+This metric can be configured using a JSON object `tests`, see the example below for details: 
 
 ```json
 {
@@ -109,7 +109,7 @@ You can either count passed tests as positive impact or failed tests as negative
 
 ![Code coverage summary](images/coverage.png)
 
-This metric can be configured using the following parameters:
+This metric can be configured using a JSON object `coverage`, see the example below for details:
 
 ```json
 {
@@ -164,7 +164,7 @@ Missed lines or branches as well as survived mutations will be shown as annotati
 
 ![Static analysis](images/analysis.png)
 
-This metric can be configured using the following parameters:
+This metric can be configured using a JSON object `analysis`, see the example above for details:
 
 ```json
 {
@@ -193,6 +193,7 @@ This metric can be configured using the following parameters:
     {
       "name": "Bugs",
       "id": "bugs",
+      "icon": "bug",
       "tools": [
         {
           "id": "spotbugs",
