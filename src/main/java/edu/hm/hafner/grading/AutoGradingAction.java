@@ -12,6 +12,7 @@ import org.apache.commons.lang3.exception.ExceptionUtils;
 
 import edu.hm.hafner.analysis.ParsingException;
 import edu.hm.hafner.grading.github.GitHubPullRequestWriter;
+import edu.hm.hafner.grading.github.GitHubPullRequestWriter.ChecksStatus;
 import edu.hm.hafner.util.FilteredLog;
 import edu.hm.hafner.util.SecureXmlParserFactory;
 import edu.hm.hafner.util.VisibleForTesting;
@@ -71,7 +72,9 @@ public class AutoGradingAction {
 
             pullRequestWriter.addComment(getChecksName(), score,
                     results.getHeader(), results.getTextSummary(score),
-                    results.getMarkdownDetails(score), results.getMarkdownSummary(score, getChecksName()));
+                    results.getMarkdownDetails(score),
+                    results.getMarkdownSummary(score, ":mortar_board: " + getChecksName()),
+                    ChecksStatus.SUCCESS);
 
             var environmentVariables = createEnvironmentVariables(score);
             Files.writeString(Paths.get("metrics.env"), environmentVariables, StandardOpenOption.CREATE);
@@ -86,7 +89,9 @@ public class AutoGradingAction {
             var results = new GradingReport();
             pullRequestWriter.addComment(getChecksName(), score,
                     results.getHeader(), results.getTextSummary(score),
-                    results.getMarkdownErrors(score, exception), results.getMarkdownErrors(score, exception));
+                    results.getMarkdownErrors(score, exception),
+                    results.getMarkdownErrors(score, exception),
+                    ChecksStatus.ERROR);
 
         }
 

@@ -38,6 +38,12 @@ import org.kohsuke.github.GitHubBuilder;
  */
 @SuppressWarnings("PMD.SystemPrintln")
 public class GitHubPullRequestWriter {
+    /** Status of the checks result. */
+    public enum ChecksStatus {
+        SUCCESS,
+        ERROR
+    }
+
     /**
      * Writes the specified comment as GitHub checks result. Requires that the environment variables {@code HEAD_SHA},
      * {@code GITHUB_SHA}, {@code GITHUB_REPOSITORY}, and {@code TOKEN} are correctly set.
@@ -54,9 +60,12 @@ public class GitHubPullRequestWriter {
      *         the details of the check (supports Markdown)
      * @param prComment
      *         the comment to write in the pull request
+     * @param status
+     *         the status of the checks result
      */
     public void addComment(final String name, final AggregatedScore score,
-            final String header, final String summary, final String comment, final String prComment) {
+            final String header, final String summary, final String comment, final String prComment,
+            final ChecksStatus status) {
         var repository = getEnv("GITHUB_REPOSITORY");
         if (repository.isBlank()) {
             System.out.println("No GITHUB_REPOSITORY defined - skipping");
@@ -81,7 +90,7 @@ public class GitHubPullRequestWriter {
                     .createCheckRun(name, actualSha)
                     .withStatus(Status.COMPLETED)
                     .withStartedAt(Date.from(Instant.now()))
-                    .withConclusion(Conclusion.SUCCESS);
+                    .withConclusion(status == ChecksStatus.SUCCESS ? Conclusion.SUCCESS : Conclusion.FAILURE);
 
             Pattern prefix = Pattern.compile(
                     "^.*" + StringUtils.substringAfterLast(repository, '/') + "/" + filesPrefix);
