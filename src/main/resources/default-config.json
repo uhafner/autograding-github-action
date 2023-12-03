@@ -38,6 +38,7 @@
     {
       "name": "Bugs",
       "id": "bugs",
+      "icon": "bug",
       "tools": [
         {
           "id": "spotbugs",
