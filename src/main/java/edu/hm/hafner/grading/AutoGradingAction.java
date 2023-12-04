@@ -3,14 +3,20 @@ package edu.hm.hafner.grading;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.Collection;
 import java.util.NoSuchElementException;
+import java.util.function.Predicate;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
+import edu.hm.hafner.analysis.Issue;
 import edu.hm.hafner.analysis.ParsingException;
+import edu.hm.hafner.analysis.Report;
+import edu.hm.hafner.coverage.Node;
 import edu.hm.hafner.grading.github.GitHubPullRequestWriter;
 import edu.hm.hafner.grading.github.GitHubPullRequestWriter.ChecksStatus;
 import edu.hm.hafner.util.FilteredLog;
@@ -63,6 +69,26 @@ public class AutoGradingAction {
 
             score.gradeAnalysis(new ConsoleAnalysisReportFactory());
             logHandler.print();
+
+            System.out.println("==================================================================");
+
+            System.out.println("Files with warnings that could not be found: ");
+            score.getAnalysisScores().stream()
+                    .map(AnalysisScore::getReport)
+                    .flatMap(Report::stream)
+                    .map(Issue::getAbsolutePath)
+                    .map(Path::of)
+                    .filter(Predicate.not(Files::exists))
+                    .forEach(System.out::println);
+
+            System.out.println("Files with coverage that could not be found: ");
+            score.getCodeCoverageScores().stream()
+                    .map(CoverageScore::getReport)
+                    .map(Node::getFiles)
+                    .flatMap(Collection::stream)
+                    .map(Path::of)
+                    .filter(Predicate.not(Files::exists))
+                    .forEach(System.out::println);
 
             System.out.println("==================================================================");
 

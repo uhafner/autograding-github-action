@@ -19,7 +19,7 @@ public final class ConsoleTestReportFactory implements TestReportFactory {
         var name = StringUtils.defaultIfBlank(tool.getName(), "Tests");
 
         var delegate = new ConsoleCoverageReportFactory();
-        var report = delegate.create(new ToolConfiguration("junit", name, tool.getPattern(), Metric.TESTS.name()), log);
+        var report = delegate.create(new ToolConfiguration("junit", name, tool.getPattern(), "", Metric.TESTS.name()), log);
 
         log.logInfo("-> %s Total: %s tests",
                 name, report.getValue(Metric.TESTS).orElse(new TestCount(0)));
