@@ -3,15 +3,22 @@ package edu.hm.hafner.grading;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.Collection;
 import java.util.NoSuchElementException;
+import java.util.function.Predicate;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
+import edu.hm.hafner.analysis.Issue;
 import edu.hm.hafner.analysis.ParsingException;
+import edu.hm.hafner.analysis.Report;
+import edu.hm.hafner.coverage.Node;
 import edu.hm.hafner.grading.github.GitHubPullRequestWriter;
+import edu.hm.hafner.grading.github.GitHubPullRequestWriter.ChecksStatus;
 import edu.hm.hafner.util.FilteredLog;
 import edu.hm.hafner.util.SecureXmlParserFactory;
 import edu.hm.hafner.util.VisibleForTesting;
@@ -65,13 +72,35 @@ public class AutoGradingAction {
 
             System.out.println("==================================================================");
 
+            System.out.println("Files with warnings that could not be found: ");
+            score.getAnalysisScores().stream()
+                    .map(AnalysisScore::getReport)
+                    .flatMap(Report::stream)
+                    .map(Issue::getAbsolutePath)
+                    .map(Path::of)
+                    .filter(Predicate.not(Files::exists))
+                    .forEach(System.out::println);
+
+            System.out.println("Files with coverage that could not be found: ");
+            score.getCodeCoverageScores().stream()
+                    .map(CoverageScore::getReport)
+                    .map(Node::getFiles)
+                    .flatMap(Collection::stream)
+                    .map(Path::of)
+                    .filter(Predicate.not(Files::exists))
+                    .forEach(System.out::println);
+
+            System.out.println("==================================================================");
+
             var results = new GradingReport();
 
             System.out.println(results.getTextSummary(score));
 
             pullRequestWriter.addComment(getChecksName(), score,
                     results.getHeader(), results.getTextSummary(score),
-                    results.getMarkdownDetails(score), results.getMarkdownSummary(score, getChecksName()));
+                    results.getMarkdownDetails(score),
+                    results.getMarkdownSummary(score, ":mortar_board: " + getChecksName()),
+                    ChecksStatus.SUCCESS);
 
             var environmentVariables = createEnvironmentVariables(score);
             Files.writeString(Paths.get("metrics.env"), environmentVariables, StandardOpenOption.CREATE);
@@ -86,7 +115,9 @@ public class AutoGradingAction {
             var results = new GradingReport();
             pullRequestWriter.addComment(getChecksName(), score,
                     results.getHeader(), results.getTextSummary(score),
-                    results.getMarkdownErrors(score, exception), results.getMarkdownErrors(score, exception));
+                    results.getMarkdownErrors(score, exception),
+                    results.getMarkdownErrors(score, exception),
+                    ChecksStatus.ERROR);
 
         }
 
