@@ -82,7 +82,6 @@ public class GitHubPullRequestWriter {
         String actualSha = StringUtils.defaultIfBlank(getEnv("HEAD_SHA"), getEnv("GITHUB_SHA"));
         System.out.println(">>>> ACTUAL_SHA: " + actualSha);
 
-
         try {
             GitHub github = new GitHubBuilder().withAppInstallationToken(oAuthToken).build();
             GHCheckRunBuilder check = github.getRepository(repository)
@@ -125,7 +124,8 @@ public class GitHubPullRequestWriter {
 
     private void handleAnnotations(final AggregatedScore score, final Output output) {
         if (getEnv("SKIP_ANNOTATIONS").isEmpty()) {
-            var cwd = Path.of(".").toString();
+            var cwd = Path.of(".").toAbsolutePath().toString();
+            System.out.println(">>>> CWD: " + cwd);
 
             createLineAnnotationsForWarnings(score, cwd, output);
             createLineAnnotationsForMissedLines(score, cwd, output);
