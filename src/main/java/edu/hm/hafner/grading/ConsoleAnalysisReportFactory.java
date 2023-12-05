@@ -23,9 +23,10 @@ public final class ConsoleAnalysisReportFactory extends ReportFactory implements
 
         var analysisParser = parser.createParser();
         for (Path file : findFiles(tool, log)) {
-            Report allIssues = analysisParser.parse(new FileReaderFactory(file));
-            log.logInfo("- %s: %d warnings", file, allIssues.size());
-            total.addAll(allIssues);
+            Report report = analysisParser.parse(new FileReaderFactory(file));
+            report.setOrigin(tool.getId(), tool.getDisplayName());
+            log.logInfo("- %s: %d warnings", file, report.size());
+            total.addAll(report);
         }
 
         log.logInfo("-> %s Total: %d warnings", tool.getDisplayName(), total.size());

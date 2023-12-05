@@ -177,6 +177,14 @@ public class GitHubPullRequestWriter {
     }
 
     private String cleanFileName(final String prefix, final String fileName, final Set<String> prefixes) {
+        var temp = temp(prefix, fileName, prefixes);
+        if (!temp.startsWith("src")) {
+            System.out.println("???? " + temp);
+        }
+        return temp;
+    }
+
+    private String temp(final String prefix, final String fileName, final Set<String> prefixes) {
         var cleaned = StringUtils.removeStart(fileName, prefix);
         if (Files.exists(Path.of(cleaned))) {
             return cleaned;
