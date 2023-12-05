@@ -66,6 +66,8 @@ public class GitHubPullRequestWriter {
     public void addComment(final String name, final AggregatedScore score,
             final String header, final String summary, final String comment, final String prComment,
             final ChecksStatus status) {
+        getEnv("GITHUB_WORKSPACE");
+
         var repository = getEnv("GITHUB_REPOSITORY");
         if (repository.isBlank()) {
             System.out.println("No GITHUB_REPOSITORY defined - skipping");
