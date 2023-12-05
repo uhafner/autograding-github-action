@@ -1,10 +1,13 @@
 package edu.hm.hafner.grading.github;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.Instant;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.StringUtils;
@@ -16,7 +19,10 @@ import edu.hm.hafner.coverage.Mutation;
 import edu.hm.hafner.coverage.Node;
 import edu.hm.hafner.grading.AggregatedScore;
 import edu.hm.hafner.grading.AnalysisScore;
+import edu.hm.hafner.grading.Configuration;
 import edu.hm.hafner.grading.CoverageScore;
+import edu.hm.hafner.grading.Score;
+import edu.hm.hafner.grading.ToolConfiguration;
 import edu.hm.hafner.util.LineRange;
 
 import org.kohsuke.github.GHCheckRun;
@@ -128,24 +134,33 @@ public class GitHubPullRequestWriter {
             System.out.println(">>>> Prefix: " + prefix);
             System.out.println("FILENAMES");
 
-            createLineAnnotationsForWarnings(score, prefix, output);
-            createLineAnnotationsForMissedLines(score, prefix, output);
-            createLineAnnotationsForPartiallyCoveredLines(score, prefix, output);
-            createLineAnnotationsForSurvivedMutations(score, prefix, output);
+            createLineAnnotationsForWarnings(score, prefix, extractPrefixes(score.getAnalysisScores()), output);
+            var prefixes = extractPrefixes(score.getCodeCoverageScores());
+            createLineAnnotationsForMissedLines(score, prefix, prefixes, output);
+            createLineAnnotationsForPartiallyCoveredLines(score, prefix, prefixes, output);
+            createLineAnnotationsForSurvivedMutations(score, prefix, extractPrefixes(score.getMutationCoverageScores()), output);
         }
     }
 
+    private Set<String> extractPrefixes(final List<? extends Score<?, ?>> scores) {
+        return scores.stream()
+                .map(Score::getConfiguration)
+                .map(Configuration::getTools)
+                .flatMap(Collection::stream)
+                .map(ToolConfiguration::getSourcePath).collect(Collectors.toSet());
+    }
+
     private void createLineAnnotationsForWarnings(final AggregatedScore score, final String prefix,
-            final Output output) {
+            final Set<String> prefixes, final Output output) {
         score.getAnalysisScores().stream()
                 .map(AnalysisScore::getReport)
                 .flatMap(Report::stream)
-                .map(issue -> createAnnotation(prefix, issue))
+                .map(issue -> createAnnotation(prefix, issue, prefixes))
                 .forEach(output::add);
     }
 
-    private Annotation createAnnotation(final String prefix, final Issue issue) {
-        Annotation annotation = new Annotation(cleanFileName(prefix, issue.getFileName()),
+    private Annotation createAnnotation(final String prefix, final Issue issue, final Set<String> prefixes) {
+        Annotation annotation = new Annotation(cleanFileName(prefix, issue.getFileName(), prefixes),
                 issue.getLineStart(), issue.getLineEnd(),
                 AnnotationLevel.WARNING, issue.getMessage())
                 .withTitle(issue.getOriginName() + ":" + issue.getType());
@@ -155,26 +170,37 @@ public class GitHubPullRequestWriter {
         return annotation;
     }
 
-    private String cleanFileName(final String prefix, final String fileName) {
+    private String cleanFileName(final String prefix, final String fileName, final Set<String> prefixes) {
         var cleaned = StringUtils.removeStart(fileName, prefix);
+        if (Files.exists(Path.of(cleaned))) {
+            return cleaned;
+        }
+        System.out.println("? " + cleaned);
+        for (String s : prefixes) {
+            var added = s + "/" + cleaned;
+            if (Files.exists(Path.of(added))) {
+                return added;
+            }
+        }
         System.out.println("- " + cleaned);
         return cleaned;
     }
 
     private void createLineAnnotationsForMissedLines(final AggregatedScore score, final String prefix,
-            final Output output) {
+            final Set<String> prefixes, final Output output) {
         score.getCodeCoverageScores().stream()
                 .map(CoverageScore::getReport)
                 .map(Node::getAllFileNodes)
                 .flatMap(Collection::stream)
-                .map(file -> createLineCoverageAnnotation(prefix, file))
+                .map(file -> createLineCoverageAnnotation(prefix, file, prefixes))
                 .flatMap(Collection::stream)
                 .forEach(output::add);
     }
 
-    private List<Annotation> createLineCoverageAnnotation(final String prefix, final FileNode file) {
+    private List<Annotation> createLineCoverageAnnotation(final String prefix, final FileNode file,
+            final Set<String> prefixes) {
         return file.getMissedLineRanges().stream()
-                .map(range -> new Annotation(cleanFileName(prefix, file.getRelativePath()),
+                .map(range -> new Annotation(cleanFileName(prefix, file.getRelativePath(), prefixes),
                         range.getStart(), range.getEnd(),
                         AnnotationLevel.WARNING,
                         getMissedLinesDescription(range))
@@ -197,19 +223,20 @@ public class GitHubPullRequestWriter {
     }
 
     private void createLineAnnotationsForPartiallyCoveredLines(final AggregatedScore score, final String prefix,
-            final Output output) {
+            final Set<String> prefixes, final Output output) {
         score.getCodeCoverageScores().stream()
                 .map(CoverageScore::getReport)
                 .map(Node::getAllFileNodes)
                 .flatMap(Collection::stream)
-                .map(file -> createBranchCoverageAnnotation(prefix, file))
+                .map(file -> createBranchCoverageAnnotation(prefix, file, prefixes))
                 .flatMap(Collection::stream)
                 .forEach(output::add);
     }
 
-    private List<Annotation> createBranchCoverageAnnotation(final String prefix, final FileNode file) {
+    private List<Annotation> createBranchCoverageAnnotation(final String prefix, final FileNode file,
+            final Set<String> prefixes) {
         return file.getPartiallyCoveredLines().entrySet().stream()
-                .map(entry -> new Annotation(cleanFileName(prefix, file.getName()),
+                .map(entry -> new Annotation(cleanFileName(prefix, file.getName(), prefixes),
                         entry.getKey(),
                         AnnotationLevel.WARNING,
                         createBranchMessage(entry.getKey(), entry.getValue()))
@@ -226,19 +253,20 @@ public class GitHubPullRequestWriter {
     }
 
     private void createLineAnnotationsForSurvivedMutations(final AggregatedScore score, final String prefix,
-            final Output output) {
+            final Set<String> prefixes, final Output output) {
         score.getMutationCoverageScores().stream()
                 .map(CoverageScore::getReport)
                 .map(Node::getAllFileNodes)
                 .flatMap(Collection::stream)
-                .map(file -> createMutationCoverageAnnotation(prefix, file))
+                .map(file -> createMutationCoverageAnnotation(prefix, file, prefixes))
                 .flatMap(Collection::stream)
                 .forEach(output::add);
     }
 
-    private List<Annotation> createMutationCoverageAnnotation(final String prefix, final FileNode file) {
+    private List<Annotation> createMutationCoverageAnnotation(final String prefix, final FileNode file,
+            final Set<String> prefixes) {
         return file.getSurvivedMutationsPerLine().entrySet().stream()
-                .map(entry -> new Annotation(cleanFileName(prefix, file.getName()),
+                .map(entry -> new Annotation(cleanFileName(prefix, file.getName(), prefixes),
                         entry.getKey(),
                         AnnotationLevel.WARNING,
                         createMutationMessage(entry.getKey(), entry.getValue()))

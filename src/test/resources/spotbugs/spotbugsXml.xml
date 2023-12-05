@@ -1,8 +1,371 @@
 <?xml version="1.0" encoding="utf-8"?>
-<BugCollection sequence='0' release='' analysisTimestamp='1701703259393' version='4.8.2' timestamp='1701703218234'><Project projectName='autograding-github-action'><Jar>/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/target/classes</Jar><Jar>/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/target/test-classes</Jar><AuxClasspathEntry>/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/target/test-classes</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/edu/hm/hafner/autograding-model/3.7.0/autograding-model-3.7.0.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.16.0/jackson-databind-2.16.0.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.16.0/jackson-annotations-2.16.0.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.16.0/jackson-core-2.16.0.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/edu/hm/hafner/analysis-model/11.13.0/analysis-model-11.13.0.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/org/jsoup/jsoup/1.16.2/jsoup-1.16.2.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/org/apache/commons/commons-digester3/3.2/commons-digester3-3.2.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/cglib/cglib/2.2.2/cglib-2.2.2.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/commons-beanutils/commons-beanutils/1.9.4/commons-beanutils-1.9.4.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/commons-collections/commons-collections/3.2.2/commons-collections-3.2.2.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/org/apache/commons/commons-text/1.10.0/commons-text-1.10.0.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/se/bjurr/violations/violations-lib/1.156.7/violations-lib-1.156.7.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/com/j2html/j2html/1.4.0/j2html-1.4.0.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/xerces/xercesImpl/2.12.2/xercesImpl-2.12.2.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/org/ow2/asm/asm/9.6/asm-9.6.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/com/github/spotbugs/spotbugs/4.8.0/spotbugs-4.8.0.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/org/ow2/asm/asm-analysis/9.6/asm-analysis-9.6.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/org/ow2/asm/asm-commons/9.6/asm-commons-9.6.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/org/ow2/asm/asm-tree/9.6/asm-tree-9.6.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/org/ow2/asm/asm-util/9.6/asm-util-9.6.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/com/github/stephenc/jcip/jcip-annotations/1.0-1/jcip-annotations-1.0-1.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/org/dom4j/dom4j/2.1.4/dom4j-2.1.4.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/com/google/code/gson/gson/2.10.1/gson-2.10.1.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/jaxen/jaxen/2.0.0/jaxen-2.0.0.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/net/sf/saxon/Saxon-HE/12.3/Saxon-HE-12.3.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/org/xmlresolver/xmlresolver/5.2.0/xmlresolver-5.2.0.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/org/apache/httpcomponents/client5/httpclient5/5.1.3/httpclient5-5.1.3.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/org/apache/httpcomponents/core5/httpcore5-h2/5.1.3/httpcore5-h2-5.1.3.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/commons-codec/commons-codec/1.15/commons-codec-1.15.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/org/apache/httpcomponents/core5/httpcore5/5.1.3/httpcore5-5.1.3.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/org/xmlresolver/xmlresolver/5.2.0/xmlresolver-5.2.0-data.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/org/apache/logging/log4j/log4j-core/2.20.0/log4j-core-2.20.0.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/org/apache/logging/log4j/log4j-api/2.20.0/log4j-api-2.20.0.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/org/apache/bcel/bcel/6.7.0/bcel-6.7.0.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/net/sourceforge/pmd/pmd-core/6.55.0/pmd-core-6.55.0.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/org/antlr/antlr4-runtime/4.7.2/antlr4-runtime-4.7.2.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/com/beust/jcommander/1.82/jcommander-1.82.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/net/sourceforge/pmd/pmd-java/6.55.0/pmd-java-6.55.0.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/org/json/json/20231013/json-20231013.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/net/minidev/json-smart/2.5.0/json-smart-2.5.0.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/net/minidev/accessors-smart/2.5.0/accessors-smart-2.5.0.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/org/slf4j/slf4j-api/2.0.9/slf4j-api-2.0.9.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/edu/hm/hafner/coverage-model/0.36.0/coverage-model-0.36.0.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/org/kohsuke/github-api/1.318/github-api-1.318.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/commons-io/commons-io/2.15.1/commons-io-2.15.1.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/org/apache/commons/commons-lang3/3.14.0/commons-lang3-3.14.0.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/org/testcontainers/testcontainers/1.19.3/testcontainers-1.19.3.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/org/apache/commons/commons-compress/1.24.0/commons-compress-1.24.0.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/org/rnorth/duct-tape/duct-tape/1.0.8/duct-tape-1.0.8.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/org/jetbrains/annotations/17.0.0/annotations-17.0.0.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/com/github/docker-java/docker-java-api/3.3.4/docker-java-api-3.3.4.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/com/github/docker-java/docker-java-transport-zerodep/3.3.4/docker-java-transport-zerodep-3.3.4.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/com/github/docker-java/docker-java-transport/3.3.4/docker-java-transport-3.3.4.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/net/java/dev/jna/jna/5.13.0/jna-5.13.0.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/org/testcontainers/junit-jupiter/1.19.3/junit-jupiter-1.19.3.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/com/github/spotbugs/spotbugs-annotations/4.8.2/spotbugs-annotations-4.8.2.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/com/google/errorprone/error_prone_annotations/2.23.0/error_prone_annotations-2.23.0.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/one/util/streamex/0.8.2/streamex-0.8.2.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/edu/hm/hafner/codingstyle/3.28.0/codingstyle-3.28.0.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.1/junit-jupiter-api-5.10.1.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/org/junit/platform/junit-platform-commons/1.10.1/junit-platform-commons-1.10.1.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.1/junit-jupiter-engine-5.10.1.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/org/junit/platform/junit-platform-engine/1.10.1/junit-platform-engine-1.10.1.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/org/junit/platform/junit-platform-launcher/1.10.1/junit-platform-launcher-1.10.1.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.10.1/junit-jupiter-params-5.10.1.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/org/junit-pioneer/junit-pioneer/2.2.0/junit-pioneer-2.2.0.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/org/mockito/mockito-core/5.7.0/mockito-core-5.7.0.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/net/bytebuddy/byte-buddy/1.14.10/byte-buddy-1.14.10.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/net/bytebuddy/byte-buddy-agent/1.14.9/byte-buddy-agent-1.14.9.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/org/assertj/assertj-core/3.24.2/assertj-core-3.24.2.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/com/tngtech/archunit/archunit-junit5/1.2.0/archunit-junit5-1.2.0.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/com/tngtech/archunit/archunit-junit5-api/1.2.0/archunit-junit5-api-1.2.0.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/com/tngtech/archunit/archunit/1.2.0/archunit-1.2.0.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/com/tngtech/archunit/archunit-junit5-engine/1.2.0/archunit-junit5-engine-1.2.0.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/com/tngtech/archunit/archunit-junit5-engine-api/1.2.0/archunit-junit5-engine-api-1.2.0.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/org/slf4j/slf4j-simple/2.0.9/slf4j-simple-2.0.9.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/nl/jqno/equalsverifier/equalsverifier/3.15.4/equalsverifier-3.15.4.jar</AuxClasspathEntry><AuxClasspathEntry>/Users/hafner/.m2/repository/edu/hm/hafner/codingstyle/3.28.0/codingstyle-3.28.0-tests.jar</AuxClasspathEntry><Plugin id='com.h3xstream.findsecbugs' enabled='true'></Plugin><SrcDir>/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/main/java</SrcDir><SrcDir>/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/target/generated-sources/annotations</SrcDir><SrcDir>/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/test/java</SrcDir><SrcDir>/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/target/generated-test-sources/test-annotations</SrcDir><WrkDir>/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/target</WrkDir></Project><BugInstance instanceOccurrenceNum='0' instanceHash='e11b4f5b27f1aecfaa872d0b9344229' rank='19' abbrev='UI' category='BAD_PRACTICE' priority='3' type='UI_INHERITANCE_UNSAFE_GETRESOURCE' instanceOccurrenceMax='0'><ShortMessage>Usage of GetResource may be unsafe if class is extended</ShortMessage><LongMessage>Usage of GetResource in edu.hm.hafner.grading.AutoGradingAction.readDefaultConfiguration() may be unsafe if class is extended</LongMessage><Class classname='edu.hm.hafner.grading.AutoGradingAction' primary='true'><SourceLine classname='edu.hm.hafner.grading.AutoGradingAction' start='33' end='166' sourcepath='edu/hm/hafner/grading/AutoGradingAction.java' sourcefile='AutoGradingAction.java'><Message>At AutoGradingAction.java:[lines 33-166]</Message></SourceLine><Message>In class edu.hm.hafner.grading.AutoGradingAction</Message></Class><Method isStatic='false' classname='edu.hm.hafner.grading.AutoGradingAction' signature='()Ljava/lang/String;' name='readDefaultConfiguration' primary='true'><SourceLine endBytecode='179' classname='edu.hm.hafner.grading.AutoGradingAction' start='158' end='166' sourcepath='edu/hm/hafner/grading/AutoGradingAction.java' sourcefile='AutoGradingAction.java' startBytecode='0'></SourceLine><Message>In method edu.hm.hafner.grading.AutoGradingAction.readDefaultConfiguration()</Message></Method><SourceLine endBytecode='7' classname='edu.hm.hafner.grading.AutoGradingAction' start='158' end='158' sourcepath='edu/hm/hafner/grading/AutoGradingAction.java' sourcefile='AutoGradingAction.java' startBytecode='7' primary='true'><Message>At AutoGradingAction.java:[line 158]</Message></SourceLine></BugInstance><BugCategory category='BAD_PRACTICE'><Description>Bad practice</Description></BugCategory><BugPattern abbrev='UI' category='BAD_PRACTICE' type='UI_INHERITANCE_UNSAFE_GETRESOURCE'><ShortDescription>Usage of GetResource may be unsafe if class is extended</ShortDescription><Details>
+<BugCollection sequence='0' release='' analysisTimestamp='1701703259393' version='4.8.2' timestamp='1701703218234'>
+  <Project projectName='autograding-github-action'>
+    <Jar>/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/target/classes</Jar>
+    <Jar>/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/target/test-classes</Jar>
+    <AuxClasspathEntry>/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/target/test-classes
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/edu/hm/hafner/autograding-model/3.7.0/autograding-model-3.7.0.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>
+      /Users/hafner/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.16.0/jackson-databind-2.16.0.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>
+      /Users/hafner/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.16.0/jackson-annotations-2.16.0.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>
+      /Users/hafner/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.16.0/jackson-core-2.16.0.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/edu/hm/hafner/analysis-model/11.13.0/analysis-model-11.13.0.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/org/jsoup/jsoup/1.16.2/jsoup-1.16.2.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/org/apache/commons/commons-digester3/3.2/commons-digester3-3.2.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/cglib/cglib/2.2.2/cglib-2.2.2.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>
+      /Users/hafner/.m2/repository/commons-beanutils/commons-beanutils/1.9.4/commons-beanutils-1.9.4.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>
+      /Users/hafner/.m2/repository/commons-collections/commons-collections/3.2.2/commons-collections-3.2.2.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/org/apache/commons/commons-text/1.10.0/commons-text-1.10.0.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>
+      /Users/hafner/.m2/repository/se/bjurr/violations/violations-lib/1.156.7/violations-lib-1.156.7.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/com/j2html/j2html/1.4.0/j2html-1.4.0.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/xerces/xercesImpl/2.12.2/xercesImpl-2.12.2.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/org/ow2/asm/asm/9.6/asm-9.6.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/com/github/spotbugs/spotbugs/4.8.0/spotbugs-4.8.0.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/org/ow2/asm/asm-analysis/9.6/asm-analysis-9.6.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/org/ow2/asm/asm-commons/9.6/asm-commons-9.6.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/org/ow2/asm/asm-tree/9.6/asm-tree-9.6.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/org/ow2/asm/asm-util/9.6/asm-util-9.6.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>
+      /Users/hafner/.m2/repository/com/github/stephenc/jcip/jcip-annotations/1.0-1/jcip-annotations-1.0-1.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/org/dom4j/dom4j/2.1.4/dom4j-2.1.4.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/com/google/code/gson/gson/2.10.1/gson-2.10.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/jaxen/jaxen/2.0.0/jaxen-2.0.0.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/net/sf/saxon/Saxon-HE/12.3/Saxon-HE-12.3.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/org/xmlresolver/xmlresolver/5.2.0/xmlresolver-5.2.0.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>
+      /Users/hafner/.m2/repository/org/apache/httpcomponents/client5/httpclient5/5.1.3/httpclient5-5.1.3.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>
+      /Users/hafner/.m2/repository/org/apache/httpcomponents/core5/httpcore5-h2/5.1.3/httpcore5-h2-5.1.3.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/commons-codec/commons-codec/1.15/commons-codec-1.15.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>
+      /Users/hafner/.m2/repository/org/apache/httpcomponents/core5/httpcore5/5.1.3/httpcore5-5.1.3.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/org/xmlresolver/xmlresolver/5.2.0/xmlresolver-5.2.0-data.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/org/apache/logging/log4j/log4j-core/2.20.0/log4j-core-2.20.0.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/org/apache/logging/log4j/log4j-api/2.20.0/log4j-api-2.20.0.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/org/apache/bcel/bcel/6.7.0/bcel-6.7.0.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/net/sourceforge/pmd/pmd-core/6.55.0/pmd-core-6.55.0.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/org/antlr/antlr4-runtime/4.7.2/antlr4-runtime-4.7.2.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/com/beust/jcommander/1.82/jcommander-1.82.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/net/sourceforge/pmd/pmd-java/6.55.0/pmd-java-6.55.0.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/org/json/json/20231013/json-20231013.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/net/minidev/json-smart/2.5.0/json-smart-2.5.0.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/net/minidev/accessors-smart/2.5.0/accessors-smart-2.5.0.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/org/slf4j/slf4j-api/2.0.9/slf4j-api-2.0.9.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/edu/hm/hafner/coverage-model/0.36.0/coverage-model-0.36.0.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/org/kohsuke/github-api/1.318/github-api-1.318.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/commons-io/commons-io/2.15.1/commons-io-2.15.1.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/org/apache/commons/commons-lang3/3.14.0/commons-lang3-3.14.0.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/org/testcontainers/testcontainers/1.19.3/testcontainers-1.19.3.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>
+      /Users/hafner/.m2/repository/org/apache/commons/commons-compress/1.24.0/commons-compress-1.24.0.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/org/rnorth/duct-tape/duct-tape/1.0.8/duct-tape-1.0.8.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/org/jetbrains/annotations/17.0.0/annotations-17.0.0.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>
+      /Users/hafner/.m2/repository/com/github/docker-java/docker-java-api/3.3.4/docker-java-api-3.3.4.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>
+      /Users/hafner/.m2/repository/com/github/docker-java/docker-java-transport-zerodep/3.3.4/docker-java-transport-zerodep-3.3.4.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>
+      /Users/hafner/.m2/repository/com/github/docker-java/docker-java-transport/3.3.4/docker-java-transport-3.3.4.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/net/java/dev/jna/jna/5.13.0/jna-5.13.0.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/org/testcontainers/junit-jupiter/1.19.3/junit-jupiter-1.19.3.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>
+      /Users/hafner/.m2/repository/com/github/spotbugs/spotbugs-annotations/4.8.2/spotbugs-annotations-4.8.2.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>
+      /Users/hafner/.m2/repository/com/google/errorprone/error_prone_annotations/2.23.0/error_prone_annotations-2.23.0.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/one/util/streamex/0.8.2/streamex-0.8.2.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/edu/hm/hafner/codingstyle/3.28.0/codingstyle-3.28.0.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>
+      /Users/hafner/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.1/junit-jupiter-api-5.10.1.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>
+      /Users/hafner/.m2/repository/org/junit/platform/junit-platform-commons/1.10.1/junit-platform-commons-1.10.1.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>
+      /Users/hafner/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.1/junit-jupiter-engine-5.10.1.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>
+      /Users/hafner/.m2/repository/org/junit/platform/junit-platform-engine/1.10.1/junit-platform-engine-1.10.1.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>
+      /Users/hafner/.m2/repository/org/junit/platform/junit-platform-launcher/1.10.1/junit-platform-launcher-1.10.1.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>
+      /Users/hafner/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.10.1/junit-jupiter-params-5.10.1.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/org/junit-pioneer/junit-pioneer/2.2.0/junit-pioneer-2.2.0.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/org/mockito/mockito-core/5.7.0/mockito-core-5.7.0.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/net/bytebuddy/byte-buddy/1.14.10/byte-buddy-1.14.10.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/net/bytebuddy/byte-buddy-agent/1.14.9/byte-buddy-agent-1.14.9.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/org/assertj/assertj-core/3.24.2/assertj-core-3.24.2.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>
+      /Users/hafner/.m2/repository/com/tngtech/archunit/archunit-junit5/1.2.0/archunit-junit5-1.2.0.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>
+      /Users/hafner/.m2/repository/com/tngtech/archunit/archunit-junit5-api/1.2.0/archunit-junit5-api-1.2.0.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/com/tngtech/archunit/archunit/1.2.0/archunit-1.2.0.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>
+      /Users/hafner/.m2/repository/com/tngtech/archunit/archunit-junit5-engine/1.2.0/archunit-junit5-engine-1.2.0.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>
+      /Users/hafner/.m2/repository/com/tngtech/archunit/archunit-junit5-engine-api/1.2.0/archunit-junit5-engine-api-1.2.0.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/org/slf4j/slf4j-simple/2.0.9/slf4j-simple-2.0.9.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>
+      /Users/hafner/.m2/repository/nl/jqno/equalsverifier/equalsverifier/3.15.4/equalsverifier-3.15.4.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/hafner/.m2/repository/edu/hm/hafner/codingstyle/3.28.0/codingstyle-3.28.0-tests.jar
+    </AuxClasspathEntry>
+    <Plugin id='com.h3xstream.findsecbugs' enabled='true'></Plugin>
+    <SrcDir>/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/main/java</SrcDir>
+    <SrcDir>/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/target/generated-sources/annotations
+    </SrcDir>
+    <SrcDir>/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/test/java</SrcDir>
+    <SrcDir>
+      /Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/target/generated-test-sources/test-annotations
+    </SrcDir>
+    <WrkDir>/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/target</WrkDir>
+  </Project>
+  <BugInstance instanceOccurrenceNum='0' instanceHash='e11b4f5b27f1aecfaa872d0b9344229' rank='19' abbrev='UI'
+               category='BAD_PRACTICE' priority='3' type='UI_INHERITANCE_UNSAFE_GETRESOURCE' instanceOccurrenceMax='0'>
+    <ShortMessage>Usage of GetResource may be unsafe if class is extended</ShortMessage>
+    <LongMessage>Usage of GetResource in edu.hm.hafner.grading.AutoGradingAction.readDefaultConfiguration() may be
+      unsafe if class is extended
+    </LongMessage>
+    <Class classname='edu.hm.hafner.grading.AutoGradingAction' primary='true'>
+      <SourceLine classname='edu.hm.hafner.grading.AutoGradingAction' start='33' end='166'
+                  sourcepath='edu/hm/hafner/grading/AutoGradingAction.java' sourcefile='AutoGradingAction.java'>
+        <Message>At AutoGradingAction.java:[lines 33-166]</Message>
+      </SourceLine>
+      <Message>In class edu.hm.hafner.grading.AutoGradingAction</Message>
+    </Class>
+    <Method isStatic='false' classname='edu.hm.hafner.grading.AutoGradingAction' signature='()Ljava/lang/String;'
+            name='readDefaultConfiguration' primary='true'>
+      <SourceLine endBytecode='179' classname='edu.hm.hafner.grading.AutoGradingAction' start='158' end='166'
+                  sourcepath='edu/hm/hafner/grading/AutoGradingAction.java' sourcefile='AutoGradingAction.java'
+                  startBytecode='0'></SourceLine>
+      <Message>In method edu.hm.hafner.grading.AutoGradingAction.readDefaultConfiguration()</Message>
+    </Method>
+    <SourceLine endBytecode='7' classname='edu.hm.hafner.grading.AutoGradingAction' start='158' end='158'
+                sourcepath='edu/hm/hafner/grading/AutoGradingAction.java' sourcefile='AutoGradingAction.java'
+                startBytecode='7' primary='true'>
+      <Message>At AutoGradingAction.java:[line 158]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugCategory category='BAD_PRACTICE'>
+    <Description>Bad practice</Description>
+  </BugCategory>
+  <BugPattern abbrev='UI' category='BAD_PRACTICE' type='UI_INHERITANCE_UNSAFE_GETRESOURCE'>
+    <ShortDescription>Usage of GetResource may be unsafe if class is extended</ShortDescription>
+    <Details>
 
-&lt;p&gt;Calling &lt;code&gt;this.getClass().getResource(...)&lt;/code&gt; could give
-results other than expected if this class is extended by a class in
-another package.&lt;/p&gt;
+      &lt;p&gt;Calling &lt;code&gt;this.getClass().getResource(...)&lt;/code&gt; could give
+      results other than expected if this class is extended by a class in
+      another package.&lt;/p&gt;
 
-    </Details></BugPattern><BugCode abbrev='UI'><Description>Unsafe inheritance</Description></BugCode><Errors missingClasses='4' errors='0'><MissingClass>accept</MissingClass><MissingClass>apply</MissingClass><MissingClass>makeConcatWithConstants</MissingClass><MissingClass>test</MissingClass></Errors><FindBugsSummary num_packages='2' total_classes='14' priority_3='1' total_size='482' clock_seconds='5.52' referenced_classes='179' vm_version='21.0.1' total_bugs='1' java_version='21.0.1' gc_seconds='0.07' alloc_mbytes='512.00' cpu_seconds='12.72' peak_mbytes='276.13' timestamp='Mon, 4 Dec 2023 16:20:18 +0100'><FileStats path='edu/hm/hafner/grading/AutoGradingAction.java' size='93' bugHash='afccea7b0a753e5fbb679b2266b0ee27' bugCount='1'></FileStats><FileStats path='edu/hm/hafner/grading/AutoGradingActionITest.java' size='54' bugCount='0'></FileStats><FileStats path='edu/hm/hafner/grading/AutoGradingActionTest.java' size='8' bugCount='0'></FileStats><FileStats path='edu/hm/hafner/grading/ConsoleAnalysisReportFactory.java' size='14' bugCount='0'></FileStats><FileStats path='edu/hm/hafner/grading/ConsoleCoverageReportFactory.java' size='22' bugCount='0'></FileStats><FileStats path='edu/hm/hafner/grading/ConsoleTestReportFactory.java' size='10' bugCount='0'></FileStats><FileStats path='edu/hm/hafner/grading/FileNameRenderer.java' size='5' bugCount='0'></FileStats><FileStats path='edu/hm/hafner/grading/LogHandler.java' size='37' bugCount='0'></FileStats><FileStats path='edu/hm/hafner/grading/ReportFactory.java' size='12' bugCount='0'></FileStats><FileStats path='edu/hm/hafner/grading/ReportFinder.java' size='51' bugCount='0'></FileStats><FileStats path='edu/hm/hafner/grading/ReportFinderTest.java' size='19' bugCount='0'></FileStats><FileStats path='edu/hm/hafner/grading/github/GitHubPullRequestWriter.java' size='157' bugCount='0'></FileStats><PackageStats package='edu.hm.hafner.grading' total_bugs='1' priority_3='1' total_size='325' total_types='12'><ClassStats bugs='1' size='93' priority_3='1' interface='false' sourceFile='AutoGradingAction.java' class='edu.hm.hafner.grading.AutoGradingAction'></ClassStats><ClassStats bugs='0' size='54' interface='false' sourceFile='AutoGradingActionITest.java' class='edu.hm.hafner.grading.AutoGradingActionITest'></ClassStats><ClassStats bugs='0' size='8' interface='false' sourceFile='AutoGradingActionTest.java' class='edu.hm.hafner.grading.AutoGradingActionTest'></ClassStats><ClassStats bugs='0' size='14' interface='false' sourceFile='ConsoleAnalysisReportFactory.java' class='edu.hm.hafner.grading.ConsoleAnalysisReportFactory'></ClassStats><ClassStats bugs='0' size='22' interface='false' sourceFile='ConsoleCoverageReportFactory.java' class='edu.hm.hafner.grading.ConsoleCoverageReportFactory'></ClassStats><ClassStats bugs='0' size='10' interface='false' sourceFile='ConsoleTestReportFactory.java' class='edu.hm.hafner.grading.ConsoleTestReportFactory'></ClassStats><ClassStats bugs='0' size='5' interface='false' sourceFile='FileNameRenderer.java' class='edu.hm.hafner.grading.FileNameRenderer'></ClassStats><ClassStats bugs='0' size='37' interface='false' sourceFile='LogHandler.java' class='edu.hm.hafner.grading.LogHandler'></ClassStats><ClassStats bugs='0' size='12' interface='false' sourceFile='ReportFactory.java' class='edu.hm.hafner.grading.ReportFactory'></ClassStats><ClassStats bugs='0' size='29' interface='false' sourceFile='ReportFinder.java' class='edu.hm.hafner.grading.ReportFinder'></ClassStats><ClassStats bugs='0' size='22' interface='false' sourceFile='ReportFinder.java' class='edu.hm.hafner.grading.ReportFinder$PathMatcherFileVisitor'></ClassStats><ClassStats bugs='0' size='19' interface='false' sourceFile='ReportFinderTest.java' class='edu.hm.hafner.grading.ReportFinderTest'></ClassStats></PackageStats><PackageStats package='edu.hm.hafner.grading.github' total_bugs='0' total_size='157' total_types='2'><ClassStats bugs='0' size='145' interface='false' sourceFile='GitHubPullRequestWriter.java' class='edu.hm.hafner.grading.github.GitHubPullRequestWriter'></ClassStats><ClassStats bugs='0' size='12' interface='false' sourceFile='GitHubPullRequestWriter.java' class='edu.hm.hafner.grading.github.GitHubPullRequestWriter$ChecksStatus'></ClassStats></PackageStats><FindBugsProfile><ClassProfile avgMicrosecondsPerInvocation='475' totalMilliseconds='860' name='edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine' maxMicrosecondsPerInvocation='47609' standardDeviationMicrosecondsPerInvocation='1663' invocations='1810'></ClassProfile><ClassProfile avgMicrosecondsPerInvocation='182' totalMilliseconds='331' name='edu.umd.cs.findbugs.classfile.engine.ClassDataAnalysisEngine' maxMicrosecondsPerInvocation='8485' standardDeviationMicrosecondsPerInvocation='364' invocations='1822'></ClassProfile><ClassProfile avgMicrosecondsPerInvocation='1748' totalMilliseconds='312' name='edu.umd.cs.findbugs.detect.FieldItemSummary' maxMicrosecondsPerInvocation='16454' standardDeviationMicrosecondsPerInvocation='3053' invocations='179'></ClassProfile><ClassProfile avgMicrosecondsPerInvocation='1536' totalMilliseconds='275' name='edu.umd.cs.findbugs.detect.FindNoSideEffectMethods' maxMicrosecondsPerInvocation='16489' standardDeviationMicrosecondsPerInvocation='2491' invocations='179'></ClassProfile><ClassProfile avgMicrosecondsPerInvocation='304' totalMilliseconds='160' name='edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory' maxMicrosecondsPerInvocation='2638' standardDeviationMicrosecondsPerInvocation='359' invocations='526'></ClassProfile><ClassProfile avgMicrosecondsPerInvocation='590' totalMilliseconds='105' name='edu.umd.cs.findbugs.detect.NoteDirectlyRelevantTypeQualifiers' maxMicrosecondsPerInvocation='6504' standardDeviationMicrosecondsPerInvocation='1000' invocations='179'></ClassProfile><ClassProfile avgMicrosecondsPerInvocation='59' totalMilliseconds='103' name='edu.umd.cs.findbugs.util.TopologicalSort' maxMicrosecondsPerInvocation='3656' standardDeviationMicrosecondsPerInvocation='164' invocations='1757'></ClassProfile><ClassProfile avgMicrosecondsPerInvocation='329' totalMilliseconds='101' name='edu.umd.cs.findbugs.classfile.engine.bcel.JavaClassAnalysisEngine' maxMicrosecondsPerInvocation='11247' standardDeviationMicrosecondsPerInvocation='834' invocations='307'></ClassProfile><ClassProfile avgMicrosecondsPerInvocation='431' totalMilliseconds='77' name='edu.umd.cs.findbugs.detect.FunctionsThatMightBeMistakenForProcedures' maxMicrosecondsPerInvocation='7537' standardDeviationMicrosecondsPerInvocation='866' invocations='179'></ClassProfile><ClassProfile avgMicrosecondsPerInvocation='400' totalMilliseconds='71' name='edu.umd.cs.findbugs.detect.CalledMethods' maxMicrosecondsPerInvocation='3487' standardDeviationMicrosecondsPerInvocation='663' invocations='179'></ClassProfile><ClassProfile avgMicrosecondsPerInvocation='392' totalMilliseconds='70' name='edu.umd.cs.findbugs.detect.BuildObligationPolicyDatabase' maxMicrosecondsPerInvocation='3791' standardDeviationMicrosecondsPerInvocation='642' invocations='179'></ClassProfile><ClassProfile avgMicrosecondsPerInvocation='390' totalMilliseconds='69' name='edu.umd.cs.findbugs.detect.EqualsOperandShouldHaveClassCompatibleWithThis' maxMicrosecondsPerInvocation='32870' standardDeviationMicrosecondsPerInvocation='2468' invocations='179'></ClassProfile><ClassProfile avgMicrosecondsPerInvocation='727' totalMilliseconds='68' name='edu.umd.cs.findbugs.classfile.engine.bcel.TypeDataflowFactory' maxMicrosecondsPerInvocation='9712' standardDeviationMicrosecondsPerInvocation='1532' invocations='94'></ClassProfile><ClassProfile avgMicrosecondsPerInvocation='369' totalMilliseconds='66' name='edu.umd.cs.findbugs.detect.BuildStringPassthruGraph' maxMicrosecondsPerInvocation='6367' standardDeviationMicrosecondsPerInvocation='791' invocations='179'></ClassProfile><ClassProfile avgMicrosecondsPerInvocation='685' totalMilliseconds='61' name='edu.umd.cs.findbugs.classfile.engine.bcel.IsNullValueDataflowFactory' maxMicrosecondsPerInvocation='8821' standardDeviationMicrosecondsPerInvocation='1243' invocations='90'></ClassProfile><ClassProfile avgMicrosecondsPerInvocation='672' totalMilliseconds='60' name='com.h3xstream.findsecbugs.taintanalysis.TaintDataflowEngine' maxMicrosecondsPerInvocation='7010' standardDeviationMicrosecondsPerInvocation='1172' invocations='90'></ClassProfile><ClassProfile avgMicrosecondsPerInvocation='323' totalMilliseconds='57' name='edu.umd.cs.findbugs.detect.OverridingEqualsNotSymmetrical' maxMicrosecondsPerInvocation='9104' standardDeviationMicrosecondsPerInvocation='800' invocations='179'></ClassProfile><ClassProfile avgMicrosecondsPerInvocation='627' totalMilliseconds='55' name='edu.umd.cs.findbugs.ba.npe.NullDerefAndRedundantComparisonFinder' maxMicrosecondsPerInvocation='6236' standardDeviationMicrosecondsPerInvocation='1135' invocations='88'></ClassProfile><ClassProfile avgMicrosecondsPerInvocation='289' totalMilliseconds='51' name='edu.umd.cs.findbugs.detect.ReflectiveClasses' maxMicrosecondsPerInvocation='2918' standardDeviationMicrosecondsPerInvocation='519' invocations='179'></ClassProfile><ClassProfile avgMicrosecondsPerInvocation='539' totalMilliseconds='48' name='edu.umd.cs.findbugs.classfile.engine.bcel.UnconditionalValueDerefDataflowFactory' maxMicrosecondsPerInvocation='4246' standardDeviationMicrosecondsPerInvocation='804' invocations='90'></ClassProfile><ClassProfile avgMicrosecondsPerInvocation='487' totalMilliseconds='46' name='edu.umd.cs.findbugs.classfile.engine.bcel.ValueNumberDataflowFactory' maxMicrosecondsPerInvocation='8271' standardDeviationMicrosecondsPerInvocation='1013' invocations='96'></ClassProfile></FindBugsProfile></FindBugsSummary><ClassFeatures></ClassFeatures><History></History></BugCollection>
+    </Details>
+  </BugPattern>
+  <BugCode abbrev='UI'>
+    <Description>Unsafe inheritance</Description>
+  </BugCode>
+  <Errors missingClasses='4' errors='0'>
+    <MissingClass>accept</MissingClass>
+    <MissingClass>apply</MissingClass>
+    <MissingClass>makeConcatWithConstants</MissingClass>
+    <MissingClass>test</MissingClass>
+  </Errors>
+  <FindBugsSummary num_packages='2' total_classes='14' priority_3='1' total_size='482' clock_seconds='5.52'
+                   referenced_classes='179' vm_version='21.0.1' total_bugs='1' java_version='21.0.1' gc_seconds='0.07'
+                   alloc_mbytes='512.00' cpu_seconds='12.72' peak_mbytes='276.13'
+                   timestamp='Mon, 4 Dec 2023 16:20:18 +0100'>
+    <FileStats path='edu/hm/hafner/grading/AutoGradingAction.java' size='93' bugHash='afccea7b0a753e5fbb679b2266b0ee27'
+               bugCount='1'></FileStats>
+    <FileStats path='edu/hm/hafner/grading/AutoGradingActionITest.java' size='54' bugCount='0'></FileStats>
+    <FileStats path='edu/hm/hafner/grading/AutoGradingActionTest.java' size='8' bugCount='0'></FileStats>
+    <FileStats path='edu/hm/hafner/grading/ConsoleAnalysisReportFactory.java' size='14' bugCount='0'></FileStats>
+    <FileStats path='edu/hm/hafner/grading/ConsoleCoverageReportFactory.java' size='22' bugCount='0'></FileStats>
+    <FileStats path='edu/hm/hafner/grading/ConsoleTestReportFactory.java' size='10' bugCount='0'></FileStats>
+    <FileStats path='edu/hm/hafner/grading/FileNameRenderer.java' size='5' bugCount='0'></FileStats>
+    <FileStats path='edu/hm/hafner/grading/LogHandler.java' size='37' bugCount='0'></FileStats>
+    <FileStats path='edu/hm/hafner/grading/ReportFactory.java' size='12' bugCount='0'></FileStats>
+    <FileStats path='edu/hm/hafner/grading/ReportFinder.java' size='51' bugCount='0'></FileStats>
+    <FileStats path='edu/hm/hafner/grading/ReportFinderTest.java' size='19' bugCount='0'></FileStats>
+    <FileStats path='edu/hm/hafner/grading/github/GitHubPullRequestWriter.java' size='157' bugCount='0'></FileStats>
+    <PackageStats package='edu.hm.hafner.grading' total_bugs='1' priority_3='1' total_size='325' total_types='12'>
+      <ClassStats bugs='1' size='93' priority_3='1' interface='false' sourceFile='AutoGradingAction.java'
+                  class='edu.hm.hafner.grading.AutoGradingAction'></ClassStats>
+      <ClassStats bugs='0' size='54' interface='false' sourceFile='AutoGradingActionITest.java'
+                  class='edu.hm.hafner.grading.AutoGradingActionITest'></ClassStats>
+      <ClassStats bugs='0' size='8' interface='false' sourceFile='AutoGradingActionTest.java'
+                  class='edu.hm.hafner.grading.AutoGradingActionTest'></ClassStats>
+      <ClassStats bugs='0' size='14' interface='false' sourceFile='ConsoleAnalysisReportFactory.java'
+                  class='edu.hm.hafner.grading.ConsoleAnalysisReportFactory'></ClassStats>
+      <ClassStats bugs='0' size='22' interface='false' sourceFile='ConsoleCoverageReportFactory.java'
+                  class='edu.hm.hafner.grading.ConsoleCoverageReportFactory'></ClassStats>
+      <ClassStats bugs='0' size='10' interface='false' sourceFile='ConsoleTestReportFactory.java'
+                  class='edu.hm.hafner.grading.ConsoleTestReportFactory'></ClassStats>
+      <ClassStats bugs='0' size='5' interface='false' sourceFile='FileNameRenderer.java'
+                  class='edu.hm.hafner.grading.FileNameRenderer'></ClassStats>
+      <ClassStats bugs='0' size='37' interface='false' sourceFile='LogHandler.java'
+                  class='edu.hm.hafner.grading.LogHandler'></ClassStats>
+      <ClassStats bugs='0' size='12' interface='false' sourceFile='ReportFactory.java'
+                  class='edu.hm.hafner.grading.ReportFactory'></ClassStats>
+      <ClassStats bugs='0' size='29' interface='false' sourceFile='ReportFinder.java'
+                  class='edu.hm.hafner.grading.ReportFinder'></ClassStats>
+      <ClassStats bugs='0' size='22' interface='false' sourceFile='ReportFinder.java'
+                  class='edu.hm.hafner.grading.ReportFinder$PathMatcherFileVisitor'></ClassStats>
+      <ClassStats bugs='0' size='19' interface='false' sourceFile='ReportFinderTest.java'
+                  class='edu.hm.hafner.grading.ReportFinderTest'></ClassStats>
+    </PackageStats>
+    <PackageStats package='edu.hm.hafner.grading.github' total_bugs='0' total_size='157' total_types='2'>
+      <ClassStats bugs='0' size='145' interface='false' sourceFile='GitHubPullRequestWriter.java'
+                  class='edu.hm.hafner.grading.github.GitHubPullRequestWriter'></ClassStats>
+      <ClassStats bugs='0' size='12' interface='false' sourceFile='GitHubPullRequestWriter.java'
+                  class='edu.hm.hafner.grading.github.GitHubPullRequestWriter$ChecksStatus'></ClassStats>
+    </PackageStats>
+    <FindBugsProfile>
+      <ClassProfile avgMicrosecondsPerInvocation='475' totalMilliseconds='860'
+                    name='edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine'
+                    maxMicrosecondsPerInvocation='47609' standardDeviationMicrosecondsPerInvocation='1663'
+                    invocations='1810'></ClassProfile>
+      <ClassProfile avgMicrosecondsPerInvocation='182' totalMilliseconds='331'
+                    name='edu.umd.cs.findbugs.classfile.engine.ClassDataAnalysisEngine'
+                    maxMicrosecondsPerInvocation='8485' standardDeviationMicrosecondsPerInvocation='364'
+                    invocations='1822'></ClassProfile>
+      <ClassProfile avgMicrosecondsPerInvocation='1748' totalMilliseconds='312'
+                    name='edu.umd.cs.findbugs.detect.FieldItemSummary' maxMicrosecondsPerInvocation='16454'
+                    standardDeviationMicrosecondsPerInvocation='3053' invocations='179'></ClassProfile>
+      <ClassProfile avgMicrosecondsPerInvocation='1536' totalMilliseconds='275'
+                    name='edu.umd.cs.findbugs.detect.FindNoSideEffectMethods' maxMicrosecondsPerInvocation='16489'
+                    standardDeviationMicrosecondsPerInvocation='2491' invocations='179'></ClassProfile>
+      <ClassProfile avgMicrosecondsPerInvocation='304' totalMilliseconds='160'
+                    name='edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory' maxMicrosecondsPerInvocation='2638'
+                    standardDeviationMicrosecondsPerInvocation='359' invocations='526'></ClassProfile>
+      <ClassProfile avgMicrosecondsPerInvocation='590' totalMilliseconds='105'
+                    name='edu.umd.cs.findbugs.detect.NoteDirectlyRelevantTypeQualifiers'
+                    maxMicrosecondsPerInvocation='6504' standardDeviationMicrosecondsPerInvocation='1000'
+                    invocations='179'></ClassProfile>
+      <ClassProfile avgMicrosecondsPerInvocation='59' totalMilliseconds='103'
+                    name='edu.umd.cs.findbugs.util.TopologicalSort' maxMicrosecondsPerInvocation='3656'
+                    standardDeviationMicrosecondsPerInvocation='164' invocations='1757'></ClassProfile>
+      <ClassProfile avgMicrosecondsPerInvocation='329' totalMilliseconds='101'
+                    name='edu.umd.cs.findbugs.classfile.engine.bcel.JavaClassAnalysisEngine'
+                    maxMicrosecondsPerInvocation='11247' standardDeviationMicrosecondsPerInvocation='834'
+                    invocations='307'></ClassProfile>
+      <ClassProfile avgMicrosecondsPerInvocation='431' totalMilliseconds='77'
+                    name='edu.umd.cs.findbugs.detect.FunctionsThatMightBeMistakenForProcedures'
+                    maxMicrosecondsPerInvocation='7537' standardDeviationMicrosecondsPerInvocation='866'
+                    invocations='179'></ClassProfile>
+      <ClassProfile avgMicrosecondsPerInvocation='400' totalMilliseconds='71'
+                    name='edu.umd.cs.findbugs.detect.CalledMethods' maxMicrosecondsPerInvocation='3487'
+                    standardDeviationMicrosecondsPerInvocation='663' invocations='179'></ClassProfile>
+      <ClassProfile avgMicrosecondsPerInvocation='392' totalMilliseconds='70'
+                    name='edu.umd.cs.findbugs.detect.BuildObligationPolicyDatabase' maxMicrosecondsPerInvocation='3791'
+                    standardDeviationMicrosecondsPerInvocation='642' invocations='179'></ClassProfile>
+      <ClassProfile avgMicrosecondsPerInvocation='390' totalMilliseconds='69'
+                    name='edu.umd.cs.findbugs.detect.EqualsOperandShouldHaveClassCompatibleWithThis'
+                    maxMicrosecondsPerInvocation='32870' standardDeviationMicrosecondsPerInvocation='2468'
+                    invocations='179'></ClassProfile>
+      <ClassProfile avgMicrosecondsPerInvocation='727' totalMilliseconds='68'
+                    name='edu.umd.cs.findbugs.classfile.engine.bcel.TypeDataflowFactory'
+                    maxMicrosecondsPerInvocation='9712' standardDeviationMicrosecondsPerInvocation='1532'
+                    invocations='94'></ClassProfile>
+      <ClassProfile avgMicrosecondsPerInvocation='369' totalMilliseconds='66'
+                    name='edu.umd.cs.findbugs.detect.BuildStringPassthruGraph' maxMicrosecondsPerInvocation='6367'
+                    standardDeviationMicrosecondsPerInvocation='791' invocations='179'></ClassProfile>
+      <ClassProfile avgMicrosecondsPerInvocation='685' totalMilliseconds='61'
+                    name='edu.umd.cs.findbugs.classfile.engine.bcel.IsNullValueDataflowFactory'
+                    maxMicrosecondsPerInvocation='8821' standardDeviationMicrosecondsPerInvocation='1243'
+                    invocations='90'></ClassProfile>
+      <ClassProfile avgMicrosecondsPerInvocation='672' totalMilliseconds='60'
+                    name='com.h3xstream.findsecbugs.taintanalysis.TaintDataflowEngine'
+                    maxMicrosecondsPerInvocation='7010' standardDeviationMicrosecondsPerInvocation='1172'
+                    invocations='90'></ClassProfile>
+      <ClassProfile avgMicrosecondsPerInvocation='323' totalMilliseconds='57'
+                    name='edu.umd.cs.findbugs.detect.OverridingEqualsNotSymmetrical' maxMicrosecondsPerInvocation='9104'
+                    standardDeviationMicrosecondsPerInvocation='800' invocations='179'></ClassProfile>
+      <ClassProfile avgMicrosecondsPerInvocation='627' totalMilliseconds='55'
+                    name='edu.umd.cs.findbugs.ba.npe.NullDerefAndRedundantComparisonFinder'
+                    maxMicrosecondsPerInvocation='6236' standardDeviationMicrosecondsPerInvocation='1135'
+                    invocations='88'></ClassProfile>
+      <ClassProfile avgMicrosecondsPerInvocation='289' totalMilliseconds='51'
+                    name='edu.umd.cs.findbugs.detect.ReflectiveClasses' maxMicrosecondsPerInvocation='2918'
+                    standardDeviationMicrosecondsPerInvocation='519' invocations='179'></ClassProfile>
+      <ClassProfile avgMicrosecondsPerInvocation='539' totalMilliseconds='48'
+                    name='edu.umd.cs.findbugs.classfile.engine.bcel.UnconditionalValueDerefDataflowFactory'
+                    maxMicrosecondsPerInvocation='4246' standardDeviationMicrosecondsPerInvocation='804'
+                    invocations='90'></ClassProfile>
+      <ClassProfile avgMicrosecondsPerInvocation='487' totalMilliseconds='46'
+                    name='edu.umd.cs.findbugs.classfile.engine.bcel.ValueNumberDataflowFactory'
+                    maxMicrosecondsPerInvocation='8271' standardDeviationMicrosecondsPerInvocation='1013'
+                    invocations='96'></ClassProfile>
+    </FindBugsProfile>
+  </FindBugsSummary>
+  <ClassFeatures></ClassFeatures>
+  <History></History>
+</BugCollection>
