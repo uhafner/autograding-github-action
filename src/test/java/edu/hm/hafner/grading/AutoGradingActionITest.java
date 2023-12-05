@@ -189,7 +189,7 @@ public class AutoGradingActionITest {
     }
 
     private GenericContainer<?> createContainer() {
-        return new GenericContainer<>(DockerImageName.parse("uhafner/autograding-github-action:3.4.0-SNAPSHOT"));
+        return new GenericContainer<>(DockerImageName.parse("uhafner/autograding-github-action:3.4.0"));
     }
 
     private String readStandardOut(final GenericContainer<? extends GenericContainer<?>> container) throws TimeoutException {
