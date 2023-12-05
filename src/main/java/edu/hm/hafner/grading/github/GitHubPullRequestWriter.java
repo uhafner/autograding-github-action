@@ -36,7 +36,7 @@ import org.kohsuke.github.GitHub;
 import org.kohsuke.github.GitHubBuilder;
 
 /**
- * Writes a comment in a pull request.
+ * Writes a comment in a pull request and publish the GitHub checks results.
  *
  * @author Tobias Effner
  * @author Ullrich Hafner
@@ -50,8 +50,8 @@ public class GitHubPullRequestWriter {
     }
 
     /**
-     * Writes the specified comment as GitHub checks result. Requires that the environment variables {@code HEAD_SHA},
-     * {@code GITHUB_SHA}, {@code GITHUB_REPOSITORY}, and {@code TOKEN} are correctly set.
+     * Writes the specified comment as GitHub checks result. Requires that the environment variables {@code GITHUB_SHA},
+     * {@code GITHUB_REPOSITORY}, and {@code GITHUB_TOKEN} are correctly set.
      *
      * @param name
      *         the name of the checks result
@@ -103,7 +103,7 @@ public class GitHubPullRequestWriter {
             System.out.println("Successfully created check " + run);
 
             var prNumber = getEnv("PR_NUMBER");
-            if (!prNumber.isBlank()) {
+            if (!prNumber.isBlank()) { // optional PR comment
                 github.getRepository(repository)
                         .getPullRequest(Integer.parseInt(prNumber))
                         .comment(prComment + addCheckLink(run));
@@ -128,21 +128,27 @@ public class GitHubPullRequestWriter {
 
     private void handleAnnotations(final AggregatedScore score, final Output output) {
         if (getEnv("SKIP_ANNOTATIONS").isEmpty()) {
-            var workspace = getEnv("RUNNER_WORKSPACE");
-            var repository = getEnv("GITHUB_REPOSITORY");
-            var prefix = workspace + "/" + StringUtils.substringAfter(repository, "/") + "/";
-            System.out.println(">>>> Prefix: " + prefix);
-            System.out.println("FILENAMES");
+            var prefix = computeAbsolutePathPrefixToRemove();
 
-            createLineAnnotationsForWarnings(score, prefix, extractPrefixes(score.getAnalysisScores()), output);
-            var prefixes = extractPrefixes(score.getCodeCoverageScores());
-            createLineAnnotationsForMissedLines(score, prefix, prefixes, output);
-            createLineAnnotationsForPartiallyCoveredLines(score, prefix, prefixes, output);
-            createLineAnnotationsForSurvivedMutations(score, prefix, extractPrefixes(score.getMutationCoverageScores()), output);
+            var additionalAnalysisSourcePaths = extractAdditionalSourcePaths(score.getAnalysisScores());
+            createLineAnnotationsForWarnings(score, prefix, additionalAnalysisSourcePaths, output);
+
+            var additionalCoverageSourcePaths = extractAdditionalSourcePaths(score.getCodeCoverageScores());
+            createLineAnnotationsForMissedLines(score, prefix, additionalCoverageSourcePaths, output);
+            createLineAnnotationsForPartiallyCoveredLines(score, prefix, additionalCoverageSourcePaths, output);
+
+            var additionalMutationSourcePaths = extractAdditionalSourcePaths(score.getMutationCoverageScores());
+            createLineAnnotationsForSurvivedMutations(score, prefix, additionalMutationSourcePaths, output);
         }
     }
 
-    private Set<String> extractPrefixes(final List<? extends Score<?, ?>> scores) {
+    private String computeAbsolutePathPrefixToRemove() {
+        return String.format("%s/%s/",
+                getEnv("RUNNER_WORKSPACE"),
+                StringUtils.substringAfter(getEnv("GITHUB_REPOSITORY"), "/"));
+    }
+
+    private Set<String> extractAdditionalSourcePaths(final List<? extends Score<?, ?>> scores) {
         return scores.stream()
                 .map(Score::getConfiguration)
                 .map(Configuration::getTools)
@@ -175,14 +181,12 @@ public class GitHubPullRequestWriter {
         if (Files.exists(Path.of(cleaned))) {
             return cleaned;
         }
-        System.out.println("? " + cleaned);
         for (String s : prefixes) {
             var added = s + "/" + cleaned;
             if (Files.exists(Path.of(added))) {
                 return added;
             }
         }
-        System.out.println("- " + cleaned);
         return cleaned;
     }
 
