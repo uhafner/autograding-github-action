@@ -23,8 +23,6 @@ jobs:
         uses: stCarolas/setup-maven@v4.5
         with:
           maven-version: 3.9.5
-      - name: Build with Maven
-        run: mvn -V --color always -ntp clean verify --file pom.xml '-Djenkins.test.timeout=5000' '-Dgpg.skip' -Ppit | tee maven.log
       - name: Run Autograding with test data
         uses: uhafner/autograding-github-action@main
         with:
