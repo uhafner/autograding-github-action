@@ -23,7 +23,7 @@ jobs:
       - name: Build
         run: mvn -ntp clean verify -Ppit | tee maven.log
       - name: Run Autograding
-        uses: uhafner/autograding-github-action@3.4.0
+        uses: uhafner/autograding-github-action@v3.4.0
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           pr-number: ${{ steps.pr.outputs.number }}
