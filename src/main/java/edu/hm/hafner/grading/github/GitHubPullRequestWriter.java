@@ -166,8 +166,8 @@ public class GitHubPullRequestWriter {
 
     private Annotation createAnnotation(final String prefix, final Issue issue, final Set<String> prefixes) {
         var path = cleanFileName(prefix, issue.getFileName(), prefixes);
-        var dockerPath = StringUtils.removeStart(path, "/github/workspace/./");
-        var relativePath = StringUtils.removeStart(dockerPath, "/github/workspace/");
+        var removedDockerPath = StringUtils.removeStart(path, "/github/workspace/./");
+        var relativePath = StringUtils.removeStart(removedDockerPath, "/github/workspace/");
         Annotation annotation = new Annotation(relativePath,
                 issue.getLineStart(), issue.getLineEnd(),
                 AnnotationLevel.WARNING, issue.getMessage())
@@ -179,14 +179,6 @@ public class GitHubPullRequestWriter {
     }
 
     private String cleanFileName(final String prefix, final String fileName, final Set<String> prefixes) {
-        var temp = temp(prefix, fileName, prefixes);
-        if (!temp.startsWith("src")) {
-            System.out.println("???? " + temp);
-        }
-        return temp;
-    }
-
-    private String temp(final String prefix, final String fileName, final Set<String> prefixes) {
         var cleaned = StringUtils.removeStart(fileName, prefix);
         if (Files.exists(Path.of(cleaned))) {
             return cleaned;
