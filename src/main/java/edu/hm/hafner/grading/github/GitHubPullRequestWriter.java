@@ -236,7 +236,7 @@ public class GitHubPullRequestWriter {
     private List<Annotation> createBranchCoverageAnnotation(final String prefix, final FileNode file,
             final Set<String> prefixes) {
         return file.getPartiallyCoveredLines().entrySet().stream()
-                .map(entry -> new Annotation(cleanFileName(prefix, file.getName(), prefixes),
+                .map(entry -> new Annotation(cleanFileName(prefix, file.getRelativePath(), prefixes),
                         entry.getKey(),
                         AnnotationLevel.WARNING,
                         createBranchMessage(entry.getKey(), entry.getValue()))
@@ -266,7 +266,7 @@ public class GitHubPullRequestWriter {
     private List<Annotation> createMutationCoverageAnnotation(final String prefix, final FileNode file,
             final Set<String> prefixes) {
         return file.getSurvivedMutationsPerLine().entrySet().stream()
-                .map(entry -> new Annotation(cleanFileName(prefix, file.getName(), prefixes),
+                .map(entry -> new Annotation(cleanFileName(prefix, file.getRelativePath(), prefixes),
                         entry.getKey(),
                         AnnotationLevel.WARNING,
                         createMutationMessage(entry.getKey(), entry.getValue()))
