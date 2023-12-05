@@ -67,6 +67,7 @@ public class GitHubPullRequestWriter {
             final String header, final String summary, final String comment, final String prComment,
             final ChecksStatus status) {
         getEnv("GITHUB_WORKSPACE");
+        getEnv("RUNNER_WORKSPACE");
 
         var repository = getEnv("GITHUB_REPOSITORY");
         if (repository.isBlank()) {

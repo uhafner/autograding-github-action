@@ -35,6 +35,7 @@ runs:
     HEAD_SHA: ${{ inputs.head-sha }}
     FILES_PREFIX: ${{ inputs.files-prefix }}
     SKIP_ANNOTATIONS: ${{ inputs.skip-annotations }}
+    RUNNER_WORKSPACE: ${{ env.GITHUB_WORKSPACE }}
 
 branding:
   icon: check-square
