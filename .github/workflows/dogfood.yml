@@ -27,7 +27,6 @@ jobs:
         uses: uhafner/autograding-github-action@main
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          head-sha: ${{github.event.pull_request.head.sha}}
           checks-name: "Autograding with Test Data"
           config: >
             {
