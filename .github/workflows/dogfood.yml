@@ -41,7 +41,7 @@ jobs:
                     "pattern": "**/target/*-reports/TEST*.xml"
                   }
                 ],
-                "name": "JUnit",
+                "name": "Tests",
                 "passedImpact": 0,
                 "skippedImpact": -1,
                 "failureImpact": -5,
@@ -66,7 +66,7 @@ jobs:
                       "id": "error-prone",
                       "name": "Error Prone",
                       "pattern": "**/maven.log"
-                    },
+                    }
                   ],
                   "errorImpact": 1,
                   "highImpact": 2,
@@ -111,7 +111,7 @@ jobs:
                       "pattern": "**/target/site/jacoco/jacoco.xml"
                     }
                   ],
-                  "name": "JaCoCo",
+                  "name": "Code Coverage", 
                   "maxScore": 100,
                   "coveredPercentageImpact": 1,
                   "missedPercentageImpact": -1
@@ -126,7 +126,7 @@ jobs:
                       "pattern": "**/target/pit-reports/mutations.xml"
                     }
                   ],
-                  "name": "PIT",
+                  "name": "Mutation Coverage",
                   "maxScore": 100,
                   "coveredPercentageImpact": 1,
                   "missedPercentageImpact": -1
