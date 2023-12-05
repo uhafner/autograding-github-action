@@ -23,7 +23,7 @@ jobs:
         uses: stCarolas/setup-maven@v4.5
         with:
           maven-version: 3.9.5
-      - name: Run Autograding
+      - name: Run Autograding with test data
         uses: uhafner/autograding-github-action@main
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
