@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.49.0" timestamp="2022-10-02T21:24:31.027">
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/main/java/edu/hm/hafner/kara/Assignment00.java">
+<violation beginline="10" endline="63" begincolumn="27" endcolumn="1" rule="UseUtilityClass" ruleset="Design" package="edu.hm.hafner.kara" class="Assignment00" externalInfoUrl="https://pmd.github.io/pmd-6.49.0/pmd_rules_java_design.html#useutilityclass" priority="3">
+All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.
+</violation>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/main/java/edu/hm/hafner/kara/Assignment01.java">
+<violation beginline="10" endline="81" begincolumn="27" endcolumn="1" rule="UseUtilityClass" ruleset="Design" package="edu.hm.hafner.kara" class="Assignment01" externalInfoUrl="https://pmd.github.io/pmd-6.49.0/pmd_rules_java_design.html#useutilityclass" priority="3">
+All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.
+</violation>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/main/java/edu/hm/hafner/kara/Assignment02.java">
+<violation beginline="10" endline="51" begincolumn="27" endcolumn="1" rule="UseUtilityClass" ruleset="Design" package="edu.hm.hafner.kara" class="Assignment02" externalInfoUrl="https://pmd.github.io/pmd-6.49.0/pmd_rules_java_design.html#useutilityclass" priority="3">
+All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.
+</violation>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/main/java/edu/hm/hafner/kara/Assignment03.java">
+<violation beginline="10" endline="81" begincolumn="27" endcolumn="1" rule="UseUtilityClass" ruleset="Design" package="edu.hm.hafner.kara" class="Assignment03" externalInfoUrl="https://pmd.github.io/pmd-6.49.0/pmd_rules_java_design.html#useutilityclass" priority="3">
+All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.
+</violation>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/main/java/edu/hm/hafner/kara/Assignment04.java">
+<violation beginline="10" endline="45" begincolumn="27" endcolumn="1" rule="UseUtilityClass" ruleset="Design" package="edu.hm.hafner.kara" class="Assignment04" externalInfoUrl="https://pmd.github.io/pmd-6.49.0/pmd_rules_java_design.html#useutilityclass" priority="3">
+All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.
+</violation>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/main/java/edu/hm/hafner/kara/Assignment05.java">
+<violation beginline="10" endline="90" begincolumn="27" endcolumn="1" rule="UseUtilityClass" ruleset="Design" package="edu.hm.hafner.kara" class="Assignment05" externalInfoUrl="https://pmd.github.io/pmd-6.49.0/pmd_rules_java_design.html#useutilityclass" priority="3">
+All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.
+</violation>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/main/java/edu/hm/hafner/kara/Assignment06.java">
+<violation beginline="10" endline="31" begincolumn="27" endcolumn="1" rule="UseUtilityClass" ruleset="Design" package="edu.hm.hafner.kara" class="Assignment06" externalInfoUrl="https://pmd.github.io/pmd-6.49.0/pmd_rules_java_design.html#useutilityclass" priority="3">
+All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.
+</violation>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/main/java/edu/hm/hafner/kara/Assignment07.java">
+<violation beginline="10" endline="53" begincolumn="27" endcolumn="1" rule="UseUtilityClass" ruleset="Design" package="edu.hm.hafner.kara" class="Assignment07" externalInfoUrl="https://pmd.github.io/pmd-6.49.0/pmd_rules_java_design.html#useutilityclass" priority="3">
+All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.
+</violation>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/main/java/edu/hm/hafner/kara/Assignment08.java">
+<violation beginline="10" endline="68" begincolumn="27" endcolumn="1" rule="UseUtilityClass" ruleset="Design" package="edu.hm.hafner.kara" class="Assignment08" externalInfoUrl="https://pmd.github.io/pmd-6.49.0/pmd_rules_java_design.html#useutilityclass" priority="3">
+All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.
+</violation>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/main/java/edu/hm/hafner/kara/Assignment09.java">
+<violation beginline="10" endline="62" begincolumn="27" endcolumn="1" rule="UseUtilityClass" ruleset="Design" package="edu.hm.hafner.kara" class="Assignment09" externalInfoUrl="https://pmd.github.io/pmd-6.49.0/pmd_rules_java_design.html#useutilityclass" priority="3">
+All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.
+</violation>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/main/java/edu/hm/hafner/kara/Assignment10.java">
+<violation beginline="10" endline="50" begincolumn="27" endcolumn="1" rule="UseUtilityClass" ruleset="Design" package="edu.hm.hafner.kara" class="Assignment10" externalInfoUrl="https://pmd.github.io/pmd-6.49.0/pmd_rules_java_design.html#useutilityclass" priority="3">
+All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.
+</violation>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/main/java/edu/hm/hafner/kara/Assignment11.java">
+<violation beginline="10" endline="91" begincolumn="27" endcolumn="1" rule="UseUtilityClass" ruleset="Design" package="edu.hm.hafner.kara" class="Assignment11" externalInfoUrl="https://pmd.github.io/pmd-6.49.0/pmd_rules_java_design.html#useutilityclass" priority="3">
+All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.
+</violation>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/main/java/edu/hm/hafner/kara/Assignment12.java">
+<violation beginline="10" endline="95" begincolumn="27" endcolumn="1" rule="UseUtilityClass" ruleset="Design" package="edu.hm.hafner.kara" class="Assignment12" externalInfoUrl="https://pmd.github.io/pmd-6.49.0/pmd_rules_java_design.html#useutilityclass" priority="3">
+All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.
+</violation>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/main/java/edu/hm/hafner/kara/Assignment13.java">
+<violation beginline="10" endline="94" begincolumn="27" endcolumn="1" rule="UseUtilityClass" ruleset="Design" package="edu.hm.hafner.kara" class="Assignment13" externalInfoUrl="https://pmd.github.io/pmd-6.49.0/pmd_rules_java_design.html#useutilityclass" priority="3">
+All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.
+</violation>
+<violation beginline="33" endline="33" begincolumn="29" endcolumn="50" rule="UseVarargs" ruleset="Best Practices" package="edu.hm.hafner.kara" class="Assignment13" method="pasteColumn" variable="column" externalInfoUrl="https://pmd.github.io/pmd-6.49.0/pmd_rules_java_bestpractices.html#usevarargs" priority="4">
+Consider using varargs for methods or constructors which take an array the last parameter.
+</violation>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/main/java/edu/hm/hafner/kara/Assignment14.java">
+<violation beginline="10" endline="55" begincolumn="27" endcolumn="1" rule="UseUtilityClass" ruleset="Design" package="edu.hm.hafner.kara" class="Assignment14" externalInfoUrl="https://pmd.github.io/pmd-6.49.0/pmd_rules_java_design.html#useutilityclass" priority="3">
+All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.
+</violation>
+<violation beginline="17" endline="34" begincolumn="19" endcolumn="5" rule="CognitiveComplexity" ruleset="Design" package="edu.hm.hafner.kara" class="Assignment14" method="main" externalInfoUrl="https://pmd.github.io/pmd-6.49.0/pmd_rules_java_design.html#cognitivecomplexity" priority="3">
+The method 'main(String...)' has a cognitive complexity of 16, current threshold is 15
+</violation>
+<violation beginline="25" endline="27" begincolumn="25" endcolumn="25" rule="CollapsibleIfStatements" ruleset="Design" package="edu.hm.hafner.kara" class="Assignment14" method="main" externalInfoUrl="https://pmd.github.io/pmd-6.49.0/pmd_rules_java_design.html#collapsibleifstatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/main/java/edu/hm/hafner/kara/Assignment15.java">
+<violation beginline="10" endline="102" begincolumn="27" endcolumn="1" rule="UseUtilityClass" ruleset="Design" package="edu.hm.hafner.kara" class="Assignment15" externalInfoUrl="https://pmd.github.io/pmd-6.49.0/pmd_rules_java_design.html#useutilityclass" priority="3">
+All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.
+</violation>
+<violation beginline="19" endline="19" begincolumn="34" endcolumn="34" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="edu.hm.hafner.kara" class="Assignment15" method="main" externalInfoUrl="https://pmd.github.io/pmd-6.49.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+Avoid using Literals in Conditional Statements
+</violation>
+<violation beginline="79" endline="79" begincolumn="47" endcolumn="64" rule="UseVarargs" ruleset="Best Practices" package="edu.hm.hafner.kara" class="Assignment15" method="equals" variable="a2" externalInfoUrl="https://pmd.github.io/pmd-6.49.0/pmd_rules_java_bestpractices.html#usevarargs" priority="4">
+Consider using varargs for methods or constructors which take an array the last parameter.
+</violation>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/main/java/edu/hm/hafner/kara/Assignment16.java">
+<violation beginline="10" endline="111" begincolumn="27" endcolumn="1" rule="UseUtilityClass" ruleset="Design" package="edu.hm.hafner.kara" class="Assignment16" externalInfoUrl="https://pmd.github.io/pmd-6.49.0/pmd_rules_java_design.html#useutilityclass" priority="3">
+All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.
+</violation>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/test/java/edu/hm/hafner/kara/AbstractKaraTest.java">
+<violation beginline="21" endline="54" begincolumn="17" endcolumn="1" rule="AbstractClassWithoutAbstractMethod" ruleset="Best Practices" package="edu.hm.hafner.kara" class="AbstractKaraTest" externalInfoUrl="https://pmd.github.io/pmd-6.49.0/pmd_rules_java_bestpractices.html#abstractclasswithoutabstractmethod" priority="3">
+This abstract class does not have any abstract methods
+</violation>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/test/java/edu/hm/hafner/kara/Assignment00Test.java">
+<violation beginline="20" endline="22" begincolumn="12" endcolumn="5" rule="LinguisticNaming" ruleset="Code Style" package="edu.hm.hafner.kara" class="Assignment00Test" method="shouldSolveAssignment" externalInfoUrl="https://pmd.github.io/pmd-6.49.0/pmd_rules_java_codestyle.html#linguisticnaming" priority="3">
+Linguistics Antipattern - The method 'shouldSolveAssignment' indicates linguistically it returns a boolean, but it returns 'Stream'
+</violation>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/test/java/edu/hm/hafner/kara/Assignment01Test.java">
+<violation beginline="20" endline="22" begincolumn="12" endcolumn="5" rule="LinguisticNaming" ruleset="Code Style" package="edu.hm.hafner.kara" class="Assignment01Test" method="shouldSolveAssignment" externalInfoUrl="https://pmd.github.io/pmd-6.49.0/pmd_rules_java_codestyle.html#linguisticnaming" priority="3">
+Linguistics Antipattern - The method 'shouldSolveAssignment' indicates linguistically it returns a boolean, but it returns 'Stream'
+</violation>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/test/java/edu/hm/hafner/kara/Assignment02Test.java">
+<violation beginline="20" endline="22" begincolumn="12" endcolumn="5" rule="LinguisticNaming" ruleset="Code Style" package="edu.hm.hafner.kara" class="Assignment02Test" method="shouldSolveAssignment" externalInfoUrl="https://pmd.github.io/pmd-6.49.0/pmd_rules_java_codestyle.html#linguisticnaming" priority="3">
+Linguistics Antipattern - The method 'shouldSolveAssignment' indicates linguistically it returns a boolean, but it returns 'Stream'
+</violation>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/test/java/edu/hm/hafner/kara/Assignment03Test.java">
+<violation beginline="20" endline="22" begincolumn="12" endcolumn="5" rule="LinguisticNaming" ruleset="Code Style" package="edu.hm.hafner.kara" class="Assignment03Test" method="shouldSolveAssignment" externalInfoUrl="https://pmd.github.io/pmd-6.49.0/pmd_rules_java_codestyle.html#linguisticnaming" priority="3">
+Linguistics Antipattern - The method 'shouldSolveAssignment' indicates linguistically it returns a boolean, but it returns 'Stream'
+</violation>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/test/java/edu/hm/hafner/kara/Assignment04Test.java">
+<violation beginline="20" endline="22" begincolumn="12" endcolumn="5" rule="LinguisticNaming" ruleset="Code Style" package="edu.hm.hafner.kara" class="Assignment04Test" method="shouldSolveAssignment" externalInfoUrl="https://pmd.github.io/pmd-6.49.0/pmd_rules_java_codestyle.html#linguisticnaming" priority="3">
+Linguistics Antipattern - The method 'shouldSolveAssignment' indicates linguistically it returns a boolean, but it returns 'Stream'
+</violation>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/test/java/edu/hm/hafner/kara/Assignment05Test.java">
+<violation beginline="20" endline="22" begincolumn="12" endcolumn="5" rule="LinguisticNaming" ruleset="Code Style" package="edu.hm.hafner.kara" class="Assignment05Test" method="shouldSolveAssignment" externalInfoUrl="https://pmd.github.io/pmd-6.49.0/pmd_rules_java_codestyle.html#linguisticnaming" priority="3">
+Linguistics Antipattern - The method 'shouldSolveAssignment' indicates linguistically it returns a boolean, but it returns 'Stream'
+</violation>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/test/java/edu/hm/hafner/kara/Assignment06Test.java">
+<violation beginline="20" endline="22" begincolumn="12" endcolumn="5" rule="LinguisticNaming" ruleset="Code Style" package="edu.hm.hafner.kara" class="Assignment06Test" method="shouldSolveAssignment" externalInfoUrl="https://pmd.github.io/pmd-6.49.0/pmd_rules_java_codestyle.html#linguisticnaming" priority="3">
+Linguistics Antipattern - The method 'shouldSolveAssignment' indicates linguistically it returns a boolean, but it returns 'Stream'
+</violation>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/test/java/edu/hm/hafner/kara/Assignment07Test.java">
+<violation beginline="20" endline="22" begincolumn="12" endcolumn="5" rule="LinguisticNaming" ruleset="Code Style" package="edu.hm.hafner.kara" class="Assignment07Test" method="shouldSolveAssignment" externalInfoUrl="https://pmd.github.io/pmd-6.49.0/pmd_rules_java_codestyle.html#linguisticnaming" priority="3">
+Linguistics Antipattern - The method 'shouldSolveAssignment' indicates linguistically it returns a boolean, but it returns 'Stream'
+</violation>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/test/java/edu/hm/hafner/kara/Assignment08Test.java">
+<violation beginline="20" endline="22" begincolumn="12" endcolumn="5" rule="LinguisticNaming" ruleset="Code Style" package="edu.hm.hafner.kara" class="Assignment08Test" method="shouldSolveAssignment" externalInfoUrl="https://pmd.github.io/pmd-6.49.0/pmd_rules_java_codestyle.html#linguisticnaming" priority="3">
+Linguistics Antipattern - The method 'shouldSolveAssignment' indicates linguistically it returns a boolean, but it returns 'Stream'
+</violation>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/test/java/edu/hm/hafner/kara/Assignment09Test.java">
+<violation beginline="20" endline="22" begincolumn="12" endcolumn="5" rule="LinguisticNaming" ruleset="Code Style" package="edu.hm.hafner.kara" class="Assignment09Test" method="shouldSolveAssignment" externalInfoUrl="https://pmd.github.io/pmd-6.49.0/pmd_rules_java_codestyle.html#linguisticnaming" priority="3">
+Linguistics Antipattern - The method 'shouldSolveAssignment' indicates linguistically it returns a boolean, but it returns 'Stream'
+</violation>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/test/java/edu/hm/hafner/kara/Assignment10Test.java">
+<violation beginline="20" endline="22" begincolumn="12" endcolumn="5" rule="LinguisticNaming" ruleset="Code Style" package="edu.hm.hafner.kara" class="Assignment10Test" method="shouldSolveAssignment" externalInfoUrl="https://pmd.github.io/pmd-6.49.0/pmd_rules_java_codestyle.html#linguisticnaming" priority="3">
+Linguistics Antipattern - The method 'shouldSolveAssignment' indicates linguistically it returns a boolean, but it returns 'Stream'
+</violation>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/test/java/edu/hm/hafner/kara/Assignment11Test.java">
+<violation beginline="20" endline="23" begincolumn="12" endcolumn="5" rule="LinguisticNaming" ruleset="Code Style" package="edu.hm.hafner.kara" class="Assignment11Test" method="shouldSolveAssignment" externalInfoUrl="https://pmd.github.io/pmd-6.49.0/pmd_rules_java_codestyle.html#linguisticnaming" priority="3">
+Linguistics Antipattern - The method 'shouldSolveAssignment' indicates linguistically it returns a boolean, but it returns 'Stream'
+</violation>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/test/java/edu/hm/hafner/kara/Assignment12Test.java">
+<violation beginline="30" endline="38" begincolumn="12" endcolumn="5" rule="LinguisticNaming" ruleset="Code Style" package="edu.hm.hafner.kara" class="Assignment12Test" method="shouldSolveAssignment" externalInfoUrl="https://pmd.github.io/pmd-6.49.0/pmd_rules_java_codestyle.html#linguisticnaming" priority="3">
+Linguistics Antipattern - The method 'shouldSolveAssignment' indicates linguistically it returns a boolean, but it returns 'Stream'
+</violation>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/test/java/edu/hm/hafner/kara/Assignment13Test.java">
+<violation beginline="20" endline="22" begincolumn="12" endcolumn="5" rule="LinguisticNaming" ruleset="Code Style" package="edu.hm.hafner.kara" class="Assignment13Test" method="shouldSolveAssignment" externalInfoUrl="https://pmd.github.io/pmd-6.49.0/pmd_rules_java_codestyle.html#linguisticnaming" priority="3">
+Linguistics Antipattern - The method 'shouldSolveAssignment' indicates linguistically it returns a boolean, but it returns 'Stream'
+</violation>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/test/java/edu/hm/hafner/kara/Assignment14Test.java">
+<violation beginline="20" endline="22" begincolumn="12" endcolumn="5" rule="LinguisticNaming" ruleset="Code Style" package="edu.hm.hafner.kara" class="Assignment14Test" method="shouldSolveAssignment" externalInfoUrl="https://pmd.github.io/pmd-6.49.0/pmd_rules_java_codestyle.html#linguisticnaming" priority="3">
+Linguistics Antipattern - The method 'shouldSolveAssignment' indicates linguistically it returns a boolean, but it returns 'Stream'
+</violation>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/test/java/edu/hm/hafner/kara/Assignment15Test.java">
+<violation beginline="20" endline="23" begincolumn="12" endcolumn="5" rule="LinguisticNaming" ruleset="Code Style" package="edu.hm.hafner.kara" class="Assignment15Test" method="shouldSolveAssignment" externalInfoUrl="https://pmd.github.io/pmd-6.49.0/pmd_rules_java_codestyle.html#linguisticnaming" priority="3">
+Linguistics Antipattern - The method 'shouldSolveAssignment' indicates linguistically it returns a boolean, but it returns 'Stream'
+</violation>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/test/java/edu/hm/hafner/kara/Assignment16Test.java">
+<violation beginline="33" endline="37" begincolumn="12" endcolumn="5" rule="LinguisticNaming" ruleset="Code Style" package="edu.hm.hafner.kara" class="Assignment16Test" method="shouldSolveAssignment" externalInfoUrl="https://pmd.github.io/pmd-6.49.0/pmd_rules_java_codestyle.html#linguisticnaming" priority="3">
+Linguistics Antipattern - The method 'shouldSolveAssignment' indicates linguistically it returns a boolean, but it returns 'Stream'
+</violation>
+</file>
+</pmd>

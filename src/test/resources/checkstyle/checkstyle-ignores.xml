@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="10.3.3">
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/main/java/edu/hm/hafner/kara/Assignment09.java">
+<error line="10" column="1" severity="warning" message="Hilfsklassen sollten keinen Standard-Konstruktur und keinen als public deklarierten Konstruktor haben." source="com.puppycrawl.tools.checkstyle.checks.design.HideUtilityClassConstructorCheck"/>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/main/java/edu/hm/hafner/kara/Assignment05.java">
+<error line="10" column="1" severity="warning" message="Hilfsklassen sollten keinen Standard-Konstruktur und keinen als public deklarierten Konstruktor haben." source="com.puppycrawl.tools.checkstyle.checks.design.HideUtilityClassConstructorCheck"/>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/main/java/edu/hm/hafner/kara/Assignment13.java">
+<error line="10" column="1" severity="warning" message="Hilfsklassen sollten keinen Standard-Konstruktur und keinen als public deklarierten Konstruktor haben." source="com.puppycrawl.tools.checkstyle.checks.design.HideUtilityClassConstructorCheck"/>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/main/java/edu/hm/hafner/kara/Assignment12.java">
+<error line="10" column="1" severity="warning" message="Hilfsklassen sollten keinen Standard-Konstruktur und keinen als public deklarierten Konstruktor haben." source="com.puppycrawl.tools.checkstyle.checks.design.HideUtilityClassConstructorCheck"/>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/main/java/edu/hm/hafner/kara/Assignment04.java">
+<error line="10" column="1" severity="warning" message="Hilfsklassen sollten keinen Standard-Konstruktur und keinen als public deklarierten Konstruktor haben." source="com.puppycrawl.tools.checkstyle.checks.design.HideUtilityClassConstructorCheck"/>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/main/java/edu/hm/hafner/kara/Assignment08.java">
+<error line="10" column="1" severity="warning" message="Hilfsklassen sollten keinen Standard-Konstruktur und keinen als public deklarierten Konstruktor haben." source="com.puppycrawl.tools.checkstyle.checks.design.HideUtilityClassConstructorCheck"/>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/main/java/edu/hm/hafner/kara/Assignment03.java">
+<error line="10" column="1" severity="warning" message="Hilfsklassen sollten keinen Standard-Konstruktur und keinen als public deklarierten Konstruktor haben." source="com.puppycrawl.tools.checkstyle.checks.design.HideUtilityClassConstructorCheck"/>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/main/java/edu/hm/hafner/kara/Assignment15.java">
+<error line="10" column="1" severity="warning" message="Hilfsklassen sollten keinen Standard-Konstruktur und keinen als public deklarierten Konstruktor haben." source="com.puppycrawl.tools.checkstyle.checks.design.HideUtilityClassConstructorCheck"/>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/main/java/edu/hm/hafner/kara/Assignment14.java">
+<error line="10" column="1" severity="warning" message="Hilfsklassen sollten keinen Standard-Konstruktur und keinen als public deklarierten Konstruktor haben." source="com.puppycrawl.tools.checkstyle.checks.design.HideUtilityClassConstructorCheck"/>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/main/java/edu/hm/hafner/kara/Assignment02.java">
+<error line="10" column="1" severity="warning" message="Hilfsklassen sollten keinen Standard-Konstruktur und keinen als public deklarierten Konstruktor haben." source="com.puppycrawl.tools.checkstyle.checks.design.HideUtilityClassConstructorCheck"/>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/main/java/edu/hm/hafner/kara/Assignment01.java">
+<error line="10" column="1" severity="warning" message="Hilfsklassen sollten keinen Standard-Konstruktur und keinen als public deklarierten Konstruktor haben." source="com.puppycrawl.tools.checkstyle.checks.design.HideUtilityClassConstructorCheck"/>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/main/java/edu/hm/hafner/kara/Assignment00.java">
+<error line="10" column="1" severity="warning" message="Hilfsklassen sollten keinen Standard-Konstruktur und keinen als public deklarierten Konstruktor haben." source="com.puppycrawl.tools.checkstyle.checks.design.HideUtilityClassConstructorCheck"/>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/main/java/edu/hm/hafner/kara/Assignment16.java">
+<error line="10" column="1" severity="warning" message="Hilfsklassen sollten keinen Standard-Konstruktur und keinen als public deklarierten Konstruktor haben." source="com.puppycrawl.tools.checkstyle.checks.design.HideUtilityClassConstructorCheck"/>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/main/java/edu/hm/hafner/kara/Assignment11.java">
+<error line="10" column="1" severity="warning" message="Hilfsklassen sollten keinen Standard-Konstruktur und keinen als public deklarierten Konstruktor haben." source="com.puppycrawl.tools.checkstyle.checks.design.HideUtilityClassConstructorCheck"/>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/main/java/edu/hm/hafner/kara/Assignment07.java">
+<error line="10" column="1" severity="warning" message="Hilfsklassen sollten keinen Standard-Konstruktur und keinen als public deklarierten Konstruktor haben." source="com.puppycrawl.tools.checkstyle.checks.design.HideUtilityClassConstructorCheck"/>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/main/java/edu/hm/hafner/kara/Assignment06.java">
+<error line="10" column="1" severity="warning" message="Hilfsklassen sollten keinen Standard-Konstruktur und keinen als public deklarierten Konstruktor haben." source="com.puppycrawl.tools.checkstyle.checks.design.HideUtilityClassConstructorCheck"/>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/main/java/edu/hm/hafner/kara/Assignment10.java">
+<error line="10" column="1" severity="warning" message="Hilfsklassen sollten keinen Standard-Konstruktur und keinen als public deklarierten Konstruktor haben." source="com.puppycrawl.tools.checkstyle.checks.design.HideUtilityClassConstructorCheck"/>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/test/java/edu/hm/hafner/kara/Assignment13Test.java">
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/test/java/edu/hm/hafner/kara/Assignment12Test.java">
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/test/java/edu/hm/hafner/kara/Assignment04Test.java">
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/test/java/edu/hm/hafner/kara/Assignment05Test.java">
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/test/java/edu/hm/hafner/kara/Assignment03Test.java">
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/test/java/edu/hm/hafner/kara/Assignment02Test.java">
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/test/java/edu/hm/hafner/kara/Assignment09Test.java">
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/test/java/edu/hm/hafner/kara/Assignment08Test.java">
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/test/java/edu/hm/hafner/kara/Assignment14Test.java">
+<error line="21" column="55" severity="warning" message="Vor &apos;,&apos; befindet sich ein Leerzeichen." source="com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceBeforeCheck"/>
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/test/java/edu/hm/hafner/kara/Assignment15Test.java">
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/test/java/edu/hm/hafner/kara/Assignment07Test.java">
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/test/java/edu/hm/hafner/kara/Assignment06Test.java">
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/test/java/edu/hm/hafner/kara/Assignment10Test.java">
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/test/java/edu/hm/hafner/kara/Assignment11Test.java">
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/test/java/edu/hm/hafner/kara/AbstractKaraTest.java">
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/test/java/edu/hm/hafner/kara/Assignment16Test.java">
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/test/java/edu/hm/hafner/kara/Assignment00Test.java">
+</file>
+<file name="/Users/hafner/git/hochschule/karalight-assignment/src/test/java/edu/hm/hafner/kara/Assignment01Test.java">
+</file>
+</checkstyle>
