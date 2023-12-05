@@ -124,7 +124,7 @@ public class GitHubPullRequestWriter {
         if (getEnv("SKIP_ANNOTATIONS").isEmpty()) {
             var workspace = getEnv("RUNNER_WORKSPACE");
             var repository = getEnv("GITHUB_REPOSITORY");
-            var prefix = workspace + "/" + StringUtils.substringAfter(repository, "/");
+            var prefix = workspace + "/" + StringUtils.substringAfter(repository, "/") + "/";
             System.out.println(">>>> Prefix: " + prefix);
             System.out.println("FILENAMES");
 
@@ -147,7 +147,8 @@ public class GitHubPullRequestWriter {
     private Annotation createAnnotation(final String prefix, final Issue issue) {
         Annotation annotation = new Annotation(cleanFileName(prefix, issue.getFileName()),
                 issue.getLineStart(), issue.getLineEnd(),
-                AnnotationLevel.WARNING, issue.getMessage()).withTitle(issue.getType());
+                AnnotationLevel.WARNING, issue.getMessage())
+                .withTitle(issue.getOriginName() + ":" + issue.getType());
         if (issue.getLineStart() == issue.getLineEnd()) {
             return annotation.withStartColumn(issue.getColumnStart()).withEndColumn(issue.getColumnEnd());
         }
@@ -173,7 +174,7 @@ public class GitHubPullRequestWriter {
 
     private List<Annotation> createLineCoverageAnnotation(final String prefix, final FileNode file) {
         return file.getMissedLineRanges().stream()
-                .map(range -> new Annotation(cleanFileName(prefix, file.getName()),
+                .map(range -> new Annotation(cleanFileName(prefix, file.getRelativePath()),
                         range.getStart(), range.getEnd(),
                         AnnotationLevel.WARNING,
                         getMissedLinesDescription(range))
