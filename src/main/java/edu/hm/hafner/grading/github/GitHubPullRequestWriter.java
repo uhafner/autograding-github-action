@@ -79,7 +79,6 @@ public class GitHubPullRequestWriter {
         }
 
         String sha = getEnv("GITHUB_SHA");
-        System.out.println(">>>> GITHUB_SHA: " + sha);
 
         try {
             GitHub github = new GitHubBuilder().withAppInstallationToken(oAuthToken).build();
@@ -123,10 +122,11 @@ public class GitHubPullRequestWriter {
 
     private void handleAnnotations(final AggregatedScore score, final Output output) {
         if (getEnv("SKIP_ANNOTATIONS").isEmpty()) {
-            var workspace = getEnv("WORKSPACE");
+            var workspace = getEnv("RUNNER_WORKSPACE");
             var repository = getEnv("GITHUB_REPOSITORY");
             var prefix = workspace + "/" + StringUtils.substringAfter(repository, "/");
             System.out.println(">>>> Prefix: " + prefix);
+            System.out.println("FILENAMES");
 
             createLineAnnotationsForWarnings(score, prefix, output);
             createLineAnnotationsForMissedLines(score, prefix, output);
@@ -155,7 +155,9 @@ public class GitHubPullRequestWriter {
     }
 
     private String cleanFileName(final String prefix, final String fileName) {
-        return StringUtils.removeStart(fileName, prefix);
+        var cleaned = StringUtils.removeStart(fileName, prefix);
+        System.out.println("- " + cleaned);
+        return cleaned;
     }
 
     private void createLineAnnotationsForMissedLines(final AggregatedScore score, final String prefix,
