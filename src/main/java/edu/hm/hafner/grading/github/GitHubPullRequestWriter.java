@@ -143,8 +143,7 @@ public class GitHubPullRequestWriter {
     }
 
     private String computeAbsolutePathPrefixToRemove() {
-        return String.format("%s/%s/",
-                getEnv("RUNNER_WORKSPACE"),
+        return String.format("%s/%s/", getEnv("RUNNER_WORKSPACE"),
                 StringUtils.substringAfter(getEnv("GITHUB_REPOSITORY"), "/"));
     }
 
@@ -166,10 +165,13 @@ public class GitHubPullRequestWriter {
     }
 
     private Annotation createAnnotation(final String prefix, final Issue issue, final Set<String> prefixes) {
-        Annotation annotation = new Annotation(cleanFileName(prefix, issue.getFileName(), prefixes),
+        var path = cleanFileName(prefix, issue.getFileName(), prefixes);
+        var dockerPath = StringUtils.removeStart(path, "/github/workspace/./");
+        var relativePath = StringUtils.removeStart(dockerPath, "/github/workspace/");
+        Annotation annotation = new Annotation(relativePath,
                 issue.getLineStart(), issue.getLineEnd(),
                 AnnotationLevel.WARNING, issue.getMessage())
-                .withTitle(issue.getOriginName() + ":" + issue.getType());
+                .withTitle(issue.getOriginName() + ": " + issue.getType());
         if (issue.getLineStart() == issue.getLineEnd()) {
             return annotation.withStartColumn(issue.getColumnStart()).withEndColumn(issue.getColumnEnd());
         }
