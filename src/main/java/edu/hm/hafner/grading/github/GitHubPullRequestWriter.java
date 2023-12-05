@@ -1,7 +1,6 @@
 package edu.hm.hafner.grading.github;
 
 import java.io.IOException;
-import java.nio.file.Path;
 import java.time.Instant;
 import java.util.Collection;
 import java.util.Date;
@@ -66,9 +65,6 @@ public class GitHubPullRequestWriter {
     public void addComment(final String name, final AggregatedScore score,
             final String header, final String summary, final String comment, final String prComment,
             final ChecksStatus status) {
-        getEnv("GITHUB_WORKSPACE");
-        getEnv("RUNNER_WORKSPACE");
-
         var repository = getEnv("GITHUB_REPOSITORY");
         if (repository.isBlank()) {
             System.out.println("No GITHUB_REPOSITORY defined - skipping");
@@ -82,13 +78,13 @@ public class GitHubPullRequestWriter {
             return;
         }
 
-        String actualSha = StringUtils.defaultIfBlank(getEnv("HEAD_SHA"), getEnv("GITHUB_SHA"));
-        System.out.println(">>>> ACTUAL_SHA: " + actualSha);
+        String sha = getEnv("GITHUB_SHA");
+        System.out.println(">>>> GITHUB_SHA: " + sha);
 
         try {
             GitHub github = new GitHubBuilder().withAppInstallationToken(oAuthToken).build();
             GHCheckRunBuilder check = github.getRepository(repository)
-                    .createCheckRun(name, actualSha)
+                    .createCheckRun(name, sha)
                     .withStatus(Status.COMPLETED)
                     .withStartedAt(Date.from(Instant.now()))
                     .withConclusion(status == ChecksStatus.SUCCESS ? Conclusion.SUCCESS : Conclusion.FAILURE);
@@ -127,13 +123,15 @@ public class GitHubPullRequestWriter {
 
     private void handleAnnotations(final AggregatedScore score, final Output output) {
         if (getEnv("SKIP_ANNOTATIONS").isEmpty()) {
-            var cwd = Path.of(".").toAbsolutePath().toString();
-            System.out.println(">>>> CWD: " + cwd);
+            var workspace = getEnv("WORKSPACE");
+            var repository = getEnv("GITHUB_REPOSITORY");
+            var prefix = workspace + "/" + StringUtils.substringAfter(repository, "/");
+            System.out.println(">>>> Prefix: " + prefix);
 
-            createLineAnnotationsForWarnings(score, cwd, output);
-            createLineAnnotationsForMissedLines(score, cwd, output);
-            createLineAnnotationsForPartiallyCoveredLines(score, cwd, output);
-            createLineAnnotationsForSurvivedMutations(score, cwd, output);
+            createLineAnnotationsForWarnings(score, prefix, output);
+            createLineAnnotationsForMissedLines(score, prefix, output);
+            createLineAnnotationsForPartiallyCoveredLines(score, prefix, output);
+            createLineAnnotationsForSurvivedMutations(score, prefix, output);
         }
     }
 
