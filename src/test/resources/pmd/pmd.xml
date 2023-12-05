@@ -1,23 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd"
-    version="6.22.0" timestamp="2020-07-09T13:42:49.502">
-<file name="/home/tobias/IdeaProjects/github-actions-autograding-test/src/main/java/de/tobiasmichael/me/MyMain.java">
-<violation beginline="3" endline="9" begincolumn="21" endcolumn="1" rule="UseUtilityClass" ruleset="Design" package="de.tobiasmichael.me" class="MyMain" externalInfoUrl="https://pmd.github.io/pmd-6.22.0/pmd_rules_java_design.html#useutilityclass" priority="3">
-All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.
-</violation>
-<violation beginline="5" endline="5" begincolumn="38" endcolumn="47" rule="MethodArgumentCouldBeFinal" ruleset="Code Style" package="de.tobiasmichael.me" class="MyMain" method="concatenate" variable="one" externalInfoUrl="https://pmd.github.io/pmd-6.22.0/pmd_rules_java_codestyle.html#methodargumentcouldbefinal" priority="3">
-Parameter 'one' is not assigned and could be declared final
-</violation>
-<violation beginline="5" endline="5" begincolumn="50" endcolumn="59" rule="MethodArgumentCouldBeFinal" ruleset="Code Style" package="de.tobiasmichael.me" class="MyMain" method="concatenate" variable="two" externalInfoUrl="https://pmd.github.io/pmd-6.22.0/pmd_rules_java_codestyle.html#methodargumentcouldbefinal" priority="3">
-Parameter 'two' is not assigned and could be declared final
-</violation>
-<violation beginline="6" endline="6" begincolumn="28" endcolumn="45" rule="SystemPrintln" ruleset="Best Practices" package="de.tobiasmichael.me" class="MyMain" method="concatenate" externalInfoUrl="https://pmd.github.io/pmd-6.22.0/pmd_rules_java_bestpractices.html#systemprintln" priority="2">
-System.out.println is used
-</violation>
-<violation beginline="6" endline="6" begincolumn="28" endcolumn="63" rule="ControlStatementBraces" ruleset="Code Style" package="de.tobiasmichael.me" class="MyMain" method="concatenate" externalInfoUrl="https://pmd.github.io/pmd-6.22.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
-This statement should have braces
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.55.0" timestamp="2023-12-04T16:20:47.803">
+<file name="/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/main/java/edu/hm/hafner/grading/ReportFactory.java">
+<violation beginline="15" endline="29" begincolumn="10" endcolumn="1" rule="AbstractClassWithoutAbstractMethod" ruleset="Best Practices" package="edu.hm.hafner.grading" class="ReportFactory" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_bestpractices.html#abstractclasswithoutabstractmethod" priority="3">
+This abstract class does not have any abstract methods
 </violation>
 </file>
+<suppressedviolation filename="/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/main/java/edu/hm/hafner/grading/ReportFinder.java" suppressiontype="annotation" msg="System.out.println is used" usermsg=""></suppressedviolation>
+<suppressedviolation filename="/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/main/java/edu/hm/hafner/grading/AutoGradingAction.java" suppressiontype="annotation" msg="System.out.println is used" usermsg=""></suppressedviolation>
+<suppressedviolation filename="/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/main/java/edu/hm/hafner/grading/AutoGradingAction.java" suppressiontype="annotation" msg="System.out.println is used" usermsg=""></suppressedviolation>
+<suppressedviolation filename="/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/main/java/edu/hm/hafner/grading/AutoGradingAction.java" suppressiontype="annotation" msg="System.out.println is used" usermsg=""></suppressedviolation>
+<suppressedviolation filename="/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/main/java/edu/hm/hafner/grading/AutoGradingAction.java" suppressiontype="annotation" msg="System.out.println is used" usermsg=""></suppressedviolation>
+<suppressedviolation filename="/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/main/java/edu/hm/hafner/grading/AutoGradingAction.java" suppressiontype="annotation" msg="System.out.println is used" usermsg=""></suppressedviolation>
+<suppressedviolation filename="/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/main/java/edu/hm/hafner/grading/AutoGradingAction.java" suppressiontype="annotation" msg="System.out.println is used" usermsg=""></suppressedviolation>
+<suppressedviolation filename="/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/main/java/edu/hm/hafner/grading/AutoGradingAction.java" suppressiontype="annotation" msg="System.out.println is used" usermsg=""></suppressedviolation>
+<suppressedviolation filename="/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/main/java/edu/hm/hafner/grading/AutoGradingAction.java" suppressiontype="annotation" msg="System.out.println is used" usermsg=""></suppressedviolation>
+<suppressedviolation filename="/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/main/java/edu/hm/hafner/grading/AutoGradingAction.java" suppressiontype="annotation" msg="System.out.println is used" usermsg=""></suppressedviolation>
+<suppressedviolation filename="/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/main/java/edu/hm/hafner/grading/AutoGradingAction.java" suppressiontype="annotation" msg="System.out.println is used" usermsg=""></suppressedviolation>
+<suppressedviolation filename="/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/main/java/edu/hm/hafner/grading/AutoGradingAction.java" suppressiontype="annotation" msg="System.out.println is used" usermsg=""></suppressedviolation>
+<suppressedviolation filename="/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/main/java/edu/hm/hafner/grading/AutoGradingAction.java" suppressiontype="annotation" msg="System.out.println is used" usermsg=""></suppressedviolation>
+<suppressedviolation filename="/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/main/java/edu/hm/hafner/grading/AutoGradingAction.java" suppressiontype="annotation" msg="System.out.println is used" usermsg=""></suppressedviolation>
+<suppressedviolation filename="/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/main/java/edu/hm/hafner/grading/AutoGradingAction.java" suppressiontype="annotation" msg="System.out.println is used" usermsg=""></suppressedviolation>
+<suppressedviolation filename="/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/main/java/edu/hm/hafner/grading/AutoGradingAction.java" suppressiontype="annotation" msg="System.out.println is used" usermsg=""></suppressedviolation>
+<suppressedviolation filename="/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/main/java/edu/hm/hafner/grading/AutoGradingAction.java" suppressiontype="annotation" msg="System.out.println is used" usermsg=""></suppressedviolation>
+<suppressedviolation filename="/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/main/java/edu/hm/hafner/grading/AutoGradingAction.java" suppressiontype="annotation" msg="System.out.println is used" usermsg=""></suppressedviolation>
+<suppressedviolation filename="/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/main/java/edu/hm/hafner/grading/AutoGradingAction.java" suppressiontype="annotation" msg="System.out.println is used" usermsg=""></suppressedviolation>
+<suppressedviolation filename="/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/main/java/edu/hm/hafner/grading/AutoGradingAction.java" suppressiontype="annotation" msg="System.out.println is used" usermsg=""></suppressedviolation>
+<suppressedviolation filename="/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/main/java/edu/hm/hafner/grading/AutoGradingAction.java" suppressiontype="annotation" msg="System.out.println is used" usermsg=""></suppressedviolation>
+<suppressedviolation filename="/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/main/java/edu/hm/hafner/grading/AutoGradingAction.java" suppressiontype="annotation" msg="System.out.println is used" usermsg=""></suppressedviolation>
+<suppressedviolation filename="/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/main/java/edu/hm/hafner/grading/AutoGradingAction.java" suppressiontype="annotation" msg="System.out.println is used" usermsg=""></suppressedviolation>
+<suppressedviolation filename="/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/main/java/edu/hm/hafner/grading/AutoGradingAction.java" suppressiontype="annotation" msg="System.out.println is used" usermsg=""></suppressedviolation>
+<suppressedviolation filename="/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/main/java/edu/hm/hafner/grading/github/GitHubPullRequestWriter.java" suppressiontype="annotation" msg="System.out.println is used" usermsg=""></suppressedviolation>
+<suppressedviolation filename="/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/main/java/edu/hm/hafner/grading/github/GitHubPullRequestWriter.java" suppressiontype="annotation" msg="System.out.println is used" usermsg=""></suppressedviolation>
+<suppressedviolation filename="/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/main/java/edu/hm/hafner/grading/github/GitHubPullRequestWriter.java" suppressiontype="annotation" msg="System.out.println is used" usermsg=""></suppressedviolation>
+<suppressedviolation filename="/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/main/java/edu/hm/hafner/grading/github/GitHubPullRequestWriter.java" suppressiontype="annotation" msg="System.out.println is used" usermsg=""></suppressedviolation>
+<suppressedviolation filename="/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/main/java/edu/hm/hafner/grading/github/GitHubPullRequestWriter.java" suppressiontype="annotation" msg="System.out.println is used" usermsg=""></suppressedviolation>
+<suppressedviolation filename="/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/main/java/edu/hm/hafner/grading/github/GitHubPullRequestWriter.java" suppressiontype="annotation" msg="System.out.println is used" usermsg=""></suppressedviolation>
+<suppressedviolation filename="/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/main/java/edu/hm/hafner/grading/github/GitHubPullRequestWriter.java" suppressiontype="annotation" msg="System.out.println is used" usermsg=""></suppressedviolation>
 </pmd>

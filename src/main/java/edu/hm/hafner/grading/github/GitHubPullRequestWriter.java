@@ -1,11 +1,13 @@
 package edu.hm.hafner.grading.github;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.Instant;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
-import java.util.regex.Pattern;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.StringUtils;
@@ -17,7 +19,10 @@ import edu.hm.hafner.coverage.Mutation;
 import edu.hm.hafner.coverage.Node;
 import edu.hm.hafner.grading.AggregatedScore;
 import edu.hm.hafner.grading.AnalysisScore;
+import edu.hm.hafner.grading.Configuration;
 import edu.hm.hafner.grading.CoverageScore;
+import edu.hm.hafner.grading.Score;
+import edu.hm.hafner.grading.ToolConfiguration;
 import edu.hm.hafner.util.LineRange;
 
 import org.kohsuke.github.GHCheckRun;
@@ -31,16 +36,22 @@ import org.kohsuke.github.GitHub;
 import org.kohsuke.github.GitHubBuilder;
 
 /**
- * Writes a comment in a pull request.
+ * Writes a comment in a pull request and publish the GitHub checks results.
  *
  * @author Tobias Effner
  * @author Ullrich Hafner
  */
 @SuppressWarnings("PMD.SystemPrintln")
 public class GitHubPullRequestWriter {
+    /** Status of the checks result. */
+    public enum ChecksStatus {
+        SUCCESS,
+        ERROR
+    }
+
     /**
-     * Writes the specified comment as GitHub checks result. Requires that the environment variables {@code HEAD_SHA},
-     * {@code GITHUB_SHA}, {@code GITHUB_REPOSITORY}, and {@code TOKEN} are correctly set.
+     * Writes the specified comment as GitHub checks result. Requires that the environment variables {@code GITHUB_SHA},
+     * {@code GITHUB_REPOSITORY}, and {@code GITHUB_TOKEN} are correctly set.
      *
      * @param name
      *         the name of the checks result
@@ -54,9 +65,12 @@ public class GitHubPullRequestWriter {
      *         the details of the check (supports Markdown)
      * @param prComment
      *         the comment to write in the pull request
+     * @param status
+     *         the status of the checks result
      */
     public void addComment(final String name, final AggregatedScore score,
-            final String header, final String summary, final String comment, final String prComment) {
+            final String header, final String summary, final String comment, final String prComment,
+            final ChecksStatus status) {
         var repository = getEnv("GITHUB_REPOSITORY");
         if (repository.isBlank()) {
             System.out.println("No GITHUB_REPOSITORY defined - skipping");
@@ -70,24 +84,18 @@ public class GitHubPullRequestWriter {
             return;
         }
 
-        String actualSha = StringUtils.defaultIfBlank(getEnv("HEAD_SHA"), getEnv("GITHUB_SHA"));
-        System.out.println(">>>> ACTUAL_SHA: " + actualSha);
-
-        String filesPrefix = getEnv("FILES_PREFIX");
+        String sha = getEnv("GITHUB_SHA");
 
         try {
             GitHub github = new GitHubBuilder().withAppInstallationToken(oAuthToken).build();
             GHCheckRunBuilder check = github.getRepository(repository)
-                    .createCheckRun(name, actualSha)
+                    .createCheckRun(name, sha)
                     .withStatus(Status.COMPLETED)
                     .withStartedAt(Date.from(Instant.now()))
-                    .withConclusion(Conclusion.SUCCESS);
+                    .withConclusion(status == ChecksStatus.SUCCESS ? Conclusion.SUCCESS : Conclusion.FAILURE);
 
-            Pattern prefix = Pattern.compile(
-                    "^.*" + StringUtils.substringAfterLast(repository, '/') + "/" + filesPrefix);
             Output output = new Output(header, summary).withText(comment);
-
-            handleAnnotations(score, prefix, output);
+            handleAnnotations(score, output);
 
             check.add(output);
             GHCheckRun run = check.create();
@@ -95,7 +103,7 @@ public class GitHubPullRequestWriter {
             System.out.println("Successfully created check " + run);
 
             var prNumber = getEnv("PR_NUMBER");
-            if (!prNumber.isBlank()) {
+            if (!prNumber.isBlank()) { // optional PR comment
                 github.getRepository(repository)
                         .getPullRequest(Integer.parseInt(prNumber))
                         .comment(prComment + addCheckLink(run));
@@ -118,48 +126,87 @@ public class GitHubPullRequestWriter {
         return value;
     }
 
-    private void handleAnnotations(final AggregatedScore score, final Pattern prefix, final Output output) {
+    private void handleAnnotations(final AggregatedScore score, final Output output) {
         if (getEnv("SKIP_ANNOTATIONS").isEmpty()) {
-            createLineAnnotationsForWarnings(score, prefix, output);
-            createLineAnnotationsForMissedLines(score, prefix, output);
-            createLineAnnotationsForPartiallyCoveredLines(score, prefix, output);
-            createLineAnnotationsForSurvivedMutations(score, prefix, output);
+            var prefix = computeAbsolutePathPrefixToRemove();
+
+            var additionalAnalysisSourcePaths = extractAdditionalSourcePaths(score.getAnalysisScores());
+            createLineAnnotationsForWarnings(score, prefix, additionalAnalysisSourcePaths, output);
+
+            var additionalCoverageSourcePaths = extractAdditionalSourcePaths(score.getCodeCoverageScores());
+            createLineAnnotationsForMissedLines(score, prefix, additionalCoverageSourcePaths, output);
+            createLineAnnotationsForPartiallyCoveredLines(score, prefix, additionalCoverageSourcePaths, output);
+
+            var additionalMutationSourcePaths = extractAdditionalSourcePaths(score.getMutationCoverageScores());
+            createLineAnnotationsForSurvivedMutations(score, prefix, additionalMutationSourcePaths, output);
         }
     }
 
-    private void createLineAnnotationsForWarnings(final AggregatedScore score, final Pattern prefix,
-            final Output output) {
+    private String computeAbsolutePathPrefixToRemove() {
+        return String.format("%s/%s/", getEnv("RUNNER_WORKSPACE"),
+                StringUtils.substringAfter(getEnv("GITHUB_REPOSITORY"), "/"));
+    }
+
+    private Set<String> extractAdditionalSourcePaths(final List<? extends Score<?, ?>> scores) {
+        return scores.stream()
+                .map(Score::getConfiguration)
+                .map(Configuration::getTools)
+                .flatMap(Collection::stream)
+                .map(ToolConfiguration::getSourcePath).collect(Collectors.toSet());
+    }
+
+    private void createLineAnnotationsForWarnings(final AggregatedScore score, final String prefix,
+            final Set<String> prefixes, final Output output) {
         score.getAnalysisScores().stream()
                 .map(AnalysisScore::getReport)
                 .flatMap(Report::stream)
-                .map(issue -> createAnnotation(prefix, issue))
+                .map(issue -> createAnnotation(prefix, issue, prefixes))
                 .forEach(output::add);
     }
 
-    private Annotation createAnnotation(final Pattern prefix, final Issue issue) {
-        Annotation annotation = new Annotation(prefix.matcher(issue.getFileName()).replaceAll(""),
+    private Annotation createAnnotation(final String prefix, final Issue issue, final Set<String> prefixes) {
+        var path = cleanFileName(prefix, issue.getFileName(), prefixes);
+        var removedDockerPath = StringUtils.removeStart(path, "/github/workspace/./");
+        var relativePath = StringUtils.removeStart(removedDockerPath, "/github/workspace/");
+        Annotation annotation = new Annotation(relativePath,
                 issue.getLineStart(), issue.getLineEnd(),
-                AnnotationLevel.WARNING, issue.getMessage()).withTitle(issue.getType());
+                AnnotationLevel.WARNING, issue.getMessage())
+                .withTitle(issue.getOriginName() + ": " + issue.getType());
         if (issue.getLineStart() == issue.getLineEnd()) {
             return annotation.withStartColumn(issue.getColumnStart()).withEndColumn(issue.getColumnEnd());
         }
         return annotation;
     }
 
-    private void createLineAnnotationsForMissedLines(final AggregatedScore score, final Pattern prefix,
-            final Output output) {
+    private String cleanFileName(final String prefix, final String fileName, final Set<String> prefixes) {
+        var cleaned = StringUtils.removeStart(fileName, prefix);
+        if (Files.exists(Path.of(cleaned))) {
+            return cleaned;
+        }
+        for (String s : prefixes) {
+            var added = s + "/" + cleaned;
+            if (Files.exists(Path.of(added))) {
+                return added;
+            }
+        }
+        return cleaned;
+    }
+
+    private void createLineAnnotationsForMissedLines(final AggregatedScore score, final String prefix,
+            final Set<String> prefixes, final Output output) {
         score.getCodeCoverageScores().stream()
                 .map(CoverageScore::getReport)
                 .map(Node::getAllFileNodes)
                 .flatMap(Collection::stream)
-                .map(file -> createLineCoverageAnnotation(prefix, file))
+                .map(file -> createLineCoverageAnnotation(prefix, file, prefixes))
                 .flatMap(Collection::stream)
                 .forEach(output::add);
     }
 
-    private List<Annotation> createLineCoverageAnnotation(final Pattern prefix, final FileNode file) {
+    private List<Annotation> createLineCoverageAnnotation(final String prefix, final FileNode file,
+            final Set<String> prefixes) {
         return file.getMissedLineRanges().stream()
-                .map(range -> new Annotation(prefix.matcher(file.getName()).replaceAll(""),
+                .map(range -> new Annotation(cleanFileName(prefix, file.getRelativePath(), prefixes),
                         range.getStart(), range.getEnd(),
                         AnnotationLevel.WARNING,
                         getMissedLinesDescription(range))
@@ -181,20 +228,21 @@ public class GitHubPullRequestWriter {
         return String.format("Lines %d-%d are not covered by tests", range.getStart(), range.getEnd());
     }
 
-    private void createLineAnnotationsForPartiallyCoveredLines(final AggregatedScore score, final Pattern prefix,
-            final Output output) {
+    private void createLineAnnotationsForPartiallyCoveredLines(final AggregatedScore score, final String prefix,
+            final Set<String> prefixes, final Output output) {
         score.getCodeCoverageScores().stream()
                 .map(CoverageScore::getReport)
                 .map(Node::getAllFileNodes)
                 .flatMap(Collection::stream)
-                .map(file -> createBranchCoverageAnnotation(prefix, file))
+                .map(file -> createBranchCoverageAnnotation(prefix, file, prefixes))
                 .flatMap(Collection::stream)
                 .forEach(output::add);
     }
 
-    private List<Annotation> createBranchCoverageAnnotation(final Pattern prefix, final FileNode file) {
+    private List<Annotation> createBranchCoverageAnnotation(final String prefix, final FileNode file,
+            final Set<String> prefixes) {
         return file.getPartiallyCoveredLines().entrySet().stream()
-                .map(entry -> new Annotation(prefix.matcher(file.getName()).replaceAll(""),
+                .map(entry -> new Annotation(cleanFileName(prefix, file.getRelativePath(), prefixes),
                         entry.getKey(),
                         AnnotationLevel.WARNING,
                         createBranchMessage(entry.getKey(), entry.getValue()))
@@ -210,20 +258,21 @@ public class GitHubPullRequestWriter {
         return String.format("Line %d is only partially covered, %d branches are missing", line, missed);
     }
 
-    private void createLineAnnotationsForSurvivedMutations(final AggregatedScore score, final Pattern prefix,
-            final Output output) {
+    private void createLineAnnotationsForSurvivedMutations(final AggregatedScore score, final String prefix,
+            final Set<String> prefixes, final Output output) {
         score.getMutationCoverageScores().stream()
                 .map(CoverageScore::getReport)
                 .map(Node::getAllFileNodes)
                 .flatMap(Collection::stream)
-                .map(file -> createMutationCoverageAnnotation(prefix, file))
+                .map(file -> createMutationCoverageAnnotation(prefix, file, prefixes))
                 .flatMap(Collection::stream)
                 .forEach(output::add);
     }
 
-    private List<Annotation> createMutationCoverageAnnotation(final Pattern prefix, final FileNode file) {
+    private List<Annotation> createMutationCoverageAnnotation(final String prefix, final FileNode file,
+            final Set<String> prefixes) {
         return file.getSurvivedMutationsPerLine().entrySet().stream()
-                .map(entry -> new Annotation(prefix.matcher(file.getName()).replaceAll(""),
+                .map(entry -> new Annotation(cleanFileName(prefix, file.getRelativePath(), prefixes),
                         entry.getKey(),
                         AnnotationLevel.WARNING,
                         createMutationMessage(entry.getKey(), entry.getValue()))

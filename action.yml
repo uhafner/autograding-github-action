@@ -14,12 +14,6 @@ inputs:
   github-token:
     description: "GitHub authentication token (GITHUB_TOKEN)"
     required: true
-  head-sha:
-    description: "SHA of the pull request head (if not set GITHUB_SHA will be used)"
-    required: false
-  files-prefix:
-    description: "Prefix to remove from all paths so that files can be found in repository"
-    required: false
   skip-annotations:
     description: "Skip the creation of annotations (for warnings and missed coverage) if not empty"
     required: false
@@ -32,8 +26,6 @@ runs:
     CHECKS_NAME: ${{ inputs.checks-name }}
     PR_NUMBER: ${{ inputs.pr-number }}
     GITHUB_TOKEN: ${{ inputs.github-token }}
-    HEAD_SHA: ${{ inputs.head-sha }}
-    FILES_PREFIX: ${{ inputs.files-prefix }}
     SKIP_ANNOTATIONS: ${{ inputs.skip-annotations }}
 
 branding:

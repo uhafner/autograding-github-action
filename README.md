@@ -7,7 +7,7 @@
 [![Style Warnings](https://raw.githubusercontent.com/uhafner/autograding-github-action/main/badges/style-warnings.svg)](https://github.com/uhafner/autograding-github-action/actions/workflows/dogfood.yml)
 [![Potential Bugs](https://raw.githubusercontent.com/uhafner/autograding-github-action/main/badges/bugs.svg)](https://github.com/uhafner/autograding-github-action/actions/workflows/dogfood.yml)
 
-This GitHub action autogrades projects based on a configurable set of metrics and gives feedback on pull requests (or single commits). I use this action to automatically grade student projects in my lectures at the Munich University of Applied Sciences. Please have a look at my [companion coding style](https://github.com/uhafner/codingstyle) and [Maven parent POM](https://github.com/uhafner/codingstyle-pom) to see how to create Java projects that can be graded using this GitHub action.
+This GitHub action autogrades projects based on a configurable set of metrics and gives feedback on pull requests (or single commits). I use this action to automatically grade student projects in my lectures at the Munich University of Applied Sciences. You can see the results of this action in the [example pull request](https://github.com/uhafner/autograding-github-action/pull/288). Please have a look at my [companion coding style](https://github.com/uhafner/codingstyle) and [Maven parent POM](https://github.com/uhafner/codingstyle-pom) to see how to create Java projects that can be graded using this GitHub action.
 
 This action is inspired by my similar Jenkins plugins: 
 - [Jenkins Warnings plugin](https://github.com/jenkinsci/warnings-ng-plugin)
@@ -74,7 +74,7 @@ jobs:
             }
 ```
 
-Currently, you can select from the metrics shown in the following sections. Each metric can be configured individually. All of these configurations are composed in the same way: you can define a list of tools that are used to collect the data, a name for the metric, and a maximum score. All tools need to provide a pattern where the autograding action can find the result files in the workspace (e.g., JUnit XML reports). Additionally, each tool needs to provide the parser ID of the tool so that the underlying model can find the correct parser to read the results. See [analysis model](https:://github.com/jenkinsci/analysis-model) and [coverage model](https:://github.com/jenkinsci/coverage-model) for the list of supported parsers.
+Currently, you can select from the metrics shown in the following sections. Each metric can be configured individually. All of these configurations are composed in the same way: you can define a list of tools that are used to collect the data, a name and icon for the metric, and a maximum score. All tools need to provide a pattern where the autograding action can find the result files in the workspace (e.g., JUnit XML reports). Additionally, each tool needs to provide the parser ID of the tool so that the underlying model can find the correct parser to read the results. See [analysis model](https:://github.com/jenkinsci/analysis-model) and [coverage model](https:://github.com/jenkinsci/coverage-model) for the list of supported parsers.
 
 Additionally, you can define the impact of each result (e.g., a failed test, a missed line in coverage) on the final score. The impact is a positive or negative number and will be multiplied with the actual value of the measured items during the evaluation. Negative values will be subtracted from the maximum score to compute the final score. Positive values will be directly used as the final score. You can choose the type of impact that matches your needs best.
 
@@ -82,7 +82,7 @@ Additionally, you can define the impact of each result (e.g., a failed test, a m
 
 ![Test statistics](images/tests.png)
 
-This metric can be configured using the following parameters:
+This metric can be configured using a JSON object `tests`, see the example below for details: 
 
 ```json
 {
@@ -109,7 +109,7 @@ You can either count passed tests as positive impact or failed tests as negative
 
 ![Code coverage summary](images/coverage.png)
 
-This metric can be configured using the following parameters:
+This metric can be configured using a JSON object `coverage`, see the example below for details:
 
 ```json
 {
@@ -164,7 +164,7 @@ Missed lines or branches as well as survived mutations will be shown as annotati
 
 ![Static analysis](images/analysis.png)
 
-This metric can be configured using the following parameters:
+This metric can be configured using a JSON object `analysis`, see the example above for details:
 
 ```json
 {
@@ -193,6 +193,7 @@ This metric can be configured using the following parameters:
     {
       "name": "Bugs",
       "id": "bugs",
+      "icon": "bug",
       "tools": [
         {
           "id": "spotbugs",
@@ -223,8 +224,6 @@ This action can be configured using the following parameters (see example above)
 - ``config: "{...}"``: optional configuration, see sections above for details. Or consult the [autograding-model](https://github.com/uhafner/autograding-model) project for details. If not specified, a [default configuration](src/main/resources/default-config.json) will be used.
 - ``pr-number: ${{ steps.pr.outputs.number }}``: optional number of the pull request. If not set, then just the checks will be published but not a pull request comment.
 - ``checks-name: "Name of checks"``: optional name of GitHub checks (overwrites the default: "Autograding result").
-- ``head-sha: ${{github.event.pull_request.head.sha}}``: optional SHA of the pull request head. If not set, then 
-``GITHUB_SHA`` will be used.
 - ``files-prefix: "prefix"``: Optional file name prefix to remove from all paths so that files can be found and linked in the repository.
 - ``skip-annotations: true``: Optional flag to skip the creation of annotations (for warnings and missed coverage).
 

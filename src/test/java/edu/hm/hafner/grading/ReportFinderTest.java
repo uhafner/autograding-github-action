@@ -15,7 +15,7 @@ class ReportFinderTest {
         var finder = new ReportFinder();
 
         assertThat(finder.find("glob:**/junit/*.xml", "src/test/resources/")).hasSize(3);
-        assertThat(finder.find("glob:src/test/resources/junit/*Not-Passed.xml", "src/test/resources/")).hasSize(1);
+        assertThat(finder.find("glob:src/test/resources/junit/*edu*.xml", "src/test/resources/")).hasSize(2);
         assertThat(finder.find("glob:src/**/junit/*.html", "src/test/resources/")).isEmpty();
 
         assertThat(finder.find("glob:**/*.xml", "src/java/")).isEmpty();

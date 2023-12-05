@@ -124,51 +124,41 @@ public class AutoGradingActionITest {
             container.withEnv("CONFIG", CONFIGURATION);
             startContainerWithAllFiles(container);
 
+            var metrics = new String[] {"tests=1",
+                    "line=11",
+                    "branch=10",
+                    "mutation=8",
+                    "bugs=1",
+                    "spotbugs=1",
+                    "style=2",
+                    "pmd=1",
+                    "checkstyle=1"};
+
             assertThat(readStandardOut(container))
                     .contains("Obtaining configuration from environment variable CONFIG")
+                    .contains(metrics)
                     .contains(new String[] {
                             "Processing 1 test configuration(s)",
-                            "-> Unittests Total: TESTS: 33 tests",
-                            "JUnit Score: 100 of 100",
+                            "-> Unittests Total: TESTS: 1 tests",
+                            "JUnit Score: 10 of 100",
                             "Processing 2 coverage configuration(s)",
-                            "-> Line Coverage Total: LINE: 87.99% (315/358)",
-                            "-> Branch Coverage Total: BRANCH: 61.54% (16/26)",
-                            "=> JaCoCo Score: 50 of 100",
-                            "-> Mutation Coverage Total: MUTATION: 72.77% (139/191)",
-                            "=> PIT Score: 46 of 100",
+                            "-> Line Coverage Total: LINE: 10.93% (33/302)",
+                            "-> Branch Coverage Total: BRANCH: 9.52% (4/42)",
+                            "=> JaCoCo Score: 20 of 100",
+                            "-> Mutation Coverage Total: MUTATION: 7.86% (11/140)",
+                            "=> PIT Score: 16 of 100",
                             "Processing 2 static analysis configuration(s)",
-                            "-> CheckStyle Total: 3 warnings",
-                            "-> PMD Total: 5 warnings",
-                            "=> Style Score: 23 of 100",
-                            "-> SpotBugs Total: 9 warnings",
-                            "=> Bugs Score: 0 of 100",
-                            "tests=33",
-                            "line=88",
-                            "branch=62",
-                            "mutation=73",
-                            "bugs=9",
-                            "spotbugs=9",
-                            "style=8",
-                            "pmd=5",
-                            "checkstyle=3",
-                            "Total score - 219 of 500 (unit tests: 100/100, code coverage: 50/100, mutation coverage: 46/100, analysis: 23/200)"});
+                            "-> CheckStyle Total: 1 warnings",
+                            "-> PMD Total: 1 warnings",
+                            "=> Style Score: 6 of 100",
+                            "-> SpotBugs Total: 1 warnings",
+                            "=> Bugs Score: 86 of 100",
+                            "Total score - 138 of 500 (unit tests: 10/100, code coverage: 20/100, mutation coverage: 16/100, analysis: 92/200)"});
 
             container.copyFileFromContainer("/github/workspace/metrics.env", LOCAL_METRICS_FILE);
             assertThat(Files.readString(Path.of(LOCAL_METRICS_FILE)))
-                    .contains("tests=33",
-                            "line=88",
-                            "branch=62",
-                            "mutation=73",
-                            "bugs=9",
-                            "spotbugs=9",
-                            "style=8",
-                            "pmd=5",
-                            "checkstyle=3");
+                    .contains(metrics);
         }
-    }
-
-    private GenericContainer<?> createContainer() {
-        return new GenericContainer<>(DockerImageName.parse("uhafner/autograding-github-action:3.4.0-SNAPSHOT"));
     }
 
     @Test
@@ -177,26 +167,29 @@ public class AutoGradingActionITest {
             startContainerWithAllFiles(container);
 
             assertThat(readStandardOut(container))
-                    .contains(
-                            "No configuration provided (environment variable CONFIG not set), using default configuration")
+                    .contains("No configuration provided (environment variable CONFIG not set), using default configuration")
                     .contains(new String[] {
                             "Processing 1 test configuration(s)",
-                            "-> Unittests Total: TESTS: 33 tests",
-                            "JUnit Score: 40 of 100",
+                            "-> Unittests Total: TESTS: 1 tests",
+                            "JUnit Score: 100 of 100",
                             "Processing 2 coverage configuration(s)",
-                            "-> Line Coverage Total: LINE: 87.99% (315/358)",
-                            "-> Branch Coverage Total: BRANCH: 61.54% (16/26)",
-                            "=> JaCoCo Score: 75 of 100",
-                            "-> Mutation Coverage Total: MUTATION: 72.77% (139/191)",
-                            "=> PIT Score: 73 of 100",
+                            "-> Line Coverage Total: LINE: 10.93% (33/302)",
+                            "-> Branch Coverage Total: BRANCH: 9.52% (4/42)",
+                            "=> JaCoCo Score: 10 of 100",
+                            "-> Mutation Coverage Total: MUTATION: 7.86% (11/140)",
+                            "=> PIT Score: 8 of 100",
                             "Processing 2 static analysis configuration(s)",
-                            "-> CheckStyle Total: 3 warnings",
-                            "-> PMD Total: 5 warnings",
-                            "=> Style Score: 92 of 100",
-                            "-> SpotBugs Total: 9 warnings",
-                            "=> Bugs Score: 73 of 100",
-                            "Total score - 353 of 500 (unit tests: 40/100, code coverage: 75/100, mutation coverage: 73/100, analysis: 165/200)"});
+                            "-> CheckStyle Total: 1 warnings",
+                            "-> PMD Total: 1 warnings",
+                            "=> Style Score: 98 of 100",
+                            "-> SpotBugs Total: 1 warnings",
+                            "=> Bugs Score: 97 of 100",
+                            "Total score - 313 of 500 (unit tests: 100/100, code coverage: 10/100, mutation coverage: 8/100, analysis: 195/200)"});
         }
+    }
+
+    private GenericContainer<?> createContainer() {
+        return new GenericContainer<>(DockerImageName.parse("uhafner/autograding-github-action:3.4.0-SNAPSHOT"));
     }
 
     private String readStandardOut(final GenericContainer<? extends GenericContainer<?>> container) throws TimeoutException {
@@ -216,7 +209,7 @@ public class AutoGradingActionITest {
         container.withWorkingDirectory("/github/workspace")
                 .withCopyFileToContainer(read("checkstyle/checkstyle-result.xml"), WS + "checkstyle-result.xml")
                 .withCopyFileToContainer(read("jacoco/jacoco.xml"), WS + "site/jacoco/jacoco.xml")
-                .withCopyFileToContainer(read("junit/TEST-Aufgabe3Test.xml"), WS + "surefire-reports/TEST-Aufgabe3Test.xml")
+                .withCopyFileToContainer(read("junit/TEST-edu.hm.hafner.grading.AutoGradingActionTest.xml"), WS + "surefire-reports/TEST-Aufgabe3Test.xml")
                 .withCopyFileToContainer(read("pit/mutations.xml"), WS + "pit-reports/mutations.xml")
                 .withCopyFileToContainer(read("pmd/pmd.xml"), WS + "pmd.xml")
                 .withCopyFileToContainer(read("spotbugs/spotbugsXml.xml"), WS + "spotbugsXml.xml")
