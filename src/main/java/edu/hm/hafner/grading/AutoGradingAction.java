@@ -70,6 +70,10 @@ public class AutoGradingAction {
 
             System.out.println(results.getTextSummary(score));
 
+            System.out.println("==================================================================");
+
+            System.out.println("Commenting on commit or pull request...");
+
             pullRequestWriter.addComment(getChecksName(), score,
                     results.getHeader(), results.getTextSummary(score),
                     results.getMarkdownDetails(score),
