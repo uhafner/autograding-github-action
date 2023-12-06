@@ -311,7 +311,7 @@ The results of the action can be used to create various badges that show the cur
       git config --local user.email "action@github.com"
       git config --local user.name "GitHub Action"
       git add badges/*.svg
-      git commit -m "Update badges with results from latest autograding"
+      git commit -m "Update badges with results from latest autograding" || true
   - name: Push updated badges to GitHub repository
     uses: ad-m/github-push-action@master
     if: ${{ success() }}
