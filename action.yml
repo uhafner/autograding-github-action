@@ -1,0 +1,33 @@
+name: Autograding Action
+description:  Action that autogrades assignments based on configurable quality criteria.
+
+inputs:
+  config:
+    description: "Autograding configuration (if not set the default configuration will be used)"
+    required: false
+  checks-name:
+    description: "Name of the GitHub checks (if not set the default name will be used)"
+    required: false
+  pr-number:
+    description: "Pull request number (if not set, PR comments will be skipped)"
+    required: false
+  github-token:
+    description: "GitHub authentication token (GITHUB_TOKEN)"
+    required: true
+  skip-annotations:
+    description: "Skip the creation of annotations (for warnings and missed coverage) if not empty"
+    required: false
+
+runs:
+  using: 'docker'
+  image: 'docker://uhafner/autograding-github-action:3.6.0-SNAPSHOT'
+  env:
+    CONFIG: ${{ inputs.config }}
+    CHECKS_NAME: ${{ inputs.checks-name }}
+    PR_NUMBER: ${{ inputs.pr-number }}
+    GITHUB_TOKEN: ${{ inputs.github-token }}
+    SKIP_ANNOTATIONS: ${{ inputs.skip-annotations }}
+
+branding:
+  icon: check-square
+  color: green
