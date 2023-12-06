@@ -111,7 +111,7 @@ public class AutoGradingAction {
         if (log.hasErrors()) {
             StringBuilder errors = new StringBuilder();
 
-            errors.append("## Error Messages\n```\n");
+            errors.append("## :construction: Error Messages\n```\n");
             var messages = new StringJoiner("\n");
             log.getErrorMessages().forEach(messages::add);
             errors.append(messages);
