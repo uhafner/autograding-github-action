@@ -2,37 +2,301 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+  <modelVersion>4.0.0</modelVersion>
 
-    <properties>
-        <maven.compiler.source>1.13</maven.compiler.source>
-        <maven.compiler.target>1.13</maven.compiler.target>
-    </properties>
+  <parent>
+    <groupId>edu.hm.hafner</groupId>
+    <artifactId>codingstyle-pom</artifactId>
+    <version>3.39.0</version>
+    <relativePath/>
+  </parent>
 
-    <groupId>de.tobiasmichael.me</groupId>
-    <artifactId>github-actions-autograding</artifactId>
-    <version>1.0-SNAPSHOT</version>
+  <groupId>edu.hm.hafner</groupId>
+  <artifactId>autograding-github-action</artifactId>
+  <version>3.5.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
 
+  <properties>
+    <module.name>${project.groupId}.autograding.ghaction</module.name>
+
+    <java.version>17</java.version>
+
+    <jib-maven-plugin.version>3.4.0</jib-maven-plugin.version>
+    <testcontainers.version>1.19.3</testcontainers.version>
+
+    <autograding-model.version>3.7.0</autograding-model.version>
+    <analysis-model.version>11.13.0</analysis-model.version>
+    <coverage-model.version>0.36.0</coverage-model.version>
+    <docker-image-tag>${project.version}</docker-image-tag>
+  </properties>
+
+  <dependencyManagement>
     <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.11</version>
-            <scope>test</scope>
-        </dependency>
+      <dependency>
+        <groupId>com.google.code.gson</groupId>
+        <artifactId>gson</artifactId>
+        <version>2.10.1</version>
+      </dependency>
     </dependencies>
+  </dependencyManagement>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+  <dependencies>
+    <dependency>
+      <groupId>edu.hm.hafner</groupId>
+      <artifactId>autograding-model</artifactId>
+      <version>${autograding-model.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>edu.hm.hafner</groupId>
+          <artifactId>analysis-model</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.google.errorprone</groupId>
+          <artifactId>error_prone_annotations</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.github.spotbugs</groupId>
+          <artifactId>spotbugs-annotations</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.apache.commons</groupId>
+          <artifactId>commons-lang3</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>commons-io</groupId>
+          <artifactId>commons-io</artifactId>
+        </exclusion>
+        <exclusion>
+          <artifactId>coverage-model</artifactId>
+          <groupId>edu.hm.hafner</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>codingstyle</artifactId>
+          <groupId>edu.hm.hafner</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>streamex</artifactId>
+          <groupId>one.util</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>edu.hm.hafner</groupId>
+      <artifactId>analysis-model</artifactId>
+      <version>${analysis-model.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>com.github.spotbugs</groupId>
+          <artifactId>spotbugs-annotations</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>commons-io</groupId>
+          <artifactId>commons-io</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>edu.hm.hafner</groupId>
+      <artifactId>coverage-model</artifactId>
+      <version>${coverage-model.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.kohsuke</groupId>
+      <artifactId>github-api</artifactId>
+      <version>1.318</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.apache.commons</groupId>
+          <artifactId>commons-lang3</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>commons-io</groupId>
+          <artifactId>commons-io</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.fasterxml.jackson.core</groupId>
+          <artifactId>jackson-databind</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>2.15.1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.14.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.testcontainers</groupId>
+      <artifactId>testcontainers</artifactId>
+      <version>${testcontainers.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.testcontainers</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>${testcontainers.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <finalName>${project.artifactId}</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-failsafe-plugin</artifactId>
+        <configuration>
+          <argLine>
+            --add-opens java.base/java.util=ALL-UNNAMED
+            --add-opens java.base/java.lang=ALL-UNNAMED
+          </argLine>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>com.google.cloud.tools</groupId>
+        <artifactId>jib-maven-plugin</artifactId>
+        <version>${jib-maven-plugin.version}</version>
+        <executions>
+          <execution>
+            <id>local-docker</id>
+            <phase>pre-integration-test</phase>
+            <goals>
+              <goal>dockerBuild</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>docker-io</id>
+            <phase>install</phase>
+            <goals>
+              <goal>build</goal>
+            </goals>
+            <configuration>
+              <to>
+                <image>docker.io/uhafner/autograding-github-action:${docker-image-tag}</image>
+                <auth>
+                  <username>${env.DOCKER_IO_USERNAME}</username>
+                  <password>${env.DOCKER_IO_PASSWORD}</password>
+                </auth>
+              </to>
+            </configuration>
+          </execution>
+        </executions>
+        <configuration>
+          <to>
+            <image>docker.io/uhafner/autograding-github-action:${docker-image-tag}</image>
+            <auth>
+              <username>${env.DOCKER_IO_USERNAME}</username>
+              <password>${env.DOCKER_IO_PASSWORD}</password>
+            </auth>
+          </to>
+          <from>
+            <image>maven:3.9.5-eclipse-temurin-17</image>
+          </from>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.revapi</groupId>
+        <artifactId>revapi-maven-plugin</artifactId>
+        <configuration>
+          <skip>true</skip>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration combine.children="append">
+          <compilerArgs>
+            <arg>-Xlint:-varargs</arg>
+            <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED</arg>
+            <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED</arg>
+            <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED</arg>
+            <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED</arg>
+            <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED</arg>
+            <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED</arg>
+            <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED</arg>
+            <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED</arg>
+            <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED</arg>
+            <!-- XXX: The awkward comment formatting used here ensures that the plugin arguments are
+            separated only by spaces. Once we drop support for JDK 8 we can clean this up; later versions
+            do properly handle newline separators. See https://github.com/google/error-prone/pull/1115.
+            -->
+            <arg>-Xplugin:ErrorProne <!--
+                ErrorProne configuration:
+                --> -XepExcludedPaths:.*/generated-test-sources/.* <!--
+                ErrorProne configuration:
+                --> -XepAllDisabledChecksAsWarnings <!--
+                ErrorProne configuration:
+                --> -XepIgnoreUnknownCheckNames <!--
+                ErrorProne configuration:
+                --> -XepDisableWarningsInGeneratedCode <!--
+                ErrorProne configuration:
+                --> -XepAllErrorsAsWarnings <!--
+                NullAway configuration:
+                --> -Xep:NullAway:WARN <!--
+                NullAway configuration:
+                --> -XepOpt:NullAway:AnnotatedPackages=edu.hm.hafner <!--
+                Disabled ErrorProne rule:
+                --> -Xep:ReturnMissingNullable:OFF <!--
+                Disabled ErrorProne rule:
+                --> -Xep:CannotMockFinalMethod:OFF <!--
+                Disabled ErrorProne rule:
+                --> -Xep:Java8ApiChecker:OFF <!--
+                Disabled ErrorProne rule:
+                --> -Xep:ImmutableMemberCollection:OFF <!--
+                Disabled ErrorProne rule:
+                --> -Xep:PreferJavaTimeOverload:OFF <!--
+                Disabled ErrorProne rule:
+                --> -Xep:EqualsGetClass:OFF <!--
+                Disabled ErrorProne rule:
+                --> -Xep:AndroidJdkLibsChecker:OFF <!--
+                Disabled ErrorProne rule:
+                --> -Xep:Java7ApiChecker:OFF <!--
+                Disabled ErrorProne rule:
+                --> -Xep:Var:OFF <!--
+                Disabled ErrorProne rule:
+                --> -Xep:PrivateConstructorForUtilityClass:OFF <!--
+                Disabled ErrorProne rule:
+                --> -Xep:MethodCanBeStatic:OFF <!--
+                Disabled ErrorProne rule:
+                --> -Xep:WildcardImport:OFF <!--
+                Disabled ErrorProne rule:
+                --> -Xep:ThrowsUncheckedException:OFF <!--
+                Disabled ErrorProne rule:
+                --> -Xep:UnusedMethod:OFF <!--
+                Disabled ErrorProne rule:
+                --> -Xep:BooleanParameter:OFF <!--
+                Disabled ErrorProne rule:
+                --> -Xep:MustBeClosedChecker:OFF <!--
+                Disabled ErrorProne rule:
+                --> -Xep:UnnecessaryFinal:OFF <!--
+                Disabled ErrorPron
+                e rule:
+                --> -Xep:SystemOut:OFF <!--
+                Disabled ErrorProne rule:
+                --> -Xep:NullableDereference:OFF
+            </arg>
+            <!-- The Error Prone plugin makes certain
+                assumptions about the state of the AST at the
+                moment it is invoked. Those assumptions are met
+                when using the `simple` compile policy. This
+                flag may be dropped after resolution of
+                https://bugs.openjdk.java.net/browse/JDK-8155674. -->
+            <arg>-XDcompilePolicy=simple</arg>
+          </compilerArgs>
+        </configuration>
+      </plugin>
+
+    </plugins>
+  </build>
+
 </project>

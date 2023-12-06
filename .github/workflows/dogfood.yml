@@ -1,0 +1,135 @@
+name: Eat your own dog food
+
+on:
+  push
+
+jobs:
+  grade-github-action:
+    name: Run autograding for the GitHub Autograding Action
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+          check-latest: true
+          cache: 'maven'
+      - name: Set up Maven
+        uses: stCarolas/setup-maven@v4.5
+        with:
+          maven-version: 3.9.5
+      - name: Build
+        run: mvn -ntp clean verify -Ppit | tee maven.log
+      - name: Extract pull request number
+        uses: jwalton/gh-find-current-pr@v1
+        id: pr
+      - name: Run Autograding
+        uses: uhafner/autograding-github-action@v3.4.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          pr-number: ${{ steps.pr.outputs.number }}
+          checks-name: 'Quality Checks'
+          config: >
+            {
+              "tests": {
+                "tools": [
+                  {
+                    "id": "test",
+                    "name": "Unittests",
+                    "pattern": "**/target/*-reports/TEST*.xml"
+                  }
+                ],
+                "name": "Tests",
+                "passedImpact": 0,
+                "skippedImpact": -1,
+                "failureImpact": -5,
+                "maxScore": 100
+              },
+              "analysis": [
+                {
+                  "name": "Style",
+                  "id": "style",
+                  "tools": [
+                    {
+                      "id": "checkstyle",
+                      "name": "CheckStyle",
+                      "pattern": "**/target/checkstyle-result.xml"
+                    },
+                    {
+                      "id": "pmd",
+                      "name": "PMD",
+                      "pattern": "**/target/pmd.xml"
+                    },
+                    {
+                      "id": "error-prone",
+                      "name": "Error Prone",
+                      "pattern": "**/maven.log"
+                    }
+                  ],
+                  "errorImpact": 1,
+                  "highImpact": 2,
+                  "normalImpact": 3,
+                  "lowImpact": 4,
+                  "maxScore": 100
+                },
+                {
+                  "name": "Bugs",
+                  "id": "bugs",
+                  "icon": "bug",
+                  "tools": [
+                    {
+                      "id": "spotbugs",
+                      "name": "SpotBugs",
+                      "sourcePath": "src/main/java",
+                      "pattern": "**/target/spotbugsXml.xml"
+                    }
+                  ],
+                  "errorImpact": -11,
+                  "highImpact": -12,
+                  "normalImpact": -13,
+                  "lowImpact": -14,
+                  "maxScore": 100
+                }
+              ],
+              "coverage": [
+                {
+                  "tools": [
+                    {
+                      "id": "jacoco",
+                      "sourcePath": "src/main/java",
+                      "name": "Line Coverage",
+                      "metric": "line",
+                      "pattern": "**/target/site/jacoco/jacoco.xml"
+                    },
+                    {
+                      "id": "jacoco",
+                      "sourcePath": "src/main/java",
+                      "name": "Branch Coverage",
+                      "metric": "branch",
+                      "pattern": "**/target/site/jacoco/jacoco.xml"
+                    }
+                  ],
+                  "name": "Code Coverage", 
+                  "maxScore": 100,
+                  "coveredPercentageImpact": 1,
+                  "missedPercentageImpact": -1
+                },
+                {
+                  "tools": [
+                    {
+                      "id": "pit",
+                      "name": "Mutation Coverage",
+                      "metric": "mutation",
+                      "sourcePath": "src/main/java",
+                      "pattern": "**/target/pit-reports/mutations.xml"
+                    }
+                  ],
+                  "name": "Mutation Coverage",
+                  "maxScore": 100,
+                  "coveredPercentageImpact": 1,
+                  "missedPercentageImpact": -1
+                }
+              ]
+            }

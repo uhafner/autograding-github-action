@@ -1,0 +1,68 @@
+@startuml
+
+node ":GitHub Server" <<device>> as github_server {
+    artifact "Git Repository" <<source>> as repo {
+    }
+
+    artifact "actions/checkout" <<executable>> as checkout {
+    }
+
+    artifact "actions/setup-java" <<executable>> as setup_java {
+    }
+
+    artifact "actions/cache" <<executable>> as cache {
+    }
+
+    artifact "uhafner/autograding-github-action" <<executable>> as autograding_action {
+    }
+}
+
+node ":HM Server" <<device>> as hm_server {
+    node "**:VM**" <<execution environment>> as vm {
+        node "**:Ubuntu**" <<execution environment>> as ubuntu {
+            node "**:Docker**" <<execution environment>> as docker {
+                node "**:OpenJDK**" <<execution environment>> as jdk {
+                }
+                mvn .> jdk
+
+                node "**:Maven**" <<execution environment>> as mvn {
+                }
+                mvn ..> autograding_model
+                mvn ..> analysis_model
+                mvn ..> github_api
+                mvn ..> commons_io
+                mvn ..> commons_lang3
+            }
+            docker ..> ubuntu_img
+            docker ..> autograding_img
+        }
+        ubuntu - github_server
+    }
+}
+
+node ":Docker Hub" <<device>> as docker_hub {
+    artifact "uhafner/autograding-github-action" <<executable>> as autograding_img {
+    }
+
+    artifact "ubuntu" <<executable>> as ubuntu_img {
+    }
+}
+
+node ":Maven Repository Manager" <<device>> as mvn_repo {
+    artifact "autograding-model" <<library>> as autograding_model {
+    }
+
+    artifact "analysis-model" <<library>> as analysis_model {
+    }
+
+    artifact "github-api" <<library>> as github_api {
+    }
+
+    artifact "commons-io" <<library>> as commons_io {
+    }
+
+    artifact "commons-lang3" <<library>> as commons_lang3 {
+    }
+}
+
+@enduml
