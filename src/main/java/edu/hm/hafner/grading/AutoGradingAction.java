@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.NoSuchElementException;
+import java.util.StringJoiner;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
@@ -74,10 +75,12 @@ public class AutoGradingAction {
 
             System.out.println("Commenting on commit or pull request...");
 
+            var errors = createErrorMessage(log);
+
             pullRequestWriter.addComment(getChecksName(), score,
                     results.getHeader(), results.getTextSummary(score),
-                    results.getMarkdownDetails(score),
-                    results.getMarkdownSummary(score, ":mortar_board: " + getChecksName()),
+                    results.getMarkdownDetails(score) + errors,
+                    results.getMarkdownSummary(score, ":mortar_board: " + getChecksName()) + errors,
                     ChecksStatus.SUCCESS);
 
             var environmentVariables = createEnvironmentVariables(score);
@@ -102,6 +105,21 @@ public class AutoGradingAction {
         System.out.println("------------------------------------------------------------------");
         System.out.println("------------------------- End Grading ----------------------------");
         System.out.println("------------------------------------------------------------------");
+    }
+
+    private String createErrorMessage(final FilteredLog log) {
+        if (log.hasErrors()) {
+            StringBuilder errors = new StringBuilder();
+
+            errors.append("## Error Messages\n```\n");
+            var messages = new StringJoiner("\n");
+            log.getErrorMessages().forEach(messages::add);
+            errors.append(messages);
+            errors.append("\n```\n");
+
+            return errors.toString();
+        }
+        return StringUtils.EMPTY;
     }
 
     String createEnvironmentVariables(final AggregatedScore score) {

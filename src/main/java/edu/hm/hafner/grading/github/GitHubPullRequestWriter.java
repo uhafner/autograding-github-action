@@ -15,6 +15,7 @@ import org.apache.commons.lang3.StringUtils;
 import edu.hm.hafner.analysis.Issue;
 import edu.hm.hafner.analysis.Report;
 import edu.hm.hafner.coverage.FileNode;
+import edu.hm.hafner.coverage.Metric;
 import edu.hm.hafner.coverage.Mutation;
 import edu.hm.hafner.coverage.Node;
 import edu.hm.hafner.grading.AggregatedScore;
@@ -195,6 +196,7 @@ public class GitHubPullRequestWriter {
     private void createLineAnnotationsForMissedLines(final AggregatedScore score, final String prefix,
             final Set<String> prefixes, final Output output) {
         score.getCodeCoverageScores().stream()
+                .filter(coverageScore -> coverageScore.getMetric() == Metric.LINE)
                 .map(CoverageScore::getReport)
                 .map(Node::getAllFileNodes)
                 .flatMap(Collection::stream)
@@ -231,6 +233,7 @@ public class GitHubPullRequestWriter {
     private void createLineAnnotationsForPartiallyCoveredLines(final AggregatedScore score, final String prefix,
             final Set<String> prefixes, final Output output) {
         score.getCodeCoverageScores().stream()
+                .filter(coverageScore -> coverageScore.getMetric() == Metric.BRANCH)
                 .map(CoverageScore::getReport)
                 .map(Node::getAllFileNodes)
                 .flatMap(Collection::stream)
@@ -261,6 +264,7 @@ public class GitHubPullRequestWriter {
     private void createLineAnnotationsForSurvivedMutations(final AggregatedScore score, final String prefix,
             final Set<String> prefixes, final Output output) {
         score.getMutationCoverageScores().stream()
+                .filter(coverageScore -> coverageScore.getMetric() == Metric.MUTATION)
                 .map(CoverageScore::getReport)
                 .map(Node::getAllFileNodes)
                 .flatMap(Collection::stream)

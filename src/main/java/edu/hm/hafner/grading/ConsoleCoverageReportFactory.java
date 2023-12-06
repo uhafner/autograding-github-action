@@ -20,27 +20,38 @@ import edu.hm.hafner.util.FilteredLog;
  *
  * @author Ullrich Hafner
  */
-public final class ConsoleCoverageReportFactory extends ReportFactory implements CoverageReportFactory {
+public final class ConsoleCoverageReportFactory implements CoverageReportFactory {
+    private static final ReportFinder REPORT_FINDER = new ReportFinder();
+
     @Override
     public Node create(final ToolConfiguration tool, final FilteredLog log) {
         var parser = new ParserRegistry().getParser(StringUtils.upperCase(tool.getId()), ProcessingMode.FAIL_FAST);
 
         var nodes = new ArrayList<Node>();
-        for (Path file : findFiles(tool, log)) {
+        for (Path file : REPORT_FINDER.find(tool, log)) {
             var node = parser.parse(new FileReaderFactory(file).create(), log);
             log.logInfo("- %s: %s", file, extractMetric(tool, node));
             nodes.add(node);
         }
 
-        var aggregation = Node.merge(nodes);
-        log.logInfo("-> %s Total: %s", tool.getDisplayName(), extractMetric(tool, aggregation));
-        if (tool.getName().isBlank()) {
-            return aggregation;
+        if (nodes.isEmpty()) {
+            return createContainer(tool);
         }
-        // Wrap the node into a container with the specified tool name
-        var containerNode = new ContainerNode(tool.getName());
-        containerNode.addChild(aggregation);
-        return containerNode;
+        else {
+            var aggregation = Node.merge(nodes);
+            log.logInfo("-> %s Total: %s", tool.getDisplayName(), extractMetric(tool, aggregation));
+            if (tool.getName().isBlank()) {
+                return aggregation;
+            }
+            // Wrap the node into a container with the specified tool name
+            var containerNode = createContainer(tool);
+            containerNode.addChild(aggregation);
+            return containerNode;
+        }
+    }
+
+    private ContainerNode createContainer(final ToolConfiguration tool) {
+        return new ContainerNode(tool.getName());
     }
 
     private String extractMetric(final ToolConfiguration tool, final Node node) {
