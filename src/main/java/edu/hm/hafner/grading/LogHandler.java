@@ -42,6 +42,9 @@ public class LogHandler {
         return logger.getErrorMessages().size();
     }
 
+    /**
+     * Prints all new log messages to the {@link PrintStream}.
+     */
     public void print() {
         printInfoMessages();
         printErrorMessages();

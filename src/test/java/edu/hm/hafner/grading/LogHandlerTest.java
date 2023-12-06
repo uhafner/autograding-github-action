@@ -16,11 +16,7 @@ import static org.assertj.core.api.Assertions.*;
  * @author Andreas Neumeier
  */
 class LogHandlerTest {
-    private static final String LOG_HANDLER_NAME = "TestHandler";
-    private static final String MESSAGE = "TestMessage";
     private static final String NOT_SHOWN = "Not shown";
-    private static final String ADDITIONAL_MESSAGE = "Additional";
-    private static final String LOGGER_MESSAGE = "Logger message";
 
     @ValueSource(booleans = {true, false})
     @ParameterizedTest(name = "Log some messages and evaluate quiet flag value (quiet = {0})")
@@ -45,7 +41,7 @@ class LogHandlerTest {
             assertThat(outputStream.toString()).isEmpty();
         }
         else {
-            assertThat(outputStream.toString()).contains("Info 1", "Info 2", "Error 1");
+            assertThat(outputStream.toString()).contains("Info 1", "Info 2", "Error 1").doesNotContain(NOT_SHOWN);
         }
 
         logger.logInfo("Info 3");
@@ -58,7 +54,11 @@ class LogHandlerTest {
             assertThat(outputStream.toString()).isEmpty();
         }
         else {
-            assertThat(outputStream.toString()).contains("Info 1", "Info 2", "Error 1", "Info 3", "Info 4", "Error 2");
+            assertThat(outputStream.toString())
+                    .containsOnlyOnce("Info 1")
+                    .containsOnlyOnce("Info 2")
+                    .containsOnlyOnce("Error 1")
+                    .contains("Info 3", "Info 4", "Error 2");
         }
     }
 }
