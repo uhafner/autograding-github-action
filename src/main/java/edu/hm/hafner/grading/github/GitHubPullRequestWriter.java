@@ -195,10 +195,14 @@ public class GitHubPullRequestWriter {
 
     private void createLineAnnotationsForMissedLines(final AggregatedScore score, final String prefix,
             final Set<String> prefixes, final Output output) {
-        score.getCodeCoverageScores().stream()
+        var reports = score.getCodeCoverageScores().stream()
                 .filter(coverageScore -> coverageScore.getMetric() == Metric.LINE)
-                .map(CoverageScore::getReport)
-                .map(Node::getAllFileNodes)
+                .map(CoverageScore::getReport).toList();
+        System.out.println("Reports: " + reports);
+        var files = reports.stream()
+                .map(Node::getAllFileNodes).toList();
+        System.out.println("Files: " + files);
+        files.stream()
                 .flatMap(Collection::stream)
                 .map(file -> createLineCoverageAnnotation(prefix, file, prefixes))
                 .flatMap(Collection::stream)
