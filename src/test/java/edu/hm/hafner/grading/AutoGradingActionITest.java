@@ -170,7 +170,7 @@ public class AutoGradingActionITest {
                     .contains("No configuration provided (environment variable CONFIG not set), using default configuration")
                     .contains(new String[] {
                             "Processing 1 test configuration(s)",
-                            "-> Unittests Total: TESTS: 1 tests",
+                            "-> Tests Total: TESTS: 1 tests",
                             "JUnit Score: 100 of 100",
                             "Processing 2 coverage configuration(s)",
                             "-> Line Coverage Total: LINE: 10.93% (33/302)",
