@@ -120,12 +120,14 @@ This metric can be configured using a JSON object `coverage`, see the example be
           "id": "jacoco",
           "name": "Line Coverage",
           "metric": "line",
+          "sourcePath": "src/main/java",
           "pattern": "**/jacoco.xml"
         },
         {
           "id": "jacoco",
           "name": "Branch Coverage",
           "metric": "branch",
+          "sourcePath": "src/main/java",
           "pattern": "**/jacoco.xml"
         }
       ],
@@ -140,6 +142,7 @@ This metric can be configured using a JSON object `coverage`, see the example be
           "id": "pit",
           "name": "Mutation Coverage",
           "metric": "mutation",
+          "sourcePath": "src/main/java",
           "pattern": "**/mutations.xml"
         }
       ],
@@ -198,6 +201,7 @@ This metric can be configured using a JSON object `analysis`, see the example ab
         {
           "id": "spotbugs",
           "name": "SpotBugs",
+          "sourcePath": "src/main/java",
           "pattern": "**/target/spotbugsXml.xml"
         }
       ],
@@ -224,7 +228,6 @@ This action can be configured using the following parameters (see example above)
 - ``config: "{...}"``: optional configuration, see sections above for details. Or consult the [autograding-model](https://github.com/uhafner/autograding-model) project for details. If not specified, a [default configuration](src/main/resources/default-config.json) will be used.
 - ``pr-number: ${{ steps.pr.outputs.number }}``: optional number of the pull request. If not set, then just the checks will be published but not a pull request comment.
 - ``checks-name: "Name of checks"``: optional name of GitHub checks (overwrites the default: "Autograding result").
-- ``files-prefix: "prefix"``: Optional file name prefix to remove from all paths so that files can be found and linked in the repository.
 - ``skip-annotations: true``: Optional flag to skip the creation of annotations (for warnings and missed coverage).
 
 ## Pull Request Comments
