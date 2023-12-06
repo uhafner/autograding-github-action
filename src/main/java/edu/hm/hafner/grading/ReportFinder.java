@@ -11,11 +11,13 @@ import java.nio.file.Paths;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.StringUtils;
 
+import edu.hm.hafner.util.FilteredLog;
 import edu.hm.hafner.util.VisibleForTesting;
 
 /**
@@ -40,6 +42,30 @@ class ReportFinder {
     ReportFinder(final String repository, final String branch) {
         this.repository = repository;
         this.branch = branch;
+    }
+
+    /**
+     * Returns the paths for the specified tool.
+     *
+     * @param tool
+     *         the tool to find the reports for
+     * @param log
+     *         logger
+     *
+     * @return the paths
+     */
+    public List<Path> find(final ToolConfiguration tool, final FilteredLog log) {
+        log.logInfo("Searching for %s results matching file name pattern %s",
+                tool.getDisplayName(), tool.getPattern());
+        List<Path> files = new ReportFinder().find("glob:" + tool.getPattern());
+
+        if (files.isEmpty()) {
+            log.logError("No matching report files found when using pattern '%s'! "
+                    + "Configuration error for '%s'?", tool.getPattern(), tool.getDisplayName());
+        }
+
+        Collections.sort(files);
+        return files;
     }
 
     /**
@@ -100,7 +126,8 @@ class ReportFinder {
                 pathMatcher = FileSystems.getDefault().getPathMatcher(syntaxAndPattern);
             }
             catch (IllegalArgumentException exception) {
-                throw new IllegalArgumentException("Pattern not valid for FileSystem.getPathMatcher: " + syntaxAndPattern, exception);
+                throw new IllegalArgumentException(
+                        "Pattern not valid for FileSystem.getPathMatcher: " + syntaxAndPattern, exception);
             }
         }
 

@@ -14,7 +14,9 @@ import edu.hm.hafner.util.FilteredLog;
  *
  * @author Ullrich Hafner
  */
-public final class ConsoleAnalysisReportFactory extends ReportFactory implements AnalysisReportFactory {
+public final class ConsoleAnalysisReportFactory implements AnalysisReportFactory {
+    private static final ReportFinder REPORT_FINDER = new ReportFinder();
+
     @Override
     public Report create(final ToolConfiguration tool, final FilteredLog log) {
         ParserDescriptor parser = new ParserRegistry().get(tool.getId());
@@ -22,7 +24,7 @@ public final class ConsoleAnalysisReportFactory extends ReportFactory implements
         var total = new Report(tool.getId(), tool.getDisplayName());
 
         var analysisParser = parser.createParser();
-        for (Path file : findFiles(tool, log)) {
+        for (Path file : REPORT_FINDER.find(tool, log)) {
             Report report = analysisParser.parse(new FileReaderFactory(file));
             report.setOrigin(tool.getId(), tool.getDisplayName());
             log.logInfo("- %s: %d warnings", file, report.size());

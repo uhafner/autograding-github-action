@@ -188,6 +188,35 @@ public class AutoGradingActionITest {
         }
     }
 
+    @Test
+    void shouldShowErrors() throws TimeoutException {
+        try (var container = createContainer()) {
+            container.withWorkingDirectory("/github/workspace").start();
+            assertThat(readStandardOut(container))
+                    .contains(new String[] {
+                            "Processing 1 test configuration(s)",
+                            "-> Tests Total: TESTS: 0 tests",
+                            "Configuration error for 'Tests'?",
+                            "JUnit Score: 100 of 100",
+                            "Processing 2 coverage configuration(s)",
+                            "=> JaCoCo Score: 0 of 100",
+                            "Configuration error for 'Line Coverage'?",
+                            "Configuration error for 'Branch Coverage'?",
+                            "=> PIT Score: 0 of 100",
+                            "Configuration error for 'Mutation Coverage'?",
+                            "Processing 2 static analysis configuration(s)",
+                            "Configuration error for 'CheckStyle'?",
+                            "Configuration error for 'PMD'?",
+                            "Configuration error for 'SpotBugs'?",
+                            "-> CheckStyle Total: 0 warnings",
+                            "-> PMD Total: 0 warnings",
+                            "=> Style Score: 100 of 100",
+                            "-> SpotBugs Total: 0 warnings",
+                            "=> Bugs Score: 100 of 100",
+                            "Total score - 300 of 500 (unit tests: 100/100, code coverage: 0/100, mutation coverage: 0/100, analysis: 200/200)"});
+        }
+    }
+
     private GenericContainer<?> createContainer() {
         return new GenericContainer<>(DockerImageName.parse("uhafner/autograding-github-action:3.5.0-SNAPSHOT"));
     }

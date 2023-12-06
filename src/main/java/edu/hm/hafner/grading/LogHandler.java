@@ -58,7 +58,7 @@ public class LogHandler {
     private void printErrorMessages() {
         var size = getSizeOfErrorMessages();
         if (errorPosition < size && !quiet) {
-            logger.getErrorMessages().subList(infoPosition, size).forEach(printStream::println);
+            logger.getErrorMessages().subList(errorPosition, size).forEach(printStream::println);
             errorPosition = logger.getErrorMessages().size();
         }
     }
