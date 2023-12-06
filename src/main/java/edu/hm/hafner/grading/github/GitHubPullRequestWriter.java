@@ -208,12 +208,18 @@ public class GitHubPullRequestWriter {
     private List<Annotation> createLineCoverageAnnotation(final String prefix, final FileNode file,
             final Set<String> prefixes) {
         return file.getMissedLineRanges().stream()
-                .map(range -> new Annotation(cleanFileName(prefix, file.getRelativePath(), prefixes),
-                        range.getStart(), range.getEnd(),
-                        AnnotationLevel.WARNING,
-                        getMissedLinesDescription(range))
-                        .withTitle(getMissedLinesMessage(range)))
+                .map(range -> getAnnotation(prefix, file, prefixes, range))
                 .collect(Collectors.toList());
+    }
+
+    private Annotation getAnnotation(final String prefix, final FileNode file, final Set<String> prefixes,
+            final LineRange range) {
+        System.out.println(">>>> Missed line " + file.getRelativePath() + ": " + range.getStart() + "-" + range.getEnd());
+        return new Annotation(cleanFileName(prefix, file.getRelativePath(), prefixes),
+                range.getStart(), range.getEnd(),
+                AnnotationLevel.WARNING,
+                getMissedLinesDescription(range))
+                .withTitle(getMissedLinesMessage(range));
     }
 
     private String getMissedLinesMessage(final LineRange range) {
