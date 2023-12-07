@@ -219,7 +219,7 @@ Normally, you would only use a negative impact for this metric: each warning (of
 
 All warnings will be shown as annotations in the pull request:
 
-![Warning annotations](images/warning-annotations.png )
+![Warning annotations](images/analysis-annotations.png )
 
 ## Action Parameters
 
