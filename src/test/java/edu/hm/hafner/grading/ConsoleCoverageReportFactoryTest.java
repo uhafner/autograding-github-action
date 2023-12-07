@@ -13,12 +13,7 @@ import edu.hm.hafner.coverage.Metric;
 import edu.hm.hafner.grading.github.GitHubPullRequestWriter;
 import edu.hm.hafner.util.FilteredLog;
 
-import org.kohsuke.github.GHCheckRunBuilder.Annotation;
-import org.kohsuke.github.GHCheckRunBuilder.Output;
-
 import static org.assertj.core.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.*;
 
 class ConsoleCoverageReportFactoryTest {
     private static final String CONFIGURATION = """
@@ -100,10 +95,6 @@ class ConsoleCoverageReportFactoryTest {
                 "-> Mutation Coverage Total: MUTATION: 7.86% (11/140)",
                 "=> PIT Score: 16 of 100");
 
-        var writer = new GitHubPullRequestWriter();
-        var output = mock(Output.class);
-        writer.handleAnnotations(score, output);
-
         assertThat(score.getCoveredFiles(Metric.LINE)
                 .stream()
                 .map(FileNode::getMissedLineRanges)
@@ -123,7 +114,26 @@ class ConsoleCoverageReportFactoryTest {
                 .filter(Predicate.not(Map::isEmpty))
                 .map(Map::keySet)
                 .flatMap(Collection::stream)).containsExactlyInAnyOrder(147, 29);
-        verify(output, times(13 + 2 + 2)).add(any(Annotation.class));
+
+        var writer = new GitHubPullRequestWriter();
+        assertThat(writer.createAnnotations(score)).hasSize(13 + 2 + 2).extracting("message")
+                .containsOnly("Lines 15-27 are not covered by tests",
+                        "Lines 62-79 are not covered by tests",
+                        "Lines 102-103 are not covered by tests",
+                        "Lines 23-49 are not covered by tests",
+                        "Lines 13-15 are not covered by tests",
+                        "Lines 19-68 are not covered by tests",
+                        "Lines 16-27 are not covered by tests",
+                        "Lines 41-140 are not covered by tests",
+                        "Lines 152-153 are not covered by tests",
+                        "Line 160 is not covered by tests",
+                        "Lines 164-166 are not covered by tests",
+                        "Lines 17-32 are not covered by tests",
+                        "Lines 40-258 are not covered by tests",
+                        "Line 146 is only partially covered, one branch is missing",
+                        "Line 159 is only partially covered, one branch is missing",
+                        "One mutation survived in line 147 (VoidMethodCallMutator)",
+                        "One mutation survived in line 29 (EmptyObjectReturnValsMutator)");
     }
 
     private void assertFileNodes(final List<FileNode> fileNodes) {

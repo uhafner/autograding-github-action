@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -98,7 +99,7 @@ public class GitHubPullRequestWriter {
                     .withConclusion(status == ChecksStatus.SUCCESS ? Conclusion.SUCCESS : Conclusion.FAILURE);
 
             Output output = new Output(header, summary).withText(comment);
-            handleAnnotations(score, output);
+            createAnnotations(score).forEach(output::add);
 
             check.add(output);
             GHCheckRun run = check.create();
@@ -129,21 +130,32 @@ public class GitHubPullRequestWriter {
         return value;
     }
 
+    /**
+     * Creates a list of annotations for the specified score. The annotations are created for all issues, missed lines,
+     * partially covered lines, and survived mutations.
+     *
+     * @param score
+     *         the score to create the annotations for
+     *
+     * @return the annotations
+     */
     @VisibleForTesting
-    public void handleAnnotations(final AggregatedScore score, final Output output) {
+    public List<Annotation> createAnnotations(final AggregatedScore score) {
+        var annotations = new ArrayList<Annotation>();
         if (getEnv("SKIP_ANNOTATIONS").isEmpty()) {
             var prefix = computeAbsolutePathPrefixToRemove();
 
             var additionalAnalysisSourcePaths = extractAdditionalSourcePaths(score.getAnalysisScores());
-            createAnnotationsForIssues(score, prefix, additionalAnalysisSourcePaths, output);
+            annotations.addAll(createAnnotationsForIssues(score, prefix, additionalAnalysisSourcePaths));
 
             var additionalCoverageSourcePaths = extractAdditionalSourcePaths(score.getCodeCoverageScores());
-            createAnnotationsForMissedLines(score, prefix, additionalCoverageSourcePaths, output);
-            createAnnotationsForPartiallyCoveredLines(score, prefix, additionalCoverageSourcePaths, output);
+            annotations.addAll(createAnnotationsForMissedLines(score, prefix, additionalCoverageSourcePaths));
+            annotations.addAll(createAnnotationsForPartiallyCoveredLines(score, prefix, additionalCoverageSourcePaths));
 
             var additionalMutationSourcePaths = extractAdditionalSourcePaths(score.getMutationCoverageScores());
-            createAnnotationsForSurvivedMutations(score, prefix, additionalMutationSourcePaths, output);
+            annotations.addAll(createAnnotationsForSurvivedMutations(score, prefix, additionalMutationSourcePaths));
         }
+        return annotations;
     }
 
     private String computeAbsolutePathPrefixToRemove() {
@@ -159,15 +171,15 @@ public class GitHubPullRequestWriter {
                 .map(ToolConfiguration::getSourcePath).collect(Collectors.toSet());
     }
 
-    private void createAnnotationsForIssues(final AggregatedScore score, final String prefix,
-            final Set<String> sourcePaths, final Output output) {
-        score.getIssues().stream()
+    private List<Annotation> createAnnotationsForIssues(final AggregatedScore score,
+            final String prefix, final Set<String> sourcePaths) {
+        return score.getIssues().stream()
                 .map(issue -> createAnnotationForIssue(issue, prefix, sourcePaths))
-                .forEach(output::add);
+                .toList();
     }
 
-    private Annotation createAnnotationForIssue(final Issue issue, final String prefix,
-            final Set<String> sourcePaths) {
+    private Annotation createAnnotationForIssue(final Issue issue,
+            final String prefix, final Set<String> sourcePaths) {
         var path = createRelativeRepositoryPath(issue.getFileName(), prefix, sourcePaths);
         var relativePath = StringUtils.removeStart(
                 StringUtils.removeStart(path, GITHUB_WORKSPACE_REL),
@@ -185,16 +197,16 @@ public class GitHubPullRequestWriter {
         return annotation;
     }
 
-    private void createAnnotationsForMissedLines(final AggregatedScore score, final String prefix,
-            final Set<String> sourcePaths, final Output output) {
-        score.getCoveredFiles(Metric.LINE).stream()
+    private List<Annotation> createAnnotationsForMissedLines(final AggregatedScore score,
+            final String prefix, final Set<String> sourcePaths) {
+        return score.getCoveredFiles(Metric.LINE).stream()
                 .map(file -> createAnnotationsForMissedLines(file, prefix, sourcePaths))
                 .flatMap(Collection::stream)
-                .forEach(output::add);
+                .toList();
     }
 
-    private List<Annotation> createAnnotationsForMissedLines(final FileNode file, final String prefix,
-            final Set<String> sourcePaths) {
+    private List<Annotation> createAnnotationsForMissedLines(final FileNode file,
+            final String prefix, final Set<String> sourcePaths) {
         return file.getMissedLineRanges().stream()
                 .map(range -> createAnnotationForMissedLineRange(file, range, prefix, sourcePaths))
                 .collect(Collectors.toList());
@@ -224,16 +236,16 @@ public class GitHubPullRequestWriter {
         return String.format("Lines %d-%d are not covered by tests", range.getStart(), range.getEnd());
     }
 
-    private void createAnnotationsForPartiallyCoveredLines(final AggregatedScore score, final String prefix,
-            final Set<String> sourcePaths, final Output output) {
-        score.getCoveredFiles(Metric.BRANCH).stream()
+    private List<Annotation> createAnnotationsForPartiallyCoveredLines(final AggregatedScore score,
+            final String prefix, final Set<String> sourcePaths) {
+        return score.getCoveredFiles(Metric.BRANCH).stream()
                 .map(file -> createAnnotationsForMissedBranches(file, prefix, sourcePaths))
                 .flatMap(Collection::stream)
-                .forEach(output::add);
+                .toList();
     }
 
-    private List<Annotation> createAnnotationsForMissedBranches(final FileNode file, final String prefix,
-            final Set<String> sourcePaths) {
+    private List<Annotation> createAnnotationsForMissedBranches(final FileNode file,
+            final String prefix, final Set<String> sourcePaths) {
         return file.getPartiallyCoveredLines().entrySet().stream()
                 .map(entry -> createAnnotationForMissedBranches(file, entry, prefix, sourcePaths))
                 .collect(Collectors.toList());
@@ -257,8 +269,8 @@ public class GitHubPullRequestWriter {
         return String.format("Line %d is only partially covered, %d branches are missing", line, missed);
     }
 
-    private String createRelativeRepositoryPath(final String fileName, final String prefix,
-            final Set<String> sourcePaths) {
+    private String createRelativeRepositoryPath(final String fileName,
+            final String prefix, final Set<String> sourcePaths) {
         var cleaned = StringUtils.removeStart(fileName, prefix);
         if (Files.exists(Path.of(cleaned))) {
             return cleaned;
@@ -272,24 +284,24 @@ public class GitHubPullRequestWriter {
         return cleaned;
     }
 
-    private void createAnnotationsForSurvivedMutations(final AggregatedScore score, final String prefix,
-            final Set<String> sourcePaths, final Output output) {
-        score.getCoveredFiles(Metric.MUTATION).stream()
+    private List<Annotation> createAnnotationsForSurvivedMutations(final AggregatedScore score,
+            final String prefix, final Set<String> sourcePaths) {
+        return score.getCoveredFiles(Metric.MUTATION).stream()
                 .map(file -> createAnnotationsForSurvivedMutations(file, prefix, sourcePaths))
                 .flatMap(Collection::stream)
-                .forEach(output::add);
+                .toList();
     }
 
-    private List<Annotation> createAnnotationsForSurvivedMutations(final FileNode file, final String prefix,
-            final Set<String> sourcePaths) {
+    private List<Annotation> createAnnotationsForSurvivedMutations(final FileNode file,
+            final String prefix, final Set<String> sourcePaths) {
         return file.getSurvivedMutationsPerLine().entrySet().stream()
                 .map(entry -> createAnnotationForSurvivedMutation(file, entry, prefix, sourcePaths))
                 .collect(Collectors.toList());
     }
 
     private Annotation createAnnotationForSurvivedMutation(final FileNode file,
-            final Entry<Integer, List<Mutation>> mutationsPerLine, final String prefix,
-            final Set<String> sourcePaths) {
+            final Entry<Integer, List<Mutation>> mutationsPerLine,
+            final String prefix, final Set<String> sourcePaths) {
         return new Annotation(createRelativeRepositoryPath(file.getRelativePath(), prefix, sourcePaths),
                 mutationsPerLine.getKey(),
                 AnnotationLevel.WARNING,
