@@ -22,6 +22,7 @@ import edu.hm.hafner.grading.Configuration;
 import edu.hm.hafner.grading.Score;
 import edu.hm.hafner.grading.ToolConfiguration;
 import edu.hm.hafner.util.LineRange;
+import edu.hm.hafner.util.VisibleForTesting;
 
 import org.kohsuke.github.GHCheckRun;
 import org.kohsuke.github.GHCheckRun.AnnotationLevel;
@@ -128,7 +129,8 @@ public class GitHubPullRequestWriter {
         return value;
     }
 
-    private void handleAnnotations(final AggregatedScore score, final Output output) {
+    @VisibleForTesting
+    public void handleAnnotations(final AggregatedScore score, final Output output) {
         if (getEnv("SKIP_ANNOTATIONS").isEmpty()) {
             var prefix = computeAbsolutePathPrefixToRemove();
 

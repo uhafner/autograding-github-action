@@ -3,9 +3,14 @@ package edu.hm.hafner.grading;
 import org.junit.jupiter.api.Test;
 
 import edu.hm.hafner.analysis.Issue;
+import edu.hm.hafner.grading.github.GitHubPullRequestWriter;
 import edu.hm.hafner.util.FilteredLog;
 
+import org.kohsuke.github.GHCheckRunBuilder.Annotation;
+import org.kohsuke.github.GHCheckRunBuilder.Output;
+
 import static org.assertj.core.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 class ConsoleAnalysisReportFactoryTest {
     private static final String CONFIGURATION = """
@@ -51,6 +56,7 @@ class ConsoleAnalysisReportFactoryTest {
               ]
             }
             """;
+    private static final int EXPECTED_ISSUES = 61;
 
     @Test
     void shouldCreateAggregation() {
@@ -59,6 +65,7 @@ class ConsoleAnalysisReportFactoryTest {
 
         score.gradeAnalysis(new ConsoleAnalysisReportFactory());
 
+        assertThat(score.getIssues()).hasSize(EXPECTED_ISSUES);
         assertThat(score.getIssues()).extracting(Issue::getBaseName).containsOnly(
                 "LogHandler.java",
                 "Assignment00.java",
@@ -117,6 +124,11 @@ class ConsoleAnalysisReportFactoryTest {
                 "- ./src/test/resources/spotbugs/spotbugsXml.xml: 1 warnings",
                 "-> SpotBugs Total: 1 warnings",
                 "=> Bugs Score: 86 of 100");
-    }
 
+        var writer = new GitHubPullRequestWriter();
+        var output = mock(Output.class);
+        writer.handleAnnotations(score, output);
+
+        verify(output, times(EXPECTED_ISSUES)).add(any(Annotation.class));
+    }
 }
