@@ -276,8 +276,6 @@
                 Disabled ErrorProne rule:
                 --> -Xep:BooleanParameter:OFF <!--
                 Disabled ErrorProne rule:
-                --> -Xep:MustBeClosedChecker:OFF <!--
-                Disabled ErrorProne rule:
                 --> -Xep:UnnecessaryFinal:OFF <!--
                 Disabled ErrorPron
                 e rule:
