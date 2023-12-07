@@ -257,7 +257,7 @@ public class GitHubPullRequestWriter {
 
     private String createRelativeRepositoryPath(final String fileName, final String prefix,
             final Set<String> sourcePaths) {
-        var cleaned = removeStart(fileName, prefix);
+        var cleaned = StringUtils.removeStart(fileName, prefix);
         if (Files.exists(Path.of(cleaned))) {
             return cleaned;
         }
