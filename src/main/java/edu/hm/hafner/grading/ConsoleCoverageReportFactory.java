@@ -35,7 +35,7 @@ public final class ConsoleCoverageReportFactory implements CoverageReportFactory
         }
 
         if (nodes.isEmpty()) {
-            return createContainer(tool);
+            return createEmptyContainer(tool);
         }
         else {
             var aggregation = Node.merge(nodes);
@@ -44,13 +44,13 @@ public final class ConsoleCoverageReportFactory implements CoverageReportFactory
                 return aggregation;
             }
             // Wrap the node into a container with the specified tool name
-            var containerNode = createContainer(tool);
+            var containerNode = createEmptyContainer(tool);
             containerNode.addChild(aggregation);
             return containerNode;
         }
     }
 
-    private ContainerNode createContainer(final ToolConfiguration tool) {
+    private ContainerNode createEmptyContainer(final ToolConfiguration tool) {
         return new ContainerNode(tool.getName());
     }
 

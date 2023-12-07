@@ -7,21 +7,18 @@ import java.time.Instant;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.Map.Entry;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.StringUtils;
 
 import edu.hm.hafner.analysis.Issue;
-import edu.hm.hafner.analysis.Report;
 import edu.hm.hafner.coverage.FileNode;
 import edu.hm.hafner.coverage.Metric;
 import edu.hm.hafner.coverage.Mutation;
-import edu.hm.hafner.coverage.Node;
 import edu.hm.hafner.grading.AggregatedScore;
-import edu.hm.hafner.grading.AnalysisScore;
 import edu.hm.hafner.grading.Configuration;
-import edu.hm.hafner.grading.CoverageScore;
 import edu.hm.hafner.grading.Score;
 import edu.hm.hafner.grading.ToolConfiguration;
 import edu.hm.hafner.util.LineRange;
@@ -44,6 +41,10 @@ import org.kohsuke.github.GitHubBuilder;
  */
 @SuppressWarnings("PMD.SystemPrintln")
 public class GitHubPullRequestWriter {
+
+    private static final String GITHUB_WORKSPACE_REL = "/github/workspace/./";
+    private static final String GITHUB_WORKSPACE_ABS = "/github/workspace/";
+
     /** Status of the checks result. */
     public enum ChecksStatus {
         SUCCESS,
@@ -132,14 +133,14 @@ public class GitHubPullRequestWriter {
             var prefix = computeAbsolutePathPrefixToRemove();
 
             var additionalAnalysisSourcePaths = extractAdditionalSourcePaths(score.getAnalysisScores());
-            createLineAnnotationsForWarnings(score, prefix, additionalAnalysisSourcePaths, output);
+            createAnnotationsForIssues(score, prefix, additionalAnalysisSourcePaths, output);
 
             var additionalCoverageSourcePaths = extractAdditionalSourcePaths(score.getCodeCoverageScores());
-            createLineAnnotationsForMissedLines(score, prefix, additionalCoverageSourcePaths, output);
-            createLineAnnotationsForPartiallyCoveredLines(score, prefix, additionalCoverageSourcePaths, output);
+            createAnnotationsForMissedLines(score, prefix, additionalCoverageSourcePaths, output);
+            createAnnotationsForPartiallyCoveredLines(score, prefix, additionalCoverageSourcePaths, output);
 
             var additionalMutationSourcePaths = extractAdditionalSourcePaths(score.getMutationCoverageScores());
-            createLineAnnotationsForSurvivedMutations(score, prefix, additionalMutationSourcePaths, output);
+            createAnnotationsForSurvivedMutations(score, prefix, additionalMutationSourcePaths, output);
         }
     }
 
@@ -156,73 +157,54 @@ public class GitHubPullRequestWriter {
                 .map(ToolConfiguration::getSourcePath).collect(Collectors.toSet());
     }
 
-    private void createLineAnnotationsForWarnings(final AggregatedScore score, final String prefix,
-            final Set<String> prefixes, final Output output) {
-        score.getAnalysisScores().stream()
-                .map(AnalysisScore::getReport)
-                .flatMap(Report::stream)
-                .map(issue -> createAnnotation(prefix, issue, prefixes))
+    private void createAnnotationsForIssues(final AggregatedScore score, final String prefix,
+            final Set<String> sourcePaths, final Output output) {
+        score.getIssues().stream()
+                .map(issue -> createAnnotationForIssue(issue, prefix, sourcePaths))
                 .forEach(output::add);
     }
 
-    private Annotation createAnnotation(final String prefix, final Issue issue, final Set<String> prefixes) {
-        var path = cleanFileName(prefix, issue.getFileName(), prefixes);
-        var removedDockerPath = StringUtils.removeStart(path, "/github/workspace/./");
-        var relativePath = StringUtils.removeStart(removedDockerPath, "/github/workspace/");
+    private Annotation createAnnotationForIssue(final Issue issue, final String prefix,
+            final Set<String> sourcePaths) {
+        var path = createRelativeRepositoryPath(issue.getFileName(), prefix, sourcePaths);
+        var relativePath = StringUtils.removeStart(
+                StringUtils.removeStart(path, GITHUB_WORKSPACE_REL),
+                GITHUB_WORKSPACE_ABS);
+
         Annotation annotation = new Annotation(relativePath,
                 issue.getLineStart(), issue.getLineEnd(),
                 AnnotationLevel.WARNING, issue.getMessage())
                 .withTitle(issue.getOriginName() + ": " + issue.getType());
+
         if (issue.getLineStart() == issue.getLineEnd()) {
             return annotation.withStartColumn(issue.getColumnStart()).withEndColumn(issue.getColumnEnd());
         }
+
         return annotation;
     }
 
-    private String cleanFileName(final String prefix, final String fileName, final Set<String> prefixes) {
-        var cleaned = StringUtils.removeStart(fileName, prefix);
-        if (Files.exists(Path.of(cleaned))) {
-            return cleaned;
-        }
-        for (String s : prefixes) {
-            var added = s + "/" + cleaned;
-            if (Files.exists(Path.of(added))) {
-                return added;
-            }
-        }
-        return cleaned;
-    }
-
-    private void createLineAnnotationsForMissedLines(final AggregatedScore score, final String prefix,
-            final Set<String> prefixes, final Output output) {
-        var reports = score.getCodeCoverageScores().stream()
-                .filter(coverageScore -> coverageScore.getMetric() == Metric.LINE)
-                .map(CoverageScore::getReport).toList();
-        System.out.println("Reports: " + reports);
-        var files = reports.stream()
-                .map(Node::getAllFileNodes).toList();
-        System.out.println("Files: " + files);
-        files.stream()
-                .flatMap(Collection::stream)
-                .map(file -> createLineCoverageAnnotation(prefix, file, prefixes))
+    private void createAnnotationsForMissedLines(final AggregatedScore score, final String prefix,
+            final Set<String> sourcePaths, final Output output) {
+        score.getCoveredFiles(Metric.LINE).stream()
+                .map(file -> createAnnotationsForMissedLines(file, prefix, sourcePaths))
                 .flatMap(Collection::stream)
                 .forEach(output::add);
     }
 
-    private List<Annotation> createLineCoverageAnnotation(final String prefix, final FileNode file,
-            final Set<String> prefixes) {
+    private List<Annotation> createAnnotationsForMissedLines(final FileNode file, final String prefix,
+            final Set<String> sourcePaths) {
         return file.getMissedLineRanges().stream()
-                .map(range -> getAnnotation(prefix, file, prefixes, range))
+                .map(range -> createAnnotationForMissedLineRange(file, range, prefix, sourcePaths))
                 .collect(Collectors.toList());
     }
 
-    private Annotation getAnnotation(final String prefix, final FileNode file, final Set<String> prefixes,
-            final LineRange range) {
-        System.out.println(">>>> Missed line " + file.getRelativePath() + ": " + range.getStart() + "-" + range.getEnd());
-        return new Annotation(cleanFileName(prefix, file.getRelativePath(), prefixes),
+    private Annotation createAnnotationForMissedLineRange(final FileNode file, final LineRange range,
+            final String prefix, final Set<String> sourcePaths) {
+        var relativePath = createRelativeRepositoryPath(file.getRelativePath(), prefix, sourcePaths);
+
+        return new Annotation(relativePath,
                 range.getStart(), range.getEnd(),
-                AnnotationLevel.WARNING,
-                getMissedLinesDescription(range))
+                AnnotationLevel.WARNING, getMissedLinesDescription(range))
                 .withTitle(getMissedLinesMessage(range));
     }
 
@@ -240,27 +222,29 @@ public class GitHubPullRequestWriter {
         return String.format("Lines %d-%d are not covered by tests", range.getStart(), range.getEnd());
     }
 
-    private void createLineAnnotationsForPartiallyCoveredLines(final AggregatedScore score, final String prefix,
-            final Set<String> prefixes, final Output output) {
-        score.getCodeCoverageScores().stream()
-                .filter(coverageScore -> coverageScore.getMetric() == Metric.BRANCH)
-                .map(CoverageScore::getReport)
-                .map(Node::getAllFileNodes)
-                .flatMap(Collection::stream)
-                .map(file -> createBranchCoverageAnnotation(prefix, file, prefixes))
+    private void createAnnotationsForPartiallyCoveredLines(final AggregatedScore score, final String prefix,
+            final Set<String> sourcePaths, final Output output) {
+        score.getCoveredFiles(Metric.BRANCH).stream()
+                .map(file -> createAnnotationsForMissedBranches(file, prefix, sourcePaths))
                 .flatMap(Collection::stream)
                 .forEach(output::add);
     }
 
-    private List<Annotation> createBranchCoverageAnnotation(final String prefix, final FileNode file,
-            final Set<String> prefixes) {
+    private List<Annotation> createAnnotationsForMissedBranches(final FileNode file, final String prefix,
+            final Set<String> sourcePaths) {
         return file.getPartiallyCoveredLines().entrySet().stream()
-                .map(entry -> new Annotation(cleanFileName(prefix, file.getRelativePath(), prefixes),
-                        entry.getKey(),
-                        AnnotationLevel.WARNING,
-                        createBranchMessage(entry.getKey(), entry.getValue()))
-                        .withTitle("Partially covered line"))
+                .map(entry -> createAnnotationForMissedBranches(file, entry, prefix, sourcePaths))
                 .collect(Collectors.toList());
+    }
+
+    private Annotation createAnnotationForMissedBranches(final FileNode file,
+            final Entry<Integer, Integer> branchCoverage,
+            final String prefix, final Set<String> sourcePaths) {
+        return new Annotation(createRelativeRepositoryPath(file.getRelativePath(), prefix, sourcePaths),
+                branchCoverage.getKey(),
+                AnnotationLevel.WARNING,
+                createBranchMessage(branchCoverage.getKey(), branchCoverage.getValue()))
+                .withTitle("Partially covered line");
     }
 
     private String createBranchMessage(final int line, final int missed) {
@@ -271,28 +255,45 @@ public class GitHubPullRequestWriter {
         return String.format("Line %d is only partially covered, %d branches are missing", line, missed);
     }
 
-    private void createLineAnnotationsForSurvivedMutations(final AggregatedScore score, final String prefix,
-            final Set<String> prefixes, final Output output) {
-        score.getMutationCoverageScores().stream()
-                .filter(coverageScore -> coverageScore.getMetric() == Metric.MUTATION)
-                .map(CoverageScore::getReport)
-                .map(Node::getAllFileNodes)
-                .flatMap(Collection::stream)
-                .map(file -> createMutationCoverageAnnotation(prefix, file, prefixes))
+    private String createRelativeRepositoryPath(final String fileName, final String prefix,
+            final Set<String> sourcePaths) {
+        var cleaned = removeStart(fileName, prefix);
+        if (Files.exists(Path.of(cleaned))) {
+            return cleaned;
+        }
+        for (String s : sourcePaths) {
+            var added = s + "/" + cleaned;
+            if (Files.exists(Path.of(added))) {
+                return added;
+            }
+        }
+        return cleaned;
+    }
+
+    private void createAnnotationsForSurvivedMutations(final AggregatedScore score, final String prefix,
+            final Set<String> sourcePaths, final Output output) {
+        score.getCoveredFiles(Metric.MUTATION).stream()
+                .map(file -> createAnnotationsForSurvivedMutations(file, prefix, sourcePaths))
                 .flatMap(Collection::stream)
                 .forEach(output::add);
     }
 
-    private List<Annotation> createMutationCoverageAnnotation(final String prefix, final FileNode file,
-            final Set<String> prefixes) {
+    private List<Annotation> createAnnotationsForSurvivedMutations(final FileNode file, final String prefix,
+            final Set<String> sourcePaths) {
         return file.getSurvivedMutationsPerLine().entrySet().stream()
-                .map(entry -> new Annotation(cleanFileName(prefix, file.getRelativePath(), prefixes),
-                        entry.getKey(),
-                        AnnotationLevel.WARNING,
-                        createMutationMessage(entry.getKey(), entry.getValue()))
-                        .withTitle("Mutation survived")
-                        .withRawDetails(createMutationDetails(entry.getValue())))
+                .map(entry -> createAnnotationForSurvivedMutation(file, entry, prefix, sourcePaths))
                 .collect(Collectors.toList());
+    }
+
+    private Annotation createAnnotationForSurvivedMutation(final FileNode file,
+            final Entry<Integer, List<Mutation>> mutationsPerLine, final String prefix,
+            final Set<String> sourcePaths) {
+        return new Annotation(createRelativeRepositoryPath(file.getRelativePath(), prefix, sourcePaths),
+                mutationsPerLine.getKey(),
+                AnnotationLevel.WARNING,
+                createMutationMessage(mutationsPerLine.getKey(), mutationsPerLine.getValue()))
+                .withTitle("Mutation survived")
+                .withRawDetails(createMutationDetails(mutationsPerLine.getValue()));
     }
 
     private String createMutationMessage(final int line, final List<Mutation> survived) {
