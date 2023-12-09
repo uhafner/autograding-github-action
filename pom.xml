@@ -201,7 +201,7 @@
             </auth>
           </to>
           <from>
-            <image>maven:3.9.5-eclipse-temurin-17</image>
+            <image>maven:3.9.5-eclipse-temurin-21-alpine</image>
           </from>
         </configuration>
       </plugin>
