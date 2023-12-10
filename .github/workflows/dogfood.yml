@@ -244,6 +244,14 @@ jobs:
       - name: Write metrics to GitHub output
         id: metrics
         run: |
+          pwd
+          ls -la
+      - name: Write metrics to GitHub output
+        id: metrics
+        run: cat metrics.env
+      - name: Write metrics to GitHub output
+        id: metrics
+        run: |
           cat metrics.env >> "${GITHUB_OUTPUT}"
           mkdir -p badges
       - name: Generate the badge SVG image for the line coverage
