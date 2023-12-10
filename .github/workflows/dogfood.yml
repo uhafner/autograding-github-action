@@ -122,7 +122,6 @@ jobs:
               ]
             }
   grade-github-action:
-    needs: grade-test-data
     name: Run autograding for the GitHub Autograding Action
     runs-on: ubuntu-latest
     steps:
