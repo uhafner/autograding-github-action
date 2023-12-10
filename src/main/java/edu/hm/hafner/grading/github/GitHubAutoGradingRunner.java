@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 import java.time.Instant;
 import java.util.Date;
 
@@ -75,7 +74,7 @@ public class GitHubAutoGradingRunner extends AutoGradingRunner {
 
         try {
             var environmentVariables = createEnvironmentVariables(score, log);
-            Files.writeString(Paths.get("metrics.env"), environmentVariables, StandardOpenOption.CREATE);
+            Files.writeString(Paths.get("metrics.env"), environmentVariables);
         }
         catch (IOException exception) {
             log.logException(exception, "Can't write environment variables to 'metrics.env'");
