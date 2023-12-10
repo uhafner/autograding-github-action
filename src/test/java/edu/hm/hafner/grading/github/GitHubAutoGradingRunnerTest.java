@@ -1,16 +1,38 @@
-package edu.hm.hafner.grading;
+package edu.hm.hafner.grading.github;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
 import org.junit.jupiter.api.Test;
+import org.junitpioneer.jupiter.SetEnvironmentVariable;
 
-import edu.hm.hafner.analysis.Issue;
-import edu.hm.hafner.grading.github.GitHubPullRequestWriter;
 import edu.hm.hafner.util.FilteredLog;
+import edu.hm.hafner.util.ResourceTest;
 
 import static org.assertj.core.api.Assertions.*;
 
-class ConsoleAnalysisReportFactoryTest {
+/**
+ * Integration test for the grading action. Starts the container and checks if the grading runs as expected.
+ *
+ * @author Ullrich Hafner
+ */
+public class GitHubAutoGradingRunnerTest extends ResourceTest {
     private static final String CONFIGURATION = """
             {
+              "tests": {
+                "tools": [
+                  {
+                    "id": "test",
+                    "name": "Unittests",
+                    "pattern": "**/src/**/TEST*.xml"
+                  }
+                ],
+                "name": "JUnit",
+                "passedImpact": 10,
+                "skippedImpact": -1,
+                "failureImpact": -5,
+                "maxScore": 100
+              },
               "analysis": [
                 {
                   "name": "Style",
@@ -49,81 +71,83 @@ class ConsoleAnalysisReportFactoryTest {
                   "lowImpact": -14,
                   "maxScore": 100
                 }
+              ],
+              "coverage": [
+              {
+                  "tools": [
+                      {
+                        "id": "jacoco",
+                        "name": "Line Coverage",
+                        "metric": "line",
+                        "pattern": "**/src/**/jacoco.xml"
+                      },
+                      {
+                        "id": "jacoco",
+                        "name": "Branch Coverage",
+                        "metric": "branch",
+                        "pattern": "**/src/**/jacoco.xml"
+                      }
+                    ],
+                "name": "JaCoCo",
+                "maxScore": 100,
+                "coveredPercentageImpact": 1,
+                "missedPercentageImpact": -1
+              },
+              {
+                  "tools": [
+                      {
+                        "id": "pit",
+                        "name": "Mutation Coverage",
+                        "metric": "mutation",
+                        "pattern": "**/src/**/mutations.xml"
+                      }
+                    ],
+                "name": "PIT",
+                "maxScore": 100,
+                "coveredPercentageImpact": 1,
+                "missedPercentageImpact": -1
+              }
               ]
             }
             """;
-    private static final int EXPECTED_ISSUES = 19 + 41 + 1;
 
     @Test
-    void shouldCreateAggregation() {
-        var log = new FilteredLog("Errors");
-        var score = new AggregatedScore(CONFIGURATION, log);
+    @SetEnvironmentVariable(key = "CONFIG", value = CONFIGURATION)
+    void shouldGradeWithConfigurationFromEnvironment() {
+        assertThat(runAutoGrading())
+                .contains("Obtaining configuration from environment variable CONFIG")
+                .contains(new String[] {
+                        "Processing 1 test configuration(s)",
+                        "-> Unittests Total: TESTS: 37 tests",
+                        "JUnit Score: 100 of 100",
+                        "Processing 2 coverage configuration(s)",
+                        "-> Line Coverage Total: LINE: 10.93% (33/302)",
+                        "-> Branch Coverage Total: BRANCH: 9.52% (4/42)",
+                        "=> JaCoCo Score: 20 of 100",
+                        "-> Mutation Coverage Total: MUTATION: 7.86% (11/140)",
+                        "=> PIT Score: 16 of 100",
+                        "Processing 2 static analysis configuration(s)",
+                        "-> CheckStyle Total: 19 warnings",
+                        "-> PMD Total: 41 warnings",
+                        "=> Style Score: 100 of 100",
+                        "-> SpotBugs Total: 1 warnings",
+                        "=> Bugs Score: 86 of 100",
+                        "Total score - 322 of 500 (unit tests: 100/100, code coverage: 20/100, mutation coverage: 16/100, analysis: 186/200)"});
+    }
 
-        score.gradeAnalysis(new ConsoleAnalysisReportFactory());
+    @Test
+    @SetEnvironmentVariable(key = "CONFIG", value = CONFIGURATION)
+    void shouldWriteAnnotations() {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        PrintStream printStream = new PrintStream(outputStream);
 
-        assertThat(score.getIssues()).hasSize(EXPECTED_ISSUES);
-        assertThat(score.getIssues()).extracting(Issue::getBaseName).containsOnly(
-                "LogHandler.java",
-                "Assignment00.java",
-                "Assignment01.java",
-                "Assignment02.java",
-                "Assignment03.java",
-                "Assignment04.java",
-                "Assignment05.java",
-                "Assignment06.java",
-                "Assignment07.java",
-                "Assignment08.java",
-                "Assignment09.java",
-                "Assignment10.java",
-                "Assignment11.java",
-                "Assignment12.java",
-                "Assignment13.java",
-                "Assignment13.java",
-                "Assignment14.java",
-                "Assignment14.java",
-                "Assignment14.java",
-                "Assignment15.java",
-                "Assignment15.java",
-                "Assignment15.java",
-                "Assignment16.java",
-                "AbstractKaraTest.java",
-                "Assignment00Test.java",
-                "Assignment01Test.java",
-                "Assignment02Test.java",
-                "Assignment03Test.java",
-                "Assignment04Test.java",
-                "Assignment05Test.java",
-                "Assignment06Test.java",
-                "Assignment07Test.java",
-                "Assignment08Test.java",
-                "Assignment09Test.java",
-                "Assignment10Test.java",
-                "Assignment11Test.java",
-                "Assignment12Test.java",
-                "Assignment13Test.java",
-                "Assignment14Test.java",
-                "Assignment15Test.java",
-                "Assignment16Test.java",
-                "ReportFactory.java",
-                "AutoGradingAction.java");
-        assertThat(log.getInfoMessages()).contains(
-                "Searching for CheckStyle results matching file name pattern **/src/**/checkstyle*.xml",
-                "- ./src/test/resources/checkstyle/checkstyle-ignores.xml: 18 warnings",
-                "- ./src/test/resources/checkstyle/checkstyle-result.xml: 1 warnings",
-                "-> CheckStyle Total: 19 warnings",
-                "Searching for PMD results matching file name pattern **/src/**/pmd*.xml",
-                "- ./src/test/resources/pmd/pmd-ignores.xml: 40 warnings",
-                "- ./src/test/resources/pmd/pmd.xml: 1 warnings",
-                "-> PMD Total: 41 warnings",
-                "=> Style Score: 100 of 100",
-                "Searching for SpotBugs results matching file name pattern **/src/**/spotbugs*.xml",
-                "- ./src/test/resources/spotbugs/spotbugsXml.xml: 1 warnings",
-                "-> SpotBugs Total: 1 warnings",
-                "=> Bugs Score: 86 of 100");
+        var runner = new GitHubAutoGradingRunner(printStream);
+        runner.run();
+        var score = runner.getAggregation();
 
-        var writer = new GitHubPullRequestWriter();
-        assertThat(writer.createAnnotations(score)).hasSize(EXPECTED_ISSUES).extracting("message")
-                .containsOnly("Hilfsklassen sollten keinen Standard-Konstruktur und keinen als public deklarierten Konstruktor haben.",
+        assertThat(runner.createAnnotations(score, new FilteredLog("errors"))).extracting("message")
+                .containsOnly(
+                        "Hilfsklassen sollten keinen Standard-Konstruktur und keinen als public deklarierten Konstruktor haben.",
                         "Hilfsklassen sollten keinen Standard-Konstruktur und keinen als public deklarierten Konstruktor haben.",
                         "Hilfsklassen sollten keinen Standard-Konstruktur und keinen als public deklarierten Konstruktor haben.",
                         "Hilfsklassen sollten keinen Standard-Konstruktur und keinen als public deklarierten Konstruktor haben.",
@@ -183,6 +207,153 @@ class ConsoleAnalysisReportFactoryTest {
                         "Linguistics Antipattern - The method 'shouldSolveAssignment' indicates linguistically it returns a boolean, but it returns 'Stream'.",
                         "Linguistics Antipattern - The method 'shouldSolveAssignment' indicates linguistically it returns a boolean, but it returns 'Stream'.",
                         "This abstract class does not have any abstract methods.",
-                        "Usage of GetResource in edu.hm.hafner.grading.AutoGradingAction.readDefaultConfiguration() may be\n      unsafe if class is extended");
+                        "Lines 15-27 are not covered by tests",
+                        "Lines 62-79 are not covered by tests",
+                        "Lines 102-103 are not covered by tests",
+                        "Lines 23-49 are not covered by tests",
+                        "Lines 13-15 are not covered by tests",
+                        "Lines 19-68 are not covered by tests",
+                        "Lines 16-27 are not covered by tests",
+                        "Lines 41-140 are not covered by tests",
+                        "Lines 152-153 are not covered by tests",
+                        "Line 160 is not covered by tests",
+                        "Lines 164-166 are not covered by tests",
+                        "Lines 17-32 are not covered by tests",
+                        "Lines 40-258 are not covered by tests",
+                        "Line 146 is only partially covered, one branch is missing",
+                        "Line 159 is only partially covered, one branch is missing",
+                        "One mutation survived in line 147 (VoidMethodCallMutator)",
+                        "One mutation survived in line 29 (EmptyObjectReturnValsMutator)",
+                        "Usage of GetResource in edu.hm.hafner.grading.AutoGradingAction.readDefaultConfiguration() may be unsafe if class is extended");
+    }
+
+    private static final String CONFIGURATION_WRONG_PATHS = """
+            {
+              "tests": {
+                "tools": [
+                  {
+                    "id": "test",
+                    "name": "Unittests",
+                    "pattern": "**/does-not-exist/TEST*.xml"
+                  }
+                ],
+                "name": "JUnit",
+                "passedImpact": 10,
+                "skippedImpact": -1,
+                "failureImpact": -5,
+                "maxScore": 100
+              },
+              "analysis": [
+                {
+                  "name": "Style",
+                  "id": "style",
+                  "tools": [
+                    {
+                      "id": "checkstyle",
+                      "name": "CheckStyle",
+                      "pattern": "**/does-not-exist/checkstyle*.xml"
+                    },
+                    {
+                      "id": "pmd",
+                      "name": "PMD",
+                      "pattern": "**/does-not-exist/pmd*.xml"
+                    }
+                  ],
+                  "errorImpact": 1,
+                  "highImpact": 2,
+                  "normalImpact": 3,
+                  "lowImpact": 4,
+                  "maxScore": 100
+                },
+                {
+                  "name": "Bugs",
+                  "id": "bugs",
+                  "tools": [
+                    {
+                      "id": "spotbugs",
+                      "name": "SpotBugs",
+                      "pattern": "**/does-not-exist/spotbugs*.xml"
+                    }
+                  ],
+                  "errorImpact": -11,
+                  "highImpact": -12,
+                  "normalImpact": -13,
+                  "lowImpact": -14,
+                  "maxScore": 100
+                }
+              ],
+              "coverage": [
+              {
+                  "tools": [
+                      {
+                        "id": "jacoco",
+                        "name": "Line Coverage",
+                        "metric": "line",
+                        "pattern": "**/does-not-exist/jacoco.xml"
+                      },
+                      {
+                        "id": "jacoco",
+                        "name": "Branch Coverage",
+                        "metric": "branch",
+                        "pattern": "**/does-not-exist/jacoco.xml"
+                      }
+                    ],
+                "name": "JaCoCo",
+                "maxScore": 100,
+                "coveredPercentageImpact": 1,
+                "missedPercentageImpact": -1
+              },
+              {
+                  "tools": [
+                      {
+                        "id": "pit",
+                        "name": "Mutation Coverage",
+                        "metric": "mutation",
+                        "pattern": "**/does-not-exist/mutations.xml"
+                      }
+                    ],
+                "name": "PIT",
+                "maxScore": 100,
+                "coveredPercentageImpact": 1,
+                "missedPercentageImpact": -1
+              }
+              ]
+            }
+            """;
+
+    @Test
+    @SetEnvironmentVariable(key = "CONFIG", value = CONFIGURATION_WRONG_PATHS)
+    void shouldShowErrors() {
+        assertThat(runAutoGrading())
+                .contains(new String[] {
+                        "Processing 1 test configuration(s)",
+                        "-> Unittests Total: TESTS: 0 tests",
+                        "Configuration error for 'Unittests'?",
+                        "JUnit Score: 100 of 100",
+                        "Processing 2 coverage configuration(s)",
+                        "=> JaCoCo Score: 0 of 100",
+                        "Configuration error for 'Line Coverage'?",
+                        "Configuration error for 'Branch Coverage'?",
+                        "=> PIT Score: 0 of 100",
+                        "Configuration error for 'Mutation Coverage'?",
+                        "Processing 2 static analysis configuration(s)",
+                        "Configuration error for 'CheckStyle'?",
+                        "Configuration error for 'PMD'?",
+                        "Configuration error for 'SpotBugs'?",
+                        "-> CheckStyle Total: 0 warnings",
+                        "-> PMD Total: 0 warnings",
+                        "=> Style Score: 0 of 100",
+                        "-> SpotBugs Total: 0 warnings",
+                        "=> Bugs Score: 100 of 100",
+                        "Total score - 200 of 500 (unit tests: 100/100, code coverage: 0/100, mutation coverage: 0/100, analysis: 100/200)"});
+    }
+
+    private String runAutoGrading() {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        PrintStream printStream = new PrintStream(outputStream);
+
+        var runner = new GitHubAutoGradingRunner(printStream);
+        runner.run();
+        return outputStream.toString();
     }
 }

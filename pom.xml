@@ -17,17 +17,17 @@
   <packaging>jar</packaging>
 
   <properties>
-    <module.name>${project.groupId}.autograding.ghaction</module.name>
+    <module.name>${project.groupId}.autograding.github.action</module.name>
+    <docker-image-tag>${project.version}</docker-image-tag>
 
     <java.version>17</java.version>
 
     <jib-maven-plugin.version>3.4.0</jib-maven-plugin.version>
     <testcontainers.version>1.19.3</testcontainers.version>
 
-    <autograding-model.version>3.9.0</autograding-model.version>
+    <autograding-model.version>3.11.0</autograding-model.version>
     <analysis-model.version>11.13.0</analysis-model.version>
     <coverage-model.version>0.36.0</coverage-model.version>
-    <docker-image-tag>${project.version}</docker-image-tag>
   </properties>
 
   <dependencyManagement>

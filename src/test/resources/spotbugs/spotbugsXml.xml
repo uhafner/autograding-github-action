@@ -194,8 +194,7 @@
   <BugInstance instanceOccurrenceNum='0' instanceHash='e11b4f5b27f1aecfaa872d0b9344229' rank='19' abbrev='UI'
                category='BAD_PRACTICE' priority='3' type='UI_INHERITANCE_UNSAFE_GETRESOURCE' instanceOccurrenceMax='0'>
     <ShortMessage>Usage of GetResource may be unsafe if class is extended</ShortMessage>
-    <LongMessage>Usage of GetResource in edu.hm.hafner.grading.AutoGradingAction.readDefaultConfiguration() may be
-      unsafe if class is extended
+    <LongMessage>Usage of GetResource in edu.hm.hafner.grading.AutoGradingAction.readDefaultConfiguration() may be unsafe if class is extended
     </LongMessage>
     <Class classname='edu.hm.hafner.grading.AutoGradingAction' primary='true'>
       <SourceLine classname='edu.hm.hafner.grading.AutoGradingAction' start='33' end='166'
@@ -260,9 +259,9 @@
       <ClassStats bugs='1' size='93' priority_3='1' interface='false' sourceFile='AutoGradingAction.java'
                   class='edu.hm.hafner.grading.AutoGradingAction'></ClassStats>
       <ClassStats bugs='0' size='54' interface='false' sourceFile='AutoGradingActionITest.java'
-                  class='edu.hm.hafner.grading.AutoGradingActionITest'></ClassStats>
+                  class='edu.hm.hafner.grading.AutoGradingRunnerITest'></ClassStats>
       <ClassStats bugs='0' size='8' interface='false' sourceFile='AutoGradingActionTest.java'
-                  class='edu.hm.hafner.grading.AutoGradingActionTest'></ClassStats>
+                  class='edu.hm.hafner.grading.AutoGradingRunnerTest'></ClassStats>
       <ClassStats bugs='0' size='14' interface='false' sourceFile='ConsoleAnalysisReportFactory.java'
                   class='edu.hm.hafner.grading.ConsoleAnalysisReportFactory'></ClassStats>
       <ClassStats bugs='0' size='22' interface='false' sourceFile='ConsoleCoverageReportFactory.java'

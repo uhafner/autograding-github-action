@@ -1057,7 +1057,7 @@
       <block>2</block>
     </blocks>
     <killingTest>
-      edu.hm.hafner.grading.AutoGradingActionTest.[engine:junit-jupiter]/[class:edu.hm.hafner.grading.AutoGradingActionTest]/[method:shouldReadDefaultConfigurationIfEnvironmentIsNotSet()]
+      edu.hm.hafner.grading.AutoGradingRunnerTest.[engine:junit-jupiter]/[class:edu.hm.hafner.grading.AutoGradingRunnerTest]/[method:shouldReadDefaultConfigurationIfEnvironmentIsNotSet()]
     </killingTest>
     <description>negated conditional</description>
   </mutation>
@@ -1107,7 +1107,7 @@
       <block>5</block>
     </blocks>
     <killingTest>
-      edu.hm.hafner.grading.AutoGradingActionTest.[engine:junit-jupiter]/[class:edu.hm.hafner.grading.AutoGradingActionTest]/[method:shouldReadDefaultConfigurationIfEnvironmentIsNotSet()]
+      edu.hm.hafner.grading.AutoGradingRunnerTest.[engine:junit-jupiter]/[class:edu.hm.hafner.grading.AutoGradingRunnerTest]/[method:shouldReadDefaultConfigurationIfEnvironmentIsNotSet()]
     </killingTest>
     <description>replaced return value with &quot;&quot; for edu/hm/hafner/grading/AutoGradingAction::getConfiguration
     </description>
@@ -1259,7 +1259,7 @@
       <block>2</block>
     </blocks>
     <killingTest>
-      edu.hm.hafner.grading.AutoGradingActionTest.[engine:junit-jupiter]/[class:edu.hm.hafner.grading.AutoGradingActionTest]/[method:shouldReadDefaultConfigurationIfEnvironmentIsNotSet()]
+      edu.hm.hafner.grading.AutoGradingRunnerTest.[engine:junit-jupiter]/[class:edu.hm.hafner.grading.AutoGradingRunnerTest]/[method:shouldReadDefaultConfigurationIfEnvironmentIsNotSet()]
     </killingTest>
     <description>negated conditional</description>
   </mutation>
@@ -1293,7 +1293,7 @@
       <block>8</block>
     </blocks>
     <killingTest>
-      edu.hm.hafner.grading.AutoGradingActionTest.[engine:junit-jupiter]/[class:edu.hm.hafner.grading.AutoGradingActionTest]/[method:shouldReadDefaultConfigurationIfEnvironmentIsNotSet()]
+      edu.hm.hafner.grading.AutoGradingRunnerTest.[engine:junit-jupiter]/[class:edu.hm.hafner.grading.AutoGradingRunnerTest]/[method:shouldReadDefaultConfigurationIfEnvironmentIsNotSet()]
     </killingTest>
     <description>replaced return value with &quot;&quot; for
       edu/hm/hafner/grading/AutoGradingAction::readDefaultConfiguration

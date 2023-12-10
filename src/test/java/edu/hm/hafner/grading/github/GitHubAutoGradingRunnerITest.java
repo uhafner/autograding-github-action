@@ -1,4 +1,4 @@
-package edu.hm.hafner.grading;
+package edu.hm.hafner.grading.github;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -7,7 +7,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 import org.junit.jupiter.api.Test;
-import org.junitpioneer.jupiter.SetEnvironmentVariable;
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.containers.output.ToStringConsumer;
 import org.testcontainers.containers.output.WaitingConsumer;
@@ -21,7 +20,7 @@ import static org.assertj.core.api.Assertions.*;
  *
  * @author Ullrich Hafner
  */
-public class AutoGradingActionITest {
+public class GitHubAutoGradingRunnerITest {
     private static final String CONFIGURATION = """
             {
               "tests": {
@@ -228,8 +227,8 @@ public class AutoGradingActionITest {
         var composedConsumer = toStringConsumer.andThen(waitingConsumer);
         container.followOutput(composedConsumer);
         waitingConsumer.waitUntil(frame ->
-                frame.getUtf8String().contains("at edu.hm.hafner.grading.AutoGradingAction.main(AutoGradingAction.java")
-                        || frame.getUtf8String().contains("End Grading"), 60, TimeUnit.SECONDS);
+                frame.getUtf8String().contains("at edu.hm.hafner.grading.GitHubAutoGradingRunner.main(GitHubAutoGradingRunner.java")
+                        || frame.getUtf8String().contains("GitHub Action has finished"), 60, TimeUnit.SECONDS);
 
         return toStringConsumer.toUtf8String();
     }
@@ -247,13 +246,5 @@ public class AutoGradingActionITest {
 
     private MountableFile read(final String resourceName) {
         return MountableFile.forClasspathResource("/" + resourceName);
-    }
-
-    @Test
-    @SetEnvironmentVariable(key = "CONFIG", value = "{}")
-    void shouldReadConfigurationFromEnvironment() {
-        var action = new AutoGradingAction();
-
-        assertThat(action.getConfiguration()).isEqualTo("{}");
     }
 }

@@ -1,8 +1,11 @@
 package edu.hm.hafner.grading.github;
 
 import java.io.IOException;
+import java.io.PrintStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -19,11 +22,15 @@ import edu.hm.hafner.coverage.FileNode;
 import edu.hm.hafner.coverage.Metric;
 import edu.hm.hafner.coverage.Mutation;
 import edu.hm.hafner.grading.AggregatedScore;
+import edu.hm.hafner.grading.AutoGradingRunner;
 import edu.hm.hafner.grading.Configuration;
+import edu.hm.hafner.grading.GradingReport;
 import edu.hm.hafner.grading.Score;
 import edu.hm.hafner.grading.ToolConfiguration;
+import edu.hm.hafner.util.FilteredLog;
 import edu.hm.hafner.util.LineRange;
 import edu.hm.hafner.util.VisibleForTesting;
+import edu.umd.cs.findbugs.annotations.CheckForNull;
 
 import org.kohsuke.github.GHCheckRun;
 import org.kohsuke.github.GHCheckRun.AnnotationLevel;
@@ -36,86 +43,138 @@ import org.kohsuke.github.GitHub;
 import org.kohsuke.github.GitHubBuilder;
 
 /**
- * Writes a comment in a pull request and publish the GitHub checks results.
+ * GitHub action entrypoint for the autograding action.
  *
  * @author Tobias Effner
  * @author Ullrich Hafner
  */
-@SuppressWarnings("PMD.SystemPrintln")
-public class GitHubPullRequestWriter {
-
+public class GitHubAutoGradingRunner extends AutoGradingRunner {
     private static final String GITHUB_WORKSPACE_REL = "/github/workspace/./";
     private static final String GITHUB_WORKSPACE_ABS = "/github/workspace/";
 
-    /** Status of the checks result. */
-    public enum ChecksStatus {
-        SUCCESS,
-        ERROR
+    /**
+     * Public entry point for the GitHub action in the docker container, simply calls the action.
+     *
+     * @param unused
+     *         not used
+     */
+    public static void main(final String... unused) {
+        new GitHubAutoGradingRunner().run();
     }
 
+    private transient AggregatedScore aggregation;  // temporary result just for testing
+
     /**
-     * Writes the specified comment as GitHub checks result. Requires that the environment variables {@code GITHUB_SHA},
-     * {@code GITHUB_REPOSITORY}, and {@code GITHUB_TOKEN} are correctly set.
-     *
-     * @param name
-     *         the name of the checks result
-     * @param score
-     *         the score to write
-     * @param header
-     *         the header of the check
-     * @param summary
-     *         the summary of the check
-     * @param comment
-     *         the details of the check (supports Markdown)
-     * @param prComment
-     *         the comment to write in the pull request
-     * @param status
-     *         the status of the checks result
+     * Creates a new instance of {@link GitHubAutoGradingRunner}.
      */
-    public void addComment(final String name, final AggregatedScore score,
-            final String header, final String summary, final String comment, final String prComment,
-            final ChecksStatus status) {
-        var repository = getEnv("GITHUB_REPOSITORY");
-        if (repository.isBlank()) {
-            System.out.println("No GITHUB_REPOSITORY defined - skipping");
+    public GitHubAutoGradingRunner() {
+        super();
+    }
 
-            return;
-        }
-        String oAuthToken = getEnv("GITHUB_TOKEN");
-        if (oAuthToken.isBlank()) {
-            System.out.println("No valid GITHUB_TOKEN found - skipping");
+    @VisibleForTesting
+    GitHubAutoGradingRunner(final PrintStream printStream) {
+        super(printStream);
+    }
 
-            return;
-        }
+    @CheckForNull @VisibleForTesting
+    AggregatedScore getAggregation() {
+        return aggregation;
+    }
 
-        String sha = getEnv("GITHUB_SHA");
+    @Override
+    protected void publishGradingResult(final AggregatedScore score, final FilteredLog log) {
+        var results = new GradingReport();
+
+        var errors = createErrorMessageMarkdown(log);
+
+        addComment(score,
+                results.getHeader(), results.getTextSummary(score),
+                results.getMarkdownDetails(score) + errors,
+                results.getMarkdownSummary(score, ":mortar_board: " + getChecksName()) + errors,
+                Conclusion.SUCCESS, log);
 
         try {
+            var environmentVariables = createEnvironmentVariables(score, log);
+            Files.writeString(Paths.get("metrics.env"), environmentVariables, StandardOpenOption.CREATE);
+        }
+        catch (IOException exception) {
+            log.logException(exception, "Can't write environment variables to 'metrics.env'");
+        }
+
+        log.logInfo("GitHub Action has finished");
+        aggregation = score;
+    }
+
+    String createEnvironmentVariables(final AggregatedScore score, final FilteredLog log) {
+        var metrics = new StringBuilder();
+        score.getMetrics().forEach((metric, value) -> metrics.append(String.format("%s=%d%n", metric, value)));
+        log.logInfo("------------------------------------------------------------------");
+        log.logInfo("--------------------------- Summary ------------------------------");
+        log.logInfo("------------------------------------------------------------------");
+        log.logInfo(metrics.toString());
+        return metrics.toString();
+    }
+
+    @Override
+    protected void publishError(final AggregatedScore score, final FilteredLog log, final Throwable exception) {
+        var results = new GradingReport();
+
+        addComment(score,
+                results.getHeader(), results.getTextSummary(score),
+                results.getMarkdownErrors(score, exception),
+                results.getMarkdownErrors(score, exception),
+                Conclusion.FAILURE, log);
+
+        aggregation = score;
+    }
+
+    private String getChecksName() {
+        return StringUtils.defaultIfBlank(System.getenv("CHECKS_NAME"), "Autograding results");
+    }
+
+    private void addComment(final AggregatedScore score,
+            final String header, final String summary, final String comment, final String prComment,
+            final Conclusion conclusion, final FilteredLog log) {
+        var repository = getEnv("GITHUB_REPOSITORY", log);
+        if (repository.isBlank()) {
+            log.logError("No GITHUB_REPOSITORY defined - skipping");
+
+            return;
+        }
+        String oAuthToken = getEnv("GITHUB_TOKEN", log);
+        if (oAuthToken.isBlank()) {
+            log.logError("No valid GITHUB_TOKEN found - skipping");
+
+            return;
+        }
+
+        try {
+            String sha = getEnv("GITHUB_SHA", log);
             GitHub github = new GitHubBuilder().withAppInstallationToken(oAuthToken).build();
             GHCheckRunBuilder check = github.getRepository(repository)
-                    .createCheckRun(name, sha)
+                    .createCheckRun(getChecksName(), sha)
                     .withStatus(Status.COMPLETED)
                     .withStartedAt(Date.from(Instant.now()))
-                    .withConclusion(status == ChecksStatus.SUCCESS ? Conclusion.SUCCESS : Conclusion.FAILURE);
+                    .withConclusion(conclusion);
 
             Output output = new Output(header, summary).withText(comment);
-            createAnnotations(score).forEach(output::add);
+            createAnnotations(score, log).forEach(output::add);
 
             check.add(output);
             GHCheckRun run = check.create();
 
-            System.out.println("Successfully created check " + run);
+            log.logInfo("Successfully created check " + run);
 
-            var prNumber = getEnv("PR_NUMBER");
+            var prNumber = getEnv("PR_NUMBER", log);
             if (!prNumber.isBlank()) { // optional PR comment
                 github.getRepository(repository)
                         .getPullRequest(Integer.parseInt(prNumber))
                         .comment(prComment + addCheckLink(run));
-                System.out.println("Successfully commented PR#" + prNumber);
+                log.logInfo("Successfully commented PR#" + prNumber);
             }
         }
         catch (IOException exception) {
-            System.out.println("Could not create check due to " + exception);
+            log.logException(exception, "Could not create check");
         }
     }
 
@@ -124,26 +183,17 @@ public class GitHubPullRequestWriter {
                 run.getDetailsUrl().toString());
     }
 
-    private String getEnv(final String key) {
+    private String getEnv(final String key, final FilteredLog log) {
         String value = StringUtils.defaultString(System.getenv(key));
-        System.out.println(">>>> " + key + ": " + value);
+        log.logInfo(">>>> " + key + ": " + value);
         return value;
     }
 
-    /**
-     * Creates a list of annotations for the specified score. The annotations are created for all issues, missed lines,
-     * partially covered lines, and survived mutations.
-     *
-     * @param score
-     *         the score to create the annotations for
-     *
-     * @return the annotations
-     */
     @VisibleForTesting
-    public List<Annotation> createAnnotations(final AggregatedScore score) {
+    List<Annotation> createAnnotations(final AggregatedScore score, final FilteredLog log) {
         var annotations = new ArrayList<Annotation>();
-        if (getEnv("SKIP_ANNOTATIONS").isEmpty()) {
-            var prefix = computeAbsolutePathPrefixToRemove();
+        if (getEnv("SKIP_ANNOTATIONS", log).isEmpty()) {
+            var prefix = computeAbsolutePathPrefixToRemove(log);
 
             var additionalAnalysisSourcePaths = extractAdditionalSourcePaths(score.getAnalysisScores());
             annotations.addAll(createAnnotationsForIssues(score, prefix, additionalAnalysisSourcePaths));
@@ -158,9 +208,9 @@ public class GitHubPullRequestWriter {
         return annotations;
     }
 
-    private String computeAbsolutePathPrefixToRemove() {
-        return String.format("%s/%s/", getEnv("RUNNER_WORKSPACE"),
-                StringUtils.substringAfter(getEnv("GITHUB_REPOSITORY"), "/"));
+    private String computeAbsolutePathPrefixToRemove(final FilteredLog log) {
+        return String.format("%s/%s/", getEnv("RUNNER_WORKSPACE", log),
+                StringUtils.substringAfter(getEnv("GITHUB_REPOSITORY", log), "/"));
     }
 
     private Set<String> extractAdditionalSourcePaths(final List<? extends Score<?, ?>> scores) {
@@ -264,7 +314,6 @@ public class GitHubPullRequestWriter {
     private String createBranchMessage(final int line, final int missed) {
         if (missed == 1) {
             return String.format("Line %d is only partially covered, one branch is missing", line);
-
         }
         return String.format("Line %d is only partially covered, %d branches are missing", line, missed);
     }
