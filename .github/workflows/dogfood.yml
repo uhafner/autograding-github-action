@@ -122,6 +122,7 @@ jobs:
               ]
             }
   grade-github-action:
+    needs: grade-test-data
     name: Run autograding for the GitHub Autograding Action
     runs-on: ubuntu-latest
     steps:
@@ -241,12 +242,6 @@ jobs:
                 }
               ]
             }
-      - name: Write metrics to GitHub output
-        run: |
-          pwd
-          ls -la
-      - name: Write metrics to GitHub output
-        run: cat metrics.env
       - name: Write metrics to GitHub output
         id: metrics
         run: |
