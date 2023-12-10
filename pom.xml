@@ -7,7 +7,7 @@
   <parent>
     <groupId>edu.hm.hafner</groupId>
     <artifactId>codingstyle-pom</artifactId>
-    <version>3.39.0</version>
+    <version>3.40.0</version>
     <relativePath/>
   </parent>
 
@@ -222,90 +222,6 @@
           <skip>true</skip>
         </configuration>
       </plugin>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration combine.children="append">
-          <compilerArgs>
-            <arg>-Xlint:-varargs</arg>
-            <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED</arg>
-            <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED</arg>
-            <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED</arg>
-            <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED</arg>
-            <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED</arg>
-            <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED</arg>
-            <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED</arg>
-            <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED</arg>
-            <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED</arg>
-            <!-- XXX: The awkward comment formatting used here ensures that the plugin arguments are
-            separated only by spaces. Once we drop support for JDK 8 we can clean this up; later versions
-            do properly handle newline separators. See https://github.com/google/error-prone/pull/1115.
-            -->
-            <arg>-Xplugin:ErrorProne <!--
-                ErrorProne configuration:
-                --> -XepExcludedPaths:.*/generated-test-sources/.* <!--
-                ErrorProne configuration:
-                --> -XepAllDisabledChecksAsWarnings <!--
-                ErrorProne configuration:
-                --> -XepIgnoreUnknownCheckNames <!--
-                ErrorProne configuration:
-                --> -XepDisableWarningsInGeneratedCode <!--
-                ErrorProne configuration:
-                --> -XepAllErrorsAsWarnings <!--
-                NullAway configuration:
-                --> -Xep:NullAway:WARN <!--
-                NullAway configuration:
-                --> -XepOpt:NullAway:AnnotatedPackages=edu.hm.hafner <!--
-                Disabled ErrorProne rule:
-                --> -Xep:ReturnMissingNullable:OFF <!--
-                Disabled ErrorProne rule:
-                --> -Xep:CannotMockFinalMethod:OFF <!--
-                Disabled ErrorProne rule:
-                --> -Xep:Java8ApiChecker:OFF <!--
-                Disabled ErrorProne rule:
-                --> -Xep:ImmutableMemberCollection:OFF <!--
-                Disabled ErrorProne rule:
-                --> -Xep:PreferJavaTimeOverload:OFF <!--
-                Disabled ErrorProne rule:
-                --> -Xep:EqualsGetClass:OFF <!--
-                Disabled ErrorProne rule:
-                --> -Xep:AndroidJdkLibsChecker:OFF <!--
-                Disabled ErrorProne rule:
-                --> -Xep:Java7ApiChecker:OFF <!--
-                Disabled ErrorProne rule:
-                --> -Xep:Var:OFF <!--
-                Disabled ErrorProne rule:
-                --> -Xep:PrivateConstructorForUtilityClass:OFF <!--
-                Disabled ErrorProne rule:
-                --> -Xep:MethodCanBeStatic:OFF <!--
-                Disabled ErrorProne rule:
-                --> -Xep:WildcardImport:OFF <!--
-                Disabled ErrorProne rule:
-                --> -Xep:ThrowsUncheckedException:OFF <!--
-                Disabled ErrorProne rule:
-                --> -Xep:UnusedMethod:OFF <!--
-                Disabled ErrorProne rule:
-                --> -Xep:BooleanParameter:OFF <!--
-                Disabled ErrorProne rule:
-                --> -Xep:MustBeClosedChecker:OFF <!--
-                Disabled ErrorProne rule:
-                --> -Xep:UnnecessaryFinal:OFF <!--
-                Disabled ErrorPron
-                e rule:
-                --> -Xep:SystemOut:OFF <!--
-                Disabled ErrorProne rule:
-                --> -Xep:NullableDereference:OFF
-            </arg>
-            <!-- The Error Prone plugin makes certain
-                assumptions about the state of the AST at the
-                moment it is invoked. Those assumptions are met
-                when using the `simple` compile policy. This
-                flag may be dropped after resolution of
-                https://bugs.openjdk.java.net/browse/JDK-8155674. -->
-            <arg>-XDcompilePolicy=simple</arg>
-          </compilerArgs>
-        </configuration>
-      </plugin>
-
     </plugins>
   </build>
 
