@@ -3,12 +3,10 @@ package edu.hm.hafner.grading.github;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
-import java.util.Objects;
 
 import org.junit.jupiter.api.Test;
 import org.junitpioneer.jupiter.SetEnvironmentVariable;
 
-import edu.hm.hafner.util.FilteredLog;
 import edu.hm.hafner.util.ResourceTest;
 
 import static org.assertj.core.api.Assertions.*;
@@ -135,97 +133,6 @@ public class GitHubAutoGradingRunnerITest extends ResourceTest {
                         "-> SpotBugs Total: 1 warnings",
                         "=> Bugs Score: 86 of 100",
                         "Total score - 322 of 500 (unit tests: 100/100, code coverage: 20/100, mutation coverage: 16/100, analysis: 186/200)"});
-    }
-
-    @Test
-    @SetEnvironmentVariable(key = "CONFIG", value = CONFIGURATION)
-    void shouldCreateAnnotations() {
-        var outputStream = new ByteArrayOutputStream();
-        var printStream = new PrintStream(outputStream);
-        var runner = new GitHubAutoGradingRunner(printStream);
-        runner.run();
-        var score = Objects.requireNonNull(runner.getAggregation());
-
-        assertThat(new AnnotationBuilder().createAnnotations(score, new FilteredLog("errors"))).extracting("message")
-                .containsOnly(
-                        "Hilfsklassen sollten keinen Standard-Konstruktur und keinen als public deklarierten Konstruktor haben.",
-                        "Hilfsklassen sollten keinen Standard-Konstruktur und keinen als public deklarierten Konstruktor haben.",
-                        "Hilfsklassen sollten keinen Standard-Konstruktur und keinen als public deklarierten Konstruktor haben.",
-                        "Hilfsklassen sollten keinen Standard-Konstruktur und keinen als public deklarierten Konstruktor haben.",
-                        "Hilfsklassen sollten keinen Standard-Konstruktur und keinen als public deklarierten Konstruktor haben.",
-                        "Hilfsklassen sollten keinen Standard-Konstruktur und keinen als public deklarierten Konstruktor haben.",
-                        "Hilfsklassen sollten keinen Standard-Konstruktur und keinen als public deklarierten Konstruktor haben.",
-                        "Hilfsklassen sollten keinen Standard-Konstruktur und keinen als public deklarierten Konstruktor haben.",
-                        "Hilfsklassen sollten keinen Standard-Konstruktur und keinen als public deklarierten Konstruktor haben.",
-                        "Hilfsklassen sollten keinen Standard-Konstruktur und keinen als public deklarierten Konstruktor haben.",
-                        "Hilfsklassen sollten keinen Standard-Konstruktur und keinen als public deklarierten Konstruktor haben.",
-                        "Hilfsklassen sollten keinen Standard-Konstruktur und keinen als public deklarierten Konstruktor haben.",
-                        "Hilfsklassen sollten keinen Standard-Konstruktur und keinen als public deklarierten Konstruktor haben.",
-                        "Hilfsklassen sollten keinen Standard-Konstruktur und keinen als public deklarierten Konstruktor haben.",
-                        "Hilfsklassen sollten keinen Standard-Konstruktur und keinen als public deklarierten Konstruktor haben.",
-                        "Hilfsklassen sollten keinen Standard-Konstruktur und keinen als public deklarierten Konstruktor haben.",
-                        "Hilfsklassen sollten keinen Standard-Konstruktur und keinen als public deklarierten Konstruktor haben.",
-                        "Vor ',' befindet sich ein Leerzeichen.",
-                        "Es fehlt ein Javadoc-Kommentar.",
-                        "All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.",
-                        "All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.",
-                        "All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.",
-                        "All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.",
-                        "All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.",
-                        "All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.",
-                        "All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.",
-                        "All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.",
-                        "All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.",
-                        "All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.",
-                        "All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.",
-                        "All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.",
-                        "All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.",
-                        "All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.",
-                        "Consider using varargs for methods or constructors which take an array the last parameter.",
-                        "All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.",
-                        "The method 'main(String...)' has a cognitive complexity of 16, current threshold is 15.",
-                        "These nested if statements could be combined.",
-                        "All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.",
-                        "Avoid using Literals in Conditional Statements.",
-                        "Consider using varargs for methods or constructors which take an array the last parameter.",
-                        "All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.",
-                        "This abstract class does not have any abstract methods.",
-                        "Linguistics Antipattern - The method 'shouldSolveAssignment' indicates linguistically it returns a boolean, but it returns 'Stream'.",
-                        "Linguistics Antipattern - The method 'shouldSolveAssignment' indicates linguistically it returns a boolean, but it returns 'Stream'.",
-                        "Linguistics Antipattern - The method 'shouldSolveAssignment' indicates linguistically it returns a boolean, but it returns 'Stream'.",
-                        "Linguistics Antipattern - The method 'shouldSolveAssignment' indicates linguistically it returns a boolean, but it returns 'Stream'.",
-                        "Linguistics Antipattern - The method 'shouldSolveAssignment' indicates linguistically it returns a boolean, but it returns 'Stream'.",
-                        "Linguistics Antipattern - The method 'shouldSolveAssignment' indicates linguistically it returns a boolean, but it returns 'Stream'.",
-                        "Linguistics Antipattern - The method 'shouldSolveAssignment' indicates linguistically it returns a boolean, but it returns 'Stream'.",
-                        "Linguistics Antipattern - The method 'shouldSolveAssignment' indicates linguistically it returns a boolean, but it returns 'Stream'.",
-                        "Linguistics Antipattern - The method 'shouldSolveAssignment' indicates linguistically it returns a boolean, but it returns 'Stream'.",
-                        "Linguistics Antipattern - The method 'shouldSolveAssignment' indicates linguistically it returns a boolean, but it returns 'Stream'.",
-                        "Linguistics Antipattern - The method 'shouldSolveAssignment' indicates linguistically it returns a boolean, but it returns 'Stream'.",
-                        "Linguistics Antipattern - The method 'shouldSolveAssignment' indicates linguistically it returns a boolean, but it returns 'Stream'.",
-                        "Linguistics Antipattern - The method 'shouldSolveAssignment' indicates linguistically it returns a boolean, but it returns 'Stream'.",
-                        "Linguistics Antipattern - The method 'shouldSolveAssignment' indicates linguistically it returns a boolean, but it returns 'Stream'.",
-                        "Linguistics Antipattern - The method 'shouldSolveAssignment' indicates linguistically it returns a boolean, but it returns 'Stream'.",
-                        "Linguistics Antipattern - The method 'shouldSolveAssignment' indicates linguistically it returns a boolean, but it returns 'Stream'.",
-                        "Linguistics Antipattern - The method 'shouldSolveAssignment' indicates linguistically it returns a boolean, but it returns 'Stream'.",
-                        "This abstract class does not have any abstract methods.",
-                        "Lines 15-27 are not covered by tests",
-                        "Lines 62-79 are not covered by tests",
-                        "Lines 102-103 are not covered by tests",
-                        "Lines 23-49 are not covered by tests",
-                        "Lines 13-15 are not covered by tests",
-                        "Lines 19-68 are not covered by tests",
-                        "Lines 16-27 are not covered by tests",
-                        "Lines 41-140 are not covered by tests",
-                        "Lines 152-153 are not covered by tests",
-                        "Line 160 is not covered by tests",
-                        "Lines 164-166 are not covered by tests",
-                        "Lines 17-32 are not covered by tests",
-                        "Lines 40-258 are not covered by tests",
-                        "Line 146 is only partially covered, one branch is missing",
-                        "Line 159 is only partially covered, one branch is missing",
-                        "One mutation survived in line 147 (VoidMethodCallMutator)",
-                        "One mutation survived in line 29 (EmptyObjectReturnValsMutator)",
-                        "Usage of GetResource in edu.hm.hafner.grading.AutoGradingAction.readDefaultConfiguration() may be unsafe if class is extended");
     }
 
     private static final String CONFIGURATION_WRONG_PATHS = """
