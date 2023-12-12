@@ -137,9 +137,11 @@ public class GitHubAutoGradingRunner extends AutoGradingRunner {
                     .withConclusion(conclusion);
 
             Output output = new Output(header, summary).withText(comment);
-            var annotationBuilder = new AnnotationBuilder();
-            annotationBuilder.createAnnotations(score, log).forEach(output::add);
 
+            if (getEnv("SKIP_ANNOTATIONS", log).isEmpty()) {
+                var annotationBuilder = new GitHubAnnotationsBuilder(output, computeAbsolutePathPrefixToRemove(log));
+                annotationBuilder.createAnnotations(score, log);
+            }
             check.add(output);
             GHCheckRun run = check.create();
 
@@ -156,6 +158,11 @@ public class GitHubAutoGradingRunner extends AutoGradingRunner {
         catch (IOException exception) {
             log.logException(exception, "Could not create check");
         }
+    }
+
+    private String computeAbsolutePathPrefixToRemove(final FilteredLog log) {
+        return String.format("%s/%s/", getEnv("RUNNER_WORKSPACE", log),
+                StringUtils.substringAfter(getEnv("GITHUB_REPOSITORY", log), "/"));
     }
 
     private String addCheckLink(final GHCheckRun run) {
