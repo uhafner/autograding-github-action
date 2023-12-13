@@ -229,7 +229,7 @@ All warnings will be shown as annotations in the pull request:
 
 This action can be configured using the following parameters (see example above):
 - ``github-token: ${{ secrets.GITHUB_TOKEN }}``: mandatory GitHub access token.
-- ``config: "{...}"``: optional configuration, see sections above for details. Or consult the [autograding-model](https://github.com/uhafner/autograding-model) project for details. If not specified, a [default configuration](src/main/resources/default-config.json) will be used.
+- ``config: "{...}"``: optional configuration, see sections above for details, or consult the [autograding-model](https://github.com/uhafner/autograding-model) project for the exact implementation. If not specified, a [default configuration](https://github.com/uhafner/autograding-model/blob/main/src/main/resources/default-config.json) will be used.
 - ``pr-number: ${{ steps.pr.outputs.number }}``: optional number of the pull request. If not set, then just the checks will be published but not a pull request comment.
 - ``checks-name: "Name of checks"``: optional name of GitHub checks (overwrites the default: "Autograding result").
 - ``skip-annotations: true``: Optional flag to skip the creation of annotations (for warnings and missed coverage).
