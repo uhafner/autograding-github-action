@@ -14,7 +14,7 @@ import org.kohsuke.github.GHCheckRunBuilder.Output;
  *
  * @author Ullrich Hafner
  */
-public class GitHubAnnotationsBuilder extends CommentBuilder {
+class GitHubAnnotationsBuilder extends CommentBuilder {
     private static final String GITHUB_WORKSPACE_REL = "/github/workspace/./";
     private static final String GITHUB_WORKSPACE_ABS = "/github/workspace/";
 
@@ -28,7 +28,7 @@ public class GitHubAnnotationsBuilder extends CommentBuilder {
 
     @Override
     @SuppressWarnings("checkstyle:ParameterNumber")
-    protected void createComment(final String relativePath,
+    protected void createComment(final CommentType commentType, final String relativePath,
             final int lineStart, final int lineEnd,
             final String message, final String title,
             final int columnStart, final int columnEnd,
