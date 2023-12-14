@@ -10,7 +10,7 @@ rectangle "jackson-databind\n\n2.16.0" as com_fasterxml_jackson_core_jackson_dat
 rectangle "jackson-annotations\n\n2.16.0" as com_fasterxml_jackson_core_jackson_annotations_jar
 rectangle "jackson-core\n\n2.16.0" as com_fasterxml_jackson_core_jackson_core_jar
 rectangle "autograding-model\n\n3.13.0" as edu_hm_hafner_autograding_model_jar
-rectangle "autograding-github-action\n\n3.11.0-SNAPSHOT" as edu_hm_hafner_autograding_github_action_jar
+rectangle "autograding-github-action\n\n3.11.0" as edu_hm_hafner_autograding_github_action_jar
 rectangle "analysis-model\n\n11.13.0" as edu_hm_hafner_analysis_model_jar
 rectangle "jsoup\n\n1.16.2" as org_jsoup_jsoup_jar
 rectangle "commons-digester3\n\n3.2" as org_apache_commons_commons_digester3_jar
