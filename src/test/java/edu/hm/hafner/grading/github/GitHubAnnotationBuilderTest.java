@@ -16,7 +16,7 @@ class GitHubAnnotationBuilderTest {
         var log = new FilteredLog("unused");
         var output = mock(Output.class);
 
-        new GitHubAnnotationsBuilder(output, "/tmp").createAnnotations(new AggregatedScore("{}", log), log);
+        new GitHubAnnotationsBuilder(output, "/tmp").createAnnotations(new AggregatedScore("{}", log));
 
         verify(output, never()).add(any(Annotation.class));
     }

@@ -140,7 +140,7 @@ public class GitHubAutoGradingRunner extends AutoGradingRunner {
 
             if (getEnv("SKIP_ANNOTATIONS", log).isEmpty()) {
                 var annotationBuilder = new GitHubAnnotationsBuilder(output, computeAbsolutePathPrefixToRemove(log));
-                annotationBuilder.createAnnotations(score, log);
+                annotationBuilder.createAnnotations(score);
             }
             check.add(output);
             GHCheckRun run = check.create();
