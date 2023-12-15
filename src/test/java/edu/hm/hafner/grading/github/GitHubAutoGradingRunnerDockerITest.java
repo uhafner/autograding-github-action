@@ -226,7 +226,7 @@ public class GitHubAutoGradingRunnerDockerITest {
 
         var composedConsumer = toStringConsumer.andThen(waitingConsumer);
         container.followOutput(composedConsumer);
-        waitingConsumer.waitUntil(frame -> frame.getUtf8String().contains("GitHub Action has finished"), 60, TimeUnit.SECONDS);
+        waitingConsumer.waitUntil(frame -> frame.getUtf8String().contains("End Grading"), 60, TimeUnit.SECONDS);
 
         return toStringConsumer.toUtf8String();
     }
