@@ -132,7 +132,7 @@ public class GitHubAutoGradingRunnerITest extends ResourceTest {
                         "=> Style Score: 100 of 100",
                         "-> SpotBugs Total: 1 warnings",
                         "=> Bugs Score: 86 of 100",
-                        "Total score - 322 of 500 (unit tests: 100/100, code coverage: 20/100, mutation coverage: 16/100, analysis: 186/200)"});
+                        "Autograding score - 322 of 500"});
     }
 
     private static final String CONFIGURATION_WRONG_PATHS = """
@@ -253,7 +253,7 @@ public class GitHubAutoGradingRunnerITest extends ResourceTest {
                         "=> Style Score: 0 of 100",
                         "-> SpotBugs Total: 0 warnings",
                         "=> Bugs Score: 100 of 100",
-                        "Total score - 200 of 500 (unit tests: 100/100, code coverage: 0/100, mutation coverage: 0/100, analysis: 100/200)"});
+                        "Autograding score - 200 of 500"});
     }
 
     private String runAutoGrading() {

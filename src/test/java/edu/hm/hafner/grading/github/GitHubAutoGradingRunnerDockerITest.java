@@ -152,7 +152,7 @@ public class GitHubAutoGradingRunnerDockerITest {
                             "=> Style Score: 6 of 100",
                             "-> SpotBugs Total: 1 warnings",
                             "=> Bugs Score: 86 of 100",
-                            "Total score - 138 of 500 (unit tests: 10/100, code coverage: 20/100, mutation coverage: 16/100, analysis: 92/200)"});
+                            "Autograding score - 138 of 500"});
 
             container.copyFileFromContainer("/github/workspace/metrics.env", LOCAL_METRICS_FILE);
             assertThat(Files.readString(Path.of(LOCAL_METRICS_FILE)))
@@ -183,7 +183,7 @@ public class GitHubAutoGradingRunnerDockerITest {
                             "=> Style Score: 98 of 100",
                             "-> SpotBugs Total: 1 warnings",
                             "=> Bugs Score: 97 of 100",
-                            "Total score - 313 of 500 (unit tests: 100/100, code coverage: 10/100, mutation coverage: 8/100, analysis: 195/200)"});
+                            "Autograding score - 313 of 500"});
         }
     }
 
@@ -212,7 +212,7 @@ public class GitHubAutoGradingRunnerDockerITest {
                             "=> Style Score: 100 of 100",
                             "-> SpotBugs Total: 0 warnings",
                             "=> Bugs Score: 100 of 100",
-                            "Total score - 300 of 500 (unit tests: 100/100, code coverage: 0/100, mutation coverage: 0/100, analysis: 200/200)"});
+                            "Autograding score - 300 of 500"});
         }
     }
 
