@@ -67,7 +67,7 @@ public class GitHubAutoGradingRunner extends AutoGradingRunner {
         var errors = createErrorMessageMarkdown(log);
 
         addComment(score, results.getTextSummary(score, getChecksName()),
-                results.getMarkdownDetails(score) + errors,
+                results.getMarkdownDetails(score, getChecksName()) + errors,
                 results.getMarkdownSummary(score, getChecksName()) + errors,
                 errors.isBlank() ? Conclusion.SUCCESS : Conclusion.FAILURE, log);
 
