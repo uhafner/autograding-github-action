@@ -68,7 +68,7 @@ public class GitHubAutoGradingRunner extends AutoGradingRunner {
 
         addComment(score, results.getTextSummary(score, getChecksName()),
                 results.getMarkdownDetails(score, getChecksName()) + errors,
-                results.getMarkdownSummary(score, getChecksName()) + errors,
+                results.getSubScoreDetails(score) + errors,
                 errors.isBlank() ? Conclusion.SUCCESS : Conclusion.FAILURE, log);
 
         try {
