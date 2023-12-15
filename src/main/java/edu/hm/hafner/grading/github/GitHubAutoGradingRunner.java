@@ -66,10 +66,9 @@ public class GitHubAutoGradingRunner extends AutoGradingRunner {
 
         var errors = createErrorMessageMarkdown(log);
 
-        addComment(score,
-                results.getHeader(), results.getTextSummary(score),
+        addComment(score, results.getTextSummary(score, getChecksName()),
                 results.getMarkdownDetails(score) + errors,
-                results.getMarkdownSummary(score, ":mortar_board: " + getChecksName()) + errors,
+                results.getMarkdownSummary(score, getChecksName()) + errors,
                 errors.isBlank() ? Conclusion.SUCCESS : Conclusion.FAILURE, log);
 
         try {
@@ -98,8 +97,7 @@ public class GitHubAutoGradingRunner extends AutoGradingRunner {
     protected void publishError(final AggregatedScore score, final FilteredLog log, final Throwable exception) {
         var results = new GradingReport();
 
-        addComment(score,
-                results.getHeader(), results.getTextSummary(score),
+        addComment(score, results.getTextSummary(score, getChecksName()),
                 results.getMarkdownErrors(score, exception),
                 results.getMarkdownErrors(score, exception),
                 Conclusion.FAILURE, log);
@@ -112,23 +110,24 @@ public class GitHubAutoGradingRunner extends AutoGradingRunner {
     }
 
     private void addComment(final AggregatedScore score,
-            final String header, final String summary, final String comment, final String prComment,
+            final String textSummary, final String markdownDetails, final String markdownSummary,
             final Conclusion conclusion, final FilteredLog log) {
-        var repository = getEnv("GITHUB_REPOSITORY", log);
-        if (repository.isBlank()) {
-            log.logError("No GITHUB_REPOSITORY defined - skipping");
-
-            return;
-        }
-        String oAuthToken = getEnv("GITHUB_TOKEN", log);
-        if (oAuthToken.isBlank()) {
-            log.logError("No valid GITHUB_TOKEN found - skipping");
-
-            return;
-        }
-
         try {
+            var repository = getEnv("GITHUB_REPOSITORY", log);
+            if (repository.isBlank()) {
+                log.logError("No GITHUB_REPOSITORY defined - skipping");
+
+                return;
+            }
+            String oAuthToken = getEnv("GITHUB_TOKEN", log);
+            if (oAuthToken.isBlank()) {
+                log.logError("No valid GITHUB_TOKEN found - skipping");
+
+                return;
+            }
+
             String sha = getEnv("GITHUB_SHA", log);
+
             GitHub github = new GitHubBuilder().withAppInstallationToken(oAuthToken).build();
             GHCheckRunBuilder check = github.getRepository(repository)
                     .createCheckRun(getChecksName(), sha)
@@ -136,22 +135,23 @@ public class GitHubAutoGradingRunner extends AutoGradingRunner {
                     .withStartedAt(Date.from(Instant.now()))
                     .withConclusion(conclusion);
 
-            Output output = new Output(header, summary).withText(comment);
+            Output output = new Output(textSummary, markdownSummary).withText(markdownDetails);
 
             if (getEnv("SKIP_ANNOTATIONS", log).isEmpty()) {
                 var annotationBuilder = new GitHubAnnotationsBuilder(output, computeAbsolutePathPrefixToRemove(log));
                 annotationBuilder.createAnnotations(score);
             }
-            check.add(output);
-            GHCheckRun run = check.create();
 
+            check.add(output);
+
+            GHCheckRun run = check.create();
             log.logInfo("Successfully created check " + run);
 
             var prNumber = getEnv("PR_NUMBER", log);
             if (!prNumber.isBlank()) { // optional PR comment
                 github.getRepository(repository)
                         .getPullRequest(Integer.parseInt(prNumber))
-                        .comment(prComment + addCheckLink(run));
+                        .comment(markdownSummary + addCheckLink(run));
                 log.logInfo("Successfully commented PR#" + prNumber);
             }
         }
