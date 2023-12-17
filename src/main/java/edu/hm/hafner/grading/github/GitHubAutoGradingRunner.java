@@ -62,13 +62,13 @@ public class GitHubAutoGradingRunner extends AutoGradingRunner {
 
     @Override
     protected void publishGradingResult(final AggregatedScore score, final FilteredLog log) {
-        var results = new GradingReport();
-
         var errors = createErrorMessageMarkdown(log);
 
+        var results = new GradingReport();
         addComment(score, results.getTextSummary(score, getChecksName()),
                 results.getMarkdownDetails(score, getChecksName()) + errors,
                 results.getSubScoreDetails(score) + errors,
+                results.getMarkdownSummary(score, getChecksName()) + errors,
                 errors.isBlank() ? Conclusion.SUCCESS : Conclusion.FAILURE, log);
 
         try {
@@ -83,34 +83,8 @@ public class GitHubAutoGradingRunner extends AutoGradingRunner {
         aggregation = score;
     }
 
-    String createEnvironmentVariables(final AggregatedScore score, final FilteredLog log) {
-        var metrics = new StringBuilder();
-        score.getMetrics().forEach((metric, value) -> metrics.append(String.format("%s=%d%n", metric, value)));
-        log.logInfo("------------------------------------------------------------------");
-        log.logInfo("--------------------------- Summary ------------------------------");
-        log.logInfo("------------------------------------------------------------------");
-        log.logInfo(metrics.toString());
-        return metrics.toString();
-    }
-
-    @Override
-    protected void publishError(final AggregatedScore score, final FilteredLog log, final Throwable exception) {
-        var results = new GradingReport();
-
-        addComment(score, results.getTextSummary(score, getChecksName()),
-                results.getMarkdownErrors(score, exception),
-                results.getMarkdownErrors(score, exception),
-                Conclusion.FAILURE, log);
-
-        aggregation = score;
-    }
-
-    private String getChecksName() {
-        return StringUtils.defaultIfBlank(System.getenv("CHECKS_NAME"), "Autograding results");
-    }
-
-    private void addComment(final AggregatedScore score,
-            final String textSummary, final String markdownDetails, final String markdownSummary,
+    private void addComment(final AggregatedScore score, final String textSummary,
+            final String markdownDetails, final String markdownSummary, final String prSummary,
             final Conclusion conclusion, final FilteredLog log) {
         try {
             var repository = getEnv("GITHUB_REPOSITORY", log);
@@ -151,13 +125,40 @@ public class GitHubAutoGradingRunner extends AutoGradingRunner {
             if (!prNumber.isBlank()) { // optional PR comment
                 github.getRepository(repository)
                         .getPullRequest(Integer.parseInt(prNumber))
-                        .comment(markdownSummary + addCheckLink(run));
+                        .comment(prSummary + addCheckLink(run));
                 log.logInfo("Successfully commented PR#" + prNumber);
             }
         }
         catch (IOException exception) {
             log.logException(exception, "Could not create check");
         }
+    }
+
+    String createEnvironmentVariables(final AggregatedScore score, final FilteredLog log) {
+        var metrics = new StringBuilder();
+        score.getMetrics().forEach((metric, value) -> metrics.append(String.format("%s=%d%n", metric, value)));
+        log.logInfo("------------------------------------------------------------------");
+        log.logInfo("--------------------------- Summary ------------------------------");
+        log.logInfo("------------------------------------------------------------------");
+        log.logInfo(metrics.toString());
+        return metrics.toString();
+    }
+
+    @Override
+    protected void publishError(final AggregatedScore score, final FilteredLog log, final Throwable exception) {
+        var results = new GradingReport();
+
+        addComment(score, results.getTextSummary(score, getChecksName()),
+                results.getMarkdownErrors(score, exception),
+                results.getMarkdownErrors(score, exception),
+                results.getMarkdownErrors(score, exception),
+                Conclusion.FAILURE, log);
+
+        aggregation = score;
+    }
+
+    private String getChecksName() {
+        return StringUtils.defaultIfBlank(System.getenv("CHECKS_NAME"), "Autograding results");
     }
 
     private String computeAbsolutePathPrefixToRemove(final FilteredLog log) {
