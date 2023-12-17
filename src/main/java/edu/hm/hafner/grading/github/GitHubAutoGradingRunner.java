@@ -65,7 +65,8 @@ public class GitHubAutoGradingRunner extends AutoGradingRunner {
         var errors = createErrorMessageMarkdown(log);
 
         var results = new GradingReport();
-        addComment(score, results.getTextSummary(score, getChecksName()),
+        addComment(score,
+                results.getTextSummary(score, getChecksName()),
                 results.getMarkdownDetails(score, getChecksName()) + errors,
                 results.getSubScoreDetails(score) + errors,
                 results.getMarkdownSummary(score, getChecksName()) + errors,
@@ -80,6 +81,17 @@ public class GitHubAutoGradingRunner extends AutoGradingRunner {
         }
 
         log.logInfo("GitHub Action has finished");
+        aggregation = score;
+    }
+
+    @Override
+    protected void publishError(final AggregatedScore score, final FilteredLog log, final Throwable exception) {
+        var results = new GradingReport();
+
+        var markdownErrors = results.getMarkdownErrors(score, exception);
+        addComment(score, results.getTextSummary(score, getChecksName()),
+                markdownErrors, markdownErrors, markdownErrors, Conclusion.FAILURE, log);
+
         aggregation = score;
     }
 
@@ -142,19 +154,6 @@ public class GitHubAutoGradingRunner extends AutoGradingRunner {
         log.logInfo("------------------------------------------------------------------");
         log.logInfo(metrics.toString());
         return metrics.toString();
-    }
-
-    @Override
-    protected void publishError(final AggregatedScore score, final FilteredLog log, final Throwable exception) {
-        var results = new GradingReport();
-
-        addComment(score, results.getTextSummary(score, getChecksName()),
-                results.getMarkdownErrors(score, exception),
-                results.getMarkdownErrors(score, exception),
-                results.getMarkdownErrors(score, exception),
-                Conclusion.FAILURE, log);
-
-        aggregation = score;
     }
 
     private String getChecksName() {
