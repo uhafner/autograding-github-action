@@ -18,7 +18,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"0%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":0,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"0%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":0,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/000.svg
@@ -31,7 +31,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"1%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":1,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":9,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"1%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":1,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":9,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/001.svg
@@ -44,7 +44,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"2%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":2,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":8,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"2%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":2,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":8,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/002.svg
@@ -57,7 +57,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"3%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":3,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":7,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"3%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":3,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":7,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/003.svg
@@ -70,7 +70,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"4%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":4,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":6,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"4%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":4,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":6,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/004.svg
@@ -83,7 +83,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"5%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":5,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":5,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"5%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":5,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":5,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/005.svg
@@ -96,7 +96,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"6%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":6,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":4,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"6%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":6,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":4,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/006.svg
@@ -109,7 +109,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"7%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":7,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":3,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"7%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":7,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":3,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/007.svg
@@ -122,7 +122,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"8%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":8,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":2,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"8%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":8,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":2,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/008.svg
@@ -135,7 +135,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"9%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":9,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":1,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"9%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":9,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":1,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/009.svg
@@ -148,7 +148,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"10%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":0,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"10%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":0,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/010.svg
@@ -161,7 +161,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"11%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":1,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":9,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"11%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":1,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":9,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/011.svg
@@ -174,7 +174,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"12%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":2,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":8,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"12%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":2,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":8,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/012.svg
@@ -187,7 +187,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"13%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":3,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":7,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"13%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":3,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":7,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/013.svg
@@ -200,7 +200,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"14%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":4,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":6,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"14%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":4,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":6,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/014.svg
@@ -213,7 +213,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"15%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":5,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":5,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"15%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":5,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":5,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/015.svg
@@ -226,7 +226,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"16%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":6,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":4,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"16%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":6,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":4,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/016.svg
@@ -239,7 +239,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"17%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":7,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":3,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"17%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":7,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":3,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/017.svg
@@ -252,7 +252,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"18%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":8,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":2,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"18%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":8,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":2,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/018.svg
@@ -265,7 +265,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"19%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":9,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":1,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"19%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":9,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":1,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/019.svg
@@ -278,7 +278,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"20%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":0,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"20%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":0,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/020.svg
@@ -291,7 +291,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"21%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":1,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":9,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"21%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":1,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":9,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/021.svg
@@ -304,7 +304,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"22%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":2,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":8,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"22%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":2,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":8,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/022.svg
@@ -317,7 +317,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"23%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":3,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":7,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"23%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":3,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":7,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/023.svg
@@ -330,7 +330,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"24%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":4,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":6,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"24%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":4,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":6,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/024.svg
@@ -343,7 +343,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"25%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":5,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":5,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"25%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":5,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":5,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/025.svg
@@ -356,7 +356,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"26%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":6,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":4,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"26%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":6,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":4,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/026.svg
@@ -369,7 +369,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"27%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":7,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":3,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"27%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":7,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":3,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/027.svg
@@ -382,7 +382,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"28%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":8,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":2,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"28%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":8,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":2,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/028.svg
@@ -395,7 +395,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"29%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":9,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":1,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"29%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":9,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":1,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/029.svg
@@ -408,7 +408,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"30%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":0,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"30%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":0,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/030.svg
@@ -421,7 +421,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"31%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":1,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":9,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"31%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":1,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":9,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/031.svg
@@ -434,7 +434,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"32%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":2,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":8,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"32%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":2,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":8,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/032.svg
@@ -447,7 +447,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"33%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":3,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":7,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"33%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":3,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":7,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/033.svg
@@ -460,7 +460,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"34%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":4,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":6,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"34%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":4,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":6,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/034.svg
@@ -473,7 +473,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"35%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":5,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":5,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"35%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":5,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":5,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/035.svg
@@ -486,7 +486,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"36%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":6,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":4,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"36%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":6,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":4,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/036.svg
@@ -499,7 +499,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"37%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":7,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":3,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"37%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":7,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":3,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/037.svg
@@ -512,7 +512,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"38%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":8,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":2,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"38%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":8,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":2,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/038.svg
@@ -525,7 +525,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"39%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":9,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":1,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"39%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":9,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":1,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/039.svg
@@ -538,7 +538,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"40%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":0,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"40%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":0,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/040.svg
@@ -551,7 +551,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"41%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":1,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":9,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"41%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":1,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":9,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/041.svg
@@ -564,7 +564,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"42%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":2,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":8,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"42%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":2,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":8,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/042.svg
@@ -577,7 +577,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"43%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":3,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":7,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"43%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":3,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":7,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/043.svg
@@ -590,7 +590,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"44%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":4,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":6,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"44%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":4,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":6,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/044.svg
@@ -603,7 +603,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"45%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":5,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":5,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"45%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":5,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":5,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/045.svg
@@ -616,7 +616,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"46%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":6,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":4,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"46%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":6,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":4,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/046.svg
@@ -629,7 +629,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"47%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":7,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":3,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"47%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":7,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":3,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/047.svg
@@ -642,7 +642,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"48%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":8,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":2,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"48%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":8,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":2,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/048.svg
@@ -655,7 +655,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"49%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":9,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":1,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"49%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":9,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":1,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/049.svg
@@ -668,7 +668,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"50%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":0,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"50%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":0,"name":"Red"},{"value":0,"name":"Yellow"},{"value":0,"name":"Green"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/050.svg
