@@ -18,7 +18,12 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"59%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},data:[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":9,"name":"Yellow"},{"value":0,"name":"Green"},{"value":1,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"59%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},data:[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":9,"name":"Yellow"},{"value":0,"name":"Green"},{"value":1,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/059.svg
+          ${{ steps.chart-059.outputs.svg }}
+          EOF
       - name: Commit updated badges
         continue-on-error: true
         run: |
