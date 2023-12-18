@@ -55,7 +55,7 @@ public class ProgressGenerator {
               EOF
                 """;
 
-        for (int percentage = 0; percentage <= 50; percentage++) {
+        for (int percentage = 51; percentage <= 100; percentage++) {
             var formatter = options.replace("\"formatter\": \"\"", String.format("\"formatter\": \"%d%%\"", percentage));
 
             String data;
