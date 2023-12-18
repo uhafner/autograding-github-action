@@ -18,7 +18,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"0%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"0%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/000.svg
@@ -31,7 +31,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"1%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"1%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/001.svg
@@ -44,7 +44,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"2%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"2%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/002.svg
@@ -57,7 +57,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"3%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"3%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/003.svg
@@ -70,7 +70,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"4%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"4%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/004.svg
@@ -83,7 +83,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"5%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"5%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/005.svg
@@ -96,7 +96,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"6%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"6%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/006.svg
@@ -109,7 +109,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"7%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"7%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/007.svg
@@ -122,7 +122,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"8%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"8%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/008.svg
@@ -135,7 +135,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"9%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"9%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/009.svg
@@ -148,7 +148,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"10%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"10%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/010.svg
@@ -161,7 +161,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"11%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"11%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/011.svg
@@ -174,7 +174,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"12%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"12%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/012.svg
@@ -187,7 +187,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"13%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"13%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/013.svg
@@ -200,7 +200,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"14%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"14%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/014.svg
@@ -213,7 +213,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"15%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"15%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/015.svg
@@ -226,7 +226,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"16%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"16%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/016.svg
@@ -239,7 +239,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"17%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"17%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/017.svg
@@ -252,7 +252,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"18%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"18%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/018.svg
@@ -265,7 +265,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"19%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"19%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/019.svg
@@ -278,7 +278,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"20%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"20%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/020.svg
@@ -291,7 +291,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"21%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"21%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/021.svg
@@ -304,7 +304,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"22%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"22%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/022.svg
@@ -317,7 +317,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"23%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"23%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/023.svg
@@ -330,7 +330,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"24%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"24%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/024.svg
@@ -343,7 +343,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"25%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"25%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/025.svg
@@ -356,7 +356,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"26%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"26%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/026.svg
@@ -369,7 +369,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"27%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"27%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/027.svg
@@ -382,7 +382,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"28%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"28%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/028.svg
@@ -395,7 +395,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"29%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"29%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/029.svg
@@ -408,7 +408,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"30%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"30%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/030.svg
@@ -421,7 +421,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"31%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"31%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/031.svg
@@ -434,7 +434,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"32%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"32%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/032.svg
@@ -447,7 +447,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"33%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"33%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/033.svg
@@ -460,7 +460,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"34%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"34%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/034.svg
@@ -473,7 +473,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"35%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"35%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/035.svg
@@ -486,7 +486,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"36%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"36%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/036.svg
@@ -499,7 +499,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"37%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"37%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/037.svg
@@ -512,7 +512,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"38%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"38%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/038.svg
@@ -525,7 +525,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"39%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"39%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/039.svg
@@ -538,7 +538,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"40%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"40%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/040.svg
@@ -551,7 +551,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"41%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"41%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/041.svg
@@ -564,7 +564,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"42%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"42%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/042.svg
@@ -577,7 +577,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"43%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"43%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/043.svg
@@ -590,7 +590,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"44%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"44%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/044.svg
@@ -603,7 +603,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"45%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"45%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/045.svg
@@ -616,7 +616,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"46%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"46%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/046.svg
@@ -629,7 +629,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"47%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"47%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/047.svg
@@ -642,7 +642,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"48%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"48%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/048.svg
@@ -655,7 +655,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"49%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"49%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/049.svg
@@ -668,7 +668,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"50%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"50%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/050.svg
@@ -681,7 +681,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"51%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"51%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/051.svg
@@ -694,7 +694,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"52%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"52%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/052.svg
@@ -707,7 +707,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"53%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"53%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/053.svg
@@ -720,7 +720,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"54%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"54%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/054.svg
@@ -733,7 +733,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"55%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"55%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/055.svg
@@ -746,7 +746,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"56%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"56%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/056.svg
@@ -759,7 +759,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"57%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"57%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/057.svg
@@ -772,7 +772,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"58%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"58%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/058.svg
@@ -785,7 +785,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"59%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"59%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/059.svg
@@ -798,7 +798,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"60%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"60%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/060.svg
@@ -811,7 +811,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"61%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"61%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/061.svg
@@ -824,7 +824,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"62%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"62%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/062.svg
@@ -837,7 +837,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"63%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"63%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/063.svg
@@ -850,7 +850,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"64%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"64%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/064.svg
@@ -863,7 +863,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"65%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"65%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/065.svg
@@ -876,7 +876,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"66%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"66%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/066.svg
@@ -889,7 +889,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"67%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"67%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/067.svg
@@ -902,7 +902,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"68%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"68%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/068.svg
@@ -915,7 +915,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"69%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"69%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/069.svg
@@ -928,7 +928,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"70%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"70%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/070.svg
@@ -941,7 +941,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"71%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"71%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/071.svg
@@ -954,7 +954,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"72%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"72%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/072.svg
@@ -967,7 +967,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"73%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"73%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/073.svg
@@ -980,7 +980,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"74%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"74%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/074.svg
@@ -993,7 +993,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"75%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"75%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/075.svg
@@ -1006,7 +1006,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"76%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"76%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/076.svg
@@ -1019,7 +1019,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"77%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"77%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/077.svg
@@ -1032,7 +1032,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"78%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"78%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/078.svg
@@ -1045,7 +1045,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"79%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"79%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/079.svg
@@ -1058,7 +1058,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"80%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"80%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/080.svg
@@ -1071,7 +1071,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"81%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"81%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/081.svg
@@ -1084,7 +1084,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"82%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"82%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/082.svg
@@ -1097,7 +1097,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"83%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"83%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/083.svg
@@ -1110,7 +1110,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"84%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"84%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/084.svg
@@ -1123,7 +1123,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"85%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"85%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/085.svg
@@ -1136,7 +1136,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"86%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"86%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/086.svg
@@ -1149,7 +1149,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"87%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"87%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/087.svg
@@ -1162,7 +1162,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"88%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"88%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/088.svg
@@ -1175,7 +1175,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"89%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"89%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/089.svg
@@ -1188,7 +1188,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"90%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"90%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/090.svg
@@ -1201,7 +1201,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"91%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"91%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/091.svg
@@ -1214,7 +1214,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"92%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"92%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/092.svg
@@ -1227,7 +1227,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"93%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"93%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/093.svg
@@ -1240,7 +1240,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"94%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"94%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/094.svg
@@ -1253,7 +1253,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"95%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"95%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/095.svg
@@ -1266,7 +1266,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"96%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"96%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/096.svg
@@ -1279,7 +1279,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"97%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"97%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/097.svg
@@ -1292,7 +1292,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"98%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"98%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/098.svg
@@ -1305,7 +1305,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"99%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"99%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/099.svg
@@ -1318,7 +1318,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":"120,"fontWeight":"bold","color":"#000","formatter":"100%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":120,"fontWeight":"bold","color":"#000","formatter":"100%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[]}]};'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/100.svg
