@@ -98,7 +98,7 @@ public class ProgressGenerator {
         }
         i += 10;
         for (; i < 100; i += 10) {
-            dataValues.add("{ \"value\": 10, name: \"NotFilled\" }");
+            dataValues.add("{ \"value\": 10, \"name\": \"NotFilled\" }");
         }
 
         return dataValues.toString();

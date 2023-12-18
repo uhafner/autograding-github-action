@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Generate progress SVG
         id: chart-051
         uses: robiningelbrecht/apache-echarts-action@v1.1.0
@@ -408,7 +409,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"81%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Yellow"},{"value":10,"name":"Yellow"},{"value":10,"name":"Yellow"},{"value":1,"name":"Green"},{"value":9,"name":"NotFilled"},{"value":10,name:"NotFilled"}]}]}'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"81%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Yellow"},{"value":10,"name":"Yellow"},{"value":10,"name":"Yellow"},{"value":1,"name":"Green"},{"value":9,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/081.svg
@@ -421,7 +422,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"82%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Yellow"},{"value":10,"name":"Yellow"},{"value":10,"name":"Yellow"},{"value":2,"name":"Green"},{"value":8,"name":"NotFilled"},{"value":10,name:"NotFilled"}]}]}'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"82%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Yellow"},{"value":10,"name":"Yellow"},{"value":10,"name":"Yellow"},{"value":2,"name":"Green"},{"value":8,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/082.svg
@@ -434,7 +435,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"83%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Yellow"},{"value":10,"name":"Yellow"},{"value":10,"name":"Yellow"},{"value":3,"name":"Green"},{"value":7,"name":"NotFilled"},{"value":10,name:"NotFilled"}]}]}'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"83%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Yellow"},{"value":10,"name":"Yellow"},{"value":10,"name":"Yellow"},{"value":3,"name":"Green"},{"value":7,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/083.svg
@@ -447,7 +448,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"84%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Yellow"},{"value":10,"name":"Yellow"},{"value":10,"name":"Yellow"},{"value":4,"name":"Green"},{"value":6,"name":"NotFilled"},{"value":10,name:"NotFilled"}]}]}'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"84%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Yellow"},{"value":10,"name":"Yellow"},{"value":10,"name":"Yellow"},{"value":4,"name":"Green"},{"value":6,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/084.svg
@@ -460,7 +461,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"85%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Yellow"},{"value":10,"name":"Yellow"},{"value":10,"name":"Yellow"},{"value":5,"name":"Green"},{"value":5,"name":"NotFilled"},{"value":10,name:"NotFilled"}]}]}'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"85%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Yellow"},{"value":10,"name":"Yellow"},{"value":10,"name":"Yellow"},{"value":5,"name":"Green"},{"value":5,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/085.svg
@@ -473,7 +474,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"86%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Yellow"},{"value":10,"name":"Yellow"},{"value":10,"name":"Yellow"},{"value":6,"name":"Green"},{"value":4,"name":"NotFilled"},{"value":10,name:"NotFilled"}]}]}'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"86%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Yellow"},{"value":10,"name":"Yellow"},{"value":10,"name":"Yellow"},{"value":6,"name":"Green"},{"value":4,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/086.svg
@@ -486,7 +487,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"87%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Yellow"},{"value":10,"name":"Yellow"},{"value":10,"name":"Yellow"},{"value":7,"name":"Green"},{"value":3,"name":"NotFilled"},{"value":10,name:"NotFilled"}]}]}'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"87%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Yellow"},{"value":10,"name":"Yellow"},{"value":10,"name":"Yellow"},{"value":7,"name":"Green"},{"value":3,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/087.svg
@@ -499,7 +500,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"88%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Yellow"},{"value":10,"name":"Yellow"},{"value":10,"name":"Yellow"},{"value":8,"name":"Green"},{"value":2,"name":"NotFilled"},{"value":10,name:"NotFilled"}]}]}'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"88%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Yellow"},{"value":10,"name":"Yellow"},{"value":10,"name":"Yellow"},{"value":8,"name":"Green"},{"value":2,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/088.svg
@@ -512,7 +513,7 @@ jobs:
           width: 200
           height: 200
           pass-options-as: string
-          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"89%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Yellow"},{"value":10,"name":"Yellow"},{"value":10,"name":"Yellow"},{"value":9,"name":"Green"},{"value":1,"name":"NotFilled"},{"value":10,name:"NotFilled"}]}]}'
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#FFBF00","#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"89%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Red"},{"value":10,"name":"Yellow"},{"value":10,"name":"Yellow"},{"value":10,"name":"Yellow"},{"value":9,"name":"Green"},{"value":1,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
       - name: Save generated SVG
         run: |
           cat <<EOF > badges/089.svg
