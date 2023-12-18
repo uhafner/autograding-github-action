@@ -10,6 +10,10 @@ import org.apache.commons.lang3.StringUtils;
  * @author Ullrich Hafner
  */
 public class ProgressGenerator {
+    private static final String RED = "#D2222D";
+    private static final String YELLOW = "#FFBF00";
+    private static final String GREEN = "#238823";
+
     public static void main(final String[] args) {
         String options = """
                 {
@@ -18,7 +22,7 @@ public class ProgressGenerator {
                       "type": "pie",
                       "radius": ["75%", "100%"],
                       "avoidLabelOverlap": false,
-                      "color": ["#D2222D", "#FFBF00", "#238823", "#D0D0D0"],
+                      "color": ["", "#D0D0D0"],
                       "hoverAnimation": false,
                       "label": {
                         "show": true,
@@ -55,20 +59,12 @@ public class ProgressGenerator {
               EOF
                 """;
 
-        for (int percentage = 51; percentage <= 100; percentage++) {
-            var formatter = options.replace("\"formatter\": \"\"", String.format("\"formatter\": \"%d%%\"", percentage));
+        for (int percentage = 0; percentage <= 100; percentage++) {
+            var formatter = options.replace("\"formatter\": \"\"", String.format("\"formatter\": \"%d%%\"", percentage))
+                    .replace("\"color\": [\"\"", String.format("\"color\": [\"%s\"",
+                            percentage <= 50 ? RED : percentage <= 80 ? YELLOW : GREEN));
 
-            String data;
-            if (percentage <= 50) {
-                data = createRedChart(percentage);
-            }
-            else if (percentage <= 80) {
-                data = createYellowChart(percentage);
-            }
-            else {
-                data = createGreenChart(percentage);
-            }
-            var echarts = formatter.replace("\"data\": [ ]", data);
+            var echarts = formatter.replace("\"data\": [ ]", createChart(percentage));
             var chart = StringUtils.deleteWhitespace(echarts);
 
             var stage = script.replace("chart-option: ''", String.format("chart-option: '%s'", chart))
@@ -80,19 +76,13 @@ public class ProgressGenerator {
         }
     }
 
-    private static String createGreenChart(final int percentage) {
+    private static String createChart(final int percentage) {
         var dataValues = new StringJoiner(",\n             ", "\"data\": [", "]");
         int i = 0;
-        for (; i < 50; i += 10) {
-            dataValues.add("{ \"value\": 10, \"name\": \"Red\" }");
-        }
-        for (; i < 80; i += 10) {
-            dataValues.add("{ \"value\": 10, \"name\": \"Yellow\" }");
-        }
         for (; i < ((percentage / 10) * 10) && i < 100; i += 10) {
-            dataValues.add("{ \"value\": 10, \"name\": \"Green\" }");
+            dataValues.add("{ \"value\": 10, \"name\": \"Filled\" }");
         }
-        dataValues.add(String.format("{ \"value\": %d, \"name\": \"Green\" }", percentage % 10));
+        dataValues.add(String.format("{ \"value\": %d, \"name\": \"Filled\" }", percentage % 10));
         if (percentage != 100) {
             dataValues.add(String.format("{ \"value\": %d, \"name\": \"NotFilled\" }", (10 - percentage % 10)));
         }
@@ -101,44 +91,6 @@ public class ProgressGenerator {
             dataValues.add("{ \"value\": 10, \"name\": \"NotFilled\" }");
         }
 
-        return dataValues.toString();
-    }
-
-    private static String createYellowChart(final int percentage) {
-        var dataValues = new StringJoiner(",\n             ", "\"data\": [", "]");
-        int i = 0;
-        for (; i < 50; i += 10) {
-            dataValues.add("{ \"value\": 10, \"name\": \"Red\" }");
-        }
-        for (; i < ((percentage / 10) * 10) && i < 80; i += 10) {
-            dataValues.add("{ \"value\": 10, \"name\": \"Yellow\" }");
-        }
-        dataValues.add(String.format("{ \"value\": %d, \"name\": \"Yellow\" }", percentage % 10));
-        dataValues.add("{ \"value\": 0, \"name\": \"Green\" }");
-        dataValues.add(String.format("{ \"value\": %d, \"name\": \"NotFilled\" }", (10 - percentage % 10)));
-        i += 10;
-        for (; i < 100; i += 10) {
-            dataValues.add("{ \"value\": 10, \"name\": \"NotFilled\" }");
-        }
-
-        return dataValues.toString();
-    }
-
-    private static String createRedChart(final int percentage) {
-        var dataValues = new StringJoiner(",\n             ", "\"data\": [", "]");
-
-        int i = 0;
-        for (; i < ((percentage / 10) * 10) && i < 50; i += 10) {
-            dataValues.add("{ \"value\": 10, \"name\": \"Red\" }");
-        }
-        dataValues.add(String.format("{ \"value\": %d, \"name\": \"Red\" }", percentage % 10));
-        dataValues.add("{ \"value\": 0, \"name\": \"Yellow\" }");
-        dataValues.add("{ \"value\": 0, \"name\": \"Green\" }");
-        dataValues.add(String.format("{ \"value\": %d, \"name\": \"NotFilled\" }", (10 - percentage % 10)));
-        i += 10;
-        for (; i < 100; i += 10) {
-            dataValues.add("{ \"value\": 10, \"name\": \"NotFilled\" }");
-        }
         return dataValues.toString();
     }
 }
