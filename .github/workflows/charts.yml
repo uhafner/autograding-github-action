@@ -1,0 +1,1339 @@
+name: Create percentages
+
+on:
+  push:
+    branches:
+      - '*'
+
+jobs:
+  create-percentages:
+    name: Create percentage SVG images
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'0%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:0,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/  0.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'1%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:1,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:9,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/  1.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'2%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:2,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:8,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/  2.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'3%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:3,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:7,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/  3.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'4%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:4,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:6,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/  4.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'5%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:5,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:5,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/  5.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'6%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:6,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:4,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/  6.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'7%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:7,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:3,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/  7.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'8%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:8,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:2,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/  8.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'9%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:9,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:1,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/  9.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'10%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:0,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 10.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'11%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:1,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:9,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 11.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'12%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:2,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:8,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 12.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'13%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:3,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:7,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 13.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'14%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:4,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:6,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 14.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'15%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:5,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:5,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 15.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'16%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:6,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:4,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 16.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'17%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:7,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:3,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 17.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'18%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:8,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:2,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 18.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'19%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:9,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:1,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 19.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'20%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:0,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 20.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'21%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:1,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:9,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 21.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'22%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:2,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:8,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 22.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'23%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:3,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:7,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 23.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'24%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:4,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:6,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 24.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'25%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:5,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:5,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 25.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'26%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:6,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:4,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 26.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'27%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:7,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:3,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 27.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'28%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:8,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:2,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 28.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'29%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:9,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:1,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 29.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'30%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:0,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 30.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'31%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:1,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:9,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 31.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'32%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:2,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:8,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 32.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'33%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:3,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:7,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 33.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'34%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:4,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:6,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 34.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'35%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:5,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:5,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 35.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'36%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:6,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:4,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 36.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'37%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:7,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:3,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 37.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'38%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:8,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:2,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 38.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'39%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:9,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:1,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 39.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'40%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:0,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 40.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'41%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:1,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:9,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 41.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'42%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:2,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:8,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 42.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'43%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:3,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:7,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 43.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'44%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:4,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:6,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 44.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'45%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:5,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:5,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 45.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'46%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:6,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:4,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 46.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'47%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:7,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:3,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 47.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'48%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:8,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:2,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 48.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'49%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:9,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:1,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 49.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'50%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:0,name:'Red'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 50.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'51%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:1,name:'Yellow'},{value:0,name:'Green'},{value:9,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 51.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'52%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:2,name:'Yellow'},{value:0,name:'Green'},{value:8,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 52.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'53%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:3,name:'Yellow'},{value:0,name:'Green'},{value:7,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 53.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'54%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:4,name:'Yellow'},{value:0,name:'Green'},{value:6,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 54.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'55%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:5,name:'Yellow'},{value:0,name:'Green'},{value:5,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 55.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'56%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:6,name:'Yellow'},{value:0,name:'Green'},{value:4,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 56.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'57%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:7,name:'Yellow'},{value:0,name:'Green'},{value:3,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 57.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'58%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:8,name:'Yellow'},{value:0,name:'Green'},{value:2,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 58.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'59%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:9,name:'Yellow'},{value:0,name:'Green'},{value:1,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 59.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'60%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Yellow'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 60.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'61%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Yellow'},{value:1,name:'Yellow'},{value:0,name:'Green'},{value:9,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 61.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'62%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Yellow'},{value:2,name:'Yellow'},{value:0,name:'Green'},{value:8,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 62.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'63%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Yellow'},{value:3,name:'Yellow'},{value:0,name:'Green'},{value:7,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 63.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'64%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Yellow'},{value:4,name:'Yellow'},{value:0,name:'Green'},{value:6,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 64.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'65%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Yellow'},{value:5,name:'Yellow'},{value:0,name:'Green'},{value:5,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 65.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'66%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Yellow'},{value:6,name:'Yellow'},{value:0,name:'Green'},{value:4,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 66.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'67%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Yellow'},{value:7,name:'Yellow'},{value:0,name:'Green'},{value:3,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 67.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'68%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Yellow'},{value:8,name:'Yellow'},{value:0,name:'Green'},{value:2,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 68.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'69%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Yellow'},{value:9,name:'Yellow'},{value:0,name:'Green'},{value:1,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 69.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'70%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 70.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'71%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:1,name:'Yellow'},{value:0,name:'Green'},{value:9,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 71.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'72%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:2,name:'Yellow'},{value:0,name:'Green'},{value:8,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 72.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'73%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:3,name:'Yellow'},{value:0,name:'Green'},{value:7,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 73.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'74%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:4,name:'Yellow'},{value:0,name:'Green'},{value:6,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 74.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'75%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:5,name:'Yellow'},{value:0,name:'Green'},{value:5,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 75.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'76%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:6,name:'Yellow'},{value:0,name:'Green'},{value:4,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 76.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'77%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:7,name:'Yellow'},{value:0,name:'Green'},{value:3,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 77.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'78%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:8,name:'Yellow'},{value:0,name:'Green'},{value:2,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 78.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'79%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:9,name:'Yellow'},{value:0,name:'Green'},{value:1,name:'NotFilled'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 79.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'80%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:0,name:'Yellow'},{value:0,name:'Green'},{value:10,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 80.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'81%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:1,name:'Green'},{value:9,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 81.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'82%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:2,name:'Green'},{value:8,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 82.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'83%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:3,name:'Green'},{value:7,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 83.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'84%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:4,name:'Green'},{value:6,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 84.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'85%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:5,name:'Green'},{value:5,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 85.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'86%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:6,name:'Green'},{value:4,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 86.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'87%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:7,name:'Green'},{value:3,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 87.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'88%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:8,name:'Green'},{value:2,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 88.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'89%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:9,name:'Green'},{value:1,name:'NotFilled'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 89.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'90%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:10,name:'Green'},{value:0,name:'Green'},{value:10,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 90.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'91%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:10,name:'Green'},{value:1,name:'Green'},{value:9,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 91.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'92%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:10,name:'Green'},{value:2,name:'Green'},{value:8,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 92.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'93%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:10,name:'Green'},{value:3,name:'Green'},{value:7,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 93.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'94%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:10,name:'Green'},{value:4,name:'Green'},{value:6,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 94.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'95%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:10,name:'Green'},{value:5,name:'Green'},{value:5,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 95.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'96%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:10,name:'Green'},{value:6,name:'Green'},{value:4,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 96.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'97%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:10,name:'Green'},{value:7,name:'Green'},{value:3,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 97.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'98%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:10,name:'Green'},{value:8,name:'Green'},{value:2,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 98.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'99%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:10,name:'Green'},{value:9,name:'Green'},{value:1,name:'NotFilled'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/ 99.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: 'option={series:[{type:'pie',radius:['75%','100%'],avoidLabelOverlap:false,color:['#D2222D','#FFBF00','#238823','#D0D0D0'],hoverAnimation:false,label:{show:true,position:'center',fontSize:'120',fontWeight:'bold',color:'#000',formatter:'100%'},itemStyle:{borderRadius:10,borderColor:'#fff',borderWidth:3},labelLine:{normal:{show:false}},data:[{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Red'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:10,name:'Yellow'},{value:10,name:'Green'},{value:10,name:'Green'},{value:0,name:'Green'}]}]};'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/100.svg
+          ${{ steps.chart.outputs.svg }}
+          EOF
+      - name: Commit updated badges
+        continue-on-error: true
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add badges/*.svg
+          git commit -m "Update badges with results from latest autograding" || true
+      - name: Push updated badges to GitHub repository
+        uses: ad-m/github-push-action@master
+        if: ${{ success() }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: percentages
