@@ -1,0 +1,696 @@
+name: Create percentages
+
+on:
+  push:
+    branches:
+      - '*'
+
+jobs:
+  create-percentages:
+    name: Create percentage SVG images
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate progress SVG
+        id: chart-050
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#D2222D","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"50%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":0,"name":"Filled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/050.svg
+          ${{ steps.chart-050.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-051
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#FFBF00","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"51%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":1,"name":"Filled"},{"value":9,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/051.svg
+          ${{ steps.chart-051.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-052
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#FFBF00","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"52%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":2,"name":"Filled"},{"value":8,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/052.svg
+          ${{ steps.chart-052.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-053
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#FFBF00","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"53%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":3,"name":"Filled"},{"value":7,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/053.svg
+          ${{ steps.chart-053.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-054
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#FFBF00","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"54%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":4,"name":"Filled"},{"value":6,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/054.svg
+          ${{ steps.chart-054.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-055
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#FFBF00","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"55%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":5,"name":"Filled"},{"value":5,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/055.svg
+          ${{ steps.chart-055.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-056
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#FFBF00","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"56%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":6,"name":"Filled"},{"value":4,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/056.svg
+          ${{ steps.chart-056.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-057
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#FFBF00","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"57%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":7,"name":"Filled"},{"value":3,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/057.svg
+          ${{ steps.chart-057.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-058
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#FFBF00","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"58%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":8,"name":"Filled"},{"value":2,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/058.svg
+          ${{ steps.chart-058.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-059
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#FFBF00","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"59%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":9,"name":"Filled"},{"value":1,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/059.svg
+          ${{ steps.chart-059.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-060
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#FFBF00","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"60%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":0,"name":"Filled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/060.svg
+          ${{ steps.chart-060.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-061
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#FFBF00","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"61%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":1,"name":"Filled"},{"value":9,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/061.svg
+          ${{ steps.chart-061.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-062
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#FFBF00","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"62%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":2,"name":"Filled"},{"value":8,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/062.svg
+          ${{ steps.chart-062.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-063
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#FFBF00","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"63%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":3,"name":"Filled"},{"value":7,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/063.svg
+          ${{ steps.chart-063.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-064
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#FFBF00","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"64%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":4,"name":"Filled"},{"value":6,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/064.svg
+          ${{ steps.chart-064.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-065
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#FFBF00","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"65%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":5,"name":"Filled"},{"value":5,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/065.svg
+          ${{ steps.chart-065.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-066
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#FFBF00","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"66%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":6,"name":"Filled"},{"value":4,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/066.svg
+          ${{ steps.chart-066.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-067
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#FFBF00","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"67%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":7,"name":"Filled"},{"value":3,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/067.svg
+          ${{ steps.chart-067.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-068
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#FFBF00","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"68%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":8,"name":"Filled"},{"value":2,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/068.svg
+          ${{ steps.chart-068.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-069
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#FFBF00","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"69%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":9,"name":"Filled"},{"value":1,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/069.svg
+          ${{ steps.chart-069.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-070
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#FFBF00","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"70%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":0,"name":"Filled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/070.svg
+          ${{ steps.chart-070.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-071
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#FFBF00","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"71%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":1,"name":"Filled"},{"value":9,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/071.svg
+          ${{ steps.chart-071.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-072
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#FFBF00","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"72%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":2,"name":"Filled"},{"value":8,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/072.svg
+          ${{ steps.chart-072.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-073
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#FFBF00","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"73%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":3,"name":"Filled"},{"value":7,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/073.svg
+          ${{ steps.chart-073.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-074
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#FFBF00","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"74%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":4,"name":"Filled"},{"value":6,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/074.svg
+          ${{ steps.chart-074.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-075
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#FFBF00","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"75%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":5,"name":"Filled"},{"value":5,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/075.svg
+          ${{ steps.chart-075.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-076
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#FFBF00","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"76%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":6,"name":"Filled"},{"value":4,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/076.svg
+          ${{ steps.chart-076.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-077
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#FFBF00","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"77%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":7,"name":"Filled"},{"value":3,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/077.svg
+          ${{ steps.chart-077.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-078
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#FFBF00","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"78%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":8,"name":"Filled"},{"value":2,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/078.svg
+          ${{ steps.chart-078.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-079
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#FFBF00","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"79%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":9,"name":"Filled"},{"value":1,"name":"NotFilled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/079.svg
+          ${{ steps.chart-079.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-080
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#FFBF00","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"80%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":0,"name":"Filled"},{"value":10,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/080.svg
+          ${{ steps.chart-080.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-081
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"81%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":1,"name":"Filled"},{"value":9,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/081.svg
+          ${{ steps.chart-081.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-082
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"82%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":2,"name":"Filled"},{"value":8,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/082.svg
+          ${{ steps.chart-082.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-083
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"83%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":3,"name":"Filled"},{"value":7,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/083.svg
+          ${{ steps.chart-083.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-084
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"84%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":4,"name":"Filled"},{"value":6,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/084.svg
+          ${{ steps.chart-084.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-085
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"85%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":5,"name":"Filled"},{"value":5,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/085.svg
+          ${{ steps.chart-085.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-086
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"86%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":6,"name":"Filled"},{"value":4,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/086.svg
+          ${{ steps.chart-086.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-087
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"87%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":7,"name":"Filled"},{"value":3,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/087.svg
+          ${{ steps.chart-087.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-088
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"88%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":8,"name":"Filled"},{"value":2,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/088.svg
+          ${{ steps.chart-088.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-089
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"89%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":9,"name":"Filled"},{"value":1,"name":"NotFilled"},{"value":10,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/089.svg
+          ${{ steps.chart-089.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-090
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"90%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":0,"name":"Filled"},{"value":10,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/090.svg
+          ${{ steps.chart-090.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-091
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"91%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":1,"name":"Filled"},{"value":9,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/091.svg
+          ${{ steps.chart-091.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-092
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"92%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":2,"name":"Filled"},{"value":8,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/092.svg
+          ${{ steps.chart-092.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-093
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"93%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":3,"name":"Filled"},{"value":7,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/093.svg
+          ${{ steps.chart-093.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-094
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"94%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":4,"name":"Filled"},{"value":6,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/094.svg
+          ${{ steps.chart-094.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-095
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"95%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":5,"name":"Filled"},{"value":5,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/095.svg
+          ${{ steps.chart-095.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-096
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"96%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":6,"name":"Filled"},{"value":4,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/096.svg
+          ${{ steps.chart-096.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-097
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"97%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":7,"name":"Filled"},{"value":3,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/097.svg
+          ${{ steps.chart-097.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-098
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"98%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":8,"name":"Filled"},{"value":2,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/098.svg
+          ${{ steps.chart-098.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-099
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"99%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":9,"name":"Filled"},{"value":1,"name":"NotFilled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/099.svg
+          ${{ steps.chart-099.outputs.svg }}
+          EOF
+      - name: Generate progress SVG
+        id: chart-100
+        uses: robiningelbrecht/apache-echarts-action@v1.1.0
+        with:
+          width: 200
+          height: 200
+          pass-options-as: string
+          chart-option: '{"series":[{"type":"pie","radius":["75%","100%"],"avoidLabelOverlap":false,"color":["#238823","#D0D0D0"],"hoverAnimation":false,"label":{"show":true,"position":"center","fontSize":55,"fontWeight":"bold","color":"#000","formatter":"100%"},"itemStyle":{"borderRadius":10,"borderColor":"#fff","borderWidth":3},"labelLine":{"normal":{"show":false}},"data":[{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":10,"name":"Filled"},{"value":0,"name":"Filled"}]}]}'
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/100.svg
+          ${{ steps.chart-100.outputs.svg }}
+          EOF
+
+      - name: Save generated SVG
+        run: |
+          cat <<EOF > badges/100.svg
+          ${{ steps.chart-100.outputs.svg }}
+          EOF
+      - name: Commit updated badges
+        continue-on-error: true
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add badges/*.svg
+          git commit -m "Update badges with results from latest autograding" || true
+      - name: Push updated badges to GitHub repository
+        uses: ad-m/github-push-action@master
+        if: ${{ success() }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: percentages
