@@ -25,7 +25,7 @@
     <jib-maven-plugin.version>3.4.0</jib-maven-plugin.version>
     <testcontainers.version>1.19.3</testcontainers.version>
 
-    <autograding-model.version>3.17.0</autograding-model.version>
+    <autograding-model.version>3.18.0</autograding-model.version>
     <analysis-model.version>11.13.0</analysis-model.version>
     <coverage-model.version>0.36.0</coverage-model.version>
   </properties>
