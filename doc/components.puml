@@ -1,0 +1,67 @@
+@startuml
+
+component "autograding-github-action" as autograding_github_action {
+}
+
+component "autograding-model" as autograding_model {
+}
+
+component "analysis-model" <<component>> as analysis_model {
+class Issue {
+}
+
+class Severity {
+}
+Issue .> Severity : <<use>>
+
+class Report {
+}
+Report o- Issue : issues
+
+abstract class ReaderFactory {
+}
+
+class FileReaderFactory {
+}
+ReaderFactory <|-- FileReaderFactory
+
+abstract class ParserDescriptor {
+}
+
+class ParserRegistry {
+}
+ParserRegistry o- ParserDescriptor : descriptors
+
+class IssueFilterBuilder {
+}
+Report ..> IssueFilterBuilder : <<use>>
+
+abstract class AbstractViolationAdapter {
+}
+
+class PitAdapter {
+}
+AbstractViolationAdapter <|-- PitAdapter
+
+class JUnitAdapter {
+}
+AbstractViolationAdapter <|-- JUnitAdapter
+
+}
+
+component "github-api" as github_api {
+}
+
+component "commons-io" as commons_io {
+}
+
+component "commons-lang3" as commons_lang3 {
+}
+
+autograding_github_action -[#000000].> autograding_model
+autograding_github_action -[#000000].> analysis_model
+autograding_github_action -[#000000].> github_api
+autograding_github_action -[#000000].> commons_io
+autograding_github_action -[#000000].> commons_lang3
+
+@enduml
