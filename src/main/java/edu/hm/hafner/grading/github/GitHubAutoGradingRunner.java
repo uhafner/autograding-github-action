@@ -166,7 +166,7 @@ public class GitHubAutoGradingRunner extends AutoGradingRunner {
     }
 
     private String addCheckLink(final GHCheckRun run) {
-        return String.format("## %n%n More details are available in the [GitHub Checks Result](%s).%n",
+        return String.format("%n%n More details are available in the [GitHub Checks Result](%s).%n",
                 run.getDetailsUrl().toString());
     }
 
