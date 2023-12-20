@@ -12,7 +12,7 @@ import edu.hm.hafner.util.ResourceTest;
 import static org.assertj.core.api.Assertions.*;
 
 /**
- * Integration test for the grading action. Starts the container and checks if the grading runs as expected.
+ * Integration test for the grading action. Runs the action locally in the filesystem.
  *
  * @author Ullrich Hafner
  */

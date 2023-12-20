@@ -123,7 +123,8 @@ public class GitHubAutoGradingRunnerDockerITest {
             container.withEnv("CONFIG", CONFIGURATION);
             startContainerWithAllFiles(container);
 
-            var metrics = new String[] {"tests=1",
+            var metrics = new String[] {
+                    "tests=1",
                     "line=11",
                     "branch=10",
                     "mutation=8",

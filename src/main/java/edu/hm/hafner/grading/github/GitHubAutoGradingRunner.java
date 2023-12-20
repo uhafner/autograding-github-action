@@ -51,8 +51,12 @@ public class GitHubAutoGradingRunner extends AutoGradingRunner {
     }
 
     @VisibleForTesting
-    GitHubAutoGradingRunner(final PrintStream printStream) {
+    protected GitHubAutoGradingRunner(final PrintStream printStream) {
         super(printStream);
+    }
+
+    protected String getDefaultTitle() {
+        return "Autograding results";
     }
 
     @CheckForNull @VisibleForTesting
@@ -157,7 +161,7 @@ public class GitHubAutoGradingRunner extends AutoGradingRunner {
     }
 
     private String getChecksName() {
-        return StringUtils.defaultIfBlank(System.getenv("CHECKS_NAME"), "Autograding results");
+        return StringUtils.defaultIfBlank(System.getenv("CHECKS_NAME"), getDefaultTitle());
     }
 
     private String computeAbsolutePathPrefixToRemove(final FilteredLog log) {
