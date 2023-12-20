@@ -138,9 +138,9 @@ public class GitHubAutoGradingRunner extends AutoGradingRunner {
     String createEnvironmentVariables(final AggregatedScore score, final FilteredLog log) {
         var metrics = new StringBuilder();
         score.getMetrics().forEach((metric, value) -> metrics.append(String.format("%s=%d%n", metric, value)));
-        log.logInfo("------------------------------------------------------------------");
-        log.logInfo("--------------------------- Summary ------------------------------");
-        log.logInfo("------------------------------------------------------------------");
+        log.logInfo("---------------");
+        log.logInfo("Metrics Summary");
+        log.logInfo("---------------");
         log.logInfo(metrics.toString());
         return metrics.toString();
     }
