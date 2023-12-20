@@ -18,16 +18,14 @@
 
   <properties>
     <module.name>${project.groupId}.autograding.github.action</module.name>
-    <docker-image-tag>${project.version}</docker-image-tag>
+    <docker-image-tag>3.14.0</docker-image-tag>
 
     <java.version>17</java.version>
 
     <jib-maven-plugin.version>3.4.0</jib-maven-plugin.version>
     <testcontainers.version>1.19.3</testcontainers.version>
 
-    <autograding-model.version>3.18.0</autograding-model.version>
-    <analysis-model.version>11.13.0</analysis-model.version>
-    <coverage-model.version>0.36.0</coverage-model.version>
+    <autograding-model.version>3.19.0</autograding-model.version>
   </properties>
 
   <dependencies>
@@ -36,10 +34,6 @@
       <artifactId>autograding-model</artifactId>
       <version>${autograding-model.version}</version>
       <exclusions>
-        <exclusion>
-          <groupId>edu.hm.hafner</groupId>
-          <artifactId>analysis-model</artifactId>
-        </exclusion>
         <exclusion>
           <groupId>com.google.errorprone</groupId>
           <artifactId>error_prone_annotations</artifactId>
@@ -57,10 +51,6 @@
           <artifactId>commons-io</artifactId>
         </exclusion>
         <exclusion>
-          <artifactId>coverage-model</artifactId>
-          <groupId>edu.hm.hafner</groupId>
-        </exclusion>
-        <exclusion>
           <artifactId>codingstyle</artifactId>
           <groupId>edu.hm.hafner</groupId>
         </exclusion>
@@ -69,28 +59,6 @@
           <groupId>one.util</groupId>
         </exclusion>
       </exclusions>
-    </dependency>
-
-    <dependency>
-      <groupId>edu.hm.hafner</groupId>
-      <artifactId>analysis-model</artifactId>
-      <version>${analysis-model.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>com.github.spotbugs</groupId>
-          <artifactId>spotbugs-annotations</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>commons-io</groupId>
-          <artifactId>commons-io</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-
-    <dependency>
-      <groupId>edu.hm.hafner</groupId>
-      <artifactId>coverage-model</artifactId>
-      <version>${coverage-model.version}</version>
     </dependency>
 
     <dependency>
@@ -130,6 +98,16 @@
       <artifactId>testcontainers</artifactId>
       <version>${testcontainers.version}</version>
       <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <artifactId>jackson-annotations</artifactId>
+          <groupId>com.fasterxml.jackson.core</groupId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.fasterxml.jackson.core</groupId>
+          <artifactId>jackson-annotations</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.testcontainers</groupId>

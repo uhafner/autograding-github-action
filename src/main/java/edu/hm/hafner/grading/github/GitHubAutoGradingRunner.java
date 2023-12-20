@@ -14,7 +14,6 @@ import edu.hm.hafner.grading.AutoGradingRunner;
 import edu.hm.hafner.grading.GradingReport;
 import edu.hm.hafner.util.FilteredLog;
 import edu.hm.hafner.util.VisibleForTesting;
-import edu.umd.cs.findbugs.annotations.CheckForNull;
 
 import org.kohsuke.github.GHCheckRun;
 import org.kohsuke.github.GHCheckRun.Conclusion;
@@ -41,8 +40,6 @@ public class GitHubAutoGradingRunner extends AutoGradingRunner {
         new GitHubAutoGradingRunner().run();
     }
 
-    private AggregatedScore aggregation = new AggregatedScore("{}", new FilteredLog("unused"));  // temporary result just for testing
-
     /**
      * Creates a new instance of {@link GitHubAutoGradingRunner}.
      */
@@ -53,15 +50,6 @@ public class GitHubAutoGradingRunner extends AutoGradingRunner {
     @VisibleForTesting
     protected GitHubAutoGradingRunner(final PrintStream printStream) {
         super(printStream);
-    }
-
-    protected String getDefaultTitle() {
-        return "Autograding results";
-    }
-
-    @CheckForNull @VisibleForTesting
-    AggregatedScore getAggregation() {
-        return aggregation;
     }
 
     @Override
@@ -85,7 +73,6 @@ public class GitHubAutoGradingRunner extends AutoGradingRunner {
         }
 
         log.logInfo("GitHub Action has finished");
-        aggregation = score;
     }
 
     @Override
@@ -95,8 +82,6 @@ public class GitHubAutoGradingRunner extends AutoGradingRunner {
         var markdownErrors = results.getMarkdownErrors(score, exception);
         addComment(score, results.getTextSummary(score, getChecksName()),
                 markdownErrors, markdownErrors, markdownErrors, Conclusion.FAILURE, log);
-
-        aggregation = score;
     }
 
     private void addComment(final AggregatedScore score, final String textSummary,
@@ -153,15 +138,15 @@ public class GitHubAutoGradingRunner extends AutoGradingRunner {
     String createEnvironmentVariables(final AggregatedScore score, final FilteredLog log) {
         var metrics = new StringBuilder();
         score.getMetrics().forEach((metric, value) -> metrics.append(String.format("%s=%d%n", metric, value)));
-        log.logInfo("------------------------------------------------------------------");
-        log.logInfo("--------------------------- Summary ------------------------------");
-        log.logInfo("------------------------------------------------------------------");
+        log.logInfo("---------------");
+        log.logInfo("Metrics Summary");
+        log.logInfo("---------------");
         log.logInfo(metrics.toString());
         return metrics.toString();
     }
 
     private String getChecksName() {
-        return StringUtils.defaultIfBlank(System.getenv("CHECKS_NAME"), getDefaultTitle());
+        return StringUtils.defaultIfBlank(System.getenv("CHECKS_NAME"), getDisplayName());
     }
 
     private String computeAbsolutePathPrefixToRemove(final FilteredLog log) {
