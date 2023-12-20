@@ -23,7 +23,7 @@
 
   <properties>
     <module.name>${project.groupId}.autograding.github.action</module.name>
-    <docker-image-tag>3.14.0</docker-image-tag>
+    <docker-image-tag>${project.version}</docker-image-tag>
 
     <java.version>17</java.version>
 

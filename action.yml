@@ -20,7 +20,7 @@ inputs:
 
 runs:
   using: 'docker'
-  image: 'docker://uhafner/autograding-github-action:3.14.0'
+  image: 'docker://uhafner/autograding-github-action:3.14.1-SNAPSHOT'
   env:
     CONFIG: ${{ inputs.config }}
     CHECKS_NAME: ${{ inputs.checks-name }}
