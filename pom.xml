@@ -30,7 +30,7 @@
     <jib-maven-plugin.version>3.4.0</jib-maven-plugin.version>
     <testcontainers.version>1.19.3</testcontainers.version>
 
-    <autograding-model.version>3.19.0</autograding-model.version>
+    <autograding-model.version>3.20.0</autograding-model.version>
   </properties>
 
   <dependencies>
@@ -84,18 +84,6 @@
           <artifactId>jackson-databind</artifactId>
         </exclusion>
       </exclusions>
-    </dependency>
-
-    <dependency>
-      <groupId>commons-io</groupId>
-      <artifactId>commons-io</artifactId>
-      <version>2.15.1</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.apache.commons</groupId>
-      <artifactId>commons-lang3</artifactId>
-      <version>3.14.0</version>
     </dependency>
 
     <dependency>
