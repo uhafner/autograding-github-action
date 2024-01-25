@@ -138,7 +138,7 @@ jobs:
         with:
           maven-version: 3.9.5
       - name: Build
-        run: mvn -ntp clean verify -Ppit
+        run: mvn -ntp clean verify -Ppit -Pdepgraph
       - name: Run Autograding
         uses: uhafner/autograding-github-action@main
         with:
@@ -281,19 +281,6 @@ jobs:
           status: ${{ steps.metrics.outputs.bugs }}
           color: 'red'
           path: badges/bugs.svg
-      - name: Generate progress SVG
-        id: chart
-        uses: robiningelbrecht/apache-echarts-action@v1.1.0
-        with:
-          width: 256
-          height: 256
-          pass-options-as: string
-          chart-option: '{ "tooltip": { "trigger": "item", "formatter": "null of null" }, "series": [ { "type": "pie", "radius": [ "70%", "100%" ], "avoidLabelOverlap": false, "color": [ "#1ea64b", "#D0D0D0 " ], "hoverAnimation": false, "label": { "show": true, "position": "center", "fontSize": "38", "fontWeight": "bold", "color": "#000", "formatter": "92%" }, "labelLine": { "normal": { "show": false } }, "data": [ { "value": 92, "name": "Filled" }, { "value": 8, "name": "NotFilled" } ] } ] }'
-      - name: Save generated SVG
-        run: |
-          cat <<EOF > badges/progress.svg
-          ${{ steps.chart.outputs.svg }}
-          EOF
       - name: Commit updated badges
         continue-on-error: true
         run: |
@@ -301,6 +288,8 @@ jobs:
           git config --local user.name "GitHub Action"
           git add badges/*.svg
           git commit -m "Update badges with results from latest autograding" || true
+          git add doc/dependency-graph.puml
+          git commit -m "Update dependency graph to latest versions from POM" || true
       - name: Push updated badges to GitHub repository
         uses: ad-m/github-push-action@master
         if: ${{ success() }}
