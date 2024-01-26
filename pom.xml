@@ -28,7 +28,7 @@
     <java.version>17</java.version>
 
     <jib-maven-plugin.version>3.4.0</jib-maven-plugin.version>
-    <testcontainers.version>1.19.3</testcontainers.version>
+    <testcontainers.version>1.19.4</testcontainers.version>
 
     <autograding-model.version>3.20.0</autograding-model.version>
   </properties>
