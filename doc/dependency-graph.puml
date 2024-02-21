@@ -35,7 +35,7 @@ rectangle "pmd-java\n\n6.55.0" as net_sourceforge_pmd_pmd_java_jar
 rectangle "json\n\n20231013" as org_json_json_jar
 rectangle "json-smart\n\n2.5.0" as net_minidev_json_smart_jar
 rectangle "accessors-smart\n\n2.5.0" as net_minidev_accessors_smart_jar
-rectangle "slf4j-api\n\n2.0.11" as org_slf4j_slf4j_api_jar
+rectangle "slf4j-api\n\n2.0.12" as org_slf4j_slf4j_api_jar
 rectangle "autograding-model\n\n3.20.0" as edu_hm_hafner_autograding_model_jar
 rectangle "coverage-model\n\n0.37.0" as edu_hm_hafner_coverage_model_jar
 rectangle "jackson-databind\n\n2.16.1" as com_fasterxml_jackson_core_jackson_databind_jar
@@ -44,9 +44,9 @@ rectangle "jackson-core\n\n2.16.1" as com_fasterxml_jackson_core_jackson_core_ja
 rectangle "autograding-github-action\n\n3.14.1-SNAPSHOT" as edu_hm_hafner_autograding_github_action_jar
 rectangle "github-api\n\n1.318" as org_kohsuke_github_api_jar
 rectangle "spotbugs-annotations\n\n4.8.3" as com_github_spotbugs_spotbugs_annotations_jar
-rectangle "error_prone_annotations\n\n2.24.1" as com_google_errorprone_error_prone_annotations_jar
+rectangle "error_prone_annotations\n\n2.25.0" as com_google_errorprone_error_prone_annotations_jar
 rectangle "streamex\n\n0.8.2" as one_util_streamex_jar
-rectangle "codingstyle\n\n3.41.0" as edu_hm_hafner_codingstyle_jar
+rectangle "codingstyle\n\n3.42.0" as edu_hm_hafner_codingstyle_jar
 rectangle "commons-lang3\n\n3.14.0" as org_apache_commons_commons_lang3_jar
 rectangle "commons-io\n\n2.15.1" as commons_io_commons_io_jar
 edu_hm_hafner_analysis_model_jar -[#000000]-> org_jsoup_jsoup_jar
