@@ -20,9 +20,9 @@ jobs:
           check-latest: true
           cache: 'maven'
       - name: Set up Maven
-        uses: stCarolas/setup-maven@v4.5
+        uses: stCarolas/setup-maven@v5
         with:
-          maven-version: 3.9.5
+          maven-version: 3.9.6
       - name: Run Autograding with test data
         uses: uhafner/autograding-github-action@main
         with:
@@ -134,9 +134,9 @@ jobs:
           check-latest: true
           cache: 'maven'
       - name: Set up Maven
-        uses: stCarolas/setup-maven@v4.5
+        uses: stCarolas/setup-maven@v5
         with:
-          maven-version: 3.9.5
+          maven-version: 3.9.6
       - name: Build
         run: mvn -ntp clean verify -Ppit -Pdepgraph
       - name: Run Autograding

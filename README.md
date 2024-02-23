@@ -55,9 +55,9 @@ jobs:
           check-latest: true
           cache: 'maven'
       - name: Set up Maven
-        uses: stCarolas/setup-maven@v4.5
+        uses: stCarolas/setup-maven@v5
         with:
-          maven-version: 3.9.5
+          maven-version: 3.9.6
       - name: Build # (compile, test with code and mutation coverage, and run static analysis)
         run: mvn -ntp clean verify -Ppit
       - name: Extract pull request number # (commenting on the pull request requires the PR number)
