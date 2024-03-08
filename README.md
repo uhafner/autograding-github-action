@@ -33,7 +33,7 @@ The details output of the action is shown in the GitHub Checks tab of the pull r
 
 # Configuration
 
-The individual metrics can be configured by defining an appropriate `config` property (in JSON format) in your GitHub workflow:
+The autograding action must be added as a separate step of your GitHub pipeline since it is packaged in a Docker container. This step should run after your normal build and testing steps so that it has access to all produced artifacts. Make sure to configure your build to produce the required report files (e.g., JUnit XML reports, JaCoCo XML reports, etc.) even when there are test failures or warnings found. Otherwise, the action will only show partial results.
 
 ```yaml
 name: Autograde project
@@ -59,7 +59,7 @@ jobs:
         with:
           maven-version: 3.9.6
       - name: Build # (compile, test with code and mutation coverage, and run static analysis)
-        run: mvn -ntp clean verify -Ppit
+        run: mvn -V --color always -ntp clean verify -Ppit -Dmaven.test.failure.ignore=true
       - name: Extract pull request number # (commenting on the pull request requires the PR number)
         uses: jwalton/gh-find-current-pr@v1
         id: pr
@@ -87,7 +87,18 @@ jobs:
             }
 ```
 
-Currently, you can select from the metrics shown in the following sections. Each metric can be configured individually. All of these configurations are composed in the same way: you can define a list of tools that are used to collect the data, a name and icon for the metric, and a maximum score. All tools need to provide a pattern where the autograding action can find the result files in the workspace (e.g., JUnit XML reports). Additionally, each tool needs to provide the parser ID of the tool so that the underlying model can find the correct parser to read the results. See [analysis model](https:://github.com/jenkinsci/analysis-model) and [coverage model](https:://github.com/jenkinsci/coverage-model) for the list of supported parsers.
+## Action Parameters
+
+This action can be configured using the following parameters (see example above):
+- ``github-token: ${{ secrets.GITHUB_TOKEN }}``: mandatory GitHub access token.
+- ``config: "{...}"``: optional configuration, see sections above for details, or consult the [autograding-model](https://github.com/uhafner/autograding-model) project for the exact implementation. If not specified, a [default configuration](https://github.com/uhafner/autograding-model/blob/main/src/main/resources/default-config.json) will be used.
+- ``pr-number: ${{ steps.pr.outputs.number }}``: optional number of the pull request. If not set, then just the checks will be published but not a pull request comment.
+- ``checks-name: "Name of checks"``: optional name of GitHub checks (overwrites the default: "Autograding result").
+- ``skip-annotations: true``: Optional flag to skip the creation of annotations (for warnings and missed coverage).
+
+## Metrics Configuration
+
+The individual metrics can be configured by defining an appropriate `config` property (in JSON format) in your GitHub workflow. Currently, you can select from the metrics shown in the following sections. Each metric can be configured individually. All of these configurations are composed in the same way: you can define a list of tools that are used to collect the data, a name and icon for the metric, and a maximum score. All tools need to provide a pattern where the autograding action can find the result files in the workspace (e.g., JUnit XML reports). Additionally, each tool needs to provide the parser ID of the tool so that the underlying model can find the correct parser to read the results. See [analysis model](https:://github.com/jenkinsci/analysis-model) and [coverage model](https:://github.com/jenkinsci/coverage-model) for the list of supported parsers.
 
 Additionally, you can define the impact of each result (e.g., a failed test, a missed line in coverage) on the final score. The impact is a positive or negative number and will be multiplied with the actual value of the measured items during the evaluation. Negative values will be subtracted from the maximum score to compute the final score. Positive values will be directly used as the final score. You can choose the type of impact that matches your needs best.
 
@@ -233,15 +244,6 @@ Normally, you would only use a negative impact for this metric: each warning (of
 All warnings will be shown as annotations in the pull request:
 
 ![Warning annotations](images/analysis-annotations.png )
-
-## Action Parameters
-
-This action can be configured using the following parameters (see example above):
-- ``github-token: ${{ secrets.GITHUB_TOKEN }}``: mandatory GitHub access token.
-- ``config: "{...}"``: optional configuration, see sections above for details, or consult the [autograding-model](https://github.com/uhafner/autograding-model) project for the exact implementation. If not specified, a [default configuration](https://github.com/uhafner/autograding-model/blob/main/src/main/resources/default-config.json) will be used.
-- ``pr-number: ${{ steps.pr.outputs.number }}``: optional number of the pull request. If not set, then just the checks will be published but not a pull request comment.
-- ``checks-name: "Name of checks"``: optional name of GitHub checks (overwrites the default: "Autograding result").
-- ``skip-annotations: true``: Optional flag to skip the creation of annotations (for warnings and missed coverage).
 
 ## Pull Request Comments
 
