@@ -17,16 +17,24 @@ inputs:
   skip-annotations:
     description: "Skip the creation of annotations (for warnings and missed coverage) if not empty"
     required: false
+  max-warning-annotations:
+    description: "Limit the number of warning annotations at specific lines. By default, all annotations are created."
+    required: false
+  max-coverage-annotations:
+    description: "Limit the number of coverage annotations at specific lines. By default, all annotations are created."
+    required: false
 
 runs:
   using: 'docker'
-  image: 'docker://uhafner/autograding-github-action:3.18.0'
+  image: 'docker://uhafner/autograding-github-action:3.19.0-SNAPSHOT'
   env:
     CONFIG: ${{ inputs.config }}
     CHECKS_NAME: ${{ inputs.checks-name }}
     PR_NUMBER: ${{ inputs.pr-number }}
     GITHUB_TOKEN: ${{ inputs.github-token }}
     SKIP_ANNOTATIONS: ${{ inputs.skip-annotations }}
+    MAX_WARNING_ANNOTATIONS: ${{ inputs.max-warning-annotations }}
+    MAX_COVERAGE_ANNOTATIONS: ${{ inputs.max-coverage-annotations }}
 
 branding:
   icon: check-square

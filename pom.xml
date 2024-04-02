@@ -5,13 +5,13 @@
   <parent>
     <groupId>edu.hm.hafner</groupId>
     <artifactId>codingstyle-pom</artifactId>
-    <version>3.44.0</version>
+    <version>4.3.0</version>
     <relativePath />
   </parent>
 
   <groupId>edu.hm.hafner</groupId>
   <artifactId>autograding-github-action</artifactId>
-  <version>3.18.0</version>
+  <version>3.19.0-SAPSHOT</version>
   <packaging>jar</packaging>
 
   <scm>
@@ -30,7 +30,7 @@
     <jib-maven-plugin.version>3.4.1</jib-maven-plugin.version>
     <testcontainers.version>1.19.7</testcontainers.version>
 
-    <autograding-model.version>3.25.0</autograding-model.version>
+    <autograding-model.version>3.28.0</autograding-model.version>
   </properties>
 
   <dependencies>
@@ -139,15 +139,6 @@
             <goals>
               <goal>build</goal>
             </goals>
-            <configuration>
-              <to>
-                <image>docker.io/uhafner/autograding-github-action:${docker-image-tag}</image>
-                <auth>
-                  <username>${env.DOCKER_IO_USERNAME}</username>
-                  <password>${env.DOCKER_IO_PASSWORD}</password>
-                </auth>
-              </to>
-            </configuration>
           </execution>
         </executions>
         <configuration>
@@ -159,7 +150,7 @@
             </auth>
           </to>
           <from>
-            <image>maven:3.9.5-eclipse-temurin-21-alpine</image>
+            <image>maven:3.9.6-eclipse-temurin-21-alpine</image>
           </from>
         </configuration>
       </plugin>

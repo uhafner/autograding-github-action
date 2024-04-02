@@ -110,10 +110,12 @@ public class GitHubAutoGradingRunner extends AutoGradingRunner {
                     .withStartedAt(Date.from(Instant.now()))
                     .withConclusion(conclusion);
 
-            Output output = new Output(textSummary, markdownSummary).withText(markdownDetails);
+            var summaryWithFooter = markdownSummary + "\n\nCreated by " + getVersionLink(log);
+            Output output = new Output(textSummary, summaryWithFooter).withText(markdownDetails);
 
             if (getEnv("SKIP_ANNOTATIONS", log).isEmpty()) {
-                var annotationBuilder = new GitHubAnnotationsBuilder(output, computeAbsolutePathPrefixToRemove(log));
+                var annotationBuilder = new GitHubAnnotationsBuilder(
+                        output, computeAbsolutePathPrefixToRemove(log), log);
                 annotationBuilder.createAnnotations(score);
             }
 
@@ -124,15 +126,24 @@ public class GitHubAutoGradingRunner extends AutoGradingRunner {
 
             var prNumber = getEnv("PR_NUMBER", log);
             if (!prNumber.isBlank()) { // optional PR comment
+                var footer = "Created by %s. More details are shown in the [GitHub Checks Result](%s)."
+                        .formatted(getVersionLink(log), run.getDetailsUrl().toString());
                 github.getRepository(repository)
                         .getPullRequest(Integer.parseInt(prNumber))
-                        .comment(prSummary + addCheckLink(run));
+                        .comment(prSummary + "\n\n" + footer + "\n");
                 log.logInfo("Successfully commented PR#" + prNumber);
             }
         }
         catch (IOException exception) {
             log.logException(exception, "Could not create check");
         }
+    }
+
+    private String getVersionLink(final FilteredLog log) {
+        var version = readVersion(log);
+        var sha = readSha(log);
+        return "[%s](https://github.com/uhafner/autograding-github-action/releases/tag/v%s) v%s (#%s)"
+                .formatted(getDisplayName(), version, version, sha);
     }
 
     String createEnvironmentVariables(final AggregatedScore score, final FilteredLog log) {
@@ -152,11 +163,6 @@ public class GitHubAutoGradingRunner extends AutoGradingRunner {
     private String computeAbsolutePathPrefixToRemove(final FilteredLog log) {
         return String.format("%s/%s/", getEnv("RUNNER_WORKSPACE", log),
                 StringUtils.substringAfter(getEnv("GITHUB_REPOSITORY", log), "/"));
-    }
-
-    private String addCheckLink(final GHCheckRun run) {
-        return String.format("%n%n More details are available in the [GitHub Checks Result](%s).%n",
-                run.getDetailsUrl().toString());
     }
 
     private String getEnv(final String key, final FilteredLog log) {
