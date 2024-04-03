@@ -95,6 +95,8 @@ This action can be configured using the following parameters (see example above)
 - ``pr-number: ${{ steps.pr.outputs.number }}``: optional number of the pull request. If not set, then just the checks will be published but not a pull request comment.
 - ``checks-name: "Name of checks"``: optional name of GitHub checks (overwrites the default: "Autograding result").
 - ``skip-annotations: true``: Optional flag to skip the creation of annotations (for warnings and missed coverage).
+- ``max-warning-comments: <number>``: Optional parameter to limit the number of warning comments at specific lines. By default, all line comments are created.
+- ``max-coverage-comments: <number>``: Optional parameter to limit the number of coverage comments at specific lines. By default, all line comments are created.
 
 ## Metrics Configuration
 
