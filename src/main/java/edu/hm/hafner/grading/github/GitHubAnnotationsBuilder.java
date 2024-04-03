@@ -31,10 +31,10 @@ class GitHubAnnotationsBuilder extends CommentBuilder {
         this.log = log;
 
         maxWarningComments = getIntegerEnvironment("MAX_WARNING_ANNOTATIONS");
-        log.logInfo(">>>> MAX_WARNING_ANNOTATIONS: ", getMaxWarningComments());
+        log.logInfo(">>>> MAX_WARNING_ANNOTATIONS: %d", getMaxWarningComments());
 
         maxCoverageComments = getIntegerEnvironment("MAX_COVERAGE_ANNOTATIONS");
-        log.logInfo(">>>> MAX_COVERAGE_ANNOTATIONS: ", getMaxCoverageComments());
+        log.logInfo(">>>> MAX_COVERAGE_ANNOTATIONS: %d", getMaxCoverageComments());
     }
 
     @Override
