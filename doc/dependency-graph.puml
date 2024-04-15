@@ -36,7 +36,7 @@ rectangle "json\n\n20231013" as org_json_json_jar
 rectangle "json-smart\n\n2.5.0" as net_minidev_json_smart_jar
 rectangle "accessors-smart\n\n2.5.0" as net_minidev_accessors_smart_jar
 rectangle "slf4j-api\n\n2.0.12" as org_slf4j_slf4j_api_jar
-rectangle "autograding-model\n\n3.28.0" as edu_hm_hafner_autograding_model_jar
+rectangle "autograding-model\n\n3.30.0" as edu_hm_hafner_autograding_model_jar
 rectangle "coverage-model\n\n0.42.0" as edu_hm_hafner_coverage_model_jar
 rectangle "jackson-databind\n\n2.17.0" as com_fasterxml_jackson_core_jackson_databind_jar
 rectangle "jackson-annotations\n\n2.17.0" as com_fasterxml_jackson_core_jackson_annotations_jar
