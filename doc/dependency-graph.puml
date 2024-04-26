@@ -6,7 +6,7 @@ skinparam rectangle {
   BackgroundColor<<runtime>> lightBlue
   BackgroundColor<<provided>> lightGray
 }
-rectangle "analysis-model\n\n12.3.0" as edu_hm_hafner_analysis_model_jar
+rectangle "analysis-model\n\n12.3.1" as edu_hm_hafner_analysis_model_jar
 rectangle "jsoup\n\n1.17.2" as org_jsoup_jsoup_jar
 rectangle "commons-digester3\n\n3.2" as org_apache_commons_commons_digester3_jar
 rectangle "cglib\n\n2.2.2" as cglib_cglib_jar
@@ -43,7 +43,7 @@ rectangle "pmd-java\n\n7.0.0" as net_sourceforge_pmd_pmd_java_jar
 rectangle "json\n\n20240303" as org_json_json_jar
 rectangle "json-smart\n\n2.5.1" as net_minidev_json_smart_jar
 rectangle "accessors-smart\n\n2.5.1" as net_minidev_accessors_smart_jar
-rectangle "autograding-model\n\n3.31.0" as edu_hm_hafner_autograding_model_jar
+rectangle "autograding-model\n\n3.31.1" as edu_hm_hafner_autograding_model_jar
 rectangle "coverage-model\n\n0.43.0" as edu_hm_hafner_coverage_model_jar
 rectangle "jackson-databind\n\n2.17.0" as com_fasterxml_jackson_core_jackson_databind_jar
 rectangle "jackson-annotations\n\n2.17.0" as com_fasterxml_jackson_core_jackson_annotations_jar
