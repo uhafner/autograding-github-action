@@ -48,11 +48,17 @@ class GitHubAnnotationsBuilder extends CommentBuilder {
     }
 
     private int getIntegerEnvironment(final String key) {
+        var value = getEnv(key);
         try {
-            return Integer.parseInt(getEnv(key));
+            return Integer.parseInt(value);
         }
         catch (NumberFormatException exception) {
-            log.logError(">>>> Error: no integer value");
+            if (StringUtils.isEmpty(value)) {
+                log.logInfo(">>>> Environment variable %s not set, falling back to default Integer.MAX_VALUE", key);
+            }
+            else {
+                log.logError(">>>> Error: no integer value in environment variable key %s: %s", key, value);
+            }
 
             return Integer.MAX_VALUE;
         }
