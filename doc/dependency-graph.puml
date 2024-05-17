@@ -32,7 +32,7 @@ rectangle "xmlresolver\n\n5.2.2" as org_xmlresolver_xmlresolver_jar
 rectangle "xmlresolver\ndata\n5.2.2" as org_xmlresolver_xmlresolver_jar_data
 rectangle "bcel\n\n6.8.2" as org_apache_bcel_bcel_jar
 rectangle "pmd-core\n\n7.0.0" as net_sourceforge_pmd_pmd_core_jar
-rectangle "slf4j-api\n\n2.0.12" as org_slf4j_slf4j_api_jar
+rectangle "slf4j-api\n\n2.0.13" as org_slf4j_slf4j_api_jar
 rectangle "jul-to-slf4j\n\n1.7.36" as org_slf4j_jul_to_slf4j_jar
 rectangle "antlr4-runtime\n\n4.9.3" as org_antlr_antlr4_runtime_jar
 rectangle "checker-qual\n\n2.11.1" as org_checkerframework_checker_qual_jar
@@ -50,12 +50,12 @@ rectangle "jackson-annotations\n\n2.17.1" as com_fasterxml_jackson_core_jackson_
 rectangle "jackson-core\n\n2.17.1" as com_fasterxml_jackson_core_jackson_core_jar
 rectangle "autograding-github-action\n\n3.19.0" as edu_hm_hafner_autograding_github_action_jar
 rectangle "github-api\n\n1.321" as org_kohsuke_github_api_jar
-rectangle "spotbugs-annotations\n\n4.8.4" as com_github_spotbugs_spotbugs_annotations_jar
-rectangle "error_prone_annotations\n\n2.26.1" as com_google_errorprone_error_prone_annotations_jar
-rectangle "streamex\n\n0.8.2" as one_util_streamex_jar
-rectangle "codingstyle\n\n4.3.0" as edu_hm_hafner_codingstyle_jar
+rectangle "codingstyle\n\n4.10.0" as edu_hm_hafner_codingstyle_jar
+rectangle "spotbugs-annotations\n\n4.8.5" as com_github_spotbugs_spotbugs_annotations_jar
+rectangle "error_prone_annotations\n\n2.27.1" as com_google_errorprone_error_prone_annotations_jar
 rectangle "commons-lang3\n\n3.14.0" as org_apache_commons_commons_lang3_jar
 rectangle "commons-io\n\n2.16.1" as commons_io_commons_io_jar
+rectangle "streamex\n\n0.8.2" as one_util_streamex_jar
 edu_hm_hafner_analysis_model_jar -[#000000]-> org_jsoup_jsoup_jar
 org_apache_commons_commons_digester3_jar -[#000000]-> cglib_cglib_jar
 org_apache_commons_commons_digester3_jar -[#000000]-> commons_logging_commons_logging_jar
@@ -113,10 +113,10 @@ edu_hm_hafner_autograding_model_jar -[#000000]-> com_fasterxml_jackson_core_jack
 edu_hm_hafner_autograding_github_action_jar -[#000000]-> edu_hm_hafner_autograding_model_jar
 edu_hm_hafner_autograding_github_action_jar -[#000000]-> org_kohsuke_github_api_jar
 edu_hm_hafner_autograding_github_action_jar -[#000000]-> org_slf4j_slf4j_api_jar
+edu_hm_hafner_autograding_github_action_jar -[#000000]-> edu_hm_hafner_codingstyle_jar
 edu_hm_hafner_autograding_github_action_jar -[#000000]-> com_github_spotbugs_spotbugs_annotations_jar
 edu_hm_hafner_autograding_github_action_jar -[#000000]-> com_google_errorprone_error_prone_annotations_jar
-edu_hm_hafner_autograding_github_action_jar -[#000000]-> one_util_streamex_jar
-edu_hm_hafner_autograding_github_action_jar -[#000000]-> edu_hm_hafner_codingstyle_jar
 edu_hm_hafner_autograding_github_action_jar -[#000000]-> org_apache_commons_commons_lang3_jar
 edu_hm_hafner_autograding_github_action_jar -[#000000]-> commons_io_commons_io_jar
+edu_hm_hafner_autograding_github_action_jar -[#000000]-> one_util_streamex_jar
 @enduml
