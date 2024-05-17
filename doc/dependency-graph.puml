@@ -6,7 +6,7 @@ skinparam rectangle {
   BackgroundColor<<runtime>> lightBlue
   BackgroundColor<<provided>> lightGray
 }
-rectangle "analysis-model\n\n12.3.1" as edu_hm_hafner_analysis_model_jar
+rectangle "analysis-model\n\n12.3.3" as edu_hm_hafner_analysis_model_jar
 rectangle "jsoup\n\n1.17.2" as org_jsoup_jsoup_jar
 rectangle "commons-digester3\n\n3.2" as org_apache_commons_commons_digester3_jar
 rectangle "cglib\n\n2.2.2" as cglib_cglib_jar
@@ -43,12 +43,11 @@ rectangle "pmd-java\n\n7.0.0" as net_sourceforge_pmd_pmd_java_jar
 rectangle "json\n\n20240303" as org_json_json_jar
 rectangle "json-smart\n\n2.5.1" as net_minidev_json_smart_jar
 rectangle "accessors-smart\n\n2.5.1" as net_minidev_accessors_smart_jar
-rectangle "autograding-model\n\n3.31.1" as edu_hm_hafner_autograding_model_jar
+rectangle "autograding-model\n\n3.32.0" as edu_hm_hafner_autograding_model_jar
 rectangle "coverage-model\n\n0.43.0" as edu_hm_hafner_coverage_model_jar
-rectangle "jackson-databind\n\n2.17.0" as com_fasterxml_jackson_core_jackson_databind_jar
-rectangle "jackson-annotations\n\n2.17.0" as com_fasterxml_jackson_core_jackson_annotations_jar
-rectangle "jackson-core\n\n2.17.0" as com_fasterxml_jackson_core_jackson_core_jar
-rectangle "byte-buddy\n\n1.14.13" as net_bytebuddy_byte_buddy_jar
+rectangle "jackson-databind\n\n2.17.1" as com_fasterxml_jackson_core_jackson_databind_jar
+rectangle "jackson-annotations\n\n2.17.1" as com_fasterxml_jackson_core_jackson_annotations_jar
+rectangle "jackson-core\n\n2.17.1" as com_fasterxml_jackson_core_jackson_core_jar
 rectangle "autograding-github-action\n\n3.19.0" as edu_hm_hafner_autograding_github_action_jar
 rectangle "github-api\n\n1.321" as org_kohsuke_github_api_jar
 rectangle "spotbugs-annotations\n\n4.8.4" as com_github_spotbugs_spotbugs_annotations_jar
@@ -110,7 +109,6 @@ edu_hm_hafner_autograding_model_jar -[#000000]-> edu_hm_hafner_analysis_model_ja
 edu_hm_hafner_autograding_model_jar -[#000000]-> edu_hm_hafner_coverage_model_jar
 com_fasterxml_jackson_core_jackson_databind_jar -[#000000]-> com_fasterxml_jackson_core_jackson_annotations_jar
 com_fasterxml_jackson_core_jackson_databind_jar -[#000000]-> com_fasterxml_jackson_core_jackson_core_jar
-com_fasterxml_jackson_core_jackson_databind_jar .[#ABABAB].> net_bytebuddy_byte_buddy_jar
 edu_hm_hafner_autograding_model_jar -[#000000]-> com_fasterxml_jackson_core_jackson_databind_jar
 edu_hm_hafner_autograding_github_action_jar -[#000000]-> edu_hm_hafner_autograding_model_jar
 edu_hm_hafner_autograding_github_action_jar -[#000000]-> org_kohsuke_github_api_jar
@@ -121,5 +119,4 @@ edu_hm_hafner_autograding_github_action_jar -[#000000]-> one_util_streamex_jar
 edu_hm_hafner_autograding_github_action_jar -[#000000]-> edu_hm_hafner_codingstyle_jar
 edu_hm_hafner_autograding_github_action_jar -[#000000]-> org_apache_commons_commons_lang3_jar
 edu_hm_hafner_autograding_github_action_jar -[#000000]-> commons_io_commons_io_jar
-edu_hm_hafner_autograding_github_action_jar -[#000000]-> net_bytebuddy_byte_buddy_jar
 @enduml
