@@ -26,4 +26,4 @@ jobs:
         env:
           DOCKER_IO_USERNAME: ${{ secrets.DOCKER_IO_USERNAME }}
           DOCKER_IO_PASSWORD: ${{ secrets.DOCKER_IO_PASSWORD }}
-        run: mvn -ntp clean install
+        run: mvn -ntp clean install -Pci
