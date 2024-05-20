@@ -34,11 +34,10 @@ jobs:
                 "tools": [
                   {
                     "id": "test",
-                    "name": "Unittests",
                     "pattern": "**/src/test/resources/**/TEST*.xml"
                   }
                 ],
-                "name": "JUnit",
+                "name": "Tests",
                 "passedImpact": 10,
                 "skippedImpact": -1,
                 "failureImpact": -5,
@@ -51,7 +50,6 @@ jobs:
                   "tools": [
                     {
                       "id": "checkstyle",
-                      "name": "CheckStyle",
                       "pattern": "**/src/test/resources/**/checkstyle*.xml"
                     },
                     {
@@ -73,7 +71,6 @@ jobs:
                   "tools": [
                     {
                       "id": "spotbugs",
-                      "name": "SpotBugs",
                       "pattern": "**/src/test/resources/**/spotbugs*.xml"
                     }
                   ],
@@ -138,7 +135,7 @@ jobs:
         with:
           maven-version: 3.9.6
       - name: Build
-        run: mvn -ntp clean verify -Ppit -Pdepgraph
+        run: mvn -ntp clean verify -Pci -Ppit -Pdepgraph
       - name: Run Autograding
         uses: uhafner/autograding-github-action@main
         with:
