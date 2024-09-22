@@ -49,7 +49,7 @@ rectangle "jackson-databind\n\n2.17.1" as com_fasterxml_jackson_core_jackson_dat
 rectangle "jackson-annotations\n\n2.17.1" as com_fasterxml_jackson_core_jackson_annotations_jar
 rectangle "jackson-core\n\n2.17.1" as com_fasterxml_jackson_core_jackson_core_jar
 rectangle "autograding-github-action\n\n3.19.0" as edu_hm_hafner_autograding_github_action_jar
-rectangle "github-api\n\n1.324" as org_kohsuke_github_api_jar
+rectangle "github-api\n\n1.326" as org_kohsuke_github_api_jar
 rectangle "codingstyle\n\n4.10.0" as edu_hm_hafner_codingstyle_jar
 rectangle "spotbugs-annotations\n\n4.8.5" as com_github_spotbugs_spotbugs_annotations_jar
 rectangle "error_prone_annotations\n\n2.28.0" as com_google_errorprone_error_prone_annotations_jar
