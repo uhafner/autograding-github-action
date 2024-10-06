@@ -11,7 +11,7 @@
 
   <groupId>edu.hm.hafner</groupId>
   <artifactId>autograding-github-action</artifactId>
-  <version>3.19.0</version>
+  <version>4.0.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <scm>
@@ -27,10 +27,11 @@
 
     <java.version>17</java.version>
 
-    <jib-maven-plugin.version>3.4.3</jib-maven-plugin.version>
+    <autograding-model.version>3.36.0</autograding-model.version>
     <testcontainers.version>1.20.2</testcontainers.version>
+    <github-api.version>1.326</github-api.version>
 
-    <autograding-model.version>3.34.0</autograding-model.version>
+    <jib-maven-plugin.version>3.4.3</jib-maven-plugin.version>
   </properties>
 
   <dependencies>
@@ -69,7 +70,7 @@
     <dependency>
       <groupId>org.kohsuke</groupId>
       <artifactId>github-api</artifactId>
-      <version>1.326</version>
+      <version>${github-api.version}</version>
       <exclusions>
         <exclusion>
           <groupId>org.apache.commons</groupId>
