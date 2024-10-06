@@ -46,7 +46,7 @@ rectangle "coverage-model\n\n0.47.0" as edu_hm_hafner_coverage_model_jar
 rectangle "jackson-databind\n\n2.18.0" as com_fasterxml_jackson_core_jackson_databind_jar
 rectangle "jackson-annotations\n\n2.18.0" as com_fasterxml_jackson_core_jackson_annotations_jar
 rectangle "jackson-core\n\n2.18.0" as com_fasterxml_jackson_core_jackson_core_jar
-rectangle "autograding-github-action\n\n4.0.0" as edu_hm_hafner_autograding_github_action_jar
+rectangle "autograding-github-action\n\n4.1.0" as edu_hm_hafner_autograding_github_action_jar
 rectangle "github-api\n\n1.326" as org_kohsuke_github_api_jar
 rectangle "codingstyle\n\n4.14.0" as edu_hm_hafner_codingstyle_jar
 rectangle "spotbugs-annotations\n\n4.8.6" as com_github_spotbugs_spotbugs_annotations_jar

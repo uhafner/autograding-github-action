@@ -47,6 +47,11 @@ public class GitHubAutoGradingRunner extends AutoGradingRunner {
         super();
     }
 
+    @Override
+    protected String getDisplayName() {
+        return "GitHub Autograding Action";
+    }
+
     @VisibleForTesting
     protected GitHubAutoGradingRunner(final PrintStream printStream) {
         super(printStream);
