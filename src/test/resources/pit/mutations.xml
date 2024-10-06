@@ -1,0 +1,2438 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mutations partial="true">
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>addCheckLink</mutatedMethod>
+    <methodDescription>(Lorg/kohsuke/github/GHCheckRun;)Ljava/lang/String;</methodDescription>
+    <lineNumber>120</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.EmptyObjectReturnValsMutator</mutator>
+    <indexes>
+      <index>17</index>
+    </indexes>
+    <blocks>
+      <block>3</block>
+    </blocks>
+    <killingTest/>
+    <description>replaced return value with &quot;&quot; for
+      edu/hm/hafner/grading/github/GitHubPullRequestWriter::addCheckLink
+    </description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>addComment</mutatedMethod>
+    <methodDescription>
+      (Ljava/lang/String;Ledu/hm/hafner/grading/AggregatedScore;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ledu/hm/hafner/grading/github/GitHubPullRequestWriter$ChecksStatus;)V
+    </methodDescription>
+    <lineNumber>70</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator</mutator>
+    <indexes>
+      <index>11</index>
+    </indexes>
+    <blocks>
+      <block>2</block>
+    </blocks>
+    <killingTest/>
+    <description>negated conditional</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>addComment</mutatedMethod>
+    <methodDescription>
+      (Ljava/lang/String;Ledu/hm/hafner/grading/AggregatedScore;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ledu/hm/hafner/grading/github/GitHubPullRequestWriter$ChecksStatus;)V
+    </methodDescription>
+    <lineNumber>76</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator</mutator>
+    <indexes>
+      <index>31</index>
+    </indexes>
+    <blocks>
+      <block>7</block>
+    </blocks>
+    <killingTest/>
+    <description>negated conditional</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>addComment</mutatedMethod>
+    <methodDescription>
+      (Ljava/lang/String;Ledu/hm/hafner/grading/AggregatedScore;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ledu/hm/hafner/grading/github/GitHubPullRequestWriter$ChecksStatus;)V
+    </methodDescription>
+    <lineNumber>93</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator</mutator>
+    <indexes>
+      <index>96</index>
+    </indexes>
+    <blocks>
+      <block>24</block>
+    </blocks>
+    <killingTest/>
+    <description>negated conditional</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>addComment</mutatedMethod>
+    <methodDescription>
+      (Ljava/lang/String;Ledu/hm/hafner/grading/AggregatedScore;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ledu/hm/hafner/grading/github/GitHubPullRequestWriter$ChecksStatus;)V
+    </methodDescription>
+    <lineNumber>107</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator</mutator>
+    <indexes>
+      <index>164</index>
+    </indexes>
+    <blocks>
+      <block>39</block>
+    </blocks>
+    <killingTest/>
+    <description>negated conditional</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>addComment</mutatedMethod>
+    <methodDescription>
+      (Ljava/lang/String;Ledu/hm/hafner/grading/AggregatedScore;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ledu/hm/hafner/grading/github/GitHubPullRequestWriter$ChecksStatus;)V
+    </methodDescription>
+    <lineNumber>71</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>16</index>
+    </indexes>
+    <blocks>
+      <block>3</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to java/io/PrintStream::println</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>addComment</mutatedMethod>
+    <methodDescription>
+      (Ljava/lang/String;Ledu/hm/hafner/grading/AggregatedScore;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ledu/hm/hafner/grading/github/GitHubPullRequestWriter$ChecksStatus;)V
+    </methodDescription>
+    <lineNumber>77</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>36</index>
+    </indexes>
+    <blocks>
+      <block>8</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to java/io/PrintStream::println</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>addComment</mutatedMethod>
+    <methodDescription>
+      (Ljava/lang/String;Ledu/hm/hafner/grading/AggregatedScore;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ledu/hm/hafner/grading/github/GitHubPullRequestWriter$ChecksStatus;)V
+    </methodDescription>
+    <lineNumber>83</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>57</index>
+    </indexes>
+    <blocks>
+      <block>13</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to java/io/PrintStream::println</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>addComment</mutatedMethod>
+    <methodDescription>
+      (Ljava/lang/String;Ledu/hm/hafner/grading/AggregatedScore;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ledu/hm/hafner/grading/github/GitHubPullRequestWriter$ChecksStatus;)V
+    </methodDescription>
+    <lineNumber>99</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>135</index>
+    </indexes>
+    <blocks>
+      <block>32</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to edu/hm/hafner/grading/github/GitHubPullRequestWriter::handleAnnotations</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>addComment</mutatedMethod>
+    <methodDescription>
+      (Ljava/lang/String;Ledu/hm/hafner/grading/AggregatedScore;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ledu/hm/hafner/grading/github/GitHubPullRequestWriter$ChecksStatus;)V
+    </methodDescription>
+    <lineNumber>104</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>153</index>
+    </indexes>
+    <blocks>
+      <block>36</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to java/io/PrintStream::println</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>addComment</mutatedMethod>
+    <methodDescription>
+      (Ljava/lang/String;Ledu/hm/hafner/grading/AggregatedScore;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ledu/hm/hafner/grading/github/GitHubPullRequestWriter$ChecksStatus;)V
+    </methodDescription>
+    <lineNumber>111</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>189</index>
+    </indexes>
+    <blocks>
+      <block>45</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to java/io/PrintStream::println</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>addComment</mutatedMethod>
+    <methodDescription>
+      (Ljava/lang/String;Ledu/hm/hafner/grading/AggregatedScore;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ledu/hm/hafner/grading/github/GitHubPullRequestWriter$ChecksStatus;)V
+    </methodDescription>
+    <lineNumber>115</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>204</index>
+    </indexes>
+    <blocks>
+      <block>48</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to java/io/PrintStream::println</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>createAnnotation</mutatedMethod>
+    <methodDescription>
+      (Ljava/util/regex/Pattern;Ledu/hm/hafner/analysis/Issue;)Lorg/kohsuke/github/GHCheckRunBuilder$Annotation;
+    </methodDescription>
+    <lineNumber>152</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator</mutator>
+    <indexes>
+      <index>33</index>
+    </indexes>
+    <blocks>
+      <block>11</block>
+    </blocks>
+    <killingTest/>
+    <description>negated conditional</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>createAnnotation</mutatedMethod>
+    <methodDescription>
+      (Ljava/util/regex/Pattern;Ledu/hm/hafner/analysis/Issue;)Lorg/kohsuke/github/GHCheckRunBuilder$Annotation;
+    </methodDescription>
+    <lineNumber>153</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.NullReturnValsMutator</mutator>
+    <indexes>
+      <index>45</index>
+    </indexes>
+    <blocks>
+      <block>18</block>
+    </blocks>
+    <killingTest/>
+    <description>replaced return value with null for
+      edu/hm/hafner/grading/github/GitHubPullRequestWriter::createAnnotation
+    </description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>createAnnotation</mutatedMethod>
+    <methodDescription>
+      (Ljava/util/regex/Pattern;Ledu/hm/hafner/analysis/Issue;)Lorg/kohsuke/github/GHCheckRunBuilder$Annotation;
+    </methodDescription>
+    <lineNumber>155</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.NullReturnValsMutator</mutator>
+    <indexes>
+      <index>50</index>
+    </indexes>
+    <blocks>
+      <block>19</block>
+    </blocks>
+    <killingTest/>
+    <description>replaced return value with null for
+      edu/hm/hafner/grading/github/GitHubPullRequestWriter::createAnnotation
+    </description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>createBranchCoverageAnnotation</mutatedMethod>
+    <methodDescription>(Ljava/util/regex/Pattern;Ledu/hm/hafner/coverage/FileNode;)Ljava/util/List;</methodDescription>
+    <lineNumber>205</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.EmptyObjectReturnValsMutator</mutator>
+    <indexes>
+      <index>21</index>
+    </indexes>
+    <blocks>
+      <block>6</block>
+    </blocks>
+    <killingTest/>
+    <description>replaced return value with Collections.emptyList for
+      edu/hm/hafner/grading/github/GitHubPullRequestWriter::createBranchCoverageAnnotation
+    </description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>createBranchMessage</mutatedMethod>
+    <methodDescription>(II)Ljava/lang/String;</methodDescription>
+    <lineNumber>215</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator</mutator>
+    <indexes>
+      <index>5</index>
+    </indexes>
+    <blocks>
+      <block>0</block>
+    </blocks>
+    <killingTest/>
+    <description>negated conditional</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>createBranchMessage</mutatedMethod>
+    <methodDescription>(II)Ljava/lang/String;</methodDescription>
+    <lineNumber>216</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.EmptyObjectReturnValsMutator</mutator>
+    <indexes>
+      <index>17</index>
+    </indexes>
+    <blocks>
+      <block>3</block>
+    </blocks>
+    <killingTest/>
+    <description>replaced return value with &quot;&quot; for
+      edu/hm/hafner/grading/github/GitHubPullRequestWriter::createBranchMessage
+    </description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>createBranchMessage</mutatedMethod>
+    <methodDescription>(II)Ljava/lang/String;</methodDescription>
+    <lineNumber>219</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.EmptyObjectReturnValsMutator</mutator>
+    <indexes>
+      <index>35</index>
+    </indexes>
+    <blocks>
+      <block>7</block>
+    </blocks>
+    <killingTest/>
+    <description>replaced return value with &quot;&quot; for
+      edu/hm/hafner/grading/github/GitHubPullRequestWriter::createBranchMessage
+    </description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>createLineAnnotationsForMissedLines</mutatedMethod>
+    <methodDescription>
+      (Ledu/hm/hafner/grading/AggregatedScore;Ljava/util/regex/Pattern;Lorg/kohsuke/github/GHCheckRunBuilder$Output;)V
+    </methodDescription>
+    <lineNumber>166</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>35</index>
+    </indexes>
+    <blocks>
+      <block>8</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to java/util/stream/Stream::forEach</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>createLineAnnotationsForPartiallyCoveredLines</mutatedMethod>
+    <methodDescription>
+      (Ledu/hm/hafner/grading/AggregatedScore;Ljava/util/regex/Pattern;Lorg/kohsuke/github/GHCheckRunBuilder$Output;)V
+    </methodDescription>
+    <lineNumber>201</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>35</index>
+    </indexes>
+    <blocks>
+      <block>8</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to java/util/stream/Stream::forEach</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>createLineAnnotationsForSurvivedMutations</mutatedMethod>
+    <methodDescription>
+      (Ledu/hm/hafner/grading/AggregatedScore;Ljava/util/regex/Pattern;Lorg/kohsuke/github/GHCheckRunBuilder$Output;)V
+    </methodDescription>
+    <lineNumber>230</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>35</index>
+    </indexes>
+    <blocks>
+      <block>8</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to java/util/stream/Stream::forEach</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>createLineAnnotationsForWarnings</mutatedMethod>
+    <methodDescription>
+      (Ledu/hm/hafner/grading/AggregatedScore;Ljava/util/regex/Pattern;Lorg/kohsuke/github/GHCheckRunBuilder$Output;)V
+    </methodDescription>
+    <lineNumber>145</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>27</index>
+    </indexes>
+    <blocks>
+      <block>6</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to java/util/stream/Stream::forEach</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>createLineCoverageAnnotation</mutatedMethod>
+    <methodDescription>(Ljava/util/regex/Pattern;Ledu/hm/hafner/coverage/FileNode;)Ljava/util/List;</methodDescription>
+    <lineNumber>170</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.EmptyObjectReturnValsMutator</mutator>
+    <indexes>
+      <index>20</index>
+    </indexes>
+    <blocks>
+      <block>5</block>
+    </blocks>
+    <killingTest/>
+    <description>replaced return value with Collections.emptyList for
+      edu/hm/hafner/grading/github/GitHubPullRequestWriter::createLineCoverageAnnotation
+    </description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>createMutationCoverageAnnotation</mutatedMethod>
+    <methodDescription>(Ljava/util/regex/Pattern;Ledu/hm/hafner/coverage/FileNode;)Ljava/util/List;</methodDescription>
+    <lineNumber>234</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.EmptyObjectReturnValsMutator</mutator>
+    <indexes>
+      <index>21</index>
+    </indexes>
+    <blocks>
+      <block>6</block>
+    </blocks>
+    <killingTest/>
+    <description>replaced return value with Collections.emptyList for
+      edu/hm/hafner/grading/github/GitHubPullRequestWriter::createMutationCoverageAnnotation
+    </description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>createMutationDetails</mutatedMethod>
+    <methodDescription>(Ljava/util/List;)Ljava/lang/String;</methodDescription>
+    <lineNumber>256</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.EmptyObjectReturnValsMutator</mutator>
+    <indexes>
+      <index>19</index>
+    </indexes>
+    <blocks>
+      <block>4</block>
+    </blocks>
+    <killingTest/>
+    <description>replaced return value with &quot;&quot; for
+      edu/hm/hafner/grading/github/GitHubPullRequestWriter::createMutationDetails
+    </description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>createMutationMessage</mutatedMethod>
+    <methodDescription>(ILjava/util/List;)Ljava/lang/String;</methodDescription>
+    <lineNumber>245</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator</mutator>
+    <indexes>
+      <index>6</index>
+    </indexes>
+    <blocks>
+      <block>1</block>
+    </blocks>
+    <killingTest/>
+    <description>negated conditional</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>createMutationMessage</mutatedMethod>
+    <methodDescription>(ILjava/util/List;)Ljava/lang/String;</methodDescription>
+    <lineNumber>246</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.EmptyObjectReturnValsMutator</mutator>
+    <indexes>
+      <index>24</index>
+    </indexes>
+    <blocks>
+      <block>5</block>
+    </blocks>
+    <killingTest/>
+    <description>replaced return value with &quot;&quot; for
+      edu/hm/hafner/grading/github/GitHubPullRequestWriter::createMutationMessage
+    </description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>createMutationMessage</mutatedMethod>
+    <methodDescription>(ILjava/util/List;)Ljava/lang/String;</methodDescription>
+    <lineNumber>248</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.EmptyObjectReturnValsMutator</mutator>
+    <indexes>
+      <index>43</index>
+    </indexes>
+    <blocks>
+      <block>10</block>
+    </blocks>
+    <killingTest/>
+    <description>replaced return value with &quot;&quot; for
+      edu/hm/hafner/grading/github/GitHubPullRequestWriter::createMutationMessage
+    </description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>formatMutator</mutatedMethod>
+    <methodDescription>(Ljava/util/List;)Ljava/lang/String;</methodDescription>
+    <lineNumber>252</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.EmptyObjectReturnValsMutator</mutator>
+    <indexes>
+      <index>11</index>
+    </indexes>
+    <blocks>
+      <block>3</block>
+    </blocks>
+    <killingTest/>
+    <description>replaced return value with &quot;&quot; for
+      edu/hm/hafner/grading/github/GitHubPullRequestWriter::formatMutator
+    </description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>getEnv</mutatedMethod>
+    <methodDescription>(Ljava/lang/String;)Ljava/lang/String;</methodDescription>
+    <lineNumber>126</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>13</index>
+    </indexes>
+    <blocks>
+      <block>2</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to java/io/PrintStream::println</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>getEnv</mutatedMethod>
+    <methodDescription>(Ljava/lang/String;)Ljava/lang/String;</methodDescription>
+    <lineNumber>127</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.EmptyObjectReturnValsMutator</mutator>
+    <indexes>
+      <index>17</index>
+    </indexes>
+    <blocks>
+      <block>3</block>
+    </blocks>
+    <killingTest/>
+    <description>replaced return value with &quot;&quot; for
+      edu/hm/hafner/grading/github/GitHubPullRequestWriter::getEnv
+    </description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>getMissedLinesDescription</mutatedMethod>
+    <methodDescription>(Ledu/hm/hafner/util/LineRange;)Ljava/lang/String;</methodDescription>
+    <lineNumber>187</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator</mutator>
+    <indexes>
+      <index>7</index>
+    </indexes>
+    <blocks>
+      <block>2</block>
+    </blocks>
+    <killingTest/>
+    <description>negated conditional</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>getMissedLinesDescription</mutatedMethod>
+    <methodDescription>(Ledu/hm/hafner/util/LineRange;)Ljava/lang/String;</methodDescription>
+    <lineNumber>188</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.EmptyObjectReturnValsMutator</mutator>
+    <indexes>
+      <index>20</index>
+    </indexes>
+    <blocks>
+      <block>6</block>
+    </blocks>
+    <killingTest/>
+    <description>replaced return value with &quot;&quot; for
+      edu/hm/hafner/grading/github/GitHubPullRequestWriter::getMissedLinesDescription
+    </description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>getMissedLinesDescription</mutatedMethod>
+    <methodDescription>(Ledu/hm/hafner/util/LineRange;)Ljava/lang/String;</methodDescription>
+    <lineNumber>190</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.EmptyObjectReturnValsMutator</mutator>
+    <indexes>
+      <index>40</index>
+    </indexes>
+    <blocks>
+      <block>12</block>
+    </blocks>
+    <killingTest/>
+    <description>replaced return value with &quot;&quot; for
+      edu/hm/hafner/grading/github/GitHubPullRequestWriter::getMissedLinesDescription
+    </description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>getMissedLinesMessage</mutatedMethod>
+    <methodDescription>(Ledu/hm/hafner/util/LineRange;)Ljava/lang/String;</methodDescription>
+    <lineNumber>180</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator</mutator>
+    <indexes>
+      <index>7</index>
+    </indexes>
+    <blocks>
+      <block>2</block>
+    </blocks>
+    <killingTest/>
+    <description>negated conditional</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>getMissedLinesMessage</mutatedMethod>
+    <methodDescription>(Ledu/hm/hafner/util/LineRange;)Ljava/lang/String;</methodDescription>
+    <lineNumber>181</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.EmptyObjectReturnValsMutator</mutator>
+    <indexes>
+      <index>11</index>
+    </indexes>
+    <blocks>
+      <block>3</block>
+    </blocks>
+    <killingTest/>
+    <description>replaced return value with &quot;&quot; for
+      edu/hm/hafner/grading/github/GitHubPullRequestWriter::getMissedLinesMessage
+    </description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>getMissedLinesMessage</mutatedMethod>
+    <methodDescription>(Ledu/hm/hafner/util/LineRange;)Ljava/lang/String;</methodDescription>
+    <lineNumber>183</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.EmptyObjectReturnValsMutator</mutator>
+    <indexes>
+      <index>16</index>
+    </indexes>
+    <blocks>
+      <block>4</block>
+    </blocks>
+    <killingTest/>
+    <description>replaced return value with &quot;&quot; for
+      edu/hm/hafner/grading/github/GitHubPullRequestWriter::getMissedLinesMessage
+    </description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>handleAnnotations</mutatedMethod>
+    <methodDescription>
+      (Ledu/hm/hafner/grading/AggregatedScore;Ljava/util/regex/Pattern;Lorg/kohsuke/github/GHCheckRunBuilder$Output;)V
+    </methodDescription>
+    <lineNumber>131</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator</mutator>
+    <indexes>
+      <index>7</index>
+    </indexes>
+    <blocks>
+      <block>2</block>
+    </blocks>
+    <killingTest/>
+    <description>negated conditional</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>handleAnnotations</mutatedMethod>
+    <methodDescription>
+      (Ledu/hm/hafner/grading/AggregatedScore;Ljava/util/regex/Pattern;Lorg/kohsuke/github/GHCheckRunBuilder$Output;)V
+    </methodDescription>
+    <lineNumber>132</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>14</index>
+    </indexes>
+    <blocks>
+      <block>3</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to
+      edu/hm/hafner/grading/github/GitHubPullRequestWriter::createLineAnnotationsForWarnings
+    </description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>handleAnnotations</mutatedMethod>
+    <methodDescription>
+      (Ledu/hm/hafner/grading/AggregatedScore;Ljava/util/regex/Pattern;Lorg/kohsuke/github/GHCheckRunBuilder$Output;)V
+    </methodDescription>
+    <lineNumber>133</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>21</index>
+    </indexes>
+    <blocks>
+      <block>4</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to
+      edu/hm/hafner/grading/github/GitHubPullRequestWriter::createLineAnnotationsForMissedLines
+    </description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>handleAnnotations</mutatedMethod>
+    <methodDescription>
+      (Ledu/hm/hafner/grading/AggregatedScore;Ljava/util/regex/Pattern;Lorg/kohsuke/github/GHCheckRunBuilder$Output;)V
+    </methodDescription>
+    <lineNumber>134</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>28</index>
+    </indexes>
+    <blocks>
+      <block>5</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to
+      edu/hm/hafner/grading/github/GitHubPullRequestWriter::createLineAnnotationsForPartiallyCoveredLines
+    </description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>handleAnnotations</mutatedMethod>
+    <methodDescription>
+      (Ledu/hm/hafner/grading/AggregatedScore;Ljava/util/regex/Pattern;Lorg/kohsuke/github/GHCheckRunBuilder$Output;)V
+    </methodDescription>
+    <lineNumber>135</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>35</index>
+    </indexes>
+    <blocks>
+      <block>6</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to
+      edu/hm/hafner/grading/github/GitHubPullRequestWriter::createLineAnnotationsForSurvivedMutations
+    </description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>lambda$createBranchCoverageAnnotation$4</mutatedMethod>
+    <methodDescription>
+      (Ljava/util/regex/Pattern;Ledu/hm/hafner/coverage/FileNode;Ljava/util/Map$Entry;)Lorg/kohsuke/github/GHCheckRunBuilder$Annotation;
+    </methodDescription>
+    <lineNumber>206</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.NullReturnValsMutator</mutator>
+    <indexes>
+      <index>37</index>
+    </indexes>
+    <blocks>
+      <block>12</block>
+    </blocks>
+    <killingTest/>
+    <description>replaced return value with null for
+      edu/hm/hafner/grading/github/GitHubPullRequestWriter::lambda$createBranchCoverageAnnotation$4
+    </description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>lambda$createLineAnnotationsForMissedLines$1</mutatedMethod>
+    <methodDescription>(Ljava/util/regex/Pattern;Ledu/hm/hafner/coverage/FileNode;)Ljava/util/List;</methodDescription>
+    <lineNumber>164</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.EmptyObjectReturnValsMutator</mutator>
+    <indexes>
+      <index>7</index>
+    </indexes>
+    <blocks>
+      <block>1</block>
+    </blocks>
+    <killingTest/>
+    <description>replaced return value with Collections.emptyList for
+      edu/hm/hafner/grading/github/GitHubPullRequestWriter::lambda$createLineAnnotationsForMissedLines$1
+    </description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>lambda$createLineAnnotationsForPartiallyCoveredLines$3</mutatedMethod>
+    <methodDescription>(Ljava/util/regex/Pattern;Ledu/hm/hafner/coverage/FileNode;)Ljava/util/List;</methodDescription>
+    <lineNumber>199</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.EmptyObjectReturnValsMutator</mutator>
+    <indexes>
+      <index>7</index>
+    </indexes>
+    <blocks>
+      <block>1</block>
+    </blocks>
+    <killingTest/>
+    <description>replaced return value with Collections.emptyList for
+      edu/hm/hafner/grading/github/GitHubPullRequestWriter::lambda$createLineAnnotationsForPartiallyCoveredLines$3
+    </description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>lambda$createLineAnnotationsForSurvivedMutations$5</mutatedMethod>
+    <methodDescription>(Ljava/util/regex/Pattern;Ledu/hm/hafner/coverage/FileNode;)Ljava/util/List;</methodDescription>
+    <lineNumber>228</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.EmptyObjectReturnValsMutator</mutator>
+    <indexes>
+      <index>7</index>
+    </indexes>
+    <blocks>
+      <block>1</block>
+    </blocks>
+    <killingTest/>
+    <description>replaced return value with Collections.emptyList for
+      edu/hm/hafner/grading/github/GitHubPullRequestWriter::lambda$createLineAnnotationsForSurvivedMutations$5
+    </description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>lambda$createLineAnnotationsForWarnings$0</mutatedMethod>
+    <methodDescription>
+      (Ljava/util/regex/Pattern;Ledu/hm/hafner/analysis/Issue;)Lorg/kohsuke/github/GHCheckRunBuilder$Annotation;
+    </methodDescription>
+    <lineNumber>144</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.NullReturnValsMutator</mutator>
+    <indexes>
+      <index>7</index>
+    </indexes>
+    <blocks>
+      <block>1</block>
+    </blocks>
+    <killingTest/>
+    <description>replaced return value with null for
+      edu/hm/hafner/grading/github/GitHubPullRequestWriter::lambda$createLineAnnotationsForWarnings$0
+    </description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>lambda$createLineCoverageAnnotation$2</mutatedMethod>
+    <methodDescription>
+      (Ljava/util/regex/Pattern;Ledu/hm/hafner/coverage/FileNode;Ledu/hm/hafner/util/LineRange;)Lorg/kohsuke/github/GHCheckRunBuilder$Annotation;
+    </methodDescription>
+    <lineNumber>171</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.NullReturnValsMutator</mutator>
+    <indexes>
+      <index>32</index>
+    </indexes>
+    <blocks>
+      <block>9</block>
+    </blocks>
+    <killingTest/>
+    <description>replaced return value with null for
+      edu/hm/hafner/grading/github/GitHubPullRequestWriter::lambda$createLineCoverageAnnotation$2
+    </description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>lambda$createMutationCoverageAnnotation$6</mutatedMethod>
+    <methodDescription>
+      (Ljava/util/regex/Pattern;Ledu/hm/hafner/coverage/FileNode;Ljava/util/Map$Entry;)Lorg/kohsuke/github/GHCheckRunBuilder$Annotation;
+    </methodDescription>
+    <lineNumber>235</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.NullReturnValsMutator</mutator>
+    <indexes>
+      <index>44</index>
+    </indexes>
+    <blocks>
+      <block>14</block>
+    </blocks>
+    <killingTest/>
+    <description>replaced return value with null for
+      edu/hm/hafner/grading/github/GitHubPullRequestWriter::lambda$createMutationCoverageAnnotation$6
+    </description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>GitHubPullRequestWriter.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.github.GitHubPullRequestWriter</mutatedClass>
+    <mutatedMethod>lambda$createMutationDetails$7</mutatedMethod>
+    <methodDescription>(Ledu/hm/hafner/coverage/Mutation;)Ljava/lang/String;</methodDescription>
+    <lineNumber>257</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.EmptyObjectReturnValsMutator</mutator>
+    <indexes>
+      <index>17</index>
+    </indexes>
+    <blocks>
+      <block>3</block>
+    </blocks>
+    <killingTest/>
+    <description>replaced return value with &quot;&quot; for
+      edu/hm/hafner/grading/github/GitHubPullRequestWriter::lambda$createMutationDetails$7
+    </description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>createEnvironmentVariables</mutatedMethod>
+    <methodDescription>(Ledu/hm/hafner/grading/AggregatedScore;)Ljava/lang/String;</methodDescription>
+    <lineNumber>131</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>13</index>
+    </indexes>
+    <blocks>
+      <block>2</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to java/util/Map::forEach</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>createEnvironmentVariables</mutatedMethod>
+    <methodDescription>(Ledu/hm/hafner/grading/AggregatedScore;)Ljava/lang/String;</methodDescription>
+    <lineNumber>132</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>18</index>
+    </indexes>
+    <blocks>
+      <block>3</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to java/io/PrintStream::println</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>createEnvironmentVariables</mutatedMethod>
+    <methodDescription>(Ledu/hm/hafner/grading/AggregatedScore;)Ljava/lang/String;</methodDescription>
+    <lineNumber>133</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>23</index>
+    </indexes>
+    <blocks>
+      <block>4</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to java/io/PrintStream::println</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>createEnvironmentVariables</mutatedMethod>
+    <methodDescription>(Ledu/hm/hafner/grading/AggregatedScore;)Ljava/lang/String;</methodDescription>
+    <lineNumber>134</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>28</index>
+    </indexes>
+    <blocks>
+      <block>5</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to java/io/PrintStream::println</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>createEnvironmentVariables</mutatedMethod>
+    <methodDescription>(Ledu/hm/hafner/grading/AggregatedScore;)Ljava/lang/String;</methodDescription>
+    <lineNumber>135</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>33</index>
+    </indexes>
+    <blocks>
+      <block>6</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to java/io/PrintStream::println</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>createEnvironmentVariables</mutatedMethod>
+    <methodDescription>(Ledu/hm/hafner/grading/AggregatedScore;)Ljava/lang/String;</methodDescription>
+    <lineNumber>136</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.EmptyObjectReturnValsMutator</mutator>
+    <indexes>
+      <index>38</index>
+    </indexes>
+    <blocks>
+      <block>8</block>
+    </blocks>
+    <killingTest/>
+    <description>replaced return value with &quot;&quot; for
+      edu/hm/hafner/grading/AutoGradingAction::createEnvironmentVariables
+    </description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>getChecksName</mutatedMethod>
+    <methodDescription>()Ljava/lang/String;</methodDescription>
+    <lineNumber>140</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.EmptyObjectReturnValsMutator</mutator>
+    <indexes>
+      <index>8</index>
+    </indexes>
+    <blocks>
+      <block>2</block>
+    </blocks>
+    <killingTest/>
+    <description>replaced return value with &quot;&quot; for edu/hm/hafner/grading/AutoGradingAction::getChecksName
+    </description>
+  </mutation>
+  <mutation detected='true' status='KILLED' numberOfTestsRun='1'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>getConfiguration</mutatedMethod>
+    <methodDescription>()Ljava/lang/String;</methodDescription>
+    <lineNumber>146</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator</mutator>
+    <indexes>
+      <index>10</index>
+    </indexes>
+    <blocks>
+      <block>2</block>
+    </blocks>
+    <killingTest>
+      edu.hm.hafner.grading.AutoGradingActionTest.[engine:junit-jupiter]/[class:edu.hm.hafner.grading.AutoGradingActionTest]/[method:shouldReadDefaultConfigurationIfEnvironmentIsNotSet()]
+    </killingTest>
+    <description>negated conditional</description>
+  </mutation>
+  <mutation detected='false' status='SURVIVED' numberOfTestsRun='1'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>getConfiguration</mutatedMethod>
+    <methodDescription>()Ljava/lang/String;</methodDescription>
+    <lineNumber>147</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>15</index>
+    </indexes>
+    <blocks>
+      <block>3</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to java/io/PrintStream::println</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>getConfiguration</mutatedMethod>
+    <methodDescription>()Ljava/lang/String;</methodDescription>
+    <lineNumber>152</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>26</index>
+    </indexes>
+    <blocks>
+      <block>6</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to java/io/PrintStream::println</description>
+  </mutation>
+  <mutation detected='true' status='KILLED' numberOfTestsRun='1'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>getConfiguration</mutatedMethod>
+    <methodDescription>()Ljava/lang/String;</methodDescription>
+    <lineNumber>149</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.EmptyObjectReturnValsMutator</mutator>
+    <indexes>
+      <index>20</index>
+    </indexes>
+    <blocks>
+      <block>5</block>
+    </blocks>
+    <killingTest>
+      edu.hm.hafner.grading.AutoGradingActionTest.[engine:junit-jupiter]/[class:edu.hm.hafner.grading.AutoGradingActionTest]/[method:shouldReadDefaultConfigurationIfEnvironmentIsNotSet()]
+    </killingTest>
+    <description>replaced return value with &quot;&quot; for edu/hm/hafner/grading/AutoGradingAction::getConfiguration
+    </description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>getConfiguration</mutatedMethod>
+    <methodDescription>()Ljava/lang/String;</methodDescription>
+    <lineNumber>153</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.EmptyObjectReturnValsMutator</mutator>
+    <indexes>
+      <index>30</index>
+    </indexes>
+    <blocks>
+      <block>7</block>
+    </blocks>
+    <killingTest/>
+    <description>replaced return value with &quot;&quot; for edu/hm/hafner/grading/AutoGradingAction::getConfiguration
+    </description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>lambda$run$0</mutatedMethod>
+    <methodDescription>(Ljava/lang/String;)Ljava/nio/file/Path;</methodDescription>
+    <lineNumber>80</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.NullReturnValsMutator</mutator>
+    <indexes>
+      <index>7</index>
+    </indexes>
+    <blocks>
+      <block>1</block>
+    </blocks>
+    <killingTest/>
+    <description>replaced return value with null for edu/hm/hafner/grading/AutoGradingAction::lambda$run$0</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>lambda$run$1</mutatedMethod>
+    <methodDescription>(Ljava/nio/file/Path;)Z</methodDescription>
+    <lineNumber>81</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.BooleanFalseReturnValsMutator</mutator>
+    <indexes>
+      <index>7</index>
+    </indexes>
+    <blocks>
+      <block>1</block>
+    </blocks>
+    <killingTest/>
+    <description>replaced boolean return with false for edu/hm/hafner/grading/AutoGradingAction::lambda$run$1
+    </description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>lambda$run$1</mutatedMethod>
+    <methodDescription>(Ljava/nio/file/Path;)Z</methodDescription>
+    <lineNumber>81</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.BooleanTrueReturnValsMutator</mutator>
+    <indexes>
+      <index>7</index>
+    </indexes>
+    <blocks>
+      <block>1</block>
+    </blocks>
+    <killingTest/>
+    <description>replaced boolean return with true for edu/hm/hafner/grading/AutoGradingAction::lambda$run$1
+    </description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>lambda$run$2</mutatedMethod>
+    <methodDescription>(Ljava/lang/String;)Ljava/nio/file/Path;</methodDescription>
+    <lineNumber>89</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.NullReturnValsMutator</mutator>
+    <indexes>
+      <index>7</index>
+    </indexes>
+    <blocks>
+      <block>1</block>
+    </blocks>
+    <killingTest/>
+    <description>replaced return value with null for edu/hm/hafner/grading/AutoGradingAction::lambda$run$2</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>lambda$run$3</mutatedMethod>
+    <methodDescription>(Ljava/nio/file/Path;)Z</methodDescription>
+    <lineNumber>90</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.BooleanFalseReturnValsMutator</mutator>
+    <indexes>
+      <index>7</index>
+    </indexes>
+    <blocks>
+      <block>1</block>
+    </blocks>
+    <killingTest/>
+    <description>replaced boolean return with false for edu/hm/hafner/grading/AutoGradingAction::lambda$run$3
+    </description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>lambda$run$3</mutatedMethod>
+    <methodDescription>(Ljava/nio/file/Path;)Z</methodDescription>
+    <lineNumber>90</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.BooleanTrueReturnValsMutator</mutator>
+    <indexes>
+      <index>7</index>
+    </indexes>
+    <blocks>
+      <block>1</block>
+    </blocks>
+    <killingTest/>
+    <description>replaced boolean return with true for edu/hm/hafner/grading/AutoGradingAction::lambda$run$3
+    </description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>main</mutatedMethod>
+    <methodDescription>([Ljava/lang/String;)V</methodDescription>
+    <lineNumber>41</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>6</index>
+    </indexes>
+    <blocks>
+      <block>1</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to edu/hm/hafner/grading/AutoGradingAction::run</description>
+  </mutation>
+  <mutation detected='true' status='KILLED' numberOfTestsRun='1'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>readDefaultConfiguration</mutatedMethod>
+    <methodDescription>()Ljava/lang/String;</methodDescription>
+    <lineNumber>159</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator</mutator>
+    <indexes>
+      <index>11</index>
+    </indexes>
+    <blocks>
+      <block>2</block>
+    </blocks>
+    <killingTest>
+      edu.hm.hafner.grading.AutoGradingActionTest.[engine:junit-jupiter]/[class:edu.hm.hafner.grading.AutoGradingActionTest]/[method:shouldReadDefaultConfigurationIfEnvironmentIsNotSet()]
+    </killingTest>
+    <description>negated conditional</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>readDefaultConfiguration</mutatedMethod>
+    <methodDescription>()Ljava/lang/String;</methodDescription>
+    <lineNumber>165</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>36</index>
+    </indexes>
+    <blocks>
+      <block>9</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to java/io/PrintStream::println</description>
+  </mutation>
+  <mutation detected='true' status='KILLED' numberOfTestsRun='1'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>readDefaultConfiguration</mutatedMethod>
+    <methodDescription>()Ljava/lang/String;</methodDescription>
+    <lineNumber>162</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.EmptyObjectReturnValsMutator</mutator>
+    <indexes>
+      <index>27</index>
+    </indexes>
+    <blocks>
+      <block>8</block>
+    </blocks>
+    <killingTest>
+      edu.hm.hafner.grading.AutoGradingActionTest.[engine:junit-jupiter]/[class:edu.hm.hafner.grading.AutoGradingActionTest]/[method:shouldReadDefaultConfigurationIfEnvironmentIsNotSet()]
+    </killingTest>
+    <description>replaced return value with &quot;&quot; for
+      edu/hm/hafner/grading/AutoGradingAction::readDefaultConfiguration
+    </description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>run</mutatedMethod>
+    <methodDescription>()V</methodDescription>
+    <lineNumber>48</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>20</index>
+    </indexes>
+    <blocks>
+      <block>2</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to java/io/PrintStream::println</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>run</mutatedMethod>
+    <methodDescription>()V</methodDescription>
+    <lineNumber>49</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>25</index>
+    </indexes>
+    <blocks>
+      <block>3</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to java/io/PrintStream::println</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>run</mutatedMethod>
+    <methodDescription>()V</methodDescription>
+    <lineNumber>50</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>30</index>
+    </indexes>
+    <blocks>
+      <block>4</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to java/io/PrintStream::println</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>run</mutatedMethod>
+    <methodDescription>()V</methodDescription>
+    <lineNumber>53</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>43</index>
+    </indexes>
+    <blocks>
+      <block>7</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to edu/hm/hafner/grading/LogHandler::print</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>run</mutatedMethod>
+    <methodDescription>()V</methodDescription>
+    <lineNumber>55</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>48</index>
+    </indexes>
+    <blocks>
+      <block>8</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to java/io/PrintStream::println</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>run</mutatedMethod>
+    <methodDescription>()V</methodDescription>
+    <lineNumber>60</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>61</index>
+    </indexes>
+    <blocks>
+      <block>11</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to edu/hm/hafner/grading/AggregatedScore::gradeTests</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>run</mutatedMethod>
+    <methodDescription>()V</methodDescription>
+    <lineNumber>61</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>65</index>
+    </indexes>
+    <blocks>
+      <block>12</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to edu/hm/hafner/grading/LogHandler::print</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>run</mutatedMethod>
+    <methodDescription>()V</methodDescription>
+    <lineNumber>63</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>70</index>
+    </indexes>
+    <blocks>
+      <block>13</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to java/io/PrintStream::println</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>run</mutatedMethod>
+    <methodDescription>()V</methodDescription>
+    <lineNumber>65</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>77</index>
+    </indexes>
+    <blocks>
+      <block>15</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to edu/hm/hafner/grading/AggregatedScore::gradeCoverage</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>run</mutatedMethod>
+    <methodDescription>()V</methodDescription>
+    <lineNumber>66</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>81</index>
+    </indexes>
+    <blocks>
+      <block>16</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to edu/hm/hafner/grading/LogHandler::print</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>run</mutatedMethod>
+    <methodDescription>()V</methodDescription>
+    <lineNumber>68</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>86</index>
+    </indexes>
+    <blocks>
+      <block>17</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to java/io/PrintStream::println</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>run</mutatedMethod>
+    <methodDescription>()V</methodDescription>
+    <lineNumber>70</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>93</index>
+    </indexes>
+    <blocks>
+      <block>19</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to edu/hm/hafner/grading/AggregatedScore::gradeAnalysis</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>run</mutatedMethod>
+    <methodDescription>()V</methodDescription>
+    <lineNumber>71</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>97</index>
+    </indexes>
+    <blocks>
+      <block>20</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to edu/hm/hafner/grading/LogHandler::print</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>run</mutatedMethod>
+    <methodDescription>()V</methodDescription>
+    <lineNumber>73</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>102</index>
+    </indexes>
+    <blocks>
+      <block>21</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to java/io/PrintStream::println</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>run</mutatedMethod>
+    <methodDescription>()V</methodDescription>
+    <lineNumber>75</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>107</index>
+    </indexes>
+    <blocks>
+      <block>22</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to java/io/PrintStream::println</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>run</mutatedMethod>
+    <methodDescription>()V</methodDescription>
+    <lineNumber>82</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>141</index>
+    </indexes>
+    <blocks>
+      <block>32</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to java/util/stream/Stream::forEach</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>run</mutatedMethod>
+    <methodDescription>()V</methodDescription>
+    <lineNumber>84</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>146</index>
+    </indexes>
+    <blocks>
+      <block>33</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to java/io/PrintStream::println</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>run</mutatedMethod>
+    <methodDescription>()V</methodDescription>
+    <lineNumber>91</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>180</index>
+    </indexes>
+    <blocks>
+      <block>43</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to java/util/stream/Stream::forEach</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>run</mutatedMethod>
+    <methodDescription>()V</methodDescription>
+    <lineNumber>93</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>185</index>
+    </indexes>
+    <blocks>
+      <block>44</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to java/io/PrintStream::println</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>run</mutatedMethod>
+    <methodDescription>()V</methodDescription>
+    <lineNumber>97</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>198</index>
+    </indexes>
+    <blocks>
+      <block>47</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to java/io/PrintStream::println</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>run</mutatedMethod>
+    <methodDescription>()V</methodDescription>
+    <lineNumber>99</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>228</index>
+    </indexes>
+    <blocks>
+      <block>54</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to edu/hm/hafner/grading/github/GitHubPullRequestWriter::addComment</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>run</mutatedMethod>
+    <methodDescription>()V</methodDescription>
+    <lineNumber>112</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>261</index>
+    </indexes>
+    <blocks>
+      <block>59</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to java/io/PrintStream::println</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>run</mutatedMethod>
+    <methodDescription>()V</methodDescription>
+    <lineNumber>113</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>267</index>
+    </indexes>
+    <blocks>
+      <block>61</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to java/io/PrintStream::println</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>run</mutatedMethod>
+    <methodDescription>()V</methodDescription>
+    <lineNumber>116</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>302</index>
+    </indexes>
+    <blocks>
+      <block>68</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to edu/hm/hafner/grading/github/GitHubPullRequestWriter::addComment</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>run</mutatedMethod>
+    <methodDescription>()V</methodDescription>
+    <lineNumber>124</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>308</index>
+    </indexes>
+    <blocks>
+      <block>69</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to java/io/PrintStream::println</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>run</mutatedMethod>
+    <methodDescription>()V</methodDescription>
+    <lineNumber>125</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>313</index>
+    </indexes>
+    <blocks>
+      <block>70</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to java/io/PrintStream::println</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>AutoGradingAction.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.AutoGradingAction</mutatedClass>
+    <mutatedMethod>run</mutatedMethod>
+    <methodDescription>()V</methodDescription>
+    <lineNumber>126</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>318</index>
+    </indexes>
+    <blocks>
+      <block>71</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to java/io/PrintStream::println</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>LogHandler.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.LogHandler</mutatedClass>
+    <mutatedMethod>getSizeOfErrorMessages</mutatedMethod>
+    <methodDescription>()I</methodDescription>
+    <lineNumber>42</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.PrimitiveReturnsMutator</mutator>
+    <indexes>
+      <index>7</index>
+    </indexes>
+    <blocks>
+      <block>2</block>
+    </blocks>
+    <killingTest/>
+    <description>replaced int return with 0 for edu/hm/hafner/grading/LogHandler::getSizeOfErrorMessages</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>LogHandler.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.LogHandler</mutatedClass>
+    <mutatedMethod>getSizeOfInfoMessages</mutatedMethod>
+    <methodDescription>()I</methodDescription>
+    <lineNumber>38</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.PrimitiveReturnsMutator</mutator>
+    <indexes>
+      <index>7</index>
+    </indexes>
+    <blocks>
+      <block>2</block>
+    </blocks>
+    <killingTest/>
+    <description>replaced int return with 0 for edu/hm/hafner/grading/LogHandler::getSizeOfInfoMessages</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>LogHandler.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.LogHandler</mutatedClass>
+    <mutatedMethod>print</mutatedMethod>
+    <methodDescription>()V</methodDescription>
+    <lineNumber>46</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>4</index>
+    </indexes>
+    <blocks>
+      <block>0</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to edu/hm/hafner/grading/LogHandler::printInfoMessages</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>LogHandler.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.LogHandler</mutatedClass>
+    <mutatedMethod>print</mutatedMethod>
+    <methodDescription>()V</methodDescription>
+    <lineNumber>47</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>8</index>
+    </indexes>
+    <blocks>
+      <block>1</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to edu/hm/hafner/grading/LogHandler::printErrorMessages</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>LogHandler.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.LogHandler</mutatedClass>
+    <mutatedMethod>printErrorMessages</mutatedMethod>
+    <methodDescription>()V</methodDescription>
+    <lineNumber>60</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.ConditionalsBoundaryMutator</mutator>
+    <indexes>
+      <index>11</index>
+    </indexes>
+    <blocks>
+      <block>1</block>
+    </blocks>
+    <killingTest/>
+    <description>changed conditional boundary</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>LogHandler.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.LogHandler</mutatedClass>
+    <mutatedMethod>printErrorMessages</mutatedMethod>
+    <methodDescription>()V</methodDescription>
+    <lineNumber>60</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator</mutator>
+    <indexes>
+      <index>11</index>
+    </indexes>
+    <blocks>
+      <block>1</block>
+    </blocks>
+    <killingTest/>
+    <description>negated conditional</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>LogHandler.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.LogHandler</mutatedClass>
+    <mutatedMethod>printErrorMessages</mutatedMethod>
+    <methodDescription>()V</methodDescription>
+    <lineNumber>60</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator</mutator>
+    <indexes>
+      <index>14</index>
+    </indexes>
+    <blocks>
+      <block>2</block>
+    </blocks>
+    <killingTest/>
+    <description>negated conditional</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>LogHandler.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.LogHandler</mutatedClass>
+    <mutatedMethod>printErrorMessages</mutatedMethod>
+    <methodDescription>()V</methodDescription>
+    <lineNumber>61</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>30</index>
+    </indexes>
+    <blocks>
+      <block>6</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to java/util/List::forEach</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>LogHandler.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.LogHandler</mutatedClass>
+    <mutatedMethod>printInfoMessages</mutatedMethod>
+    <methodDescription>()V</methodDescription>
+    <lineNumber>52</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.ConditionalsBoundaryMutator</mutator>
+    <indexes>
+      <index>11</index>
+    </indexes>
+    <blocks>
+      <block>1</block>
+    </blocks>
+    <killingTest/>
+    <description>changed conditional boundary</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>LogHandler.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.LogHandler</mutatedClass>
+    <mutatedMethod>printInfoMessages</mutatedMethod>
+    <methodDescription>()V</methodDescription>
+    <lineNumber>52</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator</mutator>
+    <indexes>
+      <index>11</index>
+    </indexes>
+    <blocks>
+      <block>1</block>
+    </blocks>
+    <killingTest/>
+    <description>negated conditional</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>LogHandler.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.LogHandler</mutatedClass>
+    <mutatedMethod>printInfoMessages</mutatedMethod>
+    <methodDescription>()V</methodDescription>
+    <lineNumber>52</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator</mutator>
+    <indexes>
+      <index>14</index>
+    </indexes>
+    <blocks>
+      <block>2</block>
+    </blocks>
+    <killingTest/>
+    <description>negated conditional</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>LogHandler.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.LogHandler</mutatedClass>
+    <mutatedMethod>printInfoMessages</mutatedMethod>
+    <methodDescription>()V</methodDescription>
+    <lineNumber>53</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>30</index>
+    </indexes>
+    <blocks>
+      <block>6</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to java/util/List::forEach</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>ReportFinder.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.ReportFinder</mutatedClass>
+    <mutatedMethod>find</mutatedMethod>
+    <methodDescription>(Ljava/lang/String;)Ljava/util/List;</methodDescription>
+    <lineNumber>79</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.EmptyObjectReturnValsMutator</mutator>
+    <indexes>
+      <index>7</index>
+    </indexes>
+    <blocks>
+      <block>1</block>
+    </blocks>
+    <killingTest/>
+    <description>replaced return value with Collections.emptyList for edu/hm/hafner/grading/ReportFinder::find
+    </description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>ReportFinder.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.ReportFinder</mutatedClass>
+    <mutatedMethod>find</mutatedMethod>
+    <methodDescription>(Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;</methodDescription>
+    <lineNumber>63</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>33</index>
+    </indexes>
+    <blocks>
+      <block>6</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to java/io/PrintStream::println</description>
+  </mutation>
+  <mutation detected='true' status='KILLED' numberOfTestsRun='1'>
+    <sourceFile>ReportFinder.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.ReportFinder</mutatedClass>
+    <mutatedMethod>find</mutatedMethod>
+    <methodDescription>(Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;</methodDescription>
+    <lineNumber>60</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.EmptyObjectReturnValsMutator</mutator>
+    <indexes>
+      <index>22</index>
+    </indexes>
+    <blocks>
+      <block>4</block>
+    </blocks>
+    <killingTest>
+      edu.hm.hafner.grading.ReportFinderTest.[engine:junit-jupiter]/[class:edu.hm.hafner.grading.ReportFinderTest]/[method:shouldCreateAffectedFilesReport()]
+    </killingTest>
+    <description>replaced return value with Collections.emptyList for edu/hm/hafner/grading/ReportFinder::find
+    </description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>ReportFinder.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.ReportFinder</mutatedClass>
+    <mutatedMethod>find</mutatedMethod>
+    <methodDescription>(Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;</methodDescription>
+    <lineNumber>65</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.EmptyObjectReturnValsMutator</mutator>
+    <indexes>
+      <index>39</index>
+    </indexes>
+    <blocks>
+      <block>8</block>
+    </blocks>
+    <killingTest/>
+    <description>replaced return value with Collections.emptyList for edu/hm/hafner/grading/ReportFinder::find
+    </description>
+  </mutation>
+  <mutation detected='false' status='SURVIVED' numberOfTestsRun='2'>
+    <sourceFile>ReportFinder.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.ReportFinder</mutatedClass>
+    <mutatedMethod>getEnv</mutatedMethod>
+    <methodDescription>(Ljava/lang/String;)Ljava/lang/String;</methodDescription>
+    <lineNumber>29</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.EmptyObjectReturnValsMutator</mutator>
+    <indexes>
+      <index>6</index>
+    </indexes>
+    <blocks>
+      <block>2</block>
+    </blocks>
+    <killingTest/>
+    <description>replaced return value with &quot;&quot; for edu/hm/hafner/grading/ReportFinder::getEnv</description>
+  </mutation>
+  <mutation detected='true' status='KILLED' numberOfTestsRun='1'>
+    <sourceFile>ReportFinder.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.ReportFinder</mutatedClass>
+    <mutatedMethod>lambda$renderLinks$0</mutatedMethod>
+    <methodDescription>(Ljava/nio/file/Path;)Ljava/lang/String;</methodDescription>
+    <lineNumber>85</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.EmptyObjectReturnValsMutator</mutator>
+    <indexes>
+      <index>32</index>
+    </indexes>
+    <blocks>
+      <block>3</block>
+    </blocks>
+    <killingTest>
+      edu.hm.hafner.grading.ReportFinderTest.[engine:junit-jupiter]/[class:edu.hm.hafner.grading.ReportFinderTest]/[method:shouldCreateAffectedFilesReport()]
+    </killingTest>
+    <description>replaced return value with &quot;&quot; for edu/hm/hafner/grading/ReportFinder::lambda$renderLinks$0
+    </description>
+  </mutation>
+  <mutation detected='true' status='KILLED' numberOfTestsRun='1'>
+    <sourceFile>ReportFinder.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.ReportFinder</mutatedClass>
+    <mutatedMethod>renderLinks</mutatedMethod>
+    <methodDescription>(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</methodDescription>
+    <lineNumber>84</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.EmptyObjectReturnValsMutator</mutator>
+    <indexes>
+      <index>27</index>
+    </indexes>
+    <blocks>
+      <block>5</block>
+    </blocks>
+    <killingTest>
+      edu.hm.hafner.grading.ReportFinderTest.[engine:junit-jupiter]/[class:edu.hm.hafner.grading.ReportFinderTest]/[method:shouldCreateAffectedFilesReport()]
+    </killingTest>
+    <description>replaced return value with &quot;&quot; for edu/hm/hafner/grading/ReportFinder::renderLinks
+    </description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>ConsoleCoverageReportFactory.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.ConsoleCoverageReportFactory</mutatedClass>
+    <mutatedMethod>create</mutatedMethod>
+    <methodDescription>
+      (Ledu/hm/hafner/grading/ToolConfiguration;Ledu/hm/hafner/util/FilteredLog;)Ledu/hm/hafner/coverage/Node;
+    </methodDescription>
+    <lineNumber>37</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator</mutator>
+    <indexes>
+      <index>103</index>
+    </indexes>
+    <blocks>
+      <block>24</block>
+    </blocks>
+    <killingTest/>
+    <description>negated conditional</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>ConsoleCoverageReportFactory.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.ConsoleCoverageReportFactory</mutatedClass>
+    <mutatedMethod>create</mutatedMethod>
+    <methodDescription>
+      (Ledu/hm/hafner/grading/ToolConfiguration;Ledu/hm/hafner/util/FilteredLog;)Ledu/hm/hafner/coverage/Node;
+    </methodDescription>
+    <lineNumber>31</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>63</index>
+    </indexes>
+    <blocks>
+      <block>15</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to edu/hm/hafner/util/FilteredLog::logInfo</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>ConsoleCoverageReportFactory.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.ConsoleCoverageReportFactory</mutatedClass>
+    <mutatedMethod>create</mutatedMethod>
+    <methodDescription>
+      (Ledu/hm/hafner/grading/ToolConfiguration;Ledu/hm/hafner/util/FilteredLog;)Ledu/hm/hafner/coverage/Node;
+    </methodDescription>
+    <lineNumber>36</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>97</index>
+    </indexes>
+    <blocks>
+      <block>21</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to edu/hm/hafner/util/FilteredLog::logInfo</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>ConsoleCoverageReportFactory.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.ConsoleCoverageReportFactory</mutatedClass>
+    <mutatedMethod>create</mutatedMethod>
+    <methodDescription>
+      (Ledu/hm/hafner/grading/ToolConfiguration;Ledu/hm/hafner/util/FilteredLog;)Ledu/hm/hafner/coverage/Node;
+    </methodDescription>
+    <lineNumber>42</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>121</index>
+    </indexes>
+    <blocks>
+      <block>28</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to edu/hm/hafner/coverage/ContainerNode::addChild</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>ConsoleCoverageReportFactory.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.ConsoleCoverageReportFactory</mutatedClass>
+    <mutatedMethod>create</mutatedMethod>
+    <methodDescription>
+      (Ledu/hm/hafner/grading/ToolConfiguration;Ledu/hm/hafner/util/FilteredLog;)Ledu/hm/hafner/coverage/Node;
+    </methodDescription>
+    <lineNumber>38</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.NullReturnValsMutator</mutator>
+    <indexes>
+      <index>107</index>
+    </indexes>
+    <blocks>
+      <block>25</block>
+    </blocks>
+    <killingTest/>
+    <description>replaced return value with null for edu/hm/hafner/grading/ConsoleCoverageReportFactory::create
+    </description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>ConsoleCoverageReportFactory.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.ConsoleCoverageReportFactory</mutatedClass>
+    <mutatedMethod>create</mutatedMethod>
+    <methodDescription>
+      (Ledu/hm/hafner/grading/ToolConfiguration;Ledu/hm/hafner/util/FilteredLog;)Ledu/hm/hafner/coverage/Node;
+    </methodDescription>
+    <lineNumber>43</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.NullReturnValsMutator</mutator>
+    <indexes>
+      <index>125</index>
+    </indexes>
+    <blocks>
+      <block>29</block>
+    </blocks>
+    <killingTest/>
+    <description>replaced return value with null for edu/hm/hafner/grading/ConsoleCoverageReportFactory::create
+    </description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>ConsoleCoverageReportFactory.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.ConsoleCoverageReportFactory</mutatedClass>
+    <mutatedMethod>extractMetric</mutatedMethod>
+    <methodDescription>(Ledu/hm/hafner/grading/ToolConfiguration;Ledu/hm/hafner/coverage/Node;)Ljava/lang/String;
+    </methodDescription>
+    <lineNumber>47</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.EmptyObjectReturnValsMutator</mutator>
+    <indexes>
+      <index>20</index>
+    </indexes>
+    <blocks>
+      <block>6</block>
+    </blocks>
+    <killingTest/>
+    <description>replaced return value with &quot;&quot; for
+      edu/hm/hafner/grading/ConsoleCoverageReportFactory::extractMetric
+    </description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>ReportFactory.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.ReportFactory</mutatedClass>
+    <mutatedMethod>findFiles</mutatedMethod>
+    <methodDescription>(Ledu/hm/hafner/grading/ToolConfiguration;Ledu/hm/hafner/util/FilteredLog;)Ljava/util/List;
+    </methodDescription>
+    <lineNumber>21</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator</mutator>
+    <indexes>
+      <index>36</index>
+    </indexes>
+    <blocks>
+      <block>7</block>
+    </blocks>
+    <killingTest/>
+    <description>negated conditional</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>ReportFactory.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.ReportFactory</mutatedClass>
+    <mutatedMethod>findFiles</mutatedMethod>
+    <methodDescription>(Ledu/hm/hafner/grading/ToolConfiguration;Ledu/hm/hafner/util/FilteredLog;)Ljava/util/List;
+    </methodDescription>
+    <lineNumber>17</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>21</index>
+    </indexes>
+    <blocks>
+      <block>2</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to edu/hm/hafner/util/FilteredLog::logInfo</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>ReportFactory.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.ReportFactory</mutatedClass>
+    <mutatedMethod>findFiles</mutatedMethod>
+    <methodDescription>(Ledu/hm/hafner/grading/ToolConfiguration;Ledu/hm/hafner/util/FilteredLog;)Ljava/util/List;
+    </methodDescription>
+    <lineNumber>26</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>65</index>
+    </indexes>
+    <blocks>
+      <block>13</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to java/util/Collections::sort</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>ReportFactory.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.ReportFactory</mutatedClass>
+    <mutatedMethod>findFiles</mutatedMethod>
+    <methodDescription>(Ledu/hm/hafner/grading/ToolConfiguration;Ledu/hm/hafner/util/FilteredLog;)Ljava/util/List;
+    </methodDescription>
+    <lineNumber>27</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.EmptyObjectReturnValsMutator</mutator>
+    <indexes>
+      <index>69</index>
+    </indexes>
+    <blocks>
+      <block>14</block>
+    </blocks>
+    <killingTest/>
+    <description>replaced return value with Collections.emptyList for edu/hm/hafner/grading/ReportFactory::findFiles
+    </description>
+  </mutation>
+  <mutation detected='true' status='KILLED' numberOfTestsRun='1'>
+    <sourceFile>ReportFinder.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.ReportFinder$PathMatcherFileVisitor</mutatedClass>
+    <mutatedMethod>getMatches</mutatedMethod>
+    <methodDescription>()Ljava/util/List;</methodDescription>
+    <lineNumber>108</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.EmptyObjectReturnValsMutator</mutator>
+    <indexes>
+      <index>5</index>
+    </indexes>
+    <blocks>
+      <block>0</block>
+    </blocks>
+    <killingTest>
+      edu.hm.hafner.grading.ReportFinderTest.[engine:junit-jupiter]/[class:edu.hm.hafner.grading.ReportFinderTest]/[method:shouldCreateAffectedFilesReport()]
+    </killingTest>
+    <description>replaced return value with Collections.emptyList for
+      edu/hm/hafner/grading/ReportFinder$PathMatcherFileVisitor::getMatches
+    </description>
+  </mutation>
+  <mutation detected='true' status='KILLED' numberOfTestsRun='1'>
+    <sourceFile>ReportFinder.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.ReportFinder$PathMatcherFileVisitor</mutatedClass>
+    <mutatedMethod>visitFile</mutatedMethod>
+    <methodDescription>
+      (Ljava/nio/file/Path;Ljava/nio/file/attribute/BasicFileAttributes;)Ljava/nio/file/FileVisitResult;
+    </methodDescription>
+    <lineNumber>113</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator</mutator>
+    <indexes>
+      <index>7</index>
+    </indexes>
+    <blocks>
+      <block>1</block>
+    </blocks>
+    <killingTest>
+      edu.hm.hafner.grading.ReportFinderTest.[engine:junit-jupiter]/[class:edu.hm.hafner.grading.ReportFinderTest]/[method:shouldCreateAffectedFilesReport()]
+    </killingTest>
+    <description>negated conditional</description>
+  </mutation>
+  <mutation detected='true' status='KILLED' numberOfTestsRun='1'>
+    <sourceFile>ReportFinder.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.ReportFinder$PathMatcherFileVisitor</mutatedClass>
+    <mutatedMethod>visitFile</mutatedMethod>
+    <methodDescription>
+      (Ljava/nio/file/Path;Ljava/nio/file/attribute/BasicFileAttributes;)Ljava/nio/file/FileVisitResult;
+    </methodDescription>
+    <lineNumber>116</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.NullReturnValsMutator</mutator>
+    <indexes>
+      <index>19</index>
+    </indexes>
+    <blocks>
+      <block>4</block>
+    </blocks>
+    <killingTest>
+      edu.hm.hafner.grading.ReportFinderTest.[engine:junit-jupiter]/[class:edu.hm.hafner.grading.ReportFinderTest]/[method:shouldCreateAffectedFilesReport()]
+    </killingTest>
+    <description>replaced return value with null for
+      edu/hm/hafner/grading/ReportFinder$PathMatcherFileVisitor::visitFile
+    </description>
+  </mutation>
+  <mutation detected='true' status='KILLED' numberOfTestsRun='1'>
+    <sourceFile>ReportFinder.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.ReportFinder$PathMatcherFileVisitor</mutatedClass>
+    <mutatedMethod>visitFileFailed</mutatedMethod>
+    <methodDescription>(Ljava/nio/file/Path;Ljava/io/IOException;)Ljava/nio/file/FileVisitResult;</methodDescription>
+    <lineNumber>121</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.NullReturnValsMutator</mutator>
+    <indexes>
+      <index>4</index>
+    </indexes>
+    <blocks>
+      <block>0</block>
+    </blocks>
+    <killingTest>
+      edu.hm.hafner.grading.ReportFinderTest.[engine:junit-jupiter]/[class:edu.hm.hafner.grading.ReportFinderTest]/[method:shouldFindTestReports()]
+    </killingTest>
+    <description>replaced return value with null for
+      edu/hm/hafner/grading/ReportFinder$PathMatcherFileVisitor::visitFileFailed
+    </description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>ConsoleAnalysisReportFactory.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.ConsoleAnalysisReportFactory</mutatedClass>
+    <mutatedMethod>create</mutatedMethod>
+    <methodDescription>
+      (Ledu/hm/hafner/grading/ToolConfiguration;Ledu/hm/hafner/util/FilteredLog;)Ledu/hm/hafner/analysis/Report;
+    </methodDescription>
+    <lineNumber>27</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>69</index>
+    </indexes>
+    <blocks>
+      <block>17</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to edu/hm/hafner/util/FilteredLog::logInfo</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>ConsoleAnalysisReportFactory.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.ConsoleAnalysisReportFactory</mutatedClass>
+    <mutatedMethod>create</mutatedMethod>
+    <methodDescription>
+      (Ledu/hm/hafner/grading/ToolConfiguration;Ledu/hm/hafner/util/FilteredLog;)Ledu/hm/hafner/analysis/Report;
+    </methodDescription>
+    <lineNumber>31</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>102</index>
+    </indexes>
+    <blocks>
+      <block>23</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to edu/hm/hafner/util/FilteredLog::logInfo</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>ConsoleAnalysisReportFactory.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.ConsoleAnalysisReportFactory</mutatedClass>
+    <mutatedMethod>create</mutatedMethod>
+    <methodDescription>
+      (Ledu/hm/hafner/grading/ToolConfiguration;Ledu/hm/hafner/util/FilteredLog;)Ledu/hm/hafner/analysis/Report;
+    </methodDescription>
+    <lineNumber>32</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.NullReturnValsMutator</mutator>
+    <indexes>
+      <index>106</index>
+    </indexes>
+    <blocks>
+      <block>24</block>
+    </blocks>
+    <killingTest/>
+    <description>replaced return value with null for edu/hm/hafner/grading/ConsoleAnalysisReportFactory::create
+    </description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>ConsoleTestReportFactory.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.ConsoleTestReportFactory</mutatedClass>
+    <mutatedMethod>create</mutatedMethod>
+    <methodDescription>
+      (Ledu/hm/hafner/grading/ToolConfiguration;Ledu/hm/hafner/util/FilteredLog;)Ledu/hm/hafner/coverage/Node;
+    </methodDescription>
+    <lineNumber>24</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator</mutator>
+    <indexes>
+      <index>56</index>
+    </indexes>
+    <blocks>
+      <block>10</block>
+    </blocks>
+    <killingTest/>
+    <description>removed call to edu/hm/hafner/util/FilteredLog::logInfo</description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>ConsoleTestReportFactory.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.ConsoleTestReportFactory</mutatedClass>
+    <mutatedMethod>create</mutatedMethod>
+    <methodDescription>
+      (Ledu/hm/hafner/grading/ToolConfiguration;Ledu/hm/hafner/util/FilteredLog;)Ledu/hm/hafner/coverage/Node;
+    </methodDescription>
+    <lineNumber>27</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.NullReturnValsMutator</mutator>
+    <indexes>
+      <index>60</index>
+    </indexes>
+    <blocks>
+      <block>11</block>
+    </blocks>
+    <killingTest/>
+    <description>replaced return value with null for edu/hm/hafner/grading/ConsoleTestReportFactory::create
+    </description>
+  </mutation>
+  <mutation detected='false' status='NO_COVERAGE' numberOfTestsRun='0'>
+    <sourceFile>FileNameRenderer.java</sourceFile>
+    <mutatedClass>edu.hm.hafner.grading.FileNameRenderer</mutatedClass>
+    <mutatedMethod>getFileName</mutatedMethod>
+    <methodDescription>(Ledu/hm/hafner/analysis/Report;Ljava/lang/String;)Ljava/lang/String;</methodDescription>
+    <lineNumber>15</lineNumber>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.returns.EmptyObjectReturnValsMutator</mutator>
+    <indexes>
+      <index>9</index>
+    </indexes>
+    <blocks>
+      <block>3</block>
+    </blocks>
+    <killingTest/>
+    <description>replaced return value with &quot;&quot; for edu/hm/hafner/grading/FileNameRenderer::getFileName
+    </description>
+  </mutation>
+</mutations>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="10.12.5">
+<file name="/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/main/java/edu/hm/hafner/grading/ConsoleCoverageReportFactory.java">
+</file>
+<file name="/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/main/java/edu/hm/hafner/grading/LogHandler.java">
+<error line="45" column="5" severity="warning" message="Es fehlt ein Javadoc-Kommentar." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+</file>
+<file name="/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/main/java/edu/hm/hafner/grading/ReportFinder.java">
+</file>
+<file name="/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/main/java/edu/hm/hafner/grading/FileNameRenderer.java">
+</file>
+<file name="/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/main/java/edu/hm/hafner/grading/github/GitHubPullRequestWriter.java">
+</file>
+<file name="/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/main/java/edu/hm/hafner/grading/AutoGradingAction.java">
+</file>
+<file name="/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/main/java/edu/hm/hafner/grading/ReportFactory.java">
+</file>
+<file name="/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/main/java/edu/hm/hafner/grading/ConsoleAnalysisReportFactory.java">
+</file>
+<file name="/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/main/java/edu/hm/hafner/grading/ConsoleTestReportFactory.java">
+</file>
+<file name="/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/test/java/edu/hm/hafner/grading/ReportFinderTest.java">
+</file>
+<file name="/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/test/java/edu/hm/hafner/grading/AutoGradingActionTest.java">
+</file>
+<file name="/Users/hafner/git/warnings-ng-plugin-devenv/autograding-github-action/src/test/java/edu/hm/hafner/grading/AutoGradingActionITest.java">
+</file>
+</checkstyle>
