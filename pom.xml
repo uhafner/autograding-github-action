@@ -28,7 +28,7 @@
     <java.version>17</java.version>
 
     <autograding-model.version>4.2.0</autograding-model.version>
-    <testcontainers.version>1.20.2</testcontainers.version>
+    <testcontainers.version>1.20.6</testcontainers.version>
     <github-api.version>1.326</github-api.version>
 
     <jib-maven-plugin.version>3.4.4</jib-maven-plugin.version>
