@@ -35,7 +35,7 @@
     <docker-image-baseline>v5-SNAPSHOT</docker-image-baseline>
 
     <autograding-model.version>5.6.0</autograding-model.version>
-    <github-api.version>1.326</github-api.version>
+    <github-api.version>1.327</github-api.version>
     <testcontainers.version>1.20.6</testcontainers.version>
 
     <jib-maven-plugin.version>3.4.4</jib-maven-plugin.version>
