@@ -32,7 +32,7 @@
   <properties>
     <module.name>${project.groupId}.autograding.github.action</module.name>
     <docker-image-tag>${project.version}</docker-image-tag>
-    <docker-image-baseline>v5</docker-image-baseline>
+    <docker-image-baseline>v5-SNAPSHOT</docker-image-baseline>
 
     <autograding-model.version>5.6.0</autograding-model.version>
     <github-api.version>1.326</github-api.version>
