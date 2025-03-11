@@ -1,13 +1,13 @@
 package edu.hm.hafner.grading.github;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-import java.nio.charset.StandardCharsets;
-
 import org.junit.jupiter.api.Test;
 import org.junitpioneer.jupiter.SetEnvironmentVariable;
 
 import edu.hm.hafner.util.ResourceTest;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.nio.charset.StandardCharsets;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -22,7 +22,7 @@ public class GitHubAutoGradingRunnerITest extends ResourceTest {
               "tests": {
                 "tools": [
                   {
-                    "id": "test",
+                    "id": "junit",
                     "name": "Unittests",
                     "pattern": "**/src/**/TEST*.xml"
                   }
@@ -118,7 +118,7 @@ public class GitHubAutoGradingRunnerITest extends ResourceTest {
                 .contains("Obtaining configuration from environment variable CONFIG")
                 .contains(new String[] {
                         "Processing 1 test configuration(s)",
-                        "-> Unittests Total: TESTS: 37 tests",
+                        "-> Unittests Total: TESTS: 37",
                         "JUnit Score: 100 of 100",
                         "Processing 2 coverage configuration(s)",
                         "-> Line Coverage Total: LINE: 10.93% (33/302)",
@@ -127,10 +127,10 @@ public class GitHubAutoGradingRunnerITest extends ResourceTest {
                         "-> Mutation Coverage Total: MUTATION: 7.86% (11/140)",
                         "=> PIT Score: 16 of 100",
                         "Processing 2 static analysis configuration(s)",
-                        "-> CheckStyle Total: 19 warnings",
-                        "-> PMD Total: 41 warnings",
+                        "-> CheckStyle (checkstyle): 19 warnings (normal: 19)",
+                        "-> PMD (pmd): 41 warnings (normal: 41)",
                         "=> Style Score: 100 of 100",
-                        "-> SpotBugs Total: 1 warnings",
+                        "-> SpotBugs (spotbugs): 1 bug (low: 1)",
                         "=> Bugs Score: 86 of 100",
                         "Autograding score - 322 of 500"});
     }
@@ -140,7 +140,7 @@ public class GitHubAutoGradingRunnerITest extends ResourceTest {
               "tests": {
                 "tools": [
                   {
-                    "id": "test",
+                    "id": "junit",
                     "name": "Unittests",
                     "pattern": "**/does-not-exist/TEST*.xml"
                   }
@@ -235,25 +235,24 @@ public class GitHubAutoGradingRunnerITest extends ResourceTest {
         assertThat(runAutoGrading())
                 .contains(new String[] {
                         "Processing 1 test configuration(s)",
-                        "-> Unittests Total: TESTS: 0 tests",
                         "Configuration error for 'Unittests'?",
                         "JUnit Score: 100 of 100",
                         "Processing 2 coverage configuration(s)",
-                        "=> JaCoCo Score: 0 of 100",
+                        "=> JaCoCo Score: 100 of 100",
                         "Configuration error for 'Line Coverage'?",
                         "Configuration error for 'Branch Coverage'?",
-                        "=> PIT Score: 0 of 100",
+                        "=> PIT Score: 100 of 100",
                         "Configuration error for 'Mutation Coverage'?",
                         "Processing 2 static analysis configuration(s)",
                         "Configuration error for 'CheckStyle'?",
                         "Configuration error for 'PMD'?",
                         "Configuration error for 'SpotBugs'?",
-                        "-> CheckStyle Total: 0 warnings",
-                        "-> PMD Total: 0 warnings",
+                        "-> CheckStyle (checkstyle): No warnings",
+                        "-> PMD (pmd): No warnings",
                         "=> Style Score: 0 of 100",
-                        "-> SpotBugs Total: 0 warnings",
+                        "-> SpotBugs (spotbugs): No warnings",
                         "=> Bugs Score: 100 of 100",
-                        "Autograding score - 200 of 500"});
+                        "Autograding score - 400 of 500"});
     }
 
     private String runAutoGrading() {
