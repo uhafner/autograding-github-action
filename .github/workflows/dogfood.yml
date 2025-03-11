@@ -33,14 +33,12 @@ jobs:
               "tests": {
                 "tools": [
                   {
-                    "id": "test",
+                    "id": "junit",
                     "pattern": "**/src/test/resources/**/TEST*.xml"
                   }
                 ],
                 "name": "Tests",
-                "passedImpact": 10,
-                "skippedImpact": -1,
-                "failureImpact": -5,
+                "failureRateImpact": -1,
                 "maxScore": 100
               },
               "analysis": [
@@ -86,13 +84,11 @@ jobs:
                   "tools": [
                     {
                       "id": "jacoco",
-                      "name": "Line Coverage",
                       "metric": "line",
                       "pattern": "**/src/test/resources/**/jacoco.xml"
                     },
                     {
                       "id": "jacoco",
-                      "name": "Branch Coverage",
                       "metric": "branch",
                       "pattern": "**/src/test/resources/**/jacoco.xml"
                     }
@@ -106,7 +102,6 @@ jobs:
                   "tools": [
                     {
                       "id": "pit",
-                      "name": "Mutation Coverage",
                       "metric": "mutation",
                       "pattern": "**/src/test/resources/**/mutations.xml"
                     }
