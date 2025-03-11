@@ -48,12 +48,12 @@ jobs:
                   "tools": [
                     {
                       "id": "checkstyle",
-                      "pattern": "**/src/test/resources/**/checkstyle*.xml"
+                      "pattern": "**/src/test/resources/checkstyle-*/checkstyle*.xml"
                     },
                     {
                       "id": "pmd",
                       "name": "PMD",
-                      "pattern": "**/src/test/resources/**/pmd*.xml"
+                      "pattern": "**/src/test/resources/pmd-*/pmd*.xml"
                     }
                   ],
                   "errorImpact": 1,
