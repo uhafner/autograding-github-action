@@ -1,12 +1,5 @@
 package edu.hm.hafner.grading.github;
 
-import java.io.IOException;
-import java.io.PrintStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.time.Instant;
-import java.util.Date;
-
 import org.apache.commons.lang3.StringUtils;
 
 import edu.hm.hafner.grading.AggregatedScore;
@@ -14,6 +7,13 @@ import edu.hm.hafner.grading.AutoGradingRunner;
 import edu.hm.hafner.grading.GradingReport;
 import edu.hm.hafner.util.FilteredLog;
 import edu.hm.hafner.util.VisibleForTesting;
+
+import java.io.IOException;
+import java.io.PrintStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.time.Instant;
+import java.util.Date;
 
 import org.kohsuke.github.GHCheckRun;
 import org.kohsuke.github.GHCheckRun.Conclusion;
@@ -23,19 +23,7 @@ import org.kohsuke.github.GHCheckRunBuilder.Output;
 import org.kohsuke.github.GitHub;
 import org.kohsuke.github.GitHubBuilder;
 
-/**
- * GitHub action entrypoint for the autograding action.
- *
- * @author Tobias Effner
- * @author Ullrich Hafner
- */
 public class GitHubAutoGradingRunner extends AutoGradingRunner {
-    /**
-     * Public entry point for the GitHub action in the docker container, simply calls the action.
-     *
-     * @param unused
-     *         not used
-     */
     public static void main(final String... unused) {
         new GitHubAutoGradingRunner().run();
     }
