@@ -5,7 +5,7 @@
   <parent>
     <groupId>edu.hm.hafner</groupId>
     <artifactId>codingstyle-pom</artifactId>
-    <version>5.13.0</version>
+    <version>5.16.0</version>
     <relativePath />
   </parent>
 
@@ -33,7 +33,7 @@
     <module.name>${project.groupId}.autograding.github.action</module.name>
     <docker-image-tag>${project.version}</docker-image-tag>
 
-    <autograding-model.version>6.1.0</autograding-model.version>
+    <autograding-model.version>6.2.0</autograding-model.version>
     <github-api.version>1.327</github-api.version>
     <testcontainers.version>1.20.6</testcontainers.version>
 
