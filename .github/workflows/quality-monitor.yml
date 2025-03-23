@@ -69,7 +69,7 @@ jobs:
                   "tools": [
                     {
                       "id": "checkstyle",
-                      "pattern": "**/target/**checkstyle-result.xml"
+                      "pattern": "**/target/checkstyle-*/checkstyle-result.xml"
                     },
                     {
                       "id": "pmd",
@@ -90,6 +90,18 @@ jobs:
                     {
                       "id": "error-prone",
                       "pattern": "**/maven.log"
+                    }
+                  ]
+                },
+                {
+                  "name": "API Problems",
+                  "id": "api",
+                  "icon": "no_entry_sign",
+                  "tools": [
+                    {
+                      "id": "revapi",
+                      "sourcePath": "src/main/java",
+                      "pattern": "**/target/revapi-result.json"
                     }
                   ]
                 },
