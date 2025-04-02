@@ -47,7 +47,6 @@ jobs:
       - name: Run Quality Monitor
         uses: uhafner/quality-monitor@v2
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
           pr-number: ${{ steps.pr.outputs.number }}
           show-headers: true
           config: >
@@ -90,18 +89,6 @@ jobs:
                     {
                       "id": "error-prone",
                       "pattern": "**/maven.log"
-                    }
-                  ]
-                },
-                {
-                  "name": "API Problems",
-                  "id": "api",
-                  "icon": "no_entry_sign",
-                  "tools": [
-                    {
-                      "id": "revapi",
-                      "sourcePath": "src/main/java",
-                      "pattern": "**/target/revapi-result.json"
                     }
                   ]
                 },
