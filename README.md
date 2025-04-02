@@ -19,9 +19,9 @@ You can see the results of this action in two fake pull requests:
 Please have a look at my [companion coding style](https://github.com/uhafner/codingstyle) and [Maven parent POM](https://github.com/uhafner/codingstyle-pom) to see how to create Java projects that can be graded using this GitHub action. If you want to use this action to visualize the coding quality without creating a grading percentage, then use my additional [Quality Monitor GitHub Action](https://github.com/uhafner/quality-monitor). If you are hosting your project on GitLab, then you might be interested in my [identical GitLab action](https://github.com/uhafner/autograding-gitlab-action) as well. 
 
 Both actions are inspired by my Jenkins plugins: 
-- [Jenkins Warnings plugin](https://github.com/jenkinsci/warnings-ng-plugin)
-- [Jenkins Coverage plugin](https://github.com/jenkinsci/coverage-plugin)
-- [Jenkins Autograding plugin](https://github.com/jenkinsci/autograding-plugin)
+- [Jenkins Warnings plugin](https://plugins.jenkins.io/warnings-ng/)
+- [Jenkins Coverage plugin](https://plugins.jenkins.io/coverage)
+- [Jenkins Autograding plugin](https://plugins.jenkins.io/autograding)
 
 They work in the same way but are much more powerful and flexible and show the results additionally in Jenkins' UI.  
 
