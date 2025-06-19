@@ -6,15 +6,15 @@ skinparam rectangle {
   BackgroundColor<<runtime>> lightBlue
   BackgroundColor<<provided>> lightGray
 }
-rectangle "analysis-model\n\n13.3.0" as edu_hm_hafner_analysis_model_jar
-rectangle "jsoup\n\n1.19.1" as org_jsoup_jsoup_jar
+rectangle "analysis-model\n\n13.5.0" as edu_hm_hafner_analysis_model_jar
+rectangle "jsoup\n\n1.20.1" as org_jsoup_jsoup_jar
 rectangle "commons-digester3\n\n3.2" as org_apache_commons_commons_digester3_jar
 rectangle "cglib\n\n2.2.2" as cglib_cglib_jar
 rectangle "commons-logging\n\n1.3.5" as commons_logging_commons_logging_jar
-rectangle "commons-beanutils\n\n1.10.1" as commons_beanutils_commons_beanutils_jar
+rectangle "commons-beanutils\n\n1.11.0" as commons_beanutils_commons_beanutils_jar
 rectangle "commons-collections\n\n3.2.2" as commons_collections_commons_collections_jar
-rectangle "commons-text\n\n1.13.0" as org_apache_commons_commons_text_jar
-rectangle "violations-lib\n\n1.158.0" as se_bjurr_violations_violations_lib_jar
+rectangle "commons-text\n\n1.13.1" as org_apache_commons_commons_text_jar
+rectangle "violations-lib\n\n1.158.1" as se_bjurr_violations_violations_lib_jar
 rectangle "j2html\n\n1.4.0" as com_j2html_j2html_jar
 rectangle "xercesImpl\n\n2.12.2" as xerces_xercesImpl_jar
 rectangle "xml-apis\n\n1.4.01" as xml_apis_xml_apis_jar
@@ -28,25 +28,25 @@ rectangle "bcel\n\n6.10.0" as org_apache_bcel_bcel_jar
 rectangle "jcip-annotations\n\n1.0-1" as com_github_stephenc_jcip_jcip_annotations_jar
 rectangle "dom4j\n\n2.1.4" as org_dom4j_dom4j_jar
 rectangle "gson\n\n2.12.1" as com_google_code_gson_gson_jar
-rectangle "pmd-core\n\n7.11.0" as net_sourceforge_pmd_pmd_core_jar
+rectangle "pmd-core\n\n7.14.0" as net_sourceforge_pmd_pmd_core_jar
 rectangle "slf4j-api\n\n2.0.17" as org_slf4j_slf4j_api_jar
 rectangle "antlr4-runtime\n\n4.9.3" as org_antlr_antlr4_runtime_jar
-rectangle "checker-qual\n\n3.49.0" as org_checkerframework_checker_qual_jar
+rectangle "checker-qual\n\n3.49.3" as org_checkerframework_checker_qual_jar
 rectangle "pcollections\n\n4.0.2" as org_pcollections_pcollections_jar
 rectangle "nice-xml-messages\n\n3.1" as com_github_oowekyala_ooxml_nice_xml_messages_jar
-rectangle "pmd-java\n\n7.11.0" as net_sourceforge_pmd_pmd_java_jar
-rectangle "json\n\n20240303" as org_json_json_jar
+rectangle "pmd-java\n\n7.14.0" as net_sourceforge_pmd_pmd_java_jar
+rectangle "json\n\n20250517" as org_json_json_jar
 rectangle "json-smart\n\n2.5.2" as net_minidev_json_smart_jar
 rectangle "accessors-smart\n\n2.5.2" as net_minidev_accessors_smart_jar
 rectangle "asm\n\n3.3.1" as asm_asm_jar
-rectangle "xmlresolver\n\n5.2.2" as org_xmlresolver_xmlresolver_jar
-rectangle "xmlresolver\ndata\n5.2.2" as org_xmlresolver_xmlresolver_jar_data
-rectangle "autograding-model\n\n6.3.0" as edu_hm_hafner_autograding_model_jar
-rectangle "coverage-model\n\n0.53.1" as edu_hm_hafner_coverage_model_jar
+rectangle "xmlresolver\n\n5.3.3" as org_xmlresolver_xmlresolver_jar
+rectangle "xmlresolver\ndata\n5.3.3" as org_xmlresolver_xmlresolver_jar_data
+rectangle "autograding-model\n\n6.4.0" as edu_hm_hafner_autograding_model_jar
+rectangle "coverage-model\n\n0.55.0" as edu_hm_hafner_coverage_model_jar
 rectangle "commons-math3\n\n3.6.1" as org_apache_commons_commons_math3_jar
-rectangle "jackson-databind\n\n2.18.3" as com_fasterxml_jackson_core_jackson_databind_jar
-rectangle "jackson-annotations\n\n2.18.3" as com_fasterxml_jackson_core_jackson_annotations_jar
-rectangle "jackson-core\n\n2.18.3" as com_fasterxml_jackson_core_jackson_core_jar
+rectangle "jackson-databind\n\n2.19.1" as com_fasterxml_jackson_core_jackson_databind_jar
+rectangle "jackson-annotations\n\n2.19.1" as com_fasterxml_jackson_core_jackson_annotations_jar
+rectangle "jackson-core\n\n2.19.1" as com_fasterxml_jackson_core_jackson_core_jar
 rectangle "autograding-github-action\n\n5.3.0-SNAPSHOT" as edu_hm_hafner_autograding_github_action_jar
 rectangle "github-api\n\n1.327" as org_kohsuke_github_api_jar
 rectangle "codingstyle\n\n5.14.0" as edu_hm_hafner_codingstyle_jar
