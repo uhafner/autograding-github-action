@@ -41,7 +41,7 @@ rectangle "accessors-smart\n\n2.5.2" as net_minidev_accessors_smart_jar
 rectangle "asm\n\n3.3.1" as asm_asm_jar
 rectangle "xmlresolver\n\n5.3.3" as org_xmlresolver_xmlresolver_jar
 rectangle "xmlresolver\ndata\n5.3.3" as org_xmlresolver_xmlresolver_jar_data
-rectangle "autograding-model\n\n6.4.0" as edu_hm_hafner_autograding_model_jar
+rectangle "autograding-model\n\n6.5.0" as edu_hm_hafner_autograding_model_jar
 rectangle "coverage-model\n\n0.55.0" as edu_hm_hafner_coverage_model_jar
 rectangle "commons-math3\n\n3.6.1" as org_apache_commons_commons_math3_jar
 rectangle "jackson-databind\n\n2.19.1" as com_fasterxml_jackson_core_jackson_databind_jar
