@@ -78,8 +78,19 @@ class GitHubAnnotationsBuilder extends CommentBuilder {
             final String message, final String title,
             final int columnStart, final int columnEnd,
             final String details, final String markDownDetails) {
+        // GitHub annotations are 1-based, so we have to adjust the line numbers if some tools annotate the whole file
+        int actualLineStart;
+        int actualLineEnd;
+        if (lineStart == 0) {
+            actualLineStart = 1;
+            actualLineEnd = 1;
+        }
+        else {
+            actualLineStart = lineStart;
+            actualLineEnd = lineEnd;
+        }
         Annotation annotation = new Annotation(relativePath,
-                lineStart, lineEnd, AnnotationLevel.WARNING, message).withTitle(title);
+                actualLineStart, actualLineEnd, AnnotationLevel.WARNING, message).withTitle(title);
 
         if (lineStart == lineEnd) {
             annotation.withStartColumn(columnStart).withEndColumn(columnEnd);
