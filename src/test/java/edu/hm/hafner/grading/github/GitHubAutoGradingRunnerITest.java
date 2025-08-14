@@ -111,30 +111,6 @@ public class GitHubAutoGradingRunnerITest extends ResourceTest {
             }
             """;
 
-    @Test
-    @SetEnvironmentVariable(key = "CONFIG", value = CONFIGURATION)
-    void shouldGradeWithConfigurationFromEnvironment() {
-        assertThat(runAutoGrading())
-                .contains("Obtaining configuration from environment variable CONFIG")
-                .contains(new String[] {
-                        "Processing 1 test configuration(s)",
-                        "-> Unittests Total: TESTS: 37",
-                        "JUnit Score: 100 of 100",
-                        "Processing 2 coverage configuration(s)",
-                        "-> Line Coverage Total: LINE: 10.93% (33/302)",
-                        "-> Branch Coverage Total: BRANCH: 9.52% (4/42)",
-                        "=> JaCoCo Score: 20 of 100",
-                        "-> Mutation Coverage Total: MUTATION: 7.86% (11/140)",
-                        "=> PIT Score: 16 of 100",
-                        "Processing 2 static analysis configuration(s)",
-                        "-> CheckStyle (checkstyle): 19 warnings (normal: 19)",
-                        "-> PMD (pmd): 41 warnings (normal: 41)",
-                        "=> Style Score: 100 of 100",
-                        "-> SpotBugs (spotbugs): 1 bug (low: 1)",
-                        "=> Bugs Score: 86 of 100",
-                        "Autograding score - 322 of 500"});
-    }
-
     private static final String CONFIGURATION_WRONG_PATHS = """
             {
               "tests": {
@@ -230,11 +206,33 @@ public class GitHubAutoGradingRunnerITest extends ResourceTest {
             """;
 
     @Test
+    @SetEnvironmentVariable(key = "CONFIG", value = CONFIGURATION)
+    void shouldGradeWithConfigurationFromEnvironment() {
+        assertThat(runAutoGrading())
+                .contains("Obtaining configuration from environment variable CONFIG")
+                .contains("Processing 1 test configuration(s)",
+                        "-> Unittests Total: TESTS: 37",
+                        "JUnit Score: 100 of 100",
+                        "Processing 2 coverage configuration(s)",
+                        "-> Line Coverage Total: LINE: 10.93% (33/302)",
+                        "-> Branch Coverage Total: BRANCH: 9.52% (4/42)",
+                        "=> JaCoCo Score: 20 of 100",
+                        "-> Mutation Coverage Total: MUTATION: 7.86% (11/140)",
+                        "=> PIT Score: 16 of 100",
+                        "Processing 2 static analysis configuration(s)",
+                        "-> CheckStyle (checkstyle): 19 warnings (normal: 19)",
+                        "-> PMD (pmd): 41 warnings (normal: 41)",
+                        "=> Style Score: 100 of 100",
+                        "-> SpotBugs (spotbugs): 1 bug (low: 1)",
+                        "=> Bugs Score: 86 of 100",
+                        "Autograding score - 322 of 500");
+    }
+
+    @Test
     @SetEnvironmentVariable(key = "CONFIG", value = CONFIGURATION_WRONG_PATHS)
     void shouldShowErrors() {
         assertThat(runAutoGrading())
-                .contains(new String[] {
-                        "Processing 1 test configuration(s)",
+                .contains("Processing 1 test configuration(s)",
                         "Configuration error for 'Unittests'?",
                         "JUnit Score: 100 of 100",
                         "Processing 2 coverage configuration(s)",
@@ -252,7 +250,7 @@ public class GitHubAutoGradingRunnerITest extends ResourceTest {
                         "=> Style Score: 0 of 100",
                         "-> SpotBugs (spotbugs): No warnings",
                         "=> Bugs Score: 100 of 100",
-                        "Autograding score - 400 of 500"});
+                        "Autograding score - 400 of 500");
     }
 
     private String runAutoGrading() {

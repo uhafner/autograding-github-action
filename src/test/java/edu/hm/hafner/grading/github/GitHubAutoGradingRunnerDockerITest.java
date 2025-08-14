@@ -8,8 +8,6 @@ import org.testcontainers.utility.DockerImageName;
 import org.testcontainers.utility.MountableFile;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
@@ -115,7 +113,28 @@ public class GitHubAutoGradingRunnerDockerITest {
             }
             """;
     private static final String WS = "/github/workspace/target/";
-    private static final String LOCAL_METRICS_FILE = "target/metrics.env";
+    private static final String QUALITY_GATES_OK = """
+            {
+              "qualityGates": [
+                {
+                  "metric": "line",
+                  "threshold": 10.0,
+                  "criticality": "FAILURE"
+                }
+              ]
+            }
+            """;
+    private static final String QUALITY_GATES_NOK = """
+            {
+              "qualityGates": [
+                {
+                  "metric": "line",
+                  "threshold": 100.0,
+                  "criticality": "FAILURE"
+                }
+              ]
+            }
+            """;
 
     @Test
     void shouldGradeInDockerContainer() throws TimeoutException, IOException {
@@ -123,22 +142,9 @@ public class GitHubAutoGradingRunnerDockerITest {
             container.withEnv("CONFIG", CONFIGURATION);
             startContainerWithAllFiles(container);
 
-            var metrics = new String[] {
-                    "tests=1",
-                    "line=11",
-                    "branch=10",
-                    "mutation=8",
-                    "bugs=1",
-                    "spotbugs=1",
-                    "style=2",
-                    "pmd=1",
-                    "checkstyle=1"};
-
             assertThat(readStandardOut(container))
                     .contains("Obtaining configuration from environment variable CONFIG")
-                    .contains(metrics)
-                    .contains(new String[] {
-                            "Processing 1 test configuration(s)",
+                    .contains("Processing 1 test configuration(s)",
                             "-> Unittests Total: TESTS: 1",
                             "JUnit Score: 10 of 100",
                             "Processing 2 coverage configuration(s)",
@@ -153,11 +159,53 @@ public class GitHubAutoGradingRunnerDockerITest {
                             "=> Style Score: 6 of 100",
                             "-> SpotBugs (spotbugs): 1 bug (low: 1)",
                             "=> Bugs Score: 86 of 100",
-                            "Autograding score - 138 of 500"});
+                            "Autograding score - 138 of 500")
+                    .contains("Environment variable 'QUALITY_GATES' not found or empty",
+                            "No quality gates to evaluate",
+                            "Setting conclusion to SUCCESS - all quality gates passed");
+        }
+    }
 
-            container.copyFileFromContainer("/github/workspace/metrics.env", LOCAL_METRICS_FILE);
-            assertThat(Files.readString(Path.of(LOCAL_METRICS_FILE)))
-                    .contains(metrics);
+    @Test
+    void shouldGradeWithSuccessfulQualityGate() throws TimeoutException {
+        try (var container = createContainer()) {
+            container.withEnv("CONFIG", CONFIGURATION).withEnv("QUALITY_GATES", QUALITY_GATES_OK);
+            startContainerWithAllFiles(container);
+
+            assertThat(readStandardOut(container))
+                    .contains("Processing 1 test configuration(s)",
+                            "Processing 2 coverage configuration(s)",
+                            "Processing 2 static analysis configuration(s)",
+                            "Autograding score - 138 of 500")
+                    .contains("Found quality gates configuration in environment variable 'QUALITY_GATES'",
+                            "Parsing quality gates from JSON configuration using QualityGatesConfiguration",
+                            "Parsed 1 quality gate(s) from JSON configuration",
+                            "Evaluating 1 quality gate(s)",
+                            "Quality gates evaluation completed: ✅ SUCCESS",
+                            "  Passed: 1, Failed: 0",
+                            "  ✅ Line Coverage: 11.00 >= 10.00");
+        }
+    }
+
+    @Test
+    void shouldGradeWithFailedQualityGate() throws TimeoutException {
+        try (var container = createContainer()) {
+            container.withEnv("CONFIG", CONFIGURATION).withEnv("QUALITY_GATES", QUALITY_GATES_NOK);
+            startContainerWithAllFiles(container);
+
+            assertThat(readStandardOut(container))
+                    .contains("Processing 1 test configuration(s)",
+                            "Processing 2 coverage configuration(s)",
+                            "Processing 2 static analysis configuration(s)",
+                            "Autograding score - 138 of 500")
+                    .contains(
+                            "Autograding score - 138 of 500",
+                            "Quality Gates GitHub Autograding",
+                            "Found quality gates configuration in environment variable 'QUALITY_GATES'",
+                            "Parsed 1 quality gate(s) from JSON configuration",
+                            "Quality gates evaluation completed: ❌ FAILURE",
+                            "Passed: 0, Failed: 1",
+                            "❌ Line Coverage: 11.00 >= 100.00");
         }
     }
 
@@ -167,9 +215,9 @@ public class GitHubAutoGradingRunnerDockerITest {
             startContainerWithAllFiles(container);
 
             assertThat(readStandardOut(container))
-                    .contains("No configuration provided (environment variable CONFIG not set), using default configuration")
-                    .contains(new String[] {
-                            "Processing 1 test configuration(s)",
+                    .contains(
+                            "No configuration provided (environment variable CONFIG not set), using default configuration")
+                    .contains("Processing 1 test configuration(s)",
                             "-> JUnit Tests Total: TESTS: 1",
                             "Tests Score: 100 of 100",
                             "Processing 2 coverage configuration(s)",
@@ -185,7 +233,7 @@ public class GitHubAutoGradingRunnerDockerITest {
                             "=> Style Score: 98 of 100",
                             "-> SpotBugs (spotbugs): 1 bug (low: 1)",
                             "=> Bugs Score: 97 of 100",
-                            "Autograding score - 351 of 500 (70%)"});
+                            "Autograding score - 351 of 500 (70%)");
         }
     }
 
@@ -194,8 +242,7 @@ public class GitHubAutoGradingRunnerDockerITest {
         try (var container = createContainer()) {
             container.withWorkingDirectory("/github/workspace").start();
             assertThat(readStandardOut(container))
-                    .contains(new String[] {
-                            "Processing 1 test configuration(s)",
+                    .contains("Processing 1 test configuration(s)",
                             "Configuration error for 'JUnit Tests'?",
                             "Tests Score: 100 of 100",
                             "Processing 2 coverage configuration(s)",
@@ -213,21 +260,23 @@ public class GitHubAutoGradingRunnerDockerITest {
                             "=> Style Score: 100 of 100",
                             "-> SpotBugs (spotbugs): No warnings",
                             "=> Bugs Score: 100 of 100",
-                            "Autograding score - 500 of 500"});
+                            "Autograding score - 500 of 500");
         }
     }
 
     private GenericContainer<?> createContainer() {
-        return new GenericContainer<>(DockerImageName.parse("uhafner/autograding-github-action:5.4.0-SNAPSHOT"));
+        return new GenericContainer<>(DockerImageName.parse("uhafner/autograding-github-action:6.0.0-SNAPSHOT"));
     }
 
-    private String readStandardOut(final GenericContainer<? extends GenericContainer<?>> container) throws TimeoutException {
+    private String readStandardOut(final GenericContainer<? extends GenericContainer<?>> container)
+            throws TimeoutException {
         var waitingConsumer = new WaitingConsumer();
         var toStringConsumer = new ToStringConsumer();
 
         var composedConsumer = toStringConsumer.andThen(waitingConsumer);
         container.followOutput(composedConsumer);
-        waitingConsumer.waitUntil(frame -> frame.getUtf8String().contains("End GitHub Autograding"), 60, TimeUnit.SECONDS);
+        waitingConsumer.waitUntil(frame -> frame.getUtf8String().contains("End GitHub Autograding"), 60,
+                TimeUnit.SECONDS);
 
         return toStringConsumer.toUtf8String();
     }
@@ -236,7 +285,8 @@ public class GitHubAutoGradingRunnerDockerITest {
         container.withWorkingDirectory("/github/workspace")
                 .withCopyFileToContainer(read("checkstyle/checkstyle-result.xml"), WS + "checkstyle-result.xml")
                 .withCopyFileToContainer(read("jacoco/jacoco.xml"), WS + "site/jacoco/jacoco.xml")
-                .withCopyFileToContainer(read("junit/TEST-edu.hm.hafner.grading.AutoGradingActionTest.xml"), WS + "surefire-reports/TEST-Aufgabe3Test.xml")
+                .withCopyFileToContainer(read("junit/TEST-edu.hm.hafner.grading.AutoGradingActionTest.xml"),
+                        WS + "surefire-reports/TEST-Aufgabe3Test.xml")
                 .withCopyFileToContainer(read("pit/mutations.xml"), WS + "pit-reports/mutations.xml")
                 .withCopyFileToContainer(read("pmd/pmd.xml"), WS + "pmd.xml")
                 .withCopyFileToContainer(read("spotbugs/spotbugsXml.xml"), WS + "spotbugsXml.xml")

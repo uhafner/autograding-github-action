@@ -5,16 +5,14 @@ import org.apache.commons.lang3.StringUtils;
 import edu.hm.hafner.grading.AggregatedScore;
 import edu.hm.hafner.grading.AutoGradingRunner;
 import edu.hm.hafner.grading.GradingReport;
+import edu.hm.hafner.grading.QualityGateResult;
 import edu.hm.hafner.util.FilteredLog;
 import edu.hm.hafner.util.VisibleForTesting;
 
 import java.io.IOException;
 import java.io.PrintStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.time.Instant;
 import java.util.Date;
-import java.util.Locale;
 
 import org.kohsuke.github.GHCheckRun;
 import org.kohsuke.github.GHCheckRun.Conclusion;
@@ -59,24 +57,19 @@ public class GitHubAutoGradingRunner extends AutoGradingRunner {
     }
 
     @Override
-    protected void publishGradingResult(final AggregatedScore score, final FilteredLog log) {
+    protected void publishGradingResult(final AggregatedScore score, final QualityGateResult qualityGateResult,
+            final FilteredLog log) {
         var errors = createErrorMessageMarkdown(log);
-
+        var conclusion = determineConclusion(errors, qualityGateResult, log);
+        var qualityGateDetails = qualityGateResult.createMarkdownSummary();
+        var showHeaders = StringUtils.isNotBlank(getEnv("SHOW_HEADERS", log));
         var results = new GradingReport();
         addComment(score,
                 results.getTextSummary(score, getChecksName()),
-                results.getMarkdownDetails(score, getChecksName()) + errors,
-                results.getSubScoreDetails(score) + errors,
-                results.getMarkdownSummary(score, getChecksName()) + errors,
-                errors.isBlank() ? Conclusion.SUCCESS : Conclusion.FAILURE, log);
-
-        try {
-            var environmentVariables = createEnvironmentVariables(score, log);
-            Files.writeString(Paths.get("metrics.env"), environmentVariables);
-        }
-        catch (IOException exception) {
-            log.logException(exception, "Can't write environment variables to 'metrics.env'");
-        }
+                results.getMarkdownDetails(score, getChecksName()) + errors + qualityGateDetails,
+                results.getSubScoreDetails(score).toString() + errors + qualityGateDetails,
+                results.getMarkdownSummary(score, getChecksName(), showHeaders) + errors + qualityGateDetails,
+                conclusion, log);
 
         log.logInfo("GitHub Action has finished");
     }
@@ -152,17 +145,6 @@ public class GitHubAutoGradingRunner extends AutoGradingRunner {
                 .formatted(getDisplayName(), version, version, sha);
     }
 
-    String createEnvironmentVariables(final AggregatedScore score, final FilteredLog log) {
-        var metrics = new StringBuilder();
-        score.getMetrics().forEach((metric, value) -> metrics.append(
-                String.format(Locale.ENGLISH, "%s=%d%n", metric, value)));
-        log.logInfo("---------------");
-        log.logInfo("Metrics Summary");
-        log.logInfo("---------------");
-        log.logInfo(metrics.toString());
-        return metrics.toString();
-    }
-
     private String getChecksName() {
         return StringUtils.defaultIfBlank(System.getenv("CHECKS_NAME"), getDisplayName());
     }
@@ -176,5 +158,40 @@ public class GitHubAutoGradingRunner extends AutoGradingRunner {
         String value = StringUtils.defaultString(System.getenv(key));
         log.logInfo(">>>> " + key + ": " + value);
         return value;
+    }
+
+    /**
+     * Determines the GitHub check conclusion based on errors and quality gate results.
+     *
+     * @param errors
+     *         the error messages
+     * @param qualityGateResult
+     *         the quality gate evaluation result
+     * @param log
+     *         the logger
+     *
+     * @return the conclusion
+     */
+    private Conclusion determineConclusion(final String errors, final QualityGateResult qualityGateResult,
+            final FilteredLog log) {
+        if (!errors.isBlank()) {
+            log.logInfo("Setting conclusion to FAILURE due to errors");
+            return Conclusion.FAILURE;
+        }
+
+        return switch (qualityGateResult.getOverallStatus()) {
+            case FAILURE -> {
+                log.logInfo("Setting conclusion to FAILURE due to quality gate failures");
+                yield Conclusion.FAILURE;
+            }
+            case UNSTABLE -> {
+                log.logInfo("Setting conclusion to NEUTRAL due to quality gate warnings");
+                yield Conclusion.NEUTRAL;
+            }
+            default -> {
+                log.logInfo("Setting conclusion to SUCCESS - all quality gates passed");
+                yield Conclusion.SUCCESS;
+            }
+        };
     }
 }
