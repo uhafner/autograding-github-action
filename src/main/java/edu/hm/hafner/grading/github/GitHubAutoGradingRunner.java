@@ -109,7 +109,7 @@ public class GitHubAutoGradingRunner extends AutoGradingRunner {
                     .withStartedAt(Date.from(Instant.now()))
                     .withConclusion(conclusion);
 
-            var summaryWithFooter = markdownSummary + "\n\nCreated by " + getVersionLink(log);
+            var summaryWithFooter = markdownSummary + "\n\n<hr />\n\nCreated by " + getVersionLink(log);
             Output output = new Output(textSummary, summaryWithFooter).withText(markdownDetails);
 
             if (getEnv("SKIP_ANNOTATIONS", log).isEmpty()) {
