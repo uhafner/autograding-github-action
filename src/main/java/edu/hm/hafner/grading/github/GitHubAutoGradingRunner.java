@@ -29,6 +29,8 @@ import org.kohsuke.github.GitHubBuilder;
  * @author Ullrich Hafner
  */
 public class GitHubAutoGradingRunner extends AutoGradingRunner {
+    private static final String AUTOGRADING_ACTION = "GitHub Autograding Action";
+
     /**
      * Public entry point for the GitHub action in the docker container, simply calls the action.
      *
@@ -47,13 +49,13 @@ public class GitHubAutoGradingRunner extends AutoGradingRunner {
     }
 
     @VisibleForTesting
-    protected GitHubAutoGradingRunner(final PrintStream printStream) {
+    GitHubAutoGradingRunner(final PrintStream printStream) {
         super(printStream);
     }
 
     @Override
     protected String getDisplayName() {
-        return "GitHub Autograding Action";
+        return AUTOGRADING_ACTION;
     }
 
     @Override
