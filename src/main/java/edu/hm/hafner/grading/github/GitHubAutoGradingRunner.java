@@ -2,6 +2,7 @@ package edu.hm.hafner.grading.github;
 
 import org.apache.commons.lang3.StringUtils;
 
+import edu.hm.hafner.coverage.Metric;
 import edu.hm.hafner.grading.AggregatedScore;
 import edu.hm.hafner.grading.AutoGradingRunner;
 import edu.hm.hafner.grading.GradingReport;
@@ -13,6 +14,7 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.time.Instant;
 import java.util.Date;
+import java.util.Locale;
 
 import org.kohsuke.github.GHCheckRun;
 import org.kohsuke.github.GHCheckRun.Conclusion;
@@ -21,6 +23,7 @@ import org.kohsuke.github.GHCheckRunBuilder;
 import org.kohsuke.github.GHCheckRunBuilder.Output;
 import org.kohsuke.github.GitHub;
 import org.kohsuke.github.GitHubBuilder;
+import org.kohsuke.github.HttpException;
 
 /**
  * GitHub action entrypoint for the autograding action.
@@ -30,6 +33,8 @@ import org.kohsuke.github.GitHubBuilder;
  */
 public class GitHubAutoGradingRunner extends AutoGradingRunner {
     private static final String AUTOGRADING_ACTION = "GitHub Autograding Action";
+    private static final String NO_TITLE = "none";
+    private static final String DEFAULT_TITLE_METRIC = "line";
 
     /**
      * Public entry point for the GitHub action in the docker container, simply calls the action.
@@ -95,18 +100,26 @@ public class GitHubAutoGradingRunner extends AutoGradingRunner {
 
                 return;
             }
+
             String oAuthToken = getEnv("GITHUB_TOKEN", log);
             if (oAuthToken.isBlank()) {
                 log.logError("No valid GITHUB_TOKEN found - skipping");
-
                 return;
             }
 
-            String sha = getEnv("GITHUB_SHA", log);
+            String apiUrl = getEnv("GITHUB_API_URL", log);
 
-            GitHub github = new GitHubBuilder().withAppInstallationToken(oAuthToken).build();
+            String sha = getCustomSha(log);
+
+            GitHubBuilder githubBuilder = new GitHubBuilder()
+                    .withAppInstallationToken(oAuthToken);
+            if (!apiUrl.isBlank()) {
+                githubBuilder.withEndpoint(apiUrl);
+            }
+            GitHub github = githubBuilder.build();
+
             GHCheckRunBuilder check = github.getRepository(repository)
-                    .createCheckRun(getChecksName(), sha)
+                    .createCheckRun(createMetricsBasedTitle(score, log), sha)
                     .withStatus(Status.COMPLETED)
                     .withStartedAt(Date.from(Instant.now()))
                     .withConclusion(conclusion);
@@ -122,22 +135,46 @@ public class GitHubAutoGradingRunner extends AutoGradingRunner {
 
             check.add(output);
 
-            GHCheckRun run = check.create();
-            log.logInfo("Successfully created check " + run);
+            var checksResult = createChecksRun(log, check);
 
             var prNumber = getEnv("PR_NUMBER", log);
             if (!prNumber.isBlank()) { // optional PR comment
-                var footer = "Created by %s. More details are shown in the [GitHub Checks Result](%s)."
-                        .formatted(getVersionLink(log), run.getDetailsUrl().toString());
+                var footer = "Created by %s. %s".formatted(getVersionLink(log), checksResult);
                 github.getRepository(repository)
                         .getPullRequest(Integer.parseInt(prNumber))
-                        .comment(prSummary + "\n\n" + footer + "\n");
+                        .comment(prSummary + "\n\n<hr />\n\n" + footer + "\n");
                 log.logInfo("Successfully commented PR#" + prNumber);
             }
         }
         catch (IOException exception) {
-            log.logException(exception, "Could not create check");
+            logException(log, exception, "Could create GitHub comments");
         }
+    }
+
+    private String createChecksRun(final FilteredLog log, final GHCheckRunBuilder check) {
+        try {
+            GHCheckRun run = check.create();
+            log.logInfo("Successfully created check " + run);
+
+            return "More details are shown in the [GitHub Checks Result](%s).".formatted(
+                    run.getDetailsUrl().toString());
+        }
+        catch (IOException exception) {
+            logException(log, exception, "Could not create check");
+
+            return "A detailed GitHub Checks Result could not be created, see error log.";
+        }
+    }
+
+    private void logException(final FilteredLog log, final IOException exception, final String message) {
+        String errorMessage;
+        if (exception instanceof HttpException responseException) {
+            errorMessage = StringUtils.defaultIfBlank(responseException.getResponseMessage(), exception.getMessage());
+        }
+        else {
+            errorMessage = exception.getMessage();
+        }
+        log.logError("%s: %s", message, StringUtils.defaultIfBlank(errorMessage, "no error message available"));
     }
 
     private String getVersionLink(final FilteredLog log) {
@@ -163,6 +200,27 @@ public class GitHubAutoGradingRunner extends AutoGradingRunner {
     }
 
     /**
+     * Gets the SHA to use for the quality monitor check. First checks for a custom SHA (SHA) which takes precedence
+     * over the default GITHUB_SHA. This allows workflows to override the SHA used for quality monitoring when needed.
+     *
+     * @param log
+     *         the logger
+     *
+     * @return the SHA to use for the check
+     */
+    private String getCustomSha(final FilteredLog log) {
+        String customSha = getEnv("SHA", log);
+        if (!customSha.isBlank()) {
+            log.logInfo("Using custom SHA from SHA: " + customSha);
+            return customSha;
+        }
+
+        String defaultSha = getEnv("GITHUB_SHA", log);
+        log.logInfo("Using default SHA from GITHUB_SHA: " + defaultSha);
+        return defaultSha;
+    }
+
+    /**
      * Determines the GitHub check conclusion based on errors and quality gate results.
      *
      * @param errors
@@ -177,7 +235,7 @@ public class GitHubAutoGradingRunner extends AutoGradingRunner {
     private Conclusion determineConclusion(final String errors, final QualityGateResult qualityGateResult,
             final FilteredLog log) {
         if (!errors.isBlank()) {
-            log.logInfo("Setting conclusion to FAILURE due to errors");
+            log.logInfo("Setting conclusion to FAILURE due to errors in log");
             return Conclusion.FAILURE;
         }
 
@@ -195,5 +253,51 @@ public class GitHubAutoGradingRunner extends AutoGradingRunner {
                 yield Conclusion.SUCCESS;
             }
         };
+    }
+
+    /**
+     * Creates a title based on the metrics.
+     *
+     * @param score
+     *         the aggregated score
+     * @param log
+     *         the logger
+     *
+     * @return the title
+     */
+    private String createMetricsBasedTitle(final AggregatedScore score, final FilteredLog log) {
+        // Get the requested metric to show in title (default: "line")
+        var titleMetric = StringUtils.defaultIfBlank(
+                StringUtils.lowerCase(getEnv("TITLE_METRIC", log)),
+                DEFAULT_TITLE_METRIC);
+
+        // If the user wants no metric in title
+        if (NO_TITLE.equals(titleMetric)) {
+            return getChecksName();
+        }
+
+        var metrics = score.getMetrics();
+
+        if (!metrics.containsKey(titleMetric)) {
+            log.logInfo("Requested title metric '%s' not found in metrics: %s", titleMetric, metrics.keySet());
+            log.logInfo("Falling back to default metric %s", DEFAULT_TITLE_METRIC);
+
+            titleMetric = DEFAULT_TITLE_METRIC; // Fallback to default metric
+        }
+
+        if (metrics.containsKey(titleMetric)) {
+            try {
+                var metric = Metric.fromName(titleMetric);
+                return String.format(Locale.ENGLISH, "%s - %s: %s", getChecksName(),
+                        metric.getDisplayName(), metric.format(Locale.ENGLISH, metrics.get(titleMetric)));
+            }
+            catch (IllegalArgumentException exception) {
+                return String.format(Locale.ENGLISH, "%s - %s: %d", getChecksName(),
+                        titleMetric, metrics.getOrDefault(titleMetric, 0));
+            }
+        }
+        log.logInfo("Requested title metric '%s' not found in metrics: %s", titleMetric, metrics.keySet());
+
+        return getChecksName();
     }
 }
