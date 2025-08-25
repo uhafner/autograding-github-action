@@ -22,7 +22,7 @@ jobs:
       - name: Set up Maven
         uses: stCarolas/setup-maven@v5
         with:
-          maven-version: 3.9.9
+          maven-version: 3.9.11
       - name: Run Autograding with test data
         uses: uhafner/autograding-github-action@main
         with:
@@ -128,7 +128,7 @@ jobs:
       - name: Set up Maven
         uses: stCarolas/setup-maven@v5
         with:
-          maven-version: 3.9.9
+          maven-version: 3.9.11
       - name: Build
         run: mvn -ntp clean verify -Pci -Ppit -Pdepgraph
       - name: Run Autograding

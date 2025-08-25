@@ -1,7 +1,9 @@
 package edu.hm.hafner.grading.github;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Strings;
 
+import edu.hm.hafner.analysis.registry.ParserRegistry;
 import edu.hm.hafner.coverage.Metric;
 import edu.hm.hafner.grading.AggregatedScore;
 import edu.hm.hafner.grading.AutoGradingRunner;
@@ -15,12 +17,14 @@ import java.io.PrintStream;
 import java.time.Instant;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Optional;
 
 import org.kohsuke.github.GHCheckRun;
 import org.kohsuke.github.GHCheckRun.Conclusion;
 import org.kohsuke.github.GHCheckRun.Status;
 import org.kohsuke.github.GHCheckRunBuilder;
 import org.kohsuke.github.GHCheckRunBuilder.Output;
+import org.kohsuke.github.GHIssueComment;
 import org.kohsuke.github.GitHub;
 import org.kohsuke.github.GitHubBuilder;
 import org.kohsuke.github.HttpException;
@@ -32,6 +36,8 @@ import org.kohsuke.github.HttpException;
  * @author Ullrich Hafner
  */
 public class GitHubAutoGradingRunner extends AutoGradingRunner {
+    private static final String COMMENT_MARKER = "<!-- -[quality-monitor-comment]- -->";
+    private static final ParserRegistry PARSER_REGISTRY = new ParserRegistry();
     private static final String AUTOGRADING_ACTION = "GitHub Autograding Action";
     private static final String NO_TITLE = "none";
     private static final String DEFAULT_TITLE_METRIC = "line";
@@ -107,48 +113,86 @@ public class GitHubAutoGradingRunner extends AutoGradingRunner {
                 return;
             }
 
+            var githubBuilder = new GitHubBuilder().withAppInstallationToken(oAuthToken);
             String apiUrl = getEnv("GITHUB_API_URL", log);
-
-            String sha = getCustomSha(log);
-
-            GitHubBuilder githubBuilder = new GitHubBuilder()
-                    .withAppInstallationToken(oAuthToken);
             if (!apiUrl.isBlank()) {
                 githubBuilder.withEndpoint(apiUrl);
             }
-            GitHub github = githubBuilder.build();
 
-            GHCheckRunBuilder check = github.getRepository(repository)
-                    .createCheckRun(createMetricsBasedTitle(score, log), sha)
+            var github = githubBuilder.build();
+            var check = github.getRepository(repository)
+                    .createCheckRun(createMetricsBasedTitle(score, conclusion, log), getCustomSha(log))
                     .withStatus(Status.COMPLETED)
                     .withStartedAt(Date.from(Instant.now()))
                     .withConclusion(conclusion);
 
             var summaryWithFooter = markdownSummary + "\n\n<hr />\n\nCreated by " + getVersionLink(log);
-            Output output = new Output(textSummary, summaryWithFooter).withText(markdownDetails);
+            var output = new Output(textSummary, summaryWithFooter).withText(markdownDetails);
 
-            if (getEnv("SKIP_ANNOTATIONS", log).isEmpty()) {
-                var annotationBuilder = new GitHubAnnotationsBuilder(
-                        output, computeAbsolutePathPrefixToRemove(log), log);
-                annotationBuilder.createAnnotations(score);
-            }
-
+            attachAnnotations(score, output, log);
             check.add(output);
 
             var checksResult = createChecksRun(log, check);
 
-            var prNumber = getEnv("PR_NUMBER", log);
-            if (!prNumber.isBlank()) { // optional PR comment
-                var footer = "Created by %s. %s".formatted(getVersionLink(log), checksResult);
-                github.getRepository(repository)
-                        .getPullRequest(Integer.parseInt(prNumber))
-                        .comment(prSummary + "\n\n<hr />\n\n" + footer + "\n");
-                log.logInfo("Successfully commented PR#" + prNumber);
-            }
+            commentPullRequest(prSummary, checksResult, repository, github, log);
         }
         catch (IOException exception) {
             logException(log, exception, "Could create GitHub comments");
         }
+    }
+
+    private void attachAnnotations(final AggregatedScore score, final Output output, final FilteredLog log) {
+        if (getEnv("SKIP_ANNOTATIONS", log).isEmpty()) {
+            var annotationBuilder = new GitHubAnnotationsBuilder(output, computeAbsolutePathPrefixToRemove(log), log);
+            annotationBuilder.createAnnotations(score);
+        }
+    }
+
+    private void commentPullRequest(final String prSummary, final String checksResult, final String repository,
+            final GitHub github, final FilteredLog log) throws IOException {
+        var prNumber = getEnv("PR_NUMBER", log);
+        if (prNumber.isBlank()) {
+            return;
+        }
+
+        var strategy = getEnv("COMMENTS_STRATEGY", log);
+        var previousComment = findPreviousComment(github, repository, prNumber);
+
+        if ((Strings.CI.equals(strategy, "REMOVE") || StringUtils.isEmpty(strategy))
+                && previousComment.isPresent()) {
+            previousComment.get().delete();
+            log.logInfo("Successfully deleted previous comment for PR#" + prNumber);
+        }
+
+        var comment = createComment(prSummary, checksResult, log);
+        if (Strings.CI.equals(strategy, "UPDATE") && previousComment.isPresent()) {
+            previousComment.get().update(comment);
+            log.logInfo("Successfully replaced comment for PR#" + prNumber);
+            return;
+        }
+
+        github.getRepository(repository)
+                .getPullRequest(Integer.parseInt(prNumber))
+                .comment(comment);
+        log.logInfo("Successfully created new comment for PR#" + prNumber);
+    }
+
+    private String createComment(final String prSummary, final String checksResult, final FilteredLog log) {
+        var footer = "Created by %s. %s".formatted(getVersionLink(log), checksResult);
+        return COMMENT_MARKER + "\n\n" + prSummary + "\n\n<hr />\n\n" + footer + "\n";
+    }
+
+    private Optional<GHIssueComment> findPreviousComment(final GitHub github,
+            final String repository, final String prNumber) throws IOException {
+        var comments = github.getRepository(repository)
+                .getPullRequest(Integer.parseInt(prNumber))
+                .listComments();
+        for (var comment : comments) {
+            if (comment.getBody().contains(COMMENT_MARKER)) {
+                return Optional.of(comment);
+            }
+        }
+        return Optional.empty();
     }
 
     private String createChecksRun(final FilteredLog log, final GHCheckRunBuilder check) {
@@ -260,40 +304,49 @@ public class GitHubAutoGradingRunner extends AutoGradingRunner {
      *
      * @param score
      *         the aggregated score
+     * @param conclusion
+     *         the conclusion
      * @param log
      *         the logger
      *
      * @return the title
      */
-    private String createMetricsBasedTitle(final AggregatedScore score, final FilteredLog log) {
-        // Get the requested metric to show in title (default: "line")
+    private String createMetricsBasedTitle(final AggregatedScore score, final Conclusion conclusion,
+            final FilteredLog log) {
         var titleMetric = StringUtils.defaultIfBlank(
                 StringUtils.lowerCase(getEnv("TITLE_METRIC", log)),
                 DEFAULT_TITLE_METRIC);
 
-        // If the user wants no metric in title
         if (NO_TITLE.equals(titleMetric)) {
+            if (conclusion != Conclusion.SUCCESS) {
+                return getChecksName() + " - Quality gates failed";
+            }
             return getChecksName();
         }
 
         var metrics = score.getMetrics();
 
         if (!metrics.containsKey(titleMetric)) {
-            log.logInfo("Requested title metric '%s' not found in metrics: %s", titleMetric, metrics.keySet());
-            log.logInfo("Falling back to default metric %s", DEFAULT_TITLE_METRIC);
+            log.logError("Requested title metric '%s' not found in metrics: %s", titleMetric, metrics.keySet());
+            log.logError("Falling back to default metric %s", DEFAULT_TITLE_METRIC);
 
             titleMetric = DEFAULT_TITLE_METRIC; // Fallback to default metric
         }
 
         if (metrics.containsKey(titleMetric)) {
+            var value = metrics.get(titleMetric);
+            if (PARSER_REGISTRY.contains(titleMetric)) {
+                return String.format(Locale.ENGLISH, "%s - %s: %d", getChecksName(),
+                        PARSER_REGISTRY.get(titleMetric).getName(), value);
+            }
             try {
                 var metric = Metric.fromName(titleMetric);
                 return String.format(Locale.ENGLISH, "%s - %s: %s", getChecksName(),
-                        metric.getDisplayName(), metric.format(Locale.ENGLISH, metrics.get(titleMetric)));
+                        metric.getDisplayName(), metric.format(Locale.ENGLISH, value));
             }
             catch (IllegalArgumentException exception) {
                 return String.format(Locale.ENGLISH, "%s - %s: %d", getChecksName(),
-                        titleMetric, metrics.getOrDefault(titleMetric, 0));
+                        titleMetric, value);
             }
         }
         log.logInfo("Requested title metric '%s' not found in metrics: %s", titleMetric, metrics.keySet());
