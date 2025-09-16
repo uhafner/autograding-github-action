@@ -9,9 +9,9 @@
       },
       {
         "id": "junit",
-        "icon": "no_entry",
-        "name": "Architecture Tests",
-        "pattern": "**/target/archunit-reports/TEST*.xml"
+        "icon": "rocket",
+        "name": "Integration Tests",
+        "pattern": "**/target/failsafe-reports/TEST*.xml"
       }
     ]
   },
@@ -43,18 +43,6 @@
         {
           "id": "error-prone",
           "pattern": "**/maven.log"
-        }
-      ]
-    },
-    {
-      "name": "API Problems",
-      "id": "api",
-      "icon": "no_entry_sign",
-      "tools": [
-        {
-          "id": "revapi",
-          "sourcePath": "src/main/java",
-          "pattern": "**/target/revapi-result.json"
         }
       ]
     },
