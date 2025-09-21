@@ -255,7 +255,7 @@ public class GitHubAutoGradingRunnerITest extends ResourceTest {
 
     private String runAutoGrading() {
         var outputStream = new ByteArrayOutputStream();
-        var runner = new GitHubAutoGradingRunner(new PrintStream(outputStream));
+        var runner = new GitHubAutoGradingRunner(new PrintStream(outputStream, true, StandardCharsets.UTF_8));
         runner.run();
         return outputStream.toString(StandardCharsets.UTF_8);
     }
