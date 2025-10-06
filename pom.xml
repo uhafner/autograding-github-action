@@ -34,7 +34,7 @@
     <module.name>${project.groupId}.autograding.github.action</module.name>
     <docker-image-tag>${project.version}</docker-image-tag>
 
-    <autograding-model.version>8.5.0</autograding-model.version>
+    <autograding-model.version>8.6.0</autograding-model.version>
     <github-api.version>1.330</github-api.version>
     <testcontainers.version>1.21.3</testcontainers.version>
 
